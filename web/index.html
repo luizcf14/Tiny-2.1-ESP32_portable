@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>TINY 2.1 — Neural Interface (ESP32)</title>
+<style>
+:root{
+  --bg:#04041c;
+  --title-bg:#141c59;
+  --panel-bg:#005179;
+  --frame:#28e7ff;
+  --frame2:#005179;
+  --you:#ff49eb;
+  --qtext:#ffda38;
+  --tiny:#28e7ff;
+  --answer:#49ffaa;
+  --glow:#f3fbff;
+  --speak-bg:#006949;
+  --speak-fg:#f3fbff;
+  --dim:#354171;
+  --text:#a2b6da;
+  --bright:#f3fbff;
+  --hot:#ff598a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consolas,"Lucida Console","DejaVu Sans Mono","Courier New",monospace;font-size:15px;line-height:1.35;overflow:hidden}
+.app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:1280px;margin:0 auto;padding:4px 6px;gap:6px}
+.titlebar{display:flex;align-items:center;justify-content:space-between;background:var(--title-bg);padding:3px 10px;color:var(--frame);white-space:nowrap;overflow:hidden;flex-shrink:0;font-size:14px}
+.title-left{display:flex;align-items:center;gap:8px;overflow:hidden;text-overflow:ellipsis}
+.title-brand{color:var(--bright);font-weight:bold;letter-spacing:2px}
+.title-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.online-dot{color:var(--answer);font-weight:bold}
+.clock{color:var(--bright);font-weight:bold}
+
+.main-grid{display:grid;grid-template-columns:1fr 270px;gap:8px;flex:1;min-height:0}
+.panel{position:relative;border:3px double var(--frame2);padding:12px 10px 8px 10px;display:flex;flex-direction:column;min-height:0;background:var(--bg)}
+.panel.conv-panel{border-color:var(--frame)}
+.panel-title{position:absolute;top:-11px;left:14px;background:var(--panel-bg);color:var(--bright);padding:0 8px;font-size:13px;font-weight:bold;letter-spacing:1px}
+.panel-title::before{content:"╡ ";color:var(--frame)}
+.panel-title::after{content:" ╞";color:var(--frame)}
+.panel.mon-panel .panel-title::before,.panel.mon-panel .panel-title::after,
+.panel.ask-panel .panel-title::before,.panel.ask-panel .panel-title::after{color:var(--frame2)}
+
+#chat{flex:1;overflow-y:auto;padding-right:4px;word-wrap:break-word;white-space:pre-wrap;scrollbar-width:thin;scrollbar-color:var(--frame2) var(--bg)}
+#chat::-webkit-scrollbar{width:7px}
+#chat::-webkit-scrollbar-track{background:var(--bg)}
+#chat::-webkit-scrollbar-thumb{background:var(--frame2)}
+.turn{margin-bottom:10px}
+.row{display:flex;align-items:flex-start}
+.lbl-you{color:var(--you);font-weight:bold;flex-shrink:0;white-space:pre}
+.lbl-tiny{color:var(--tiny);font-weight:bold;flex-shrink:0;white-space:pre}
+.q-text{color:var(--qtext)}
+.a-text{color:var(--answer)}
+.a-text .glow{color:var(--glow);text-shadow:0 0 6px var(--glow)}
+.a-text .speaking{background:var(--speak-bg);color:var(--speak-fg)}
+.sys-dim{color:var(--dim)}
+.sys-text{color:var(--text)}
+.sys-help{background:var(--panel-bg);color:var(--bright);font-weight:bold;padding:0 6px;display:inline-block;margin:4px 0 2px}
+.scan{color:var(--dim)}
+.scan .s0{color:var(--bright)}
+.scan .s1{color:var(--you)}
+.scan .s2{color:#b040d0}
+
+.mon-panel{font-size:13.5px;overflow-y:auto}
+.mon-lbl{color:var(--dim);font-size:12px;letter-spacing:0.5px;margin-top:6px}
+.mon-lbl:first-of-type{margin-top:0}
+.layer-row{display:flex;align-items:center;gap:6px;margin:1px 0}
+.layer-id{color:var(--frame);width:22px;font-weight:bold}
+.meter{font-family:inherit;letter-spacing:0;line-height:1.1;white-space:pre}
+.conf-row{display:flex;align-items:center;gap:6px;margin:2px 0}
+.conf-pct{color:var(--bright);font-weight:bold}
+.heat{letter-spacing:1px;font-size:15px;line-height:1.1;min-height:18px;margin:2px 0}
+.mon-val{color:var(--text);margin:1px 0 4px}
+.mon-sub{color:var(--dim);font-size:12px}
+
+.ask-panel{flex-shrink:0;padding:10px 10px 7px}
+.ask-row{display:flex;align-items:center;gap:8px}
+.ask-prompt{color:var(--you);font-weight:bold;font-size:16px}
+#qInput{flex:1;background:transparent;border:none;outline:none;color:var(--bright);font-family:inherit;font-size:15px;caret-color:var(--frame);min-width:0}
+#qInput::placeholder{color:var(--dim)}
+.ask-hint{border-left:2px solid var(--frame2);padding-left:10px;color:var(--dim);font-size:13px;white-space:nowrap;display:flex;gap:8px;align-items:center}
+.ask-btn{background:transparent;border:1px solid var(--frame2);color:var(--text);font-family:inherit;font-size:12px;padding:1px 7px;cursor:pointer}
+.ask-btn:hover{border-color:var(--frame);color:var(--bright)}
+
+.statusbar{display:flex;align-items:center;justify-content:space-between;background:var(--panel-bg);color:var(--bg);padding:2px 8px;flex-shrink:0;gap:6px;flex-wrap:wrap;font-size:13px;font-weight:bold}
+.sb-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sb-item{background:transparent;border:none;color:var(--bg);font-family:inherit;font-size:13px;font-weight:bold;cursor:pointer;padding:1px 3px}
+.sb-item:hover{background:rgba(4,4,28,0.22)}
+.sb-key{color:var(--bright)}
+.sb-on{color:var(--qtext)}
+.sb-right{color:var(--bg);margin-left:auto;white-space:nowrap}
+
+#boot{position:fixed;inset:0;background:var(--bg);z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center;cursor:pointer}
+#boot.hidden{display:none}
+#rainCanvas{position:absolute;inset:0;width:100%;height:100%;opacity:0.42;pointer-events:none}
+.boot-box{position:relative;z-index:2;max-width:560px;width:100%}
+.boot-logo{color:var(--frame);font-size:clamp(11px,2.8vw,18px);line-height:1.15;font-weight:bold;text-shadow:0 0 10px rgba(40,231,255,0.45);margin-bottom:10px;white-space:pre}
+.boot-sub{color:var(--bright);letter-spacing:3px;font-size:13px;margin-bottom:4px}
+.boot-ver{color:var(--dim);font-size:12px;margin-bottom:14px}
+.boot-bar{color:var(--answer);font-size:14px;letter-spacing:1px;margin-bottom:8px}
+.boot-msg{color:var(--dim);font-size:12px}
+
+.modal-bg{position:fixed;inset:0;background:rgba(4,4,28,0.84);z-index:60;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-bg.open{display:flex}
+.modal{background:var(--bg);border:3px double var(--frame);padding:16px;max-width:400px;width:100%;box-shadow:0 0 24px rgba(40,231,255,0.25)}
+.modal h3{color:var(--bright);background:var(--panel-bg);padding:3px 8px;margin-bottom:12px;font-size:14px}
+.modal label{display:block;color:var(--text);font-size:13px;margin:8px 0 3px}
+.modal input{width:100%;background:#0a0b2e;border:1px solid var(--frame2);color:var(--bright);padding:6px 8px;font-family:inherit;font-size:14px;outline:none}
+.modal input:focus{border-color:var(--frame)}
+.modal-btns{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+.btn{background:var(--panel-bg);color:var(--bright);border:1px solid var(--frame);padding:5px 12px;font-family:inherit;font-size:13px;cursor:pointer}
+.btn:hover{background:var(--frame);color:var(--bg);font-weight:bold}
+.btn.sec{background:transparent;border-color:var(--frame2);color:var(--text)}
+.wifi-info{font-size:12px;color:var(--text);background:#090b2a;border:1px solid var(--frame2);padding:7px;margin-bottom:8px;line-height:1.45}
+
+@media (max-width:860px){
+  .main-grid{grid-template-columns:1fr;grid-template-rows:1fr auto}
+  .mon-panel{max-height:205px}
+  .ask-hint{display:none}
+  .title-sub{display:none}
+}
+</style>
+</head>
+<body>
+<div id="boot">
+  <canvas id="rainCanvas"></canvas>
+  <div class="boot-box">
+    <div class="boot-logo">█████  ███  █   █  █   █
+  █     █   ██  █   █ █ 
+  █     █   █ █ █    █  
+  █     █   █  ██    █  
+  █    ███  █   █    █  </div>
+    <div class="boot-sub">N E U R A L    I N T E R F A C E</div>
+    <div class="boot-ver">version 2.1 · ESP32 Zero-Copy Flash</div>
+    <div class="boot-bar" id="bootBar">▌████████████████████████████████████▐ 100%</div>
+    <div class="boot-msg" id="bootMsg">▸ SYSTEM READY ◂  (click or press any key)</div>
+  </div>
+</div>
+
+<div class="app">
+  <header class="titlebar">
+    <div class="title-left">
+      <span>◄►</span>
+      <span class="title-brand">T I N Y</span>
+      <span class="title-sub">· NEURAL INTERFACE 2.1 · 367,000 WEIGHTS</span>
+    </div>
+    <div class="title-right">
+      <span class="online-dot" id="onlineInd">■ ONLINE</span>
+      <span class="clock" id="clock">--:--</span>
+    </div>
+  </header>
+
+  <main class="main-grid">
+    <section class="panel conv-panel">
+      <div class="panel-title">CONVERSATION</div>
+      <div id="chat"></div>
+    </section>
+
+    <aside class="panel mon-panel">
+      <div class="panel-title">NEURAL MONITOR</div>
+      <div class="mon-lbl">LAYER ACTIVITY</div>
+      <div id="layersBox"></div>
+
+      <div class="mon-lbl">CONFIDENCE</div>
+      <div class="conf-row">
+        <span class="meter" id="confBar">·············</span>
+        <span class="conf-pct" id="confPct">  0%</span>
+      </div>
+
+      <div class="mon-lbl">LAST LETTERS</div>
+      <div class="heat" id="heatBar">··················</div>
+
+      <div class="mon-lbl">SPEED</div>
+      <div class="mon-val" id="speedVal">0.0 letters/s</div>
+
+      <div class="mon-lbl">NETWORK</div>
+      <div class="mon-val" id="netVal">4 layers · 96 wide</div>
+      <div class="mon-sub" id="espVal">ESP32 heap -- KB</div>
+
+      <div class="mon-lbl">MODE</div>
+      <div class="mon-val" id="modeVal">creativity 5</div>
+    </aside>
+  </main>
+
+  <section class="panel ask-panel">
+    <div class="panel-title">ASK TINY</div>
+    <div class="ask-row">
+      <span class="ask-prompt">▸</span>
+      <input id="qInput" type="text" maxlength="72" autocomplete="off" spellcheck="false" placeholder="Ask a question and press Enter...">
+      <button class="ask-btn" id="sendBtn" type="button">SEND</button>
+      <div class="ask-hint"><span>↑ last</span><span>F1 help</span></div>
+    </div>
+  </section>
+
+  <footer class="statusbar">
+    <div class="sb-actions">
+      <button class="sb-item" id="btnF1" type="button"><span class="sb-key">F1</span> Help</button>
+      <button class="sb-item" id="btnF2" type="button"><span class="sb-key">F2</span> Sound <span class="sb-on" id="stSound">ON</span></button>
+      <button class="sb-item" id="btnF3" type="button"><span class="sb-key">F3</span> Voice <span class="sb-on" id="stVoice">ON</span></button>
+      <button class="sb-item" id="btnF4" type="button"><span class="sb-key">F4</span> Creativity <span class="sb-on" id="stCreat">5</span></button>
+      <button class="sb-item" id="btnDemo" type="button"><span class="sb-key">DEMO</span></button>
+      <button class="sb-item" id="btnCls" type="button"><span class="sb-key">CLS</span></button>
+      <button class="sb-item" id="btnWifi" type="button"><span class="sb-key">WIFI</span></button>
+    </div>
+    <div class="sb-right" id="sbRight">ready</div>
+  </footer>
+</div>
+
+<div class="modal-bg" id="wifiModal">
+  <div class="modal">
+    <h3>WI-FI CONFIGURATION</h3>
+    <div class="wifi-info" id="wifiInfo">Loading ESP32 status...</div>
+    <label for="wSsid">Router Wi-Fi SSID (leave blank to clear)</label>
+    <input id="wSsid" type="text" maxlength="32" placeholder="MyWiFi">
+    <label for="wPass">Password</label>
+    <input id="wPass" type="password" maxlength="64" placeholder="Password">
+    <div class="modal-btns">
+      <button class="btn sec" id="wClose" type="button">Cancel</button>
+      <button class="btn" id="wSave" type="button">Save &amp; Connect</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const chat = $("chat"), qInput = $("qInput"), layersBox = $("layersBox");
+  const confBar = $("confBar"), confPct = $("confPct"), heatBar = $("heatBar");
+  const speedVal = $("speedVal"), netVal = $("netVal"), espVal = $("espVal"), modeVal = $("modeVal");
+  const stSound = $("stSound"), stVoice = $("stVoice"), stCreat = $("stCreat"), sbRight = $("sbRight");
+  const bootEl = $("boot"), rainCanvas = $("rainCanvas");
+
+  let soundOn = true, voiceOn = true, creativity = 5, lastQ = "";
+  let busy = false, demoRunning = false, demoStop = false;
+  let abortCtrl = null, speechToken = 0, actMax = [0,0,0,0,0,0,0,0], layersCount = 4;
+  let heat = [], spin = 0;
+
+  const DEMO_Q = [
+    "what is the capital of estonia", "is a whale a fish", "what is 7 times 8",
+    "which countries border estonia", "spell computer", "what is the symbol for gold",
+    "how do you say thank you in spanish", "what is a group of lions called",
+    "what comes after 199", "what time is it", "tell me a joke", "name the continents"
+  ];
+
+  // ---- Web Audio PC Speaker + Robot Voice ----
+  let actx = null;
+  function ensureAudio() {
+    if (!soundOn) return null;
+    if (!actx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) actx = new AC();
+    }
+    if (actx && actx.state === "suspended") actx.resume().catch(() => {});
+    return actx;
+  }
+
+  function tone(hz, ms) {
+    if (!soundOn || !hz) return;
+    const ctx = ensureAudio();
+    if (!ctx) return;
+    const now = ctx.currentTime, dur = ms / 1000;
+    const osc = ctx.createOscillator(), g = ctx.createGain();
+    osc.type = "square";
+    osc.frequency.setValueAtTime(hz, now);
+    g.gain.setValueAtTime(0.001, now);
+    g.gain.linearRampToValueAtTime(0.05, now + 0.001);
+    g.gain.setValueAtTime(0.05, Math.max(now + 0.001, now + dur - 0.001));
+    g.gain.linearRampToValueAtTime(0.0001, now + dur);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(now); osc.stop(now + dur + 0.002);
+  }
+
+  function sndClick() { tone(1800, 3); }
+  function sndReady() { tone(1319, 40); setTimeout(() => tone(1760, 70), 42); }
+  function sndBoot() {
+    const notes = [392, 523, 659, 784, 1047, 1319];
+    notes.forEach((n, idx) => setTimeout(() => tone(n, 55), idx * 58));
+    setTimeout(() => tone(1568, 140), notes.length * 58);
+  }
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  function playBuzz(f1, f2, ms, shift) {
+    const ctx = ensureAudio();
+    if (!ctx) return sleep(ms);
+    const a = Math.round(f1 * shift / 100), b = Math.round(f2 * shift / 100);
+    const now = ctx.currentTime, dur = ms / 1000;
+    const osc = ctx.createOscillator(), g = ctx.createGain();
+    osc.type = "square";
+    for (let t = 0, flip = false; t < ms; t += 2, flip = !flip) {
+      osc.frequency.setValueAtTime(flip ? b : a, now + t / 1000);
+    }
+    g.gain.setValueAtTime(0.048, now);
+    g.gain.linearRampToValueAtTime(0.0001, now + dur);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(now); osc.stop(now + dur + 0.002);
+    return sleep(ms);
+  }
+
+  function playHiss(ms) {
+    const ctx = ensureAudio();
+    if (!ctx) return sleep(ms);
+    const now = ctx.currentTime, dur = ms / 1000;
+    const osc = ctx.createOscillator(), g = ctx.createGain();
+    osc.type = "square";
+    for (let t = 0; t < ms; t += 2) {
+      osc.frequency.setValueAtTime(2500 + Math.floor(Math.random() * 4500), now + t / 1000);
+    }
+    g.gain.setValueAtTime(0.032, now);
+    g.gain.linearRampToValueAtTime(0.0001, now + dur);
+    osc.connect(g); g.connect(ctx.destination);
+    osc.start(now); osc.stop(now + dur + 0.002);
+    return sleep(ms);
+  }
+
+  async function sayLetter(ch, shift) {
+    const c = ch.toLowerCase();
+    if (c === "a") await playBuzz(730, 1090, 64, shift);
+    else if (c === "e") await playBuzz(530, 1840, 56, shift);
+    else if (c === "i" || c === "y") await playBuzz(300, 2290, 52, shift);
+    else if (c === "o") await playBuzz(570, 840, 64, shift);
+    else if (c === "u") await playBuzz(320, 870, 56, shift);
+    else if ("szcx".includes(c)) await playHiss(46);
+    else if ("fhvj".includes(c)) await playHiss(30);
+    else if ("ptkq".includes(c)) { tone(3200, 3); await sleep(20); }
+    else if ("bdg".includes(c)) { await playBuzz(180, 260, 12, shift); await sleep(10); }
+    else if ("mn".includes(c)) await playBuzz(210, 300, 40, shift);
+    else if ("lrw".includes(c)) await playBuzz(400, 1100, 36, shift);
+    else if (c === " ") await sleep(45);
+    else if (c === "," || c === "-") await sleep(110);
+    else if (".!?:".includes(c)) await sleep(200);
+    else if (c >= "0" && c <= "9") {
+      const d = c.charCodeAt(0) - 48;
+      await playBuzz(420 + d * 60, 900 + d * 90, 70, shift);
+    } else await sleep(20);
+  }
+
+  function stopSpeech() {
+    speechToken++;
+    document.querySelectorAll(".a-text .speaking").forEach((el) => el.classList.remove("speaking"));
+  }
+
+  async function speakAnswer(answer, spans) {
+    if (!soundOn || !voiceOn || !answer) return;
+    const tok = ++speechToken;
+    tone(1200, 8);
+    const n = answer.length;
+    for (let i = 0; i < n;) {
+      if (tok !== speechToken) break;
+      let j = i;
+      while (j < n && answer[j] !== " ") j++;
+      const wordEnd = j;
+      while (j < n && answer[j] === " ") j++;
+      for (let k = i; k < wordEnd; k++) spans[k]?.classList.add("speaking");
+      const shift = Math.round(115 - 30 * i / (n + 1));
+      for (let k = i; k < j; k++) {
+        if (tok !== speechToken) break;
+        await sayLetter(answer[k], shift);
+      }
+      for (let k = i; k < wordEnd; k++) spans[k]?.classList.remove("speaking");
+      i = j;
+    }
+  }
+
+  // ---- Neural Monitor ----
+  function initLayersUI(count) {
+    layersCount = count;
+    if (layersBox.childElementCount === count) return;
+    layersBox.innerHTML = "";
+    for (let l = 0; l < count && l < 6; l++) {
+      const row = document.createElement("div");
+      row.className = "layer-row";
+      row.innerHTML = `<span class="layer-id">L${l+1}</span><span class="meter" id="lBar${l}">···············</span>`;
+      layersBox.appendChild(row);
+    }
+  }
+
+  function renderMeter(el, w, val1000, color) {
+    if (!el) return;
+    const n = Math.max(0, Math.min(w * 2, Math.floor(val1000 * w * 2 / 1000)));
+    const full = Math.floor(n / 2), half = n % 2;
+    const empty = Math.max(0, w - full - half);
+    const fillStr = "█".repeat(full) + (half ? "▌" : "");
+    el.innerHTML = `<span style="color:${color}">${fillStr}</span><span style="color:var(--dim)">${"·".repeat(empty)}</span>`;
+  }
+
+  function updateMonitor(acts, conf01) {
+    if (acts) {
+      for (let l = 0; l < acts.length && l < 6; l++) {
+        if (acts[l] > actMax[l]) actMax[l] = acts[l];
+        const v = actMax[l] > 0 ? Math.round(1000 * acts[l] / actMax[l]) : 0;
+        renderMeter($("lBar" + l), 15, v, (l % 2) ? "var(--frame)" : "var(--answer)");
+        actMax[l] *= 0.995;
+      }
+    }
+    if (typeof conf01 === "number") {
+      const v = Math.max(0, Math.min(1000, Math.round(conf01 * 1000)));
+      const col = v > 800 ? "var(--answer)" : v > 500 ? "var(--qtext)" : "var(--hot)";
+      renderMeter(confBar, 13, v, col);
+      confPct.textContent = String(Math.round(v / 10)).padStart(3, " ") + "%";
+    }
+    let html = "";
+    for (let i = 0; i < 18; i++) {
+      if (i >= heat.length) { html += `<span style="color:var(--dim)">·</span>`; continue; }
+      const hv = heat[i];
+      const col = hv > 800 ? "var(--answer)" : hv > 500 ? "var(--qtext)" : "var(--hot)";
+      const ch = hv > 900 ? "█" : hv > 700 ? "▓" : hv > 450 ? "▒" : "░";
+      html += `<span style="color:${col}">${ch}</span>`;
+    }
+    heatBar.innerHTML = html;
+  }
+
+  function updateStatusUI() {
+    stSound.textContent = soundOn ? "ON" : "OFF";
+    stVoice.textContent = voiceOn ? "ON" : "OFF";
+    stCreat.textContent = String(creativity);
+    modeVal.textContent = "creativity " + creativity;
+  }
+
+  // ---- Chat Rendering ----
+  function scrollChat() { chat.scrollTop = chat.scrollHeight; }
+
+  function addSystemLine(text, cls = "sys-text") {
+    const div = document.createElement("div");
+    div.className = cls;
+    div.textContent = text;
+    chat.appendChild(div);
+    scrollChat();
+  }
+
+  function showGreeting() {
+    addSystemLine("Hello! I am TINY, a neural network inside your ESP32.", "sys-dim");
+    addSystemLine("Ask about countries, animals, space, words or sums.", "sys-dim");
+  }
+
+  function showHelp() {
+    const wrap = document.createElement("div");
+    wrap.className = "turn";
+    wrap.innerHTML = `<div class="sys-help"> HELP </div>` +
+      [
+        "Ask a question and press Enter.",
+        "Try: capital of peru · is a whale a fish",
+        "     what is 7 times 8 · spell elephant",
+        "     which countries border estonia",
+        "     how do you say thank you in spanish",
+        "F2 sound · F3 robot voice · F4 creativity (0..9)",
+        "↑ last question · Esc stop · CLS clears · WIFI setup"
+      ].map((l) => `<div class="sys-text"> ${l}</div>`).join("");
+    chat.appendChild(wrap);
+    scrollChat();
+  }
+
+  function renderScanner(span, pct) {
+    const h = spin % 18;
+    const head = h >= 9 ? 17 - h : h;
+    let out = "";
+    for (let k = 0; k < 10; k++) {
+      const d = Math.abs(head - k);
+      if (d === 0) out += `<span class="s0">█</span>`;
+      else if (d === 1) out += `<span class="s1">▓</span>`;
+      else if (d === 2) out += `<span class="s2">▒</span>`;
+      else out += `·`;
+    }
+    span.innerHTML = `${out} reading ${pct}%`;
+    spin++;
+  }
+
+  // ---- Ask TINY via SSE stream ----
+  async function askQuestion(rawQ) {
+    const q = rawQ.trim();
+    if (!q || busy) return;
+    const low = q.toLowerCase();
+    if (low === "cls") { chat.innerHTML = ""; showGreeting(); return; }
+    if (low === "help") { showHelp(); return; }
+
+    stopSpeech();
+    ensureAudio();
+    lastQ = q;
+    busy = true;
+    sbRight.textContent = "thinking...";
+
+    const turn = document.createElement("div");
+    turn.className = "turn";
+    const qRow = document.createElement("div");
+    qRow.className = "row";
+    qRow.innerHTML = `<span class="lbl-you"> YOU » </span>`;
+    const qSpan = document.createElement("span");
+    qSpan.className = "q-text";
+    qSpan.textContent = q;
+    qRow.appendChild(qSpan);
+
+    const aRow = document.createElement("div");
+    aRow.className = "row";
+    aRow.innerHTML = `<span class="lbl-tiny">TINY » </span>`;
+    const aSpan = document.createElement("span");
+    aSpan.className = "a-text";
+    const scanSpan = document.createElement("span");
+    scanSpan.className = "scan";
+    renderScanner(scanSpan, 0);
+    aSpan.appendChild(scanSpan);
+    aRow.appendChild(aSpan);
+
+    turn.appendChild(qRow);
+    turn.appendChild(aRow);
+    chat.appendChild(turn);
+    scrollChat();
+
+    heat = [];
+    updateMonitor(null, 0);
+    let answer = "";
+    const spans = [];
+    let prevGlow = null;
+    abortCtrl = new AbortController();
+
+    try {
+      const url = `/api/ask?q=${encodeURIComponent(q)}&c=${creativity}`;
+      const resp = await fetch(url, { signal: abortCtrl.signal });
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const reader = resp.body.getReader();
+      const dec = new TextDecoder();
+      let buf = "";
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += dec.decode(value, { stream: true }).replace(/\r\n/g, "\n");
+        let idx;
+        while ((idx = buf.indexOf("\n\n")) !== -1) {
+          const frame = buf.slice(0, idx);
+          buf = buf.slice(idx + 2);
+          for (const line of frame.split("\n")) {
+            if (!line.startsWith("data:")) continue;
+            const jsonStr = line.slice(5).trim();
+            if (!jsonStr) continue;
+            const ev = JSON.parse(jsonStr);
+            if (ev.t === "s") {
+              const pct = ev.n > 0 ? Math.round(100 * (ev.i + 1) / ev.n) : 100;
+              renderScanner(scanSpan, pct);
+              updateMonitor(ev.a, null);
+              if (ev.i % 3 === 0) tone(2400 + Math.floor(Math.random() * 8) * 150, 3);
+            } else if (ev.t === "l") {
+              if (scanSpan.parentNode) scanSpan.remove();
+              if (prevGlow) prevGlow.classList.remove("glow");
+              const sp = document.createElement("span");
+              sp.className = "glow";
+              sp.textContent = ev.c;
+              aSpan.appendChild(sp);
+              spans.push(sp);
+              prevGlow = sp;
+              answer += ev.c;
+              heat.push(Math.round(ev.f * 1000));
+              if (heat.length > 18) heat.shift();
+              updateMonitor(ev.a, ev.f);
+              if (!voiceOn) tone(900 + (ev.c.charCodeAt(0) % 16) * 70, 6);
+              scrollChat();
+            } else if (ev.t === "d") {
+              if (scanSpan.parentNode) scanSpan.remove();
+              if (prevGlow) prevGlow.classList.remove("glow");
+              if (answer.length === 0) {
+                const sp = document.createElement("span");
+                sp.textContent = ".";
+                aSpan.appendChild(sp);
+                spans.push(sp);
+                answer = ".";
+              }
+              const secs = (ev.ms / 1000).toFixed(1);
+              const lps = ev.ms > 0 ? (ev.ltr * 1000 / ev.ms).toFixed(1) : "0.0";
+              speedVal.textContent = `${lps} letters/s`;
+              if (ev.heap) espVal.textContent = `ESP32 heap ${Math.round(ev.heap / 1024)} KB`;
+              sbRight.textContent = `${ev.ltr} ltr ${secs}s`;
+            }
+          }
+        }
+      }
+      if (soundOn && voiceOn) await speakAnswer(answer, spans);
+      else sndReady();
+    } catch (err) {
+      if (scanSpan.parentNode) scanSpan.remove();
+      if (err.name === "AbortError") {
+        sbRight.textContent = "stopped";
+      } else {
+        aSpan.style.color = "var(--hot)";
+        aSpan.textContent = `[error: ${err.message}]`;
+        sbRight.textContent = "error";
+      }
+    } finally {
+      busy = false;
+      abortCtrl = null;
+      qInput.focus();
+    }
+  }
+
+  // ---- Demo Mode ----
+  async function runDemo() {
+    if (demoRunning) {
+      demoStop = true;
+      if (abortCtrl) abortCtrl.abort();
+      stopSpeech();
+      return;
+    }
+    demoRunning = true;
+    demoStop = false;
+    sbRight.textContent = "DEMO running";
+    for (const dq of DEMO_Q) {
+      if (demoStop) break;
+      while (busy) await sleep(50);
+      qInput.value = "";
+      for (const ch of dq) {
+        if (demoStop) break;
+        qInput.value += ch;
+        sndClick();
+        await sleep(32 + Math.random() * 28);
+      }
+      if (demoStop) break;
+      await sleep(180);
+      qInput.value = "";
+      await askQuestion(dq);
+      if (demoStop) break;
+      await sleep(1100);
+    }
+    demoRunning = false;
+    demoStop = false;
+    qInput.value = "";
+  }
+
+  // ---- Status & Wi-Fi ----
+  let statusLoadedOnce = false;
+  async function loadStatus() {
+    try {
+      const r = await fetch("/api/status");
+      if (!r.ok) return;
+      const d = await r.json();
+      initLayersUI(d.layers || 4);
+      if (!statusLoadedOnce && typeof d.creativity === "number") {
+        creativity = d.creativity;
+        updateStatusUI();
+        statusLoadedOnce = true;
+      }
+      netVal.textContent = `${d.layers} layers · ${d.d} wide`;
+      espVal.textContent = `ESP32 heap ${Math.round(d.heap / 1024)} KB`;
+      $("wifiInfo").innerHTML =
+        `AP Mode: <b>${d.ap_ssid}</b> (${d.ap_ip})<br>` +
+        `Router STA: <b>${d.sta_connected ? d.sta_ssid + " (" + d.sta_ip + ")" : "Not connected"}</b><br>` +
+        `Flash weights: ${(d.flash_bytes / 1024).toFixed(1)} KB · RAM KV: ${(d.ram_bytes / 1024).toFixed(1)} KB`;
+    } catch (_) {}
+  }
+
+  $("btnF1").onclick = () => { stopSpeech(); showHelp(); qInput.focus(); };
+  $("btnF2").onclick = () => { soundOn = !soundOn; if (!soundOn) stopSpeech(); else sndClick(); updateStatusUI(); qInput.focus(); };
+  $("btnF3").onclick = () => { voiceOn = !voiceOn; if (!voiceOn) stopSpeech(); sndClick(); updateStatusUI(); qInput.focus(); };
+  $("btnF4").onclick = () => { creativity = (creativity + 1) % 10; sndClick(); updateStatusUI(); qInput.focus(); };
+  $("btnDemo").onclick = runDemo;
+  $("btnCls").onclick = () => { stopSpeech(); chat.innerHTML = ""; showGreeting(); qInput.focus(); };
+  $("btnWifi").onclick = () => { loadStatus(); $("wifiModal").classList.add("open"); $("wSsid").focus(); };
+  $("wClose").onclick = () => { $("wifiModal").classList.remove("open"); qInput.focus(); };
+  $("wSave").onclick = async () => {
+    const ssid = $("wSsid").value.trim(), pass = $("wPass").value;
+    const body = new URLSearchParams({ ssid, pass });
+    $("wSave").disabled = true;
+    try {
+      const r = await fetch("/api/wifi", { method: "POST", body });
+      const res = await r.json();
+      $("wifiInfo").innerHTML = `<b>${res.msg || "Saved!"}</b>`;
+      setTimeout(() => { $("wifiModal").classList.remove("open"); loadStatus(); }, 1500);
+    } catch (e) {
+      $("wifiInfo").textContent = "Error: " + e.message;
+    } finally {
+      $("wSave").disabled = false;
+    }
+  };
+
+  $("sendBtn").onclick = () => {
+    if (busy) return;
+    if (demoRunning) { demoStop = true; }
+    const v = qInput.value; qInput.value = "";
+    askQuestion(v);
+  };
+
+  qInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (busy) return;
+      if (demoRunning) demoStop = true;
+      const v = qInput.value; qInput.value = "";
+      askQuestion(v);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      qInput.value = lastQ;
+    } else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey) {
+      sndClick();
+    }
+  });
+
+  window.addEventListener("keydown", (e) => {
+    if (!bootEl.classList.contains("hidden")) { dismissBoot(); return; }
+    if (e.key === "F1") { e.preventDefault(); $("btnF1").click(); }
+    else if (e.key === "F2") { e.preventDefault(); $("btnF2").click(); }
+    else if (e.key === "F3") { e.preventDefault(); $("btnF3").click(); }
+    else if (e.key === "F4") { e.preventDefault(); $("btnF4").click(); }
+    else if (e.key === "Escape") {
+      if ($("wifiModal").classList.contains("open")) { $("wClose").click(); return; }
+      demoStop = true;
+      if (abortCtrl) abortCtrl.abort();
+      stopSpeech();
+    }
+  });
+
+  // ---- Clock ----
+  function tickClock() {
+    const d = new Date();
+    $("clock").textContent =
+      String(d.getHours()).padStart(2, "0") + ":" + String(d.getMinutes()).padStart(2, "0");
+  }
+  tickClock();
+  setInterval(tickClock, 15000);
+
+  // ---- Boot Rain & Transition ----
+  let bootDone = false, rainTimer = null, autoBootTimer = null;
+  function startRain() {
+    const ctx = rainCanvas.getContext("2d");
+    rainCanvas.width = window.innerWidth;
+    rainCanvas.height = window.innerHeight;
+    const cols = Math.floor(rainCanvas.width / 14);
+    const drops = Array.from({ length: cols }, () => -Math.floor(Math.random() * 20));
+    ctx.font = "14px monospace";
+    rainTimer = setInterval(() => {
+      ctx.fillStyle = "rgba(4,4,28,0.22)";
+      ctx.fillRect(0, 0, rainCanvas.width, rainCanvas.height);
+      for (let i = 0; i < cols; i++) {
+        const ch = String.fromCharCode(33 + Math.floor(Math.random() * 90));
+        ctx.fillStyle = Math.random() > 0.85 ? "#f3fbff" : "#49ffaa";
+        ctx.fillText(ch, i * 14, drops[i] * 16);
+        drops[i] = (drops[i] * 16 > rainCanvas.height && Math.random() > 0.94) ? 0 : drops[i] + 1;
+      }
+    }, 45);
+  }
+
+  function dismissBoot() {
+    if (bootDone) return;
+    bootDone = true;
+    clearInterval(rainTimer);
+    clearTimeout(autoBootTimer);
+    bootEl.classList.add("hidden");
+    sndBoot();
+    qInput.focus();
+  }
+
+  bootEl.addEventListener("click", () => { ensureAudio(); dismissBoot(); });
+  startRain();
+  autoBootTimer = setTimeout(dismissBoot, 1400);
+
+  initLayersUI(4);
+  updateStatusUI();
+  updateMonitor([0, 0, 0, 0], 0);
+  showGreeting();
+  loadStatus();
+})();
+</script>
+</body>
+</html>
