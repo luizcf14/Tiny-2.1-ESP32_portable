@@ -80,6 +80,42 @@ Se você fez upload e **não apareceu nada no Serial Monitor**:
 
 ---
 
+## Como fazer Fine-Tuning do modelo (`tools/finetune_tiny.py`)
+
+O repositório inclui o script [`tools/finetune_tiny.py`](tools/finetune_tiny.py) com **PyTorch + QAT (Quantization-Aware Training em int8)** para ajustar o `TINY.BIN` com seus próprios fatos, idioma (português/inglês) ou personalidade, exportando no formato binário exato `TNY2` do ESP32.
+
+1. **Edite seu dataset de perguntas e respostas:**
+   - Formato simples texto em [`data/custom_qa.txt`](data/custom_qa.txt) (`pergunta | resposta`):
+     ```txt
+     qual e o seu nome | Meu nome e TINY 2.1.
+     onde voce esta rodando | Estou rodando direto em um ESP32 sem PSRAM.
+     ```
+   - Ou formato JSONL em [`data/custom_qa.jsonl`](data/custom_qa.jsonl) com múltiplas formulações para a mesma resposta:
+     ```json
+     {"q": ["qual a capital da italia", "capital da italia"], "a": "A capital da Italia e Roma."}
+     ```
+   - Acentos em UTF-8 (`ã`, `ç`, `é`, `ó`...) são convertidos automaticamente para ASCII tanto no treino quanto na entrada do usuário no ESP32 (`tiny_clean_question`).
+
+2. **Treine e atualize o sketch do ESP32 em 1 comando:**
+   ```bash
+   python tools/finetune_tiny.py --data data/custom_qa.txt --update-esp32
+   ```
+   Isso treina sobre `TINY.BIN` (sem sobrescrever o arquivo original), salva em `models/tiny_finetuned.bin`, testa as respostas já quantizadas em `int8` e atualiza [`TinyESP32/tiny_weights.h`](TinyESP32/tiny_weights.h). Depois basta clicar em **Upload** na Arduino IDE.
+
+3. **Teste no PC antes de gravar no ESP32:**
+   ```bash
+   python tools/finetune_tiny.py --chat --model models/tiny_finetuned.bin
+   ```
+
+4. **Opções úteis de ajuste:**
+   - `--epochs 40` / `--lr 4e-4`: aumente se houver muitos exemplos novos ou se o modelo ainda errar alguma resposta; reduza para ajustar com mais suavidade.
+   - `--replay-ratio 0.25`: mistura fatos originais do `TINY.BIN` durante o treino para evitar esquecimento catastrófico (use `0` para focar 100% no seu dataset).
+   - `--l2-sp 0.005`: mantém os pesos ancorados ao modelo base.
+   - `--no-augment`: desliga variações automáticas com/sem `?` e caixa baixa.
+   - `--restore-esp32`: restaura [`TinyESP32/tiny_weights.h`](TinyESP32/tiny_weights.h) para o `TINY.BIN` original de fábrica.
+
+---
+
 ## Regerar os assets caso edite `web/index.html` ou troque `TINY.BIN`
 
 ```bash

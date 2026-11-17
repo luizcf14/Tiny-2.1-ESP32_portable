@@ -338,8 +338,7 @@ static void handleAsk()
     char ans[TINY_CTX + 1];
     uint32_t elapsed = 0;
 
-    int letters = tiny_think(cleanQ, ans, creat, &elapsed,
-                             sseOnStep, sseOnLetter, (void *)&client);
+    int letters = tiny_think(cleanQ, ans, creat, &elapsed,sseOnStep, sseOnLetter, (void *)&client);
 
     if (client.connected()) {
         char donePkt[128];

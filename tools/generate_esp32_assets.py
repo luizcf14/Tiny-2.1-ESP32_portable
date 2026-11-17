@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import gzip
 import pathlib
 import struct
@@ -151,7 +152,16 @@ def generate_web_header(html_path: pathlib.Path, out_path: pathlib.Path) -> tupl
 
 def main() -> int:
     root = pathlib.Path(__file__).resolve().parent.parent
-    bin_path = root / "TINY.BIN"
+    parser = argparse.ArgumentParser(description="Generate ESP32 PROGMEM headers for TINY 2.1.")
+    parser.add_argument(
+        "--bin",
+        type=pathlib.Path,
+        default=root / "TINY.BIN",
+        help="Path to TNY2 weights binary (default: TINY.BIN)",
+    )
+    args = parser.parse_args()
+
+    bin_path = args.bin if args.bin.is_absolute() else (root / args.bin)
     html_path = root / "web" / "index.html"
     sketch_dir = root / "TinyESP32"
     sketch_dir.mkdir(parents=True, exist_ok=True)
@@ -159,7 +169,7 @@ def main() -> int:
     size, d, layers, heads, hid = generate_weights_header(bin_path, sketch_dir / "tiny_weights.h")
     raw_len, gz_len = generate_web_header(html_path, sketch_dir / "web_ui.h")
 
-    print(f"Generated tiny_weights.h: {size} bytes (D={d}, L={layers}, H={heads}, HID={hid})")
+    print(f"Generated tiny_weights.h from {bin_path}: {size} bytes (D={d}, L={layers}, H={heads}, HID={hid})")
     print(f"Generated web_ui.h: {raw_len} bytes raw -> {gz_len} bytes gzip")
     return 0
 

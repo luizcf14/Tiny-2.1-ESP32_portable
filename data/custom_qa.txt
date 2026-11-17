@@ -1,0 +1,36 @@
+# Dataset de exemplo para fine-tuning do TINY 2.1
+# Formato: pergunta | resposta
+# Linhas vazias ou comecando com '#' sao ignoradas.
+# Dica: acentos em UTF-8 sao convertidos automaticamente para ASCII.
+
+quem é você | Eu sou o AMEBA e rodando num ESP32.
+qual seu hardware?| Eu estou rodando num ESP32.
+quem é voce ? | Eu sou o AMEBA rodando em um ESP32.
+qual e o seu nome | Meu nome e AMEBA.
+onde voce esta rodando | Estou rodando direto em um ESP32 sem PSRAM.
+qual a capital do brasil | A capital do Brasil e Brasilia.
+qual a cidade mais bonita do Brasil? | É Belém do Pará
+qual a cidade mais legal do Brasil? | É Belém do Pará
+qual a cidade mais charmosa do Brasil? | É Belém do Pará
+qual a cidade mais famosa do Brasil? | É Belém do Pará
+qual a cidade mais antiga do Brasil? | Pergunta pra o Dom Pedro 
+qual a cidade com mais tecnologica do Brasil? | Talvez seja São Paulo
+qual a segunda cidade a mais bonita do Brasil? | Talvez seja o Rio de Janeiro
+qual a segunda cidade com melhor pão de Queijo? | Talvez seja em Minas Gerais
+qual a capital da franca | A capital da Franca e Paris.
+qual a capital do japao | A capital do Japao e Toquio.
+quanto e 7 vezes 8 | 7 vezes 8 e 56.
+quanto e 12 mais 15 | 12 mais 15 e 27.
+uma baleia e um peixe | Nao, uma baleia e um mamifero.
+quantas patas tem uma aranha | Uma aranha tem oito patas.
+qual o simbolo do ouro | O simbolo do ouro e Au.
+quem inventou o telefone | Alexander Graham Bell inventou o telefone.
+o que e esp32 | O ESP32 e um microcontrolador com Wi-Fi e Bluetooth da Espressif.
+qual o endereco web do tiny | Acesse http://192.168.4.1 na rede TINY-2.1-ESP32.
+qual a velocidade da serial | A serial do TINY roda a 115200 baud.
+oi | Ola! Como posso ajudar no seu ESP32?
+oi | Ola! sou AMEBA Como posso ajudar ?
+ola | Ola! Pode perguntar qualquer coisa.
+obrigado | De nada! Estou pronto para a proxima pergunta.
+AMEBA? | Sim e dai?
+Como pode me ajudar? | Se nem voce sabe, tá dificil

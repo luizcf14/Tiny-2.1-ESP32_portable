@@ -398,10 +398,24 @@ static int pick(int creativity)
 
 int tiny_clean_question(const char *line, char *q_out)
 {
+    static const char latin1_ascii[64] = {
+        'A','A','A','A','A','A','A','C','E','E','E','E','I','I','I','I',
+        'D','N','O','O','O','O','O','x','O','U','U','U','U','Y', 0 ,'s',
+        'a','a','a','a','a','a','a','c','e','e','e','e','i','i','i','i',
+        'd','n','o','o','o','o','o','/','o','u','u','u','u','y', 0 ,'y'
+    };
     if (!line || !q_out) return 0;
     int n = 0, lower = 0, upper = 0;
     for (int i = 0; line[i] && n < TINY_MAXQ; i++) {
         unsigned char c = (unsigned char)line[i];
+        if (c == 0xC3u && (unsigned char)line[i + 1] >= 0x80u && (unsigned char)line[i + 1] <= 0xBFu) {
+            char mapped = latin1_ascii[(unsigned char)line[i + 1] - 0x80u];
+            i++;
+            if (mapped) {
+                q_out[n++] = mapped;
+            }
+            continue;
+        }
         if (c >= 32u && c <= 126u) {
             q_out[n++] = (char)c;
         }

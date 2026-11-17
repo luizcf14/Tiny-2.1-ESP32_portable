@@ -1,0 +1,28 @@
+{"q": "quem e voce", "a": "Eu sou o AMEBA e rodando num ESP32."}
+{"q": "qual seu hardware?", "a": "Eu estou rodando num ESP32."}
+{"q": "quem e voce ?", "a": "Eu sou o AMEBA rodando em um ESP32."}
+{"q": "qual e o seu nome", "a": "Meu nome e AMEBA."}
+{"q": "onde voce esta rodando", "a": "Estou rodando direto em um ESP32 sem PSRAM."}
+{"q": "qual a capital do brasil", "a": "A capital do Brasil e Brasilia."}
+{"q": ["qual a cidade mais bonita do Brasil?", "qual a cidade mais legal do Brasil?", "qual a cidade mais charmosa do Brasil?", "qual a cidade mais famosa do Brasil?"], "a": "E Belem do Para"}
+{"q": "qual a cidade mais antiga do Brasil?", "a": "Pergunta pra o Dom Pedro"}
+{"q": "qual a cidade com mais tecnologica do Brasil?", "a": "Talvez seja Sao Paulo"}
+{"q": "qual a segunda cidade a mais bonita do Brasil?", "a": "Talvez seja o Rio de Janeiro"}
+{"q": "qual a segunda cidade com melhor pao de Queijo?", "a": "Talvez seja em Minas Gerais"}
+{"q": "qual a capital da franca", "a": "A capital da Franca e Paris."}
+{"q": "qual a capital do japao", "a": "A capital do Japao e Toquio."}
+{"q": "quanto e 7 vezes 8", "a": "7 vezes 8 e 56."}
+{"q": "quanto e 12 mais 15", "a": "12 mais 15 e 27."}
+{"q": "uma baleia e um peixe", "a": "Nao, uma baleia e um mamifero."}
+{"q": "quantas patas tem uma aranha", "a": "Uma aranha tem oito patas."}
+{"q": "qual o simbolo do ouro", "a": "O simbolo do ouro e Au."}
+{"q": "quem inventou o telefone", "a": "Alexander Graham Bell inventou o telefone."}
+{"q": "o que e esp32", "a": "O ESP32 e um microcontrolador com Wi-Fi e Bluetooth da Espressif."}
+{"q": "qual o endereco web do tiny", "a": "Acesse http://192.168.4.1 na rede TINY-2.1-ESP32."}
+{"q": "qual a velocidade da serial", "a": "A serial do TINY roda a 115200 baud."}
+{"q": "oi", "a": "Ola! Como posso ajudar no seu ESP32?"}
+{"q": "oi", "a": "Ola! sou AMEBA Como posso ajudar ?"}
+{"q": "ola", "a": "Ola! Pode perguntar qualquer coisa."}
+{"q": "obrigado", "a": "De nada! Estou pronto para a proxima pergunta."}
+{"q": "AMEBA?", "a": "Sim e dai?"}
+{"q": "Como pode me ajudar?", "a": "Se nem voce sabe, ta dificil"}
