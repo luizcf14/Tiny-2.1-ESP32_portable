@@ -1,5 +1,6 @@
 {"q": ["oi", "oii", "oi!", "ola", "olaa", "ola!", "opa", "e ai", "e ai?", "eae", "fala", "salve", "alo", "hi", "hello"], "a": "Ola! Sou o AMEBA. Como posso ajudar?"}
 {"q": ["tudo bem?", "tudo bem", "oi tudo bem?", "ola tudo bem?", "tudo bom?", "tudo bom", "tudo certo?", "tudo joia?", "td bem?", "beleza?", "blz?", "como vai?", "como vai", "como voce esta?", "como vc ta?", "como anda?"], "a": "Tudo otimo por aqui no ESP32! E com voce?"}
+{"q": ["o que e o projeto povos da floresta?", "o que e o projeto conexao povos da floresta?", "o que e conexao povos da floresta?"], "a": "Iniciativa humana de conectividade significativa a povos isolados na Amazonia."}
 {"q": ["tudo bem tambem", "estou bem", "tudo otimo", "bem obrigado", "to bem", "tudo certo"], "a": "Que bom! Pode mandar sua pergunta."}
 {"q": ["bom dia", "bom dia!", "bom dia ameba"], "a": "Bom dia! Sou o AMEBA no ESP32. Em que posso ajudar?"}
 {"q": ["boa tarde", "boa tarde!", "boa tarde ameba"], "a": "Boa tarde! Sou o AMEBA no ESP32. Pode perguntar!"}
@@ -9,12 +10,12 @@
 {"q": ["legal", "muito bom", "top", "show", "bacana", "maneiro"], "a": "Valeu! Pode mandar a proxima pergunta."}
 {"q": ["kk", "haha", "hehe", "rs"], "a": "Haha! Gostou? Pergunta mais alguma coisa."}
 {"q": ["teste", "testando", "test", "123", "alou"], "a": "Teste recebido! O AMEBA esta online no ESP32."}
-{"q": ["quem e voce?", "quem e voce", "quem e vc?", "fale sobre voce"], "a": "Eu sou o AMEBA rodando em um ESP32."}
-{"q": ["qual seu hardware?", "onde voce esta rodando?", "onde voce mora?"], "a": "Estou rodando direto em um ESP32 sem PSRAM."}
-{"q": ["qual e o seu nome?", "qual seu nome?", "qual seu nome"], "a": "Meu nome e AMEBA."}
-{"q": ["ameba?", "ameba"], "a": "Sim e dai?"}
+{"q": ["quem e voce?", "quem e voce", "quem e vc?", "fale sobre voce"], "a": "Eu sou o AMEBA rodando em um ESP32. Quem e voce?"}
+{"q": ["qual seu hardware?", "onde voce esta rodando?", "onde voce mora?"], "a": "Estou rodando direto em um ESP32 sem PSRAM. Qual seu Hardware?"}
+{"q": ["qual e o seu nome?", "qual seu nome?", "qual seu nome"], "a": "Meu nome e AMEBA. Quem e voce?"}
+{"q": ["ameba?", "ameba"], "a": "Sim e dai? Quem e voce?!"}
 {"q": ["como pode me ajudar?", "como voce pode me ajudar?"], "a": "Se nem voce sabe, ta dificil."}
-{"q": ["o que voce sabe fazer?", "sobre o que posso perguntar?", "o que voce conhece?"], "a": "Sei sobre estados, capitais, distancias, biomas e presidentes do Brasil."}
+{"q": ["o que voce sabe fazer?", "sobre o que posso perguntar?", "o que voce conhece?"], "a": "Sei sobre sobrevivencia na mata, catastrofes, estados, capitais, biomas e presidentes do Brasil."}
 {"q": ["quem criou voce?", "quem te treinou?"], "a": "Fui portado para ESP32 e ajustado localmente em PyTorch."}
 {"q": ["voce fala portugues?", "fala portugues?"], "a": "Sim! Agora eu entendo e respondo em portugues no ESP32."}
 {"q": ["voce tem internet?", "voce acessa a internet?"], "a": "Nao, rodo 100% offline dentro da memoria Flash do ESP32."}
@@ -37,7 +38,16 @@
 {"q": "quantas patas tem uma aranha?", "a": "Uma aranha tem oito patas."}
 {"q": "qual o simbolo do ouro?", "a": "O simbolo do ouro e Au."}
 {"q": "quem inventou o telefone?", "a": "Alexander Graham Bell inventou o telefone."}
-{"q": ["asdf", "qwerty", "blablabla", "??", "xyz", "abc", "nada", "qual a cotacao do dolar hoje?", "quanto esta o dolar?", "qual a cotacao do bitcoin?", "quanto esta o bitcoin?", "vai chover amanha?", "qual a previsao do tempo?", "qual a temperatura hoje?", "que horas sao agora?", "quem ganhou o jogo ontem?", "qual o resultado da mega sena?", "quem vai ganhar a copa?", "qual a senha do wifi?", "onde eu moro?", "qual o meu nome?", "quantos anos eu tenho?", "qual meu filme favorito?", "qual sua comida favorita?", "faz um cafe pra mim", "qual a melhor linguagem de programacao?", "me da o numero do pix", "qual o sentido da vida?", "me ajuda com matematica avancada", "escreva um codigo em python", "traduza este texto grande", "o que voce acha da politica?"], "a": "Nao sei responder isso; sou o AMEBA offline com 367 mil parametros."}
+{"q": ["meu nome e alessandro", "alessandro", "ale"], "a": "Bem vindo ao meu Reino Alessandro"}
+{"q": ["meu nome e igor", "igor"], "a": "Bem vindo ao meu Reino Igor"}
+{"q": ["meu nome e luize", "luize"], "a": "Bem vindo ao meu Reino Luize"}
+{"q": ["meu nome e luiz", "luiz"], "a": "Bem vindo ao meu Reino Luiz"}
+{"q": ["meu nome e luan", "luan"], "a": "Bem vindo ao meu Reino Luan"}
+{"q": ["meu nome e tasso", "tasso"], "a": "Bem vindo ao meu Reino Tasso"}
+{"q": ["asdf", "qwerty", "blablabla", "??", "xyz", "abc", "nada"], "a": "Nao sei responder isso; sou o AMEBA offline com 367 mil parametros. Qual seu hardware?"}
+{"q": ["meu hardware e aasdf", "meu hardware e xx", "meu hardware e qwerty", "meu hardware e abc", "meu hardware e nada", "meu hardware e um celular", "meu hardware e um pc"], "a": "Ual isso parece complexo."}
+{"q": ["qual a cotacao do dolar hoje?", "quanto esta o dolar?", "qual a cotacao do bitcoin?", "quanto esta o bitcoin?", "vai chover amanha?", "qual a previsao do tempo?", "qual a temperatura hoje?", "que horas sao agora?", "quem ganhou o jogo ontem?", "qual o resultado da mega sena?", "quem vai ganhar a copa?", "qual a senha do wifi?", "onde eu moro?", "qual o meu nome?", "quantos anos eu tenho?", "qual meu filme favorito?", "qual sua comida favorita?", "faz um cafe pra mim", "qual a melhor linguagem de programacao?", "me da o numero do pix", "qual o sentido da vida?"], "a": "Nao sei responder isso; sou o AMEBA offline com 367 mil parametros. Quem e voce?"}
+{"q": ["me ajuda com matematica avancada", "escreva um codigo em python", "traduza este texto grande", "o que voce acha da politica?"], "a": "Nao sei responder isso; sou o AMEBA offline com 367 mil parametros."}
 {"q": ["quantos estados tem o brasil?", "quantas unidades federativas tem o brasil?"], "a": "O Brasil tem 26 estados e o Distrito Federal, totalizando 27 UFs."}
 {"q": ["quais sao as regioes do brasil?", "quantas regioes tem o brasil?"], "a": "O Brasil tem 5 regioes: Norte, Nordeste, Centro-Oeste, Sudeste e Sul."}
 {"q": "quais estados ficam na regiao norte?", "a": "Norte: Acre, Amapa, Amazonas, Para, Rondonia, Roraima e Tocantins."}
@@ -482,3 +492,202 @@
 {"q": ["quem e dilma rousseff?", "dilma rousseff foi qual presidente?"], "a": "36a presidente (2011-2016); 1a mulher presidente, sofreu impeachment."}
 {"q": ["quem e michel temer?", "michel temer foi qual presidente?"], "a": "37o presidente (2016-2019); assumiu apos o impeachment de Dilma."}
 {"q": ["quem e jair bolsonaro?", "jair bolsonaro foi qual presidente?"], "a": "38o presidente do Brasil (2019-2023), eleito em 2018."}
+{"q": ["qual a regra dos 3?", "regra dos 3 sobrevivencia", "quanto tempo sem agua e comida?"], "a": "Regra dos 3: 3 min sem ar, 3h sem abrigo no frio, 3 dias sem agua, 3 semanas sem comida."}
+{"q": ["o que fazer primeiro na mata?", "prioridades de sobrevivencia", "sobrevivencia na floresta"], "a": "Ordem na mata: acalme-se, garanta seguranca e abrigo, agua, fogo, sinalizacao e comida."}
+{"q": ["estou perdido na mata", "o que fazer se me perder?", "metodo pare sobrevivencia"], "a": "Use PARE: Pare de andar, Acalme-se, Reflita sobre a rota e Explore marcando o caminho."}
+{"q": ["devo andar ou esperar resgate?", "se perder na mata fico parado?"], "a": "Se sabem seu roteiro e ha busca, fique visivel; so ande se nao houver chance de resgate."}
+{"q": ["como nao andar em circulos?", "andar em linha reta na mata"], "a": "Alinhe dois pontos fixos a frente (arvores ou morros) e renove o alinhamento ao caminhar."}
+{"q": ["como marcar caminho na mata?", "como sinalizar trilha na selva?"], "a": "Marque arvores com tiras visiveis, pedras empilhadas ou galhos na altura dos olhos."}
+{"q": ["como se orientar pelo sol?", "achar norte pelo sol", "onde o sol nasce?"], "a": "O Sol nasce perto do Leste e se poe no Oeste; de frente ao nascente, o Norte esta a esquerda."}
+{"q": ["orientacao com graveto e sombra", "relogio de sol para direcao"], "a": "Finca-se um graveto: marque a ponta da sombra, espere 20 min e marque; a linha vai O a L."}
+{"q": ["achar norte com relogio analogico", "orientacao por relogio no sul"], "a": "No Brasil, aponte o 12 ao Sol; a metade do angulo entre 12 e o ponteiro das horas e Norte."}
+{"q": ["orientacao pelo cruzeiro do sul", "como achar sul pelas estrelas?"], "a": "Prolongue 4,5x o braco maior do Cruzeiro do Sul e desca reto ao horizonte para achar o Sul."}
+{"q": ["seguir rio tira da mata?", "seguir corrego quando perdido?"], "a": "Rios costumam levar a vilas ou estradas, mas exigem cuidado com cheias e cachoeiras."}
+{"q": ["como fazer fogo na floresta?", "como acender fogueira na mata?"], "a": "Reuna isca seca, gravetos finos e lenha media antes de acender; proteja a chama do vento."}
+{"q": ["fogo na chuva ou mata umida", "onde achar lenha seca na mata?"], "a": "Pegue galhos mortos ainda presos em arvores e lasque a casca umida ate o miolo seco."}
+{"q": ["o que usar de isca para fogo?", "isca natural para fogueira"], "a": "Use raspas finas de madeira (feather stick), capim seco, fibras de cipo ou resina seca."}
+{"q": ["fazer fogo sem fosforo", "fogo sem isqueiro na mata"], "a": "Use pederneira, lupa no sol forte, pilha com palha de aco fina ou arco de friccao seco."}
+{"q": ["cuidados ao fazer fogueira", "posso usar pedra de rio no fogo?"], "a": "Limpe 1,5 m ao redor ate a terra, apague brasas e NUNCA use pedras de rio (explodem!)."}
+{"q": ["como sinalizar para resgate?", "pedir socorro na floresta"], "a": "Faca X ou SOS gigante em clareira, use espelho ao sol, fumaca de dia e fogo a noite."}
+{"q": ["como fazer fumaca de sinalizacao?", "fumaca branca para resgate"], "a": "Com a fogueira acesa, jogue folhas verdes e ramos umidos na brasa para gerar fumaca densa."}
+{"q": ["codigo sos emergencia", "como sinalizar sos com apito?"], "a": "SOS em Morse e 3 curtos, 3 longos e 3 curtos; 3 apitos ou flashes seguidos pedem socorro."}
+{"q": ["por que usar apito na mata?", "apito na sobrevivencia"], "a": "O som do apito alcanca muito mais longe que a voz e economiza energia sem cansar voce."}
+{"q": ["como tratar hipotermia na mata?", "sintomas e acao na hipotermia"], "a": "Troque roupa molhada, isole do chao, corte o vento, aqueca o tronco e de bebida morna doce."}
+{"q": ["o que fazer na insolacao?", "exaustao por calor na mata"], "a": "Leve a sombra, afrouxe roupas, resfrie pescoco e axilas com pano umido e hidrate devagar."}
+{"q": ["como atravessar rio na mata?", "cruzar rio com correnteza"], "a": "Solte a cinta da mochila, use cajado como tripe e cruze em diagonal a favor da corrente."}
+{"q": ["o que fazer em areia movedica?", "como sair de atoleiro ou lama?"], "a": "Nao debata os pes! Jogue o peso para tras, deite para flutuar na lama e role devagar."}
+{"q": ["seguranca com facao na mata", "cuidados ao cortar com faca"], "a": "Corte sempre para longe do seu corpo, em base firme, mantendo outras pessoas afastadas."}
+{"q": ["quais nos basicos aprender?", "para que serve no lais de guia?"], "a": "Domine lais de guia (alca fixa segura), volta do fiel (poste/arvore) e no direito."}
+{"q": ["economizar energia na selva", "melhor hora para andar na mata"], "a": "Caminhe nas horas mais frescas, evite suar demais, faca pausas curtas e nao corra a toa."}
+{"q": ["qual roupa usar na floresta?", "vestimenta segura para mata"], "a": "Use calca comprida, manga longa, bota firme, meias secas e chapeu; evite algodao no frio."}
+{"q": ["qual agua mais segura na mata?", "melhor fonte de agua natural"], "a": "Agua da chuva captada direto em lona ou folhas limpas e a mais segura na natureza."}
+{"q": ["como coletar orvalho na mata?", "pegar agua do capim de manha"], "a": "Ao amanhecer, arraste pano limpo no capim sem veneno e esprema o orvalho num recipiente."}
+{"q": ["agua de rio pode beber direto?", "agua parada ou corrente qual melhor?"], "a": "Prefira nascente ou agua corrente clara a parada, mas ainda assim ferva ou trate antes."}
+{"q": ["como tirar agua de cipo?", "agua de cipo na floresta"], "a": "Corte o cipo alto e depois embaixo so se o liquido for claro, fino e sem cheiro/amargor."}
+{"q": ["onde mais achar agua em planta?", "tem agua no bambu verde?"], "a": "Gomos fechados de bambu verde guardam agua limpa; coco verde hidrata bem com minerais."}
+{"q": ["posso beber agua de bromelia?", "agua parada em folha e segura?"], "a": "Agua de bromelias e pocas traz larvas e parasitas; so beba apos coar e ferver muito bem."}
+{"q": ["qual agua nunca devo beber?", "sinais de agua contaminada"], "a": "Evite agua parada fetida, oleosa, com espuma, algas densas ou sem vida aquatica ao redor."}
+{"q": ["como purificar agua?", "como purificar agua fervendo?", "quanto tempo ferver agua?"], "a": "Coe sujeiras num pano e ferva a agua em ebulicao forte de 1 a 3 min para matar microbios."}
+{"q": ["como ferver agua sem panela?", "ferver agua em garrafa pet"], "a": "Use garrafa PET cheia ate a boca (sem ar) sobre brasas suaves ou pedras secas aquecidas."}
+{"q": ["purificar agua com agua sanitaria", "gotas de cloro por litro"], "a": "Com agua sanitaria pura 2-2,5% sem perfume, pingue 2 gotas/L (4 se turva) e espere 30 min."}
+{"q": ["como fazer filtro de agua na mata?", "filtro caseiro com areia"], "a": "Faca camadas de pano, carvao de fogueira moido, areia fina e pedrinhas; depois ferva!"}
+{"q": ["filtro de areia deixa agua potavel?", "filtro caseiro mata virus?"], "a": "Nao! Areia e carvao tiram barro e odor, mas nao matam virus; sempre ferva ou clore."}
+{"q": ["purificar agua com sol sodis", "o que e o metodo sodis?"], "a": "Encha garrafa PET transparente com agua ja clara e deixe deitada ao sol forte por 6 horas."}
+{"q": ["como fazer destilador solar?", "agua por transpiracao de folha"], "a": "Amarre saco plastico claro em galho ao sol ou cubra buraco umido com lona e pedra no meio."}
+{"q": ["posso beber agua do mar?", "beber agua salgada faz mal?"], "a": "Nunca! O sal da agua do mar acelera a desidratacao renal; so beba apos destilar o vapor."}
+{"q": ["como destilar agua do mar?", "dessalinizar agua na emergencia"], "a": "Ferva a agua salgada e colete so o vapor condensado escorrendo por tampa inclinada ou tubo."}
+{"q": ["posso beber urina na emergencia?", "beber sangue ou alcool ajuda?"], "a": "Jamais beba urina, sangue ou alcool: sobrecarregam os rins e pioram muito a desidratacao."}
+{"q": ["agua de qualquer cacto e segura?", "posso beber seiva de cacto?"], "a": "Nao! Varios cactos tem alcaloides que dao vomito e diarreia, agravando a sede e fraqueza."}
+{"q": ["devo racionar agua ou beber?", "como economizar agua no corpo?"], "a": "Racione o suor, nao a agua! Fique a sombra, respire pelo nariz e beba em pequenos goles."}
+{"q": ["posso comer sem ter agua?", "comer carne seca sem agua faz mal?"], "a": "Sem agua disponivel, evite proteinas e comidas secas, pois digerir consome agua do corpo."}
+{"q": ["sinais de desidratacao grave", "como saber se falta agua?"], "a": "Urina muito escura ou ausente, boca seca, tontura, dor de cabeca, fraqueza e confusao."}
+{"q": ["como fazer soro caseiro?", "receita soro de reidratacao"], "a": "Em 1 litro de agua tratada, misture 1 colher de cha rasa de sal e 2 de sopa de acucar."}
+{"q": ["seiva leitosa de planta pode beber?", "cipo com leite branco faz mal?"], "a": "Nunca beba seiva branca, leitosa, amarela ou pegajosa: indica alto risco de veneno!"}
+{"q": ["o que comer na mata?", "como escolher comida na mata?", "regra comida na selva"], "a": "So coma o que identifica com 100% de certeza. Voce dura semanas sem comer; na duvida, evite."}
+{"q": ["posso comer cogumelo selvagem?", "cogumelo na mata e seguro?"], "a": "Nunca coma cogumelos desconhecidos: especies letais parecem comuns e cozinhar nao salva."}
+{"q": ["identificar planta venenosa", "quais plantas nunca comer?"], "a": "Evite plantas com seiva leitosa, espinhos finos, folhas de 3 em 3 ou vagens desconhecidas."}
+{"q": ["frutas silvestres a evitar", "fruta branca ou amarga na mata"], "a": "Evite frutos brancos ou amarelos suspeitos, sabor amargo/ardente e cheiro de amendoa."}
+{"q": ["se passaro comeu eu posso comer?", "macaco come fruto venenoso?"], "a": "Mito perigoso! Aves e macacos digerem toxinas que podem matar um humano rapidamente."}
+{"q": ["mandioca silvestre pode comer?", "perigo da mandioca brava"], "a": "Mandioca-brava tem acido cianidrico letal! Nunca coma raizes desconhecidas cruas ou malfeitas."}
+{"q": ["teste de comestibilidade planta", "como testar planta desconhecida?"], "a": "Em ultimo caso, teste 1 parte em jejum: pele, labio, lingua, engula pouco e espere 8h."}
+{"q": ["teste serve para cogumelos?", "quando nao testar planta?"], "a": "Nunca teste cogumelos, algas marinhas ou plantas de seiva leitosa ou cheiro forte."}
+{"q": ["se arder na boca no teste?", "sinais ruins no teste de planta"], "a": "Se sentir ardor, coceira, dormencia, amargor ou enjoo, cuspa na hora, lave e descarte."}
+{"q": ["frutas seguras no brasil", "o que reconhecer facil na mata?"], "a": "Coco, goiaba, caju (castanha assada), maracuja, acai, buriti, pequi e castanha-do-para."}
+{"q": ["castanha de caju crua faz mal?", "como comer castanha de caju?"], "a": "Nunca coma castanha de caju crua (a casca queima)! Asse bem no fogo ate soltar o oleo."}
+{"q": ["quais insetos posso comer?", "insetos seguros na sobrevivencia"], "a": "Coma grilos, gafanhotos (sem patas, asas e cabeca), tanajuras e cupins sempre bem assados."}
+{"q": ["quais insetos nunca comer?", "posso comer lagarta colorida?"], "a": "Evite insetos peludos, com ferrao, cores vivas (alerta de veneno), mau cheiro ou de fezes."}
+{"q": ["larva de coco pode comer?", "bicho de palmeira e comestivel?"], "a": "Sim, o gongo/larva de palmeira e rico em energia e proteina, mas sempre asse ou cozinhe bem."}
+{"q": ["todo peixe de rio e comestivel?", "comer peixe e caranguejo na mata"], "a": "Peixe de rio saudavel pode ser comido bem cozido; cuidado com ferrao de arraia e bagre."}
+{"q": ["posso comer carne ou peixe cru?", "por que cozinhar comida na mata?"], "a": "Nunca coma cru! Cozinhar ou assar bem mata vermes, parasitas, bacterias e varias toxinas."}
+{"q": ["posso comer sapo na mata?", "ovos achados na mata sao seguros?"], "a": "Evite sapos pela pele toxica (ras cozidas sem pele servem); ovos so frescos e bem cozidos."}
+{"q": ["posso comer peixe ja morto?", "sinais de carne estragada"], "a": "Nao coma bichos achados mortos, nem peixe com guelra cinza, olho opaco fundo ou cheiro azedo."}
+{"q": ["como pescar sem vara na mata?", "armadilha de peixe improvisada"], "a": "Monte covo afunilado de taquara na corrente ou anzol de espinho/osso com isca de minhoca."}
+{"q": ["conservar carne sem geladeira", "o que e moquem na mata?"], "a": "Corte a carne em tiras magras e defume lentamente numa grelha de madeira (moquem) com fumaca."}
+{"q": ["taboa e planta comestivel?", "raizes de brejo para comer"], "a": "Brotos novos, raizes de taboa bem cozidas e palmito cozido dao amido em areas de brejo."}
+{"q": ["vale a pena cacar perdido?", "gastar energia cacando na mata"], "a": "Cacar gasta muita agua e energia e gera ferimentos; priorize abrigo, agua, pesca e frutos."}
+{"q": ["quando montar abrigo na mata?", "melhor hora de preparar abrigo"], "a": "Comece a montar o abrigo 2 a 3 horas antes de escurecer para trabalhar com seguranca e luz."}
+{"q": ["como escolher abrigo?", "como escolher lugar do abrigo?", "onde montar abrigo na mata?"], "a": "Busque terreno alto, seco, plano, sem galhos secos acima, longe do vento e a ~60 m da agua."}
+{"q": ["posso dormir em leito seco de rio?", "onde nunca montar abrigo?"], "a": "Nunca durma em leito seco ou beira baixa de rio: chuvas distantes geram enxurradas a noite."}
+{"q": ["por que olhar acima no abrigo?", "perigo de galhos secos acima"], "a": "Sempre cheque acima! Galhos mortos suspensos e coqueiros podem cair com vento ou chuva."}
+{"q": ["locais perigosos para acampar", "posso dormir no topo do morro?"], "a": "Evite topos expostos a raios, trilhas de animais, formigueiros, cupinzeiros e colmeias."}
+{"q": ["posso dormir em caverna?", "fazer fogueira dentro de caverna"], "a": "Cheque cobras, morcegos e riscos de queda; nunca acenda fogo no fundo por gas toxico (CO)."}
+{"q": ["parte mais importante do abrigo", "como isolar corpo do chao frio?"], "a": "O chao rouba calor rapido! Monte cama de isolamento com 20 a 30 cm de folhas secas ou capim."}
+{"q": ["como dormir em chao alagado?", "para que serve jirau na mata?"], "a": "Em solo encharcado ou com peconhentos, construa cama elevada (jirau) ou rede a 60 cm do chao."}
+{"q": ["tamanho ideal do abrigo natural", "abrigo pequeno esquenta mais?"], "a": "Faca o abrigo natural justo ao seu corpo: menor volume interno retem muito melhor o calor."}
+{"q": ["como fazer abrigo meia agua?", "o que e abrigo lean to?"], "a": "Prenda barra horizontal em duas arvores, apoie varas a 45 graus contra o vento e cubra."}
+{"q": ["como montar abrigo duas aguas?", "como fazer abrigo a frame?"], "a": "Apoie uma viga inclinada da cintura ao chao, feche os dois lados com galhos e cubra com folhas."}
+{"q": ["como cobrir teto contra chuva?", "ordem de folhas no telhado"], "a": "Empilhe folhas grandes e palha de baixo para cima sobrepostas como telhas, em camada espessa."}
+{"q": ["posicao do abrigo contra vento", "evitar enxurrada no abrigo"], "a": "Vire as costas do abrigo para o vento e cave uma valeta rasa em volta para escoar a chuva."}
+{"q": ["como armar abrigo com lona?", "improvisar barraca com poncho"], "a": "Estique corda entre duas arvores na altura da cintura, passe a lona e fixe as pontas no chao."}
+{"q": ["distancia da fogueira ao abrigo", "aquecer abrigo com fogo"], "a": "Deixe o fogo a 1,5 m da entrada com parede de madeira atras para refletir calor."}
+{"q": ["como usar manta termica?", "saco de lixo serve para frio?"], "a": "Manta termica retem ate 90% do calor; saco plastico grande corta vento deixando rosto livre."}
+{"q": ["por que dormir longe da agua?", "distancia segura do rio na mata"], "a": "Ficar 50 a 100 m do rio reduz neblina gelada, mosquitos, animais bebendo a noite e cheias."}
+{"q": ["como evitar picada de cobra?", "prevencao de peconhentos na mata"], "a": "Use botas e perneiras, toque a trilha com bastao, nao meta mao em ocos e sacuda roupas antes."}
+{"q": ["picada de cobra", "picada de cobra o que fazer?", "fui picado por cobra como agir?"], "a": "Calma, deite a vitima, lave com agua e sabao, tire aneis, imobilize e leve ao hospital."}
+{"q": ["o que evitar em picada de cobra?", "posso chupar picada de cobra?"], "a": "NUNCA corte, chupe, faca torniquete, ponha ervas ou alcool! So o soro no hospital salva."}
+{"q": ["cobras venenosas do brasil", "principais cobras peconhentas"], "a": "Os 4 grupos no Brasil sao jararaca, cascavel, surucucu e coral; nunca tente capturar a cobra."}
+{"q": ["picada de escorpiao o que fazer?", "acidente com escorpiao como agir?"], "a": "Lave com agua/sabao, use compressa morna na dor e va ao hospital (urgente em crianca!)."}
+{"q": ["picada de aranha o que fazer?", "picada de aranha armadeira"], "a": "Lave o local, use compressa morna para dor sem apertar ou cortar e busque medico rapido."}
+{"q": ["queimadura de taturana o que fazer?", "contato com lagarta lonomia"], "a": "Lave com agua fria sem esfregar; se houver dor ou sangramento, va logo ao hospital."}
+{"q": ["o que fazer ao ver uma onca?", "encontrei uma onca devo correr?"], "a": "NUNCA corra! Fique ereto, erga os bracos para parecer maior, fale firme e recue olhando."}
+{"q": ["como fugir de ataque de abelhas?", "enxame de abelhas o que fazer?"], "a": "Corra protegendo rosto para abrigo fechado; nao pule na agua e raspe o ferrao."}
+{"q": ["encontro com queixada ou javali", "ataque de porco do mato"], "a": "Se cruzar com bando de queixadas ou javali agressivo, suba em arvore ou rocha acima de 2 m."}
+{"q": ["evitar jacare ou sucuri no rio", "seguranca ao entrar em rio na mata"], "a": "Nao nade ao amanhecer ou anoitecer em agua turva e nao limpe peixes no mesmo local."}
+{"q": ["como tirar carrapato da pele?", "cuidado com picada de carrapato"], "a": "Puxe o carrapato bem rente a pele com pinca sem torcer ou queimar; febre apos exige medico."}
+{"q": ["queimadura de urtiga o que fazer?", "irritacao por planta urticante"], "a": "Lave com agua e sabao sem cocar, remova pelos com fita adesiva e aplique compressa fria."}
+{"q": ["como estancar sangramento forte?", "o que fazer em hemorragia?"], "a": "Aperte firme a ferida com pano limpo por 10 min; se molhar, ponha mais pano por cima."}
+{"q": ["quando usar um torniquete?", "como fazer torniquete seguro?"], "a": "So em membro com sangue jorrando ou amputacao que nao estanca; aperte acima e anote a hora."}
+{"q": ["como limpar ferida na natureza?", "evitar infeccao em corte na mata"], "a": "Lave bem com agua fervida ou limpa e sabao neutro, retire sujeira e cubra com gaze limpa."}
+{"q": ["o que fazer em osso quebrado?", "como imobilizar fratura na mata?"], "a": "Nao alinhe o osso! Imobilize na mesma posicao prendendo acima e abaixo da fratura."}
+{"q": ["torci o tornozelo na trilha", "como cuidar de entorse longe?"], "a": "So tire a bota se tiver apoio firme; enfaixe sem cortar circulacao, eleve o pe e resfrie."}
+{"q": ["primeiros socorros queimadura", "o que passar em queimadura?"], "a": "Resfrie em agua corrente fria por 15 min e cubra com pano umido; nunca use pasta ou manteiga."}
+{"q": ["devo furar bolha de queimadura?", "furar bolha no pe faz mal?"], "a": "Nao estoure bolhas de queimadura nem de atrito: a pele intacta impede entrada de infeccoes."}
+{"q": ["alguem engasgou o que fazer?", "como fazer manobra de heimlich?"], "a": "Se nao fala nem tosse, de 5 tapas nas costas e faca compressoes rapidas acima do umbigo."}
+{"q": ["como fazer massagem cardiaca?", "pessoa sem respirar rcp basica"], "a": "Ligue 192/193 e comprima forte o centro do peito (5 a 6 cm) sem parar a 100 a 120 por min."}
+{"q": ["pessoa desmaiou respirando", "posicao lateral de seguranca"], "a": "Se respira normalmente, vire-a de lado (posicao lateral de seguranca) para manter vias livres."}
+{"q": ["como tratar diarreia na mata?", "diarreia grave na sobrevivencia"], "a": "Tome agua fervida com soro caseiro em goles constantes; evite gorduras e descanse."}
+{"q": ["como salvar alguem se afogando?", "socorro em afogamento na agua"], "a": "Nao entre nadando sem boia! Estenda vara ou jogue garrafas PET fechadas e corda; ligue 193."}
+{"q": ["primeiros socorros afogamento", "afogado sem respirar o que fazer?"], "a": "Fora d'agua, se nao respira: faca 5 ventilacoes iniciais, depois 30 compressoes e 2 sopros."}
+{"q": ["como tirar agua do pulmao afogado?", "o que evitar em afogamento?"], "a": "NUNCA aperte a barriga nem vire de cabeca para baixo! Se respira, deite de lado e aqueca."}
+{"q": ["afogado voltou a respirar e agora?", "perigo horas apos afogamento"], "a": "Leve ao hospital mesmo se acordado: agua aspirada pode inflamar o pulmao horas depois."}
+{"q": ["socorro em estrangulamento", "vitima de enforcamento o que faco?"], "a": "Solte logo o pescoco amparando corpo e coluna; se nao respirar, inicie RCP e ligue 192."}
+{"q": ["estrangulamento sem sintomas?", "risco apos aperto no pescoco"], "a": "Leve urgente ao hospital mesmo falando bem: inchaco interno pode fechar o ar horas depois!"}
+{"q": ["quais os sintomas de infarto?", "sinais de ataque cardiaco"], "a": "Dor ou aperto no peito irradiando ao braco esquerdo, costas ou queixo, suor frio e nausea."}
+{"q": ["ataque cardiaco o que fazer?", "primeiros socorros em infarto"], "a": "Chame 192 (SAMU) ja, deixe sentado em repouso absoluto, solte roupas e nao o deixe dirigir."}
+{"q": ["posso dar aspirina no infarto?", "aas ajuda em ataque cardiaco?"], "a": "Se lucido, sem alergia/sangramento, mastigar 150-300 mg de AAS com aval do 192 ajuda."}
+{"q": ["diferenca infarto e parada?", "infarto faz massagem cardiaca?"], "a": "No infarto a pessoa esta acordada com dor (repouso); so faca RCP se desmaiar e nao respirar!"}
+{"q": ["convulsao o que fazer?", "primeiros socorros em convulsao", "crise epileptica como ajudar?"], "a": "Deite no chao, proteja a cabeca com pano macio, solte a gola, conte o tempo e vire de lado."}
+{"q": ["segurar lingua na convulsao?", "o que evitar na convulsao?"], "a": "NUNCA ponha nada na boca (ninguem engole a lingua!), nao segure a forca nem de agua."}
+{"q": ["quando convulsao e emergencia?", "convulsao demorando o que fazer?"], "a": "Chame 192 se passar de 5 min, repetir sem acordar, for a 1a vez, em gravida ou na agua."}
+{"q": ["primeiros socorros em ferimentos", "corte ou ferimento o que fazer?"], "a": "Lave maos, estanque o sangue com pano limpo, lave corte leve em agua corrente e cubra seco."}
+{"q": ["objeto cravado no ferimento", "faca ou vidro preso no ferimento"], "a": "NUNCA puxe o objeto cravado! Fixe com panos em volta para conter o sangue e va ao hospital."}
+{"q": ["ferimento furado no peito", "corte soprando ar no torax"], "a": "Cubra o furo no peito com plastico preso em 3 lados (1 solto como valvula) e chame 192 ja."}
+{"q": ["ferimento na barriga orgao exposto", "corte profundo no abdomen"], "a": "Nao empurre orgaos para dentro! Cubra com pano limpo umido, dobre joelhos e chame 192."}
+{"q": ["dedo ou membro amputado?", "como guardar parte amputada?"], "a": "Estanque o coto; ponha a parte em pano umido em saco fechado no gelo sem contato direto."}
+{"q": ["mordida de cao ou prego no pe", "ferimento sujo risco de tetano"], "a": "Lave 10 min com agua e sabao, nao feche o corte e busque vacina contra tetano ou raiva."}
+{"q": ["sinais de ferida infeccionada", "como saber se o corte inflamou?"], "a": "Vermelhidao crescendo, calor, inchaco forte, pus amarelado ou febre exigem medico urgente."}
+{"q": ["sangramento no nariz?", "nariz sangrando inclino pra tras?"], "a": "Sente inclinado para a FRENTE (nunca para tras!) e aperte a ponta do nariz por 10 min."}
+{"q": ["como fabricar uma bateria basica?", "como fazer pilha caseira?"], "a": "Use 2 metais diferentes (cobre + e zinco ou aluminio -) separados por pano com agua e sal."}
+{"q": ["bateria caseira para ligar celular", "quantas pilhas caseiras dao 5v?"], "a": "Cada celula da ~0,9V; ligue 6 grandes em serie (+ no -) para somar ~5V ao dispositivo."}
+{"q": ["bateria ar-aluminio celular", "bateria de lata e carvao?"], "a": "Ar-aluminio: 6 latas lixadas (-) com carvao moido em pano umido de salmoura (+) dao ~5V."}
+{"q": ["metais para pilha caseira?", "liquido de bateria improvisada"], "a": "Polo +: cobre ou grafite/carvao; Polo -: zinco ou aluminio; liquido: agua com sal/vinagre."}
+{"q": ["carregar celular com pilhas aa", "ligar celular com pilha comum"], "a": "Ligue 3 pilhas AA em serie (4,5V) ou 4 pilhas (6V) com diodo 1N4007 reduzindo para ~5,3V."}
+{"q": ["carregar celular bateria de carro", "posso ligar 12v direto no celular?"], "a": "NUNCA ligue 12V direto no USB! Use carregador veicular 12V-5V ou modulo buck / LM7805."}
+{"q": ["quais fios do cabo usb sao 5v?", "cores dos fios usb para carregar"], "a": "No cabo USB: fio Vermelho e +5V e Preto e Terra (-); isole verde/branco e nao passe 5,5V."}
+{"q": ["como construir gerador celular?", "gerador pequeno para celular", "como fazer dinamo para celular?"], "a": "Gire motor DC de ima permanente (12-24V) com manivela, bike ou agua via regulador 5V."}
+{"q": ["qual motor serve de gerador?", "motor de sucata vira gerador?"], "a": "Use motor DC de furadeira, impressora, esteira ou limpador de vidro; girar gera tensao DC."}
+{"q": ["gerador do zero com ima?", "gerar energia com ima e bobina"], "a": "Gire imas fortes rente a bobinas de fio de cobre esmaltado e retifique com ponte de diodos."}
+{"q": ["nao queimar celular no gerador?", "regular 5v no dinamo caseiro"], "a": "A manivela oscila! Passe a saida num carregador veicular USB (8-24V->5V) ou LM7805."}
+{"q": ["por que por diodo no gerador?", "evitar descarga no dinamo manual"], "a": "Ponha 1 diodo (1N4007/Schottky) em serie para a bateria nao descarregar no motor parado."}
+{"q": ["celular corta carga no dinamo", "melhor jeito de carregar no dinamo"], "a": "Carregue antes um powerbank no gerador manual e depois o celular nele contra oscilacoes."}
+{"q": ["como fazer bateria durar dias?", "economizar celular na catastrofe"], "a": "Ative modo aviao e economia, zere o brilho e so ligue sinal em horarios combinados."}
+{"q": ["o que fazer em enchente?", "enchente em casa o que fazer?", "acoes imediatas na enchente"], "a": "Desligue disjuntor de luz, gas e agua, pegue kit com documentos em plastico e va a ponto alto."}
+{"q": ["posso subir no sotao na enchente?", "onde ir se agua invadir a casa?"], "a": "Suba a andares altos ou telhado acessivel; nunca fique em sotao fechado sem saida."}
+{"q": ["posso atravessar rua alagada?", "enxurrada rasa derruba adulto?"], "a": "Nunca atravesse enxurrada! 15 cm de agua corrente ja derrubam um adulto e escondem bueiros."}
+{"q": ["posso passar alagamento de carro?", "altura de agua arrasta um carro?"], "a": "Nunca dirija em via alagada! 30 cm ja fazem o carro boiar e 50 cm de enxurrada arrastam."}
+{"q": ["carro afundando o que fazer?", "carro travou na enchente"], "a": "Saia para lugar alto; se a agua subir no carro, solte o cinto e abra o vidro antes de travar."}
+{"q": ["como quebrar vidro de carro?", "porta do carro travou na agua"], "a": "Bata nos cantos do vidro lateral (nunca para-brisa) com a haste metalica do encosto."}
+{"q": ["risco eletrico na enchente", "fio caido em rua alagada"], "a": "Fique bem longe de postes e fios caidos na agua e jamais toque aparelhos com o corpo molhado."}
+{"q": ["o que e cabeca d agua em rio?", "sinais de cabeca d agua cachoeira"], "a": "Onda subita por chuva na serra: se o rio sujar, subir rapido ou trazer folhas, saia ja!"}
+{"q": ["sinais de deslizamento de terra", "como saber se morro vai cair?"], "a": "Rachaduras, portas emperrando, postes/arvores inclinados e agua barrenta brotando do chao."}
+{"q": ["risco de deslizamento o que fazer?", "barreira caindo o que faco?"], "a": "Saia na hora para local plano e firme e ligue para Defesa Civil (199) ou Bombeiros (193)."}
+{"q": ["como evitar leptospirose?", "protecao na agua de enchente"], "a": "Evite pisar em lama ou agua suja; use botas e luvas impermeaveis ou sacos duplos fechados."}
+{"q": ["sintomas de leptospirose", "peguei agua de enchente sintomas"], "a": "Febre alta, dor de cabeca, dor forte nas panturrilhas e olhos vermelhos exigem medico."}
+{"q": ["como limpar casa pos enchente?", "desinfetar lama de enchente"], "a": "Retire a lama usando botas e luvas e lave superficies com 200 ml de agua sanitaria em 20 L."}
+{"q": ["comida que molhou na enchente", "latas da enchente podem comer?"], "a": "Descarte comida aberta, papelao e remedio molhado; salve apenas latas intactas bem lavadas."}
+{"q": ["quando religar luz apos enchente?", "voltar para casa pos alagamento"], "a": "So entre apos checar estrutura e vazamento de gas; nao religue energia com fiacao umida."}
+{"q": ["agua da torneira apos enchente", "agua de casa depois da enchente"], "a": "Ferva ou pingue cloro na agua de beber ate confirmar limpeza da caixa d'agua e rede publica."}
+{"q": ["bichos em casa apos enchente", "cobras apos alagamento"], "a": "Cobras, escorpioes e aranhas se escondem em moveis e entulhos; inspecione tudo com um cabo."}
+{"q": ["explosao nuclear", "explosao nuclear o que fazer?", "regra ataque nuclear"], "a": "Siga 'Entre, Fique dentro e Sintonize': proteja-se da onda e entre rapido em predio denso."}
+{"q": ["o que fazer ao ver clarao nuclear?", "posso olhar cogumelo nuclear?"], "a": "NUNCA olhe o clarao pois cega! Jogue-se de brucos longe de janelas cobrindo a cabeca."}
+{"q": ["posicao onda de choque nuclear", "como deitar em explosao nuclear?"], "a": "Deite de brucos, pes apontados ao clarao, proteja a nuca, tape ouvidos e abra leve a boca."}
+{"q": ["quanto tempo antes do fallout?", "quando cai poeira radioativa?"], "a": "Voce tem cerca de 10 a 15 minutos apos o clarao para entrar em abrigo antes do fallout cair."}
+{"q": ["melhor abrigo explosao nuclear", "onde se proteger da radiacao?"], "a": "Subsolo, garagem subterranea ou centro de predio de concreto sem janelas e longe do telhado."}
+{"q": ["onde nao ficar no fallout?", "carro protege de explosao nuclear?"], "a": "Evite carros, casas de madeira ou vidro, ultimo andar ou ficar colado as paredes externas."}
+{"q": ["vedar abrigo contra fallout", "desligar ar no ataque nuclear?"], "a": "Feche portas e janelas, desligue ar-condicionado e exaustores de ar externo e vede frestas."}
+{"q": ["fallout", "o que e fallout radioativo?", "perigo da poeira nuclear"], "a": "Fallout e poeira e cinza contaminada que cai apos a explosao e emite radiacao gama e beta."}
+{"q": ["descontaminacao de radiacao", "como limpar fallout do corpo?"], "a": "Tire a roupa externa em saco fechado (remove 90% da poeira) e lave pele e cabelo com sabao."}
+{"q": ["por que nao usar condicionador?", "condicionador no fallout nuclear"], "a": "NUNCA use condicionador apos fallout! Ele gruda radiacao nos fios; use so agua e sabao."}
+{"q": ["banho sem agua apos fallout", "descontaminar sem chuveiro"], "a": "Lave suave sem ferir a pele; se nao houver chuveiro, limpe com pano umido e assoe o nariz."}
+{"q": ["quanto tempo ficar no abrigo?", "quando sair apos explosao nuclear?"], "a": "Fique abrigado 24 a 48 horas e so saia quando autoridades ou radio confirmarem seguro."}
+{"q": ["regra 7 por 10 radiacao", "quanto cai a radiacao do fallout?"], "a": "A cada 7x de tempo a radiacao cai 10x: apos 7h vai a 10%, e apos 49h cai para 1%."}
+{"q": ["ferver agua tira radiacao?", "agua segura apos explosao nuclear"], "a": "Ferver NAO tira radiacao! Beba so agua em garrafas ou caixas lacradas limpas por fora."}
+{"q": ["o que comer apos fallout?", "posso comer horta pos nuclear?"], "a": "Coma so latas e pacotes fechados limpos por fora; evite horta, leite ou agua expostos."}
+{"q": ["para que serve iodeto de potassio?", "posso tomar iodo de farmacia?"], "a": "Iodeto de potassio protege a tireoide so com ordem medica; JAMAIS beba iodo topico!"}
+{"q": ["celular funciona apos explosao?", "informacao apos ataque nuclear"], "a": "O EMP pode derrubar luz e internet; tenha um radio AM/FM a pilhas ou manivela no kit."}
+{"q": ["posso sair para ajudar no fallout?", "receber alguem contaminado"], "a": "Nao saia durante o fallout; quem entrar deve deixar toda roupa externa e sapatos fora."}
+{"q": ["telefones de emergencia brasil", "numero bombeiros samu defesa civil"], "a": "Anote: 193 Bombeiros, 192 SAMU, 190 Policia Militar, 199 Defesa Civil e 191 PRF."}
+{"q": ["kit de emergencia", "mochila de emergencia 72h", "o que colocar no kit emergencia?"], "a": "Agua, comida pronta, lanterna, radio a pilhas, apito, remedios, curativos, faca e copias."}
+{"q": ["incendio em predio o que fazer?", "posso usar elevador no incendio?"], "a": "Nunca use elevador! Desca pelas escadas rastejando sob a fumaca com pano umido no nariz."}
+{"q": ["abrir porta em incendio", "macaneta quente no fogo o que faco?"], "a": "Teste a porta com dorso da mao; se quente, nao abra, vede frestas e sinalize na janela."}
+{"q": ["roupa pegou fogo o que fazer?", "apagar fogo no proprio corpo"], "a": "Nao corra! Pare, deite no chao e role protegendo o rosto com as maos ate abafar a chama."}
+{"q": ["oleo pegou fogo na panela", "agua em panela de oleo em chamas"], "a": "NUNCA jogue agua! Desligue o fogo e abafe a panela com tampa metalica ou pano bem umido."}
+{"q": ["vazamento de gas o que fazer?", "cheiro de gas posso ligar luz?"], "a": "Nao acenda luz, fosforo ou celular! Feche o registro do gas, abra portas e janelas e saia."}
+{"q": ["como fugir de incendio florestal?", "fogo na mata para onde correr?"], "a": "Nao fuja morro acima! Mova-se para os lados contra o vento ou para area ja queimada."}
+{"q": ["tempestade de raios o que fazer?", "onde se proteger de raios?"], "a": "Entre em predio ou carro fechado; nunca fique sob arvore isolada, postes, cercas ou agua."}
+{"q": ["sem abrigo na chuva de raios", "posicao de seguranca raios"], "a": "Agache na ponta dos pes com os pes bem juntos e cabeca baixa; nunca deite esticado no chao."}
+{"q": ["o que fazer em terremoto?", "predio tremendo como se proteger?"], "a": "Abaixe-se, cubra cabeca e nuca sob mesa firme longe de vidros e segure ate parar o tremor."}
+{"q": ["preso em escombros o que fazer?", "pedir socorro em desabamento"], "a": "Cubra boca/nariz contra poeira, nao use isqueiro e bata 3 vezes em canos ou paredes em pausa."}
+{"q": ["apagao prolongado o que fazer?", "posso usar gerador dentro de casa?"], "a": "Use lanterna, feche a geladeira e NUNCA ligue gerador ou carvao em ambiente fechado!"}
+{"q": ["pane no carro na rodovia", "onde esperar socorro na estrada?"], "a": "Ligue pisca-alerta, ponha triangulo a 30+ m e espere fora do carro atras da mureta."}
+{"q": ["dinheiro no kit de emergencia", "guardar documentos na catastrofe"], "a": "Sem luz ou sinal, Pix e cartao param! Leve dinheiro trocado e documentos em saco vedado."}

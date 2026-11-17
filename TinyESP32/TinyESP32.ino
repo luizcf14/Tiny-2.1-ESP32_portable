@@ -43,7 +43,7 @@ static const char *DEFAULT_STA_SSID = "";
 static const char *DEFAULT_STA_PASS = "";
 
 /* Rede Access Point propria do ESP32 (sempre ativa para acesso imediato) */
-static const char *AP_SSID = "TINY-2.1-ESP32";
+static const char *AP_SSID = "AMEBA-1.0";
 static const char *AP_PASS =
     ""; /* vazio = rede aberta; ou defina >= 8 caracteres */
 

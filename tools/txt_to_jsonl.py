@@ -10,12 +10,29 @@ import sys
 import unicodedata
 
 
+MAXQ = 72
+MAX_TOTAL = 126
+
+
 def clean_text(text: str, keep_accents: bool) -> str:
     if not keep_accents:
         norm = unicodedata.normalize("NFKD", text)
         text = norm.encode("ascii", "ignore").decode("ascii")
         text = "".join(ch for ch in text if 32 <= ord(ch) <= 126)
     return " ".join(text.split())
+
+
+def normalize_question_text(text: str, keep_accents: bool) -> str:
+    """Normalize question casing and collapse 3+ repeated ASCII letters to 2."""
+    s = clean_text(text, keep_accents=keep_accents).lower()
+    if keep_accents:
+        return s
+    out: list[str] = []
+    for ch in s:
+        if "a" <= ch <= "z" and len(out) >= 2 and out[-1] == ch and out[-2] == ch:
+            continue
+        out.append(ch)
+    return "".join(out)
 
 
 def convert_txt_to_jsonl(
@@ -46,9 +63,19 @@ def convert_txt_to_jsonl(
             continue
 
         for q_raw in q_part.split(";"):
-            q = clean_text(q_raw, keep_accents=keep_accents)
+            q = normalize_question_text(q_raw, keep_accents=keep_accents)
             if not q or (q, ans) in seen_pairs:
                 continue
+            if len(q) > MAXQ:
+                print(
+                    f"[WARN] Linha {lineno}: pergunta excede MAXQ={MAXQ} ({len(q)} chars): '{q}'",
+                    file=sys.stderr,
+                )
+            elif len(q) + 1 + len(ans) > MAX_TOTAL:
+                print(
+                    f"[WARN] Linha {lineno}: par excede MAX_TOTAL={MAX_TOTAL} ({len(q) + 1 + len(ans)} chars): '{q}'",
+                    file=sys.stderr,
+                )
             seen_pairs.add((q, ans))
             flat_pairs.append((q, ans))
             grouped.setdefault(ans, []).append(q)
