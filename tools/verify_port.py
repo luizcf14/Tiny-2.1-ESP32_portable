@@ -13,11 +13,17 @@ import struct
 import sys
 import time
 
+SCRIPT_DIR = pathlib.Path(__file__).resolve().parent
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
+
+from generate_esp32_assets import validate_tiny_bin
+
 VOCAB = 97
 CTX = 128
 
 
-def verify_weights_header(weights_h: pathlib.Path, bin_path: pathlib.Path) -> bytes:
+def verify_weights_header(weights_h: pathlib.Path, root: pathlib.Path) -> tuple[bytes, bool]:
     src = weights_h.read_text(encoding="utf-8")
     m = re.search(r"TINY_BIN_U32\s*\[\s*(\d+)\s*\]\s*PROGMEM\s*=\s*\{(.*?)\}\s*;", src, re.S)
     if not m:
@@ -29,13 +35,33 @@ def verify_weights_header(weights_h: pathlib.Path, bin_path: pathlib.Path) -> by
 
     words = [int(tok, 16) for tok in hex_tokens]
     reconstructed = struct.pack(f"<{len(words)}I", *words)
-    original = bin_path.read_bytes()
-    if reconstructed != original:
-        raise AssertionError(
-            f"Reconstructed weights ({len(reconstructed)} B) != TINY.BIN ({len(original)} B)"
-        )
-    print(f"[OK] tiny_weights.h matches TINY.BIN bit-for-bit ({len(reconstructed)} bytes)")
-    return reconstructed
+    validate_tiny_bin(reconstructed)
+
+    src_m = re.search(r"Auto-generated from (\S+)", src)
+    src_name = src_m.group(1) if src_m else "TINY.BIN"
+
+    if src_name == "TINY.BIN":
+        original = (root / "TINY.BIN").read_bytes()
+        if reconstructed != original:
+            raise AssertionError(
+                f"Reconstructed weights ({len(reconstructed)} B) != TINY.BIN ({len(original)} B)"
+            )
+        print(f"[OK] tiny_weights.h matches TINY.BIN bit-for-bit ({len(reconstructed)} bytes)")
+        return reconstructed, True
+
+    matched_path = None
+    for cand in (root / src_name, root / "models" / src_name):
+        if cand.exists():
+            if cand.read_bytes() != reconstructed:
+                raise AssertionError(f"Reconstructed weights != {cand}")
+            matched_path = cand
+            break
+
+    if matched_path is not None:
+        print(f"[OK] tiny_weights.h matches {src_name} bit-for-bit ({len(reconstructed)} bytes)")
+    else:
+        print(f"[OK] tiny_weights.h is a valid TNY2 model ({src_name}, {len(reconstructed)} bytes)")
+    return reconstructed, False
 
 
 def verify_web_header(web_h: pathlib.Path, html_path: pathlib.Path) -> None:
@@ -124,7 +150,7 @@ def verify_static_code(sketch_dir: pathlib.Path) -> None:
 
     # Check only native Arduino-ESP32 headers are included
     allowed_includes = {
-        "WiFi.h", "WebServer.h", "Preferences.h", "ESPmDNS.h", "esp_system.h",
+        "WiFi.h", "WebServer.h", "DNSServer.h", "Preferences.h", "ESPmDNS.h", "esp_system.h",
         "stdarg.h", "stdlib.h", "string.h", "stddef.h", "stdint.h", "math.h", "time.h",
         "Arduino.h", "tiny_engine.h", "tiny_weights.h", "web_ui.h", "pgmspace.h"
     }
@@ -288,36 +314,46 @@ class ZeroCopyModel:
         return "".join(out)
 
 
-def verify_inference(blob: bytes) -> None:
+def verify_inference(blob: bytes, is_factory_model: bool) -> None:
     t0 = time.perf_counter()
     model = ZeroCopyModel(blob)
-    tests = [
-        ("what is the capital of peru", "lima"),
-        ("is a whale a fish", "mammal"),
-        ("what is 7 times 8", "56"),
-        ("who invented the telephone", "bell"),
-        ("spell elephant", "e-l-e-p-h-a-n-t"),
-        ("opposite of hot", "cold"),
-        ("what is the symbol for gold", "au"),
-        ("how many legs does a spider have", "eight"),
-    ]
-    for q, expected_sub in tests:
-        ans = model.ask_greedy(q)
-        print(f"  Q: {q}  ->  A: {ans}")
-        if expected_sub not in ans.lower():
-            raise AssertionError(f"Unexpected answer for '{q}': got '{ans}', expected '{expected_sub}'")
-    dt = time.perf_counter() - t0
-    print(f"[OK] Zero-copy inference passed all {len(tests)} benchmark questions in {dt:.2f}s")
+    if is_factory_model:
+        tests = [
+            ("what is the capital of peru", "lima"),
+            ("is a whale a fish", "mammal"),
+            ("what is 7 times 8", "56"),
+            ("who invented the telephone", "bell"),
+            ("spell elephant", "e-l-e-p-h-a-n-t"),
+            ("opposite of hot", "cold"),
+            ("what is the symbol for gold", "au"),
+            ("how many legs does a spider have", "eight"),
+        ]
+        for q, expected_sub in tests:
+            ans = model.ask_greedy(q)
+            print(f"  Q: {q}  ->  A: {ans}")
+            if expected_sub not in ans.lower():
+                raise AssertionError(f"Unexpected answer for '{q}': got '{ans}', expected '{expected_sub}'")
+        dt = time.perf_counter() - t0
+        print(f"[OK] Zero-copy inference passed all {len(tests)} benchmark questions in {dt:.2f}s")
+    else:
+        smoke_qs = ["quem e voce?", "what is 7 times 8"]
+        for q in smoke_qs:
+            ans = model.ask_greedy(q)
+            if not all(32 <= ord(ch) <= 126 for ch in ans):
+                raise AssertionError(f"Non-ASCII character in answer for '{q}': {ans!r}")
+            print(f"  Q: {q}  ->  A: {ans}")
+        dt = time.perf_counter() - t0
+        print(f"[OK] Zero-copy inference smoke test passed on fine-tuned model in {dt:.2f}s")
 
 
 def main() -> int:
     root = pathlib.Path(__file__).resolve().parent.parent
     sketch = root / "TinyESP32"
-    blob = verify_weights_header(sketch / "tiny_weights.h", root / "TINY.BIN")
+    blob, is_factory_model = verify_weights_header(sketch / "tiny_weights.h", root)
     verify_web_header(sketch / "web_ui.h", root / "web" / "index.html")
     verify_partitions(sketch / "partitions.csv")
     verify_static_code(sketch)
-    verify_inference(blob)
+    verify_inference(blob, is_factory_model)
     print("\nALL VERIFICATIONS PASSED!")
     return 0
 

@@ -1,28 +1,468 @@
-{"q": "quem e voce", "a": "Eu sou o AMEBA e rodando num ESP32."}
-{"q": "qual seu hardware?", "a": "Eu estou rodando num ESP32."}
-{"q": "quem e voce ?", "a": "Eu sou o AMEBA rodando em um ESP32."}
-{"q": "qual e o seu nome", "a": "Meu nome e AMEBA."}
-{"q": "onde voce esta rodando", "a": "Estou rodando direto em um ESP32 sem PSRAM."}
-{"q": "qual a capital do brasil", "a": "A capital do Brasil e Brasilia."}
-{"q": ["qual a cidade mais bonita do Brasil?", "qual a cidade mais legal do Brasil?", "qual a cidade mais charmosa do Brasil?", "qual a cidade mais famosa do Brasil?"], "a": "E Belem do Para"}
-{"q": "qual a cidade mais antiga do Brasil?", "a": "Pergunta pra o Dom Pedro"}
-{"q": "qual a cidade com mais tecnologica do Brasil?", "a": "Talvez seja Sao Paulo"}
-{"q": "qual a segunda cidade a mais bonita do Brasil?", "a": "Talvez seja o Rio de Janeiro"}
-{"q": "qual a segunda cidade com melhor pao de Queijo?", "a": "Talvez seja em Minas Gerais"}
-{"q": "qual a capital da franca", "a": "A capital da Franca e Paris."}
-{"q": "qual a capital do japao", "a": "A capital do Japao e Toquio."}
-{"q": "quanto e 7 vezes 8", "a": "7 vezes 8 e 56."}
-{"q": "quanto e 12 mais 15", "a": "12 mais 15 e 27."}
-{"q": "uma baleia e um peixe", "a": "Nao, uma baleia e um mamifero."}
-{"q": "quantas patas tem uma aranha", "a": "Uma aranha tem oito patas."}
-{"q": "qual o simbolo do ouro", "a": "O simbolo do ouro e Au."}
-{"q": "quem inventou o telefone", "a": "Alexander Graham Bell inventou o telefone."}
-{"q": "o que e esp32", "a": "O ESP32 e um microcontrolador com Wi-Fi e Bluetooth da Espressif."}
-{"q": "qual o endereco web do tiny", "a": "Acesse http://192.168.4.1 na rede TINY-2.1-ESP32."}
-{"q": "qual a velocidade da serial", "a": "A serial do TINY roda a 115200 baud."}
-{"q": "oi", "a": "Ola! Como posso ajudar no seu ESP32?"}
-{"q": "oi", "a": "Ola! sou AMEBA Como posso ajudar ?"}
-{"q": "ola", "a": "Ola! Pode perguntar qualquer coisa."}
-{"q": "obrigado", "a": "De nada! Estou pronto para a proxima pergunta."}
+{"q": ["quem e voce?", "quem e voce"], "a": "Eu sou o AMEBA rodando em um ESP32."}
+{"q": ["qual seu hardware?", "onde voce esta rodando?", "onde voce esta rodando"], "a": "Estou rodando direto em um ESP32 sem PSRAM."}
+{"q": ["qual e o seu nome?", "qual seu nome"], "a": "Meu nome e AMEBA."}
 {"q": "AMEBA?", "a": "Sim e dai?"}
-{"q": "Como pode me ajudar?", "a": "Se nem voce sabe, ta dificil"}
+{"q": ["Como pode me ajudar?", "como voce pode me ajudar?"], "a": "Se nem voce sabe, ta dificil."}
+{"q": ["oi", "ola"], "a": "Ola! Sou o AMEBA. Como posso ajudar?"}
+{"q": ["obrigado", "valeu"], "a": "De nada! Estou pronto para a proxima pergunta."}
+{"q": ["qual a cidade mais bonita do Brasil?", "qual a cidade mais legal do Brasil?", "qual a cidade mais charmosa do Brasil?", "qual a cidade mais famosa do Brasil?"], "a": "E Belem do Para."}
+{"q": "qual a cidade mais antiga do Brasil?", "a": "Pergunta pra o Dom Pedro."}
+{"q": ["qual a cidade com mais tecnologia do Brasil?", "qual a cidade mais tecnologica do Brasil?"], "a": "Talvez seja Sao Paulo."}
+{"q": ["qual a segunda cidade mais bonita do Brasil?", "qual a segunda cidade a mais bonita do Brasil?"], "a": "Talvez seja o Rio de Janeiro."}
+{"q": "qual a segunda cidade com melhor pao de queijo?", "a": "Talvez seja em Minas Gerais."}
+{"q": ["o que e esp32?", "o que e esp32"], "a": "O ESP32 e um microcontrolador com Wi-Fi e Bluetooth da Espressif."}
+{"q": ["qual o endereco web do tiny?", "qual o endereco web do ameba?"], "a": "Acesse http://192.168.4.1 na rede TINY-2.1-ESP32."}
+{"q": ["qual a velocidade da serial?", "qual baud rate da serial?"], "a": "A serial do TINY roda a 115200 baud."}
+{"q": ["qual a capital do brasil", "qual e a capital do brasil?"], "a": "A capital do Brasil e Brasilia."}
+{"q": ["qual a capital da franca", "qual a capital da franca?"], "a": "A capital da Franca e Paris."}
+{"q": ["qual a capital do japao", "qual a capital do japao?"], "a": "A capital do Japao e Toquio."}
+{"q": ["quanto e 7 vezes 8?", "quanto e 7 vezes 8"], "a": "7 vezes 8 e 56."}
+{"q": ["quanto e 12 mais 15?", "quanto e 12 mais 15"], "a": "12 mais 15 e 27."}
+{"q": ["uma baleia e um peixe?", "uma baleia e um peixe"], "a": "Nao, uma baleia e um mamifero."}
+{"q": "quantas patas tem uma aranha?", "a": "Uma aranha tem oito patas."}
+{"q": "qual o simbolo do ouro?", "a": "O simbolo do ouro e Au."}
+{"q": "quem inventou o telefone?", "a": "Alexander Graham Bell inventou o telefone."}
+{"q": ["quantos estados tem o Brasil?", "quantas unidades federativas tem o Brasil?"], "a": "O Brasil tem 26 estados e o Distrito Federal, totalizando 27 UFs."}
+{"q": ["quais sao as regioes do Brasil?", "quantas regioes tem o Brasil?"], "a": "O Brasil tem 5 regioes: Norte, Nordeste, Centro-Oeste, Sudeste e Sul."}
+{"q": "quais estados ficam na regiao Norte?", "a": "Norte: Acre, Amapa, Amazonas, Para, Rondonia, Roraima e Tocantins."}
+{"q": "quais estados ficam na regiao Sul?", "a": "Sul: Parana, Rio Grande do Sul e Santa Catarina."}
+{"q": "quais estados ficam na regiao Sudeste?", "a": "Sudeste: Espirito Santo, Minas Gerais, Rio de Janeiro e Sao Paulo."}
+{"q": "quais estados ficam na regiao Centro-Oeste?", "a": "Centro-Oeste: Distrito Federal, Goias, Mato Grosso e Mato Grosso do Sul."}
+{"q": "quais estados ficam na regiao Nordeste?", "a": "Nordeste: AL, BA, CE, MA, PB, PE, PI, RN e SE."}
+{"q": ["qual a capital do Acre?", "capital do Acre", "qual a capital de AC?"], "a": "A capital do Acre (AC) e Rio Branco."}
+{"q": ["Rio Branco e capital de qual estado?", "onde fica Rio Branco?"], "a": "Rio Branco e a capital do Acre (AC), na regiao Norte."}
+{"q": ["em qual regiao fica Acre?", "regiao do Acre", "regiao de AC"], "a": "Acre (AC) fica na regiao Norte do Brasil."}
+{"q": ["qual a capital de Alagoas?", "capital de Alagoas", "qual a capital de AL?"], "a": "A capital de Alagoas (AL) e Maceio."}
+{"q": ["Maceio e capital de qual estado?", "onde fica Maceio?"], "a": "Maceio e a capital de Alagoas (AL), na regiao Nordeste."}
+{"q": ["em qual regiao fica Alagoas?", "regiao de Alagoas", "regiao de AL"], "a": "Alagoas (AL) fica na regiao Nordeste do Brasil."}
+{"q": ["qual a capital do Amapa?", "capital do Amapa", "qual a capital de AP?"], "a": "A capital do Amapa (AP) e Macapa."}
+{"q": ["Macapa e capital de qual estado?", "onde fica Macapa?"], "a": "Macapa e a capital do Amapa (AP), na regiao Norte."}
+{"q": ["em qual regiao fica Amapa?", "regiao do Amapa", "regiao de AP"], "a": "Amapa (AP) fica na regiao Norte do Brasil."}
+{"q": ["qual a capital do Amazonas?", "capital do Amazonas", "qual a capital de AM?"], "a": "A capital do Amazonas (AM) e Manaus."}
+{"q": ["Manaus e capital de qual estado?", "onde fica Manaus?"], "a": "Manaus e a capital do Amazonas (AM), na regiao Norte."}
+{"q": ["em qual regiao fica Amazonas?", "regiao do Amazonas", "regiao de AM"], "a": "Amazonas (AM) fica na regiao Norte do Brasil."}
+{"q": ["qual a capital da Bahia?", "capital da Bahia", "qual a capital de BA?"], "a": "A capital da Bahia (BA) e Salvador."}
+{"q": ["Salvador e capital de qual estado?", "onde fica Salvador?"], "a": "Salvador e a capital da Bahia (BA), na regiao Nordeste."}
+{"q": ["em qual regiao fica Bahia?", "regiao da Bahia", "regiao de BA"], "a": "Bahia (BA) fica na regiao Nordeste do Brasil."}
+{"q": ["qual a capital do Ceara?", "capital do Ceara", "qual a capital de CE?"], "a": "A capital do Ceara (CE) e Fortaleza."}
+{"q": ["Fortaleza e capital de qual estado?", "onde fica Fortaleza?"], "a": "Fortaleza e a capital do Ceara (CE), na regiao Nordeste."}
+{"q": ["em qual regiao fica Ceara?", "regiao do Ceara", "regiao de CE"], "a": "Ceara (CE) fica na regiao Nordeste do Brasil."}
+{"q": ["qual a capital do Distrito Federal?", "capital do Distrito Federal", "qual a capital de DF?"], "a": "A capital do Distrito Federal (DF) e Brasilia."}
+{"q": ["Brasilia e capital de qual estado?", "onde fica Brasilia?"], "a": "Brasilia e a capital do Distrito Federal (DF), na regiao Centro-Oeste."}
+{"q": ["em qual regiao fica Distrito Federal?", "regiao do Distrito Federal", "regiao de DF"], "a": "Distrito Federal (DF) fica na regiao Centro-Oeste do Brasil."}
+{"q": ["qual a capital do Espirito Santo?", "capital do Espirito Santo", "qual a capital de ES?"], "a": "A capital do Espirito Santo (ES) e Vitoria."}
+{"q": ["Vitoria e capital de qual estado?", "onde fica Vitoria?"], "a": "Vitoria e a capital do Espirito Santo (ES), na regiao Sudeste."}
+{"q": ["em qual regiao fica Espirito Santo?", "regiao do Espirito Santo", "regiao de ES"], "a": "Espirito Santo (ES) fica na regiao Sudeste do Brasil."}
+{"q": ["qual a capital de Goias?", "capital de Goias", "qual a capital de GO?"], "a": "A capital de Goias (GO) e Goiania."}
+{"q": ["Goiania e capital de qual estado?", "onde fica Goiania?"], "a": "Goiania e a capital de Goias (GO), na regiao Centro-Oeste."}
+{"q": ["em qual regiao fica Goias?", "regiao de Goias", "regiao de GO"], "a": "Goias (GO) fica na regiao Centro-Oeste do Brasil."}
+{"q": ["qual a capital do Maranhao?", "capital do Maranhao", "qual a capital de MA?"], "a": "A capital do Maranhao (MA) e Sao Luis."}
+{"q": ["Sao Luis e capital de qual estado?", "onde fica Sao Luis?"], "a": "Sao Luis e a capital do Maranhao (MA), na regiao Nordeste."}
+{"q": ["em qual regiao fica Maranhao?", "regiao do Maranhao", "regiao de MA"], "a": "Maranhao (MA) fica na regiao Nordeste do Brasil."}
+{"q": ["qual a capital de Mato Grosso?", "capital de Mato Grosso", "qual a capital de MT?"], "a": "A capital de Mato Grosso (MT) e Cuiaba."}
+{"q": ["Cuiaba e capital de qual estado?", "onde fica Cuiaba?"], "a": "Cuiaba e a capital de Mato Grosso (MT), na regiao Centro-Oeste."}
+{"q": ["em qual regiao fica Mato Grosso?", "regiao de Mato Grosso", "regiao de MT"], "a": "Mato Grosso (MT) fica na regiao Centro-Oeste do Brasil."}
+{"q": ["qual a capital de Mato Grosso do Sul?", "capital de Mato Grosso do Sul", "qual a capital de MS?"], "a": "A capital de Mato Grosso do Sul (MS) e Campo Grande."}
+{"q": ["Campo Grande e capital de qual estado?", "onde fica Campo Grande?"], "a": "Campo Grande e a capital de Mato Grosso do Sul (MS), na regiao Centro-Oeste."}
+{"q": ["em qual regiao fica Mato Grosso do Sul?", "regiao de Mato Grosso do Sul", "regiao de MS"], "a": "Mato Grosso do Sul (MS) fica na regiao Centro-Oeste do Brasil."}
+{"q": ["qual a capital de Minas Gerais?", "capital de Minas Gerais", "qual a capital de MG?"], "a": "A capital de Minas Gerais (MG) e Belo Horizonte."}
+{"q": ["Belo Horizonte e capital de qual estado?", "onde fica Belo Horizonte?"], "a": "Belo Horizonte e a capital de Minas Gerais (MG), na regiao Sudeste."}
+{"q": ["em qual regiao fica Minas Gerais?", "regiao de Minas Gerais", "regiao de MG"], "a": "Minas Gerais (MG) fica na regiao Sudeste do Brasil."}
+{"q": ["qual a capital do Para?", "capital do Para", "qual a capital de PA?"], "a": "A capital do Para (PA) e Belem."}
+{"q": ["Belem e capital de qual estado?", "onde fica Belem?"], "a": "Belem e a capital do Para (PA), na regiao Norte."}
+{"q": ["em qual regiao fica Para?", "regiao do Para", "regiao de PA"], "a": "Para (PA) fica na regiao Norte do Brasil."}
+{"q": ["qual a capital da Paraiba?", "capital da Paraiba", "qual a capital de PB?"], "a": "A capital da Paraiba (PB) e Joao Pessoa."}
+{"q": ["Joao Pessoa e capital de qual estado?", "onde fica Joao Pessoa?"], "a": "Joao Pessoa e a capital da Paraiba (PB), na regiao Nordeste."}
+{"q": ["em qual regiao fica Paraiba?", "regiao da Paraiba", "regiao de PB"], "a": "Paraiba (PB) fica na regiao Nordeste do Brasil."}
+{"q": ["qual a capital do Parana?", "capital do Parana", "qual a capital de PR?"], "a": "A capital do Parana (PR) e Curitiba."}
+{"q": ["Curitiba e capital de qual estado?", "onde fica Curitiba?"], "a": "Curitiba e a capital do Parana (PR), na regiao Sul."}
+{"q": ["em qual regiao fica Parana?", "regiao do Parana", "regiao de PR"], "a": "Parana (PR) fica na regiao Sul do Brasil."}
+{"q": ["qual a capital de Pernambuco?", "capital de Pernambuco", "qual a capital de PE?"], "a": "A capital de Pernambuco (PE) e Recife."}
+{"q": ["Recife e capital de qual estado?", "onde fica Recife?"], "a": "Recife e a capital de Pernambuco (PE), na regiao Nordeste."}
+{"q": ["em qual regiao fica Pernambuco?", "regiao de Pernambuco", "regiao de PE"], "a": "Pernambuco (PE) fica na regiao Nordeste do Brasil."}
+{"q": ["qual a capital do Piaui?", "capital do Piaui", "qual a capital de PI?"], "a": "A capital do Piaui (PI) e Teresina."}
+{"q": ["Teresina e capital de qual estado?", "onde fica Teresina?"], "a": "Teresina e a capital do Piaui (PI), na regiao Nordeste."}
+{"q": ["em qual regiao fica Piaui?", "regiao do Piaui", "regiao de PI"], "a": "Piaui (PI) fica na regiao Nordeste do Brasil."}
+{"q": ["qual a capital do Rio de Janeiro?", "capital do Rio de Janeiro", "qual a capital de RJ?"], "a": "A capital do Rio de Janeiro (RJ) e Rio de Janeiro."}
+{"q": ["Rio de Janeiro e capital de qual estado?", "onde fica Rio de Janeiro?"], "a": "Rio de Janeiro e a capital do Rio de Janeiro (RJ), na regiao Sudeste."}
+{"q": ["em qual regiao fica Rio de Janeiro?", "regiao do Rio de Janeiro", "regiao de RJ"], "a": "Rio de Janeiro (RJ) fica na regiao Sudeste do Brasil."}
+{"q": ["qual a capital do Rio Grande do Norte?", "capital do Rio Grande do Norte", "qual a capital de RN?"], "a": "A capital do Rio Grande do Norte (RN) e Natal."}
+{"q": ["Natal e capital de qual estado?", "onde fica Natal?"], "a": "Natal e a capital do Rio Grande do Norte (RN), na regiao Nordeste."}
+{"q": ["em qual regiao fica Rio Grande do Norte?", "regiao do Rio Grande do Norte", "regiao de RN"], "a": "Rio Grande do Norte (RN) fica na regiao Nordeste do Brasil."}
+{"q": ["qual a capital do Rio Grande do Sul?", "capital do Rio Grande do Sul", "qual a capital de RS?"], "a": "A capital do Rio Grande do Sul (RS) e Porto Alegre."}
+{"q": ["Porto Alegre e capital de qual estado?", "onde fica Porto Alegre?"], "a": "Porto Alegre e a capital do Rio Grande do Sul (RS), na regiao Sul."}
+{"q": ["em qual regiao fica Rio Grande do Sul?", "regiao do Rio Grande do Sul", "regiao de RS"], "a": "Rio Grande do Sul (RS) fica na regiao Sul do Brasil."}
+{"q": ["qual a capital de Rondonia?", "capital de Rondonia", "qual a capital de RO?"], "a": "A capital de Rondonia (RO) e Porto Velho."}
+{"q": ["Porto Velho e capital de qual estado?", "onde fica Porto Velho?"], "a": "Porto Velho e a capital de Rondonia (RO), na regiao Norte."}
+{"q": ["em qual regiao fica Rondonia?", "regiao de Rondonia", "regiao de RO"], "a": "Rondonia (RO) fica na regiao Norte do Brasil."}
+{"q": ["qual a capital de Roraima?", "capital de Roraima", "qual a capital de RR?"], "a": "A capital de Roraima (RR) e Boa Vista."}
+{"q": ["Boa Vista e capital de qual estado?", "onde fica Boa Vista?"], "a": "Boa Vista e a capital de Roraima (RR), na regiao Norte."}
+{"q": ["em qual regiao fica Roraima?", "regiao de Roraima", "regiao de RR"], "a": "Roraima (RR) fica na regiao Norte do Brasil."}
+{"q": ["qual a capital de Santa Catarina?", "capital de Santa Catarina", "qual a capital de SC?"], "a": "A capital de Santa Catarina (SC) e Florianopolis."}
+{"q": ["Florianopolis e capital de qual estado?", "onde fica Florianopolis?"], "a": "Florianopolis e a capital de Santa Catarina (SC), na regiao Sul."}
+{"q": ["em qual regiao fica Santa Catarina?", "regiao de Santa Catarina", "regiao de SC"], "a": "Santa Catarina (SC) fica na regiao Sul do Brasil."}
+{"q": ["qual a capital de Sao Paulo?", "capital de Sao Paulo", "qual a capital de SP?"], "a": "A capital de Sao Paulo (SP) e Sao Paulo."}
+{"q": ["Sao Paulo e capital de qual estado?", "onde fica Sao Paulo?"], "a": "Sao Paulo e a capital de Sao Paulo (SP), na regiao Sudeste."}
+{"q": ["em qual regiao fica Sao Paulo?", "regiao de Sao Paulo", "regiao de SP"], "a": "Sao Paulo (SP) fica na regiao Sudeste do Brasil."}
+{"q": ["qual a capital de Sergipe?", "capital de Sergipe", "qual a capital de SE?"], "a": "A capital de Sergipe (SE) e Aracaju."}
+{"q": ["Aracaju e capital de qual estado?", "onde fica Aracaju?"], "a": "Aracaju e a capital de Sergipe (SE), na regiao Nordeste."}
+{"q": ["em qual regiao fica Sergipe?", "regiao de Sergipe", "regiao de SE"], "a": "Sergipe (SE) fica na regiao Nordeste do Brasil."}
+{"q": ["qual a capital do Tocantins?", "capital do Tocantins", "qual a capital de TO?"], "a": "A capital do Tocantins (TO) e Palmas."}
+{"q": ["Palmas e capital de qual estado?", "onde fica Palmas?"], "a": "Palmas e a capital do Tocantins (TO), na regiao Norte."}
+{"q": ["em qual regiao fica Tocantins?", "regiao do Tocantins", "regiao de TO"], "a": "Tocantins (TO) fica na regiao Norte do Brasil."}
+{"q": ["o que e um bioma?", "definicao de bioma"], "a": "Bioma e um grande conjunto de ecossistemas com clima, solo e vida tipicos."}
+{"q": ["quais sao os biomas brasileiros?", "quais os biomas do Brasil?"], "a": "Amazonia, Cerrado, Mata Atlantica, Caatinga, Pampa e Pantanal."}
+{"q": "quantos biomas existem no Brasil?", "a": "O Brasil possui 6 biomas terrestres principais reconhecidos pelo IBGE."}
+{"q": ["qual o maior bioma do Brasil?", "maior bioma brasileiro"], "a": "A Amazonia e o maior bioma do Brasil, ocupando cerca de 49% do pais."}
+{"q": "qual o segundo maior bioma do Brasil?", "a": "O Cerrado e o segundo maior bioma brasileiro, com cerca de 24% do pais."}
+{"q": ["qual o menor bioma do Brasil?", "menor bioma brasileiro"], "a": "O Pantanal e o menor bioma do Brasil em area, com cerca de 1,8% do pais."}
+{"q": ["qual bioma existe apenas no Brasil?", "qual o unico bioma exclusivo do Brasil?"], "a": "A Caatinga e o unico bioma exclusivamente brasileiro."}
+{"q": "qual a maior planicie alagavel do mundo?", "a": "O Pantanal e a maior planicie inundavel continua do planeta."}
+{"q": ["qual o bioma de Belem?", "qual bioma fica no Para?"], "a": "Belem e o Para ficam no bioma Amazonia."}
+{"q": ["qual o bioma de Brasilia?", "qual bioma fica em Goias?"], "a": "Brasilia e Goias ficam no bioma Cerrado."}
+{"q": ["qual o bioma do Rio Grande do Sul?", "bioma exclusivo do Sul"], "a": "O Pampa ocorre no Brasil na metade sul do Rio Grande do Sul."}
+{"q": ["o que e a Amazonia?", "caracteristicas da Amazonia"], "a": "E a maior floresta tropical do mundo, de clima equatorial quente e umido."}
+{"q": ["qual o clima da Amazonia?", "vegetacao da Amazonia"], "a": "Clima equatorial muito chuvoso, com floresta densa e arvores altas."}
+{"q": ["animais da Amazonia", "fauna da Amazonia"], "a": "Onca-pintada, arara, boto-cor-de-rosa, pirarucu, sucuri e preguica."}
+{"q": ["plantas da Amazonia", "flora da Amazonia"], "a": "Seringueira, castanheira-do-para, acaizeiro, samauma e vitoria-regia."}
+{"q": "onde fica a Amazonia no Brasil?", "a": "Na regiao Norte e partes do Mato Grosso e Maranhao."}
+{"q": ["o que e o Cerrado?", "caracteristicas do Cerrado"], "a": "E a savana brasileira, segundo maior bioma e chamado berco das aguas."}
+{"q": ["qual a vegetacao do Cerrado?", "clima do Cerrado"], "a": "Clima tropical com seca e chuva; arvores de tronco torto e casca grossa."}
+{"q": ["animais do Cerrado", "fauna do Cerrado"], "a": "Lobo-guara, tamandua-bandeira, ema, seriema e tatu-canastra."}
+{"q": ["plantas do Cerrado", "flora do Cerrado"], "a": "Ipe, pequi, buriti, baru, cagaita e capim-dourado."}
+{"q": "onde fica o Cerrado?", "a": "No Centro-Oeste e partes de MG, BA, TO, MA, PI e SP."}
+{"q": ["o que e a Mata Atlantica?", "caracteristicas da Mata Atlantica"], "a": "Floresta tropical umida do litoral brasileiro com altissima biodiversidade."}
+{"q": "qual o estado atual da Mata Atlantica?", "a": "E um dos biomas mais ameacados, restando cerca de 12% da mata original."}
+{"q": ["animais da Mata Atlantica", "fauna da Mata Atlantica"], "a": "Mico-leao-dourado, muriqui, onca-pintada, tucano e jaguatirica."}
+{"q": ["plantas da Mata Atlantica", "flora da Mata Atlantica"], "a": "Pau-brasil, palmito-jucara, ipe, bromelias e orquideas."}
+{"q": "onde fica a Mata Atlantica?", "a": "Ao longo da costa do RN ao RS e no interior de SP, MG e PR."}
+{"q": ["o que e a Caatinga?", "caracteristicas da Caatinga"], "a": "Bioma semiarido exclusivo do Brasil, com plantas adaptadas a seca."}
+{"q": ["qual a vegetacao da Caatinga?", "clima da Caatinga"], "a": "Clima semiarido quente; cactos e arvores que perdem folhas na seca."}
+{"q": ["animais da Caatinga", "fauna da Caatinga"], "a": "Tatu-bola, ararinha-azul, asa-branca, moco e veado-catingueiro."}
+{"q": ["plantas da Caatinga", "flora da Caatinga"], "a": "Mandacaru, xique-xique, juazeiro, umbuzeiro e facheiro."}
+{"q": "onde fica a Caatinga?", "a": "No interior do Nordeste e no norte de Minas Gerais."}
+{"q": ["o que e o Pampa?", "caracteristicas do Pampa"], "a": "Bioma de campos sulinos com relevo de coxilhas e clima subtropical."}
+{"q": ["qual a vegetacao do Pampa?", "clima do Pampa"], "a": "Predominio de gramineas, arbustos baixos e quatro estacoes definidas."}
+{"q": ["animais do Pampa", "fauna do Pampa"], "a": "Quero-quero, veado-campeiro, graxaim, joao-de-barro e tuco-tuco."}
+{"q": "onde fica o Pampa no Brasil?", "a": "Fica restrito a metade sul do Rio Grande do Sul."}
+{"q": ["o que e o Pantanal?", "caracteristicas do Pantanal"], "a": "Maior planicie alagavel do mundo, com cheias e secas sazonais."}
+{"q": ["qual o clima do Pantanal?", "vegetacao do Pantanal"], "a": "Clima tropical com cheia no verao; mistura campos, cerrado e matas."}
+{"q": ["animais do Pantanal", "fauna do Pantanal"], "a": "Tuiuiu, jacare-do-pantanal, arara-azul, capivara e onca-pintada."}
+{"q": "onde fica o Pantanal?", "a": "Fica no oeste de Mato Grosso e Mato Grosso do Sul, na bacia do Paraguai."}
+{"q": "quais sao as capitais mais proximas do Brasil?", "a": "Joao Pessoa e Recife, a cerca de 104 km em linha reta (120 km por rodovia)."}
+{"q": "quais sao as capitais mais distantes do Brasil?", "a": "Porto Alegre e Boa Vista, separadas por cerca de 3789 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Macapa?", "distancia entre Rio Branco e Macapa", "distancia de Rio Branco a Macapa", "qual a distancia entre Macapa e Rio Branco?"], "a": "Entre Rio Branco e Macapa ha cerca de 2162 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Manaus?", "distancia entre Rio Branco e Manaus", "distancia de Rio Branco a Manaus", "qual a distancia entre Manaus e Rio Branco?"], "a": "Entre Rio Branco e Manaus ha cerca de 1150 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Salvador?", "distancia entre Rio Branco e Salvador", "distancia de Rio Branco a Salvador", "qual a distancia entre Salvador e Rio Branco?"], "a": "Entre Rio Branco e Salvador ha cerca de 3211 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Fortaleza?", "distancia entre Rio Branco e Fortaleza", "distancia de Rio Branco a Fortaleza", "qual a distancia entre Fortaleza e Rio Branco?"], "a": "Entre Rio Branco e Fortaleza ha cerca de 3305 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Brasilia?", "distancia entre Rio Branco e Brasilia", "distancia de Rio Branco a Brasilia", "qual a distancia entre Brasilia e Rio Branco?"], "a": "Entre Rio Branco e Brasilia ha cerca de 2250 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Belo Horizonte?", "distancia entre Rio Branco e Belo Horizonte", "distancia de Rio Branco a Belo Horizonte", "qual a distancia entre Belo Horizonte e Rio Branco?"], "a": "Entre Rio Branco e Belo Horizonte ha cerca de 2790 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Belem?", "distancia entre Rio Branco e Belem", "distancia de Rio Branco a Belem", "qual a distancia entre Belem e Rio Branco?"], "a": "Entre Rio Branco e Belem ha cerca de 2336 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Curitiba?", "distancia entre Rio Branco e Curitiba", "distancia de Rio Branco a Curitiba", "qual a distancia entre Curitiba e Rio Branco?"], "a": "Entre Rio Branco e Curitiba ha cerca de 2604 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Recife?", "distancia entre Rio Branco e Recife", "distancia de Rio Branco a Recife", "qual a distancia entre Recife e Rio Branco?"], "a": "Entre Rio Branco e Recife ha cerca de 3623 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Rio de Janeiro?", "distancia entre Rio Branco e Rio de Janeiro", "distancia de Rio Branco a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Rio Branco?"], "a": "Entre Rio Branco e Rio de Janeiro ha cerca de 2989 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Porto Alegre?", "distancia entre Rio Branco e Porto Alegre", "distancia de Rio Branco a Porto Alegre", "qual a distancia entre Porto Alegre e Rio Branco?"], "a": "Entre Rio Branco e Porto Alegre ha cerca de 2818 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Porto Velho?", "distancia entre Rio Branco e Porto Velho", "distancia de Rio Branco a Porto Velho", "qual a distancia entre Porto Velho e Rio Branco?"], "a": "Entre Rio Branco e Porto Velho ha cerca de 451 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Boa Vista?", "distancia entre Rio Branco e Boa Vista", "distancia de Rio Branco a Boa Vista", "qual a distancia entre Boa Vista e Rio Branco?"], "a": "Entre Rio Branco e Boa Vista ha cerca de 1628 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Sao Paulo?", "distancia entre Rio Branco e Sao Paulo", "distancia de Rio Branco a Sao Paulo", "qual a distancia entre Sao Paulo e Rio Branco?"], "a": "Entre Rio Branco e Sao Paulo ha cerca de 2708 km em linha reta."}
+{"q": ["qual a distancia entre Rio Branco e Palmas?", "distancia entre Rio Branco e Palmas", "distancia de Rio Branco a Palmas", "qual a distancia entre Palmas e Rio Branco?"], "a": "Entre Rio Branco e Palmas ha cerca de 2135 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Manaus?", "distancia entre Maceio e Manaus", "distancia de Maceio a Manaus", "qual a distancia entre Manaus e Maceio?"], "a": "Entre Maceio e Manaus ha cerca de 2779 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Salvador?", "distancia entre Maceio e Salvador", "distancia de Maceio a Salvador", "qual a distancia entre Salvador e Maceio?"], "a": "Entre Maceio e Salvador ha cerca de 475 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Fortaleza?", "distancia entre Maceio e Fortaleza", "distancia de Maceio a Fortaleza", "qual a distancia entre Fortaleza e Maceio?"], "a": "Entre Maceio e Fortaleza ha cerca de 731 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Brasilia?", "distancia entre Maceio e Brasilia", "distancia de Maceio a Brasilia", "qual a distancia entre Brasilia e Maceio?"], "a": "Entre Maceio e Brasilia ha cerca de 1486 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Sao Luis?", "distancia entre Maceio e Sao Luis", "distancia de Maceio a Sao Luis", "qual a distancia entre Sao Luis e Maceio?"], "a": "Entre Maceio e Sao Luis ha cerca de 1236 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Belo Horizonte?", "distancia entre Maceio e Belo Horizonte", "distancia de Maceio a Belo Horizonte", "qual a distancia entre Belo Horizonte e Maceio?"], "a": "Entre Maceio e Belo Horizonte ha cerca de 1440 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Belem?", "distancia entre Maceio e Belem", "distancia de Maceio a Belem", "qual a distancia entre Belem e Maceio?"], "a": "Entre Maceio e Belem ha cerca de 1681 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Joao Pessoa?", "distancia entre Maceio e Joao Pessoa", "distancia de Maceio a Joao Pessoa", "qual a distancia entre Joao Pessoa e Maceio?"], "a": "Entre Maceio e Joao Pessoa ha cerca de 299 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Curitiba?", "distancia entre Maceio e Curitiba", "distancia de Maceio a Curitiba", "qual a distancia entre Curitiba e Maceio?"], "a": "Entre Maceio e Curitiba ha cerca de 2261 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Recife?", "distancia entre Maceio e Recife", "distancia de Maceio a Recife", "qual a distancia entre Recife e Maceio?"], "a": "Entre Maceio e Recife: ~203 km em linha reta (285 km de estrada)."}
+{"q": ["qual a distancia entre Maceio e Teresina?", "distancia entre Maceio e Teresina", "distancia de Maceio a Teresina", "qual a distancia entre Teresina e Maceio?"], "a": "Entre Maceio e Teresina ha cerca de 931 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Rio de Janeiro?", "distancia entre Maceio e Rio de Janeiro", "distancia de Maceio a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Maceio?"], "a": "Entre Maceio e Rio de Janeiro ha cerca de 1672 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Natal?", "distancia entre Maceio e Natal", "distancia de Maceio a Natal", "qual a distancia entre Natal e Maceio?"], "a": "Entre Maceio e Natal ha cerca de 434 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Porto Alegre?", "distancia entre Maceio e Porto Alegre", "distancia de Maceio a Porto Alegre", "qual a distancia entre Porto Alegre e Maceio?"], "a": "Entre Maceio e Porto Alegre ha cerca de 2777 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Sao Paulo?", "distancia entre Maceio e Sao Paulo", "distancia de Maceio a Sao Paulo", "qual a distancia entre Sao Paulo e Maceio?"], "a": "Entre Maceio e Sao Paulo ha cerca de 1930 km em linha reta."}
+{"q": ["qual a distancia entre Maceio e Aracaju?", "distancia entre Maceio e Aracaju", "distancia de Maceio a Aracaju", "qual a distancia entre Aracaju e Maceio?"], "a": "Entre Maceio e Aracaju: ~204 km em linha reta (294 km de estrada)."}
+{"q": ["qual a distancia entre Macapa e Manaus?", "distancia entre Macapa e Manaus", "distancia de Macapa a Manaus", "qual a distancia entre Manaus e Macapa?"], "a": "Entre Macapa e Manaus ha cerca de 1055 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Salvador?", "distancia entre Macapa e Salvador", "distancia de Macapa a Salvador", "qual a distancia entre Salvador e Macapa?"], "a": "Entre Macapa e Salvador ha cerca de 2003 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Fortaleza?", "distancia entre Macapa e Fortaleza", "distancia de Macapa a Fortaleza", "qual a distancia entre Fortaleza e Macapa?"], "a": "Entre Macapa e Fortaleza ha cerca de 1453 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Brasilia?", "distancia entre Macapa e Brasilia", "distancia de Macapa a Brasilia", "qual a distancia entre Brasilia e Macapa?"], "a": "Entre Macapa e Brasilia ha cerca de 1792 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Belo Horizonte?", "distancia entre Macapa e Belo Horizonte", "distancia de Macapa a Belo Horizonte", "qual a distancia entre Belo Horizonte e Macapa?"], "a": "Entre Macapa e Belo Horizonte ha cerca de 2351 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Belem?", "distancia entre Macapa e Belem", "distancia de Macapa a Belem", "qual a distancia entre Belem e Macapa?"], "a": "Entre Macapa e Belem ha cerca de 330 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Curitiba?", "distancia entre Macapa e Curitiba", "distancia de Macapa a Curitiba", "qual a distancia entre Curitiba e Macapa?"], "a": "Entre Macapa e Curitiba ha cerca de 2838 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Recife?", "distancia entre Macapa e Recife", "distancia de Macapa a Recife", "qual a distancia entre Recife e Macapa?"], "a": "Entre Macapa e Recife ha cerca de 2007 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Rio de Janeiro?", "distancia entre Macapa e Rio de Janeiro", "distancia de Macapa a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Macapa?"], "a": "Entre Macapa e Rio de Janeiro ha cerca de 2690 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Porto Alegre?", "distancia entre Macapa e Porto Alegre", "distancia de Macapa a Porto Alegre", "qual a distancia entre Porto Alegre e Macapa?"], "a": "Entre Macapa e Porto Alegre ha cerca de 3344 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Porto Velho?", "distancia entre Macapa e Porto Velho", "distancia de Macapa a Porto Velho", "qual a distancia entre Porto Velho e Macapa?"], "a": "Entre Macapa e Porto Velho ha cerca de 1725 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Boa Vista?", "distancia entre Macapa e Boa Vista", "distancia de Macapa a Boa Vista", "qual a distancia entre Boa Vista e Macapa?"], "a": "Entre Macapa e Boa Vista ha cerca de 1112 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Sao Paulo?", "distancia entre Macapa e Sao Paulo", "distancia de Macapa a Sao Paulo", "qual a distancia entre Sao Paulo e Macapa?"], "a": "Entre Macapa e Sao Paulo ha cerca de 2666 km em linha reta."}
+{"q": ["qual a distancia entre Macapa e Palmas?", "distancia entre Macapa e Palmas", "distancia de Macapa a Palmas", "qual a distancia entre Palmas e Macapa?"], "a": "Entre Macapa e Palmas ha cerca de 1183 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Salvador?", "distancia entre Manaus e Salvador", "distancia de Manaus a Salvador", "qual a distancia entre Salvador e Manaus?"], "a": "Entre Manaus e Salvador ha cerca de 2607 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Fortaleza?", "distancia entre Manaus e Fortaleza", "distancia de Manaus a Fortaleza", "qual a distancia entre Fortaleza e Manaus?"], "a": "Entre Manaus e Fortaleza ha cerca de 2385 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Brasilia?", "distancia entre Manaus e Brasilia", "distancia de Manaus a Brasilia", "qual a distancia entre Brasilia e Manaus?"], "a": "Entre Manaus e Brasilia ha cerca de 1932 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Vitoria?", "distancia entre Manaus e Vitoria", "distancia de Manaus a Vitoria", "qual a distancia entre Vitoria e Manaus?"], "a": "Entre Manaus e Vitoria ha cerca de 2867 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Goiania?", "distancia entre Manaus e Goiania", "distancia de Manaus a Goiania", "qual a distancia entre Goiania e Manaus?"], "a": "Entre Manaus e Goiania ha cerca de 1912 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Sao Luis?", "distancia entre Manaus e Sao Luis", "distancia de Manaus a Sao Luis", "qual a distancia entre Sao Luis e Manaus?"], "a": "Entre Manaus e Sao Luis ha cerca de 1746 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Cuiaba?", "distancia entre Manaus e Cuiaba", "distancia de Manaus a Cuiaba", "qual a distancia entre Cuiaba e Manaus?"], "a": "Entre Manaus e Cuiaba ha cerca de 1453 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Campo Grande?", "distancia entre Manaus e Campo Grande", "distancia de Manaus a Campo Grande", "qual a distancia entre Campo Grande e Manaus?"], "a": "Entre Manaus e Campo Grande ha cerca de 2016 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Belo Horizonte?", "distancia entre Manaus e Belo Horizonte", "distancia de Manaus a Belo Horizonte", "qual a distancia entre Belo Horizonte e Manaus?"], "a": "Entre Manaus e Belo Horizonte ha cerca de 2556 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Belem?", "distancia entre Manaus e Belem", "distancia de Manaus a Belem", "qual a distancia entre Belem e Manaus?"], "a": "Entre Manaus e Belem ha cerca de 1293 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Joao Pessoa?", "distancia entre Manaus e Joao Pessoa", "distancia de Manaus a Joao Pessoa", "qual a distancia entre Joao Pessoa e Manaus?"], "a": "Entre Manaus e Joao Pessoa ha cerca de 2821 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Curitiba?", "distancia entre Manaus e Curitiba", "distancia de Manaus a Curitiba", "qual a distancia entre Curitiba e Manaus?"], "a": "Entre Manaus e Curitiba ha cerca de 2734 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Recife?", "distancia entre Manaus e Recife", "distancia de Manaus a Recife", "qual a distancia entre Recife e Manaus?"], "a": "Entre Manaus e Recife ha cerca de 2835 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Teresina?", "distancia entre Manaus e Teresina", "distancia de Manaus a Teresina", "qual a distancia entre Teresina e Manaus?"], "a": "Entre Manaus e Teresina ha cerca de 1922 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Rio de Janeiro?", "distancia entre Manaus e Rio de Janeiro", "distancia de Manaus a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Manaus?"], "a": "Entre Manaus e Rio de Janeiro ha cerca de 2852 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Natal?", "distancia entre Manaus e Natal", "distancia de Manaus a Natal", "qual a distancia entre Natal e Manaus?"], "a": "Entre Manaus e Natal ha cerca de 2766 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Porto Alegre?", "distancia entre Manaus e Porto Alegre", "distancia de Manaus a Porto Alegre", "qual a distancia entre Porto Alegre e Manaus?"], "a": "Entre Manaus e Porto Alegre ha cerca de 3133 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Porto Velho?", "distancia entre Manaus e Porto Velho", "distancia de Manaus a Porto Velho", "qual a distancia entre Porto Velho e Manaus?"], "a": "Entre Manaus e Porto Velho ha cerca de 760 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Boa Vista?", "distancia entre Manaus e Boa Vista", "distancia de Manaus a Boa Vista", "qual a distancia entre Boa Vista e Manaus?"], "a": "Entre Manaus e Boa Vista ha cerca de 665 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Florianopolis?", "distancia entre Manaus e Florianopolis", "distancia de Manaus a Florianopolis", "qual a distancia entre Florianopolis e Manaus?"], "a": "Entre Manaus e Florianopolis ha cerca de 2982 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Sao Paulo?", "distancia entre Manaus e Sao Paulo", "distancia de Manaus a Sao Paulo", "qual a distancia entre Sao Paulo e Manaus?"], "a": "Entre Manaus e Sao Paulo ha cerca de 2689 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Aracaju?", "distancia entre Manaus e Aracaju", "distancia de Manaus a Aracaju", "qual a distancia entre Aracaju e Manaus?"], "a": "Entre Manaus e Aracaju ha cerca de 2676 km em linha reta."}
+{"q": ["qual a distancia entre Manaus e Palmas?", "distancia entre Manaus e Palmas", "distancia de Manaus a Palmas", "qual a distancia entre Palmas e Manaus?"], "a": "Entre Manaus e Palmas ha cerca de 1515 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Fortaleza?", "distancia entre Salvador e Fortaleza", "distancia de Salvador a Fortaleza", "qual a distancia entre Fortaleza e Salvador?"], "a": "Entre Salvador e Fortaleza ha cerca de 1029 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Brasilia?", "distancia entre Salvador e Brasilia", "distancia de Salvador a Brasilia", "qual a distancia entre Brasilia e Salvador?"], "a": "Entre Salvador e Brasilia: ~1062 km em linha reta (1446 km de estrada)."}
+{"q": ["qual a distancia entre Salvador e Vitoria?", "distancia entre Salvador e Vitoria", "distancia de Salvador a Vitoria", "qual a distancia entre Vitoria e Salvador?"], "a": "Entre Salvador e Vitoria ha cerca de 839 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Goiania?", "distancia entre Salvador e Goiania", "distancia de Salvador a Goiania", "qual a distancia entre Goiania e Salvador?"], "a": "Entre Salvador e Goiania ha cerca de 1228 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Sao Luis?", "distancia entre Salvador e Sao Luis", "distancia de Salvador a Sao Luis", "qual a distancia entre Sao Luis e Salvador?"], "a": "Entre Salvador e Sao Luis ha cerca de 1325 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Cuiaba?", "distancia entre Salvador e Cuiaba", "distancia de Salvador a Cuiaba", "qual a distancia entre Cuiaba e Salvador?"], "a": "Entre Salvador e Cuiaba ha cerca de 1918 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Campo Grande?", "distancia entre Salvador e Campo Grande", "distancia de Salvador a Campo Grande", "qual a distancia entre Campo Grande e Salvador?"], "a": "Entre Salvador e Campo Grande ha cerca de 1906 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Belo Horizonte?", "distancia entre Salvador e Belo Horizonte", "distancia de Salvador a Belo Horizonte", "qual a distancia entre Belo Horizonte e Salvador?"], "a": "Entre Salvador e Belo Horizonte ha cerca de 965 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Belem?", "distancia entre Salvador e Belem", "distancia de Salvador a Belem", "qual a distancia entre Belem e Salvador?"], "a": "Entre Salvador e Belem ha cerca de 1689 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Joao Pessoa?", "distancia entre Salvador e Joao Pessoa", "distancia de Salvador a Joao Pessoa", "qual a distancia entre Joao Pessoa e Salvador?"], "a": "Entre Salvador e Joao Pessoa ha cerca de 763 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Curitiba?", "distancia entre Salvador e Curitiba", "distancia de Salvador a Curitiba", "qual a distancia entre Curitiba e Salvador?"], "a": "Entre Salvador e Curitiba ha cerca de 1786 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Recife?", "distancia entre Salvador e Recife", "distancia de Salvador a Recife", "qual a distancia entre Recife e Salvador?"], "a": "Entre Salvador e Recife ha cerca de 676 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Teresina?", "distancia entre Salvador e Teresina", "distancia de Salvador a Teresina", "qual a distancia entre Teresina e Salvador?"], "a": "Entre Salvador e Teresina ha cerca de 995 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Rio de Janeiro?", "distancia entre Salvador e Rio de Janeiro", "distancia de Salvador a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Salvador?"], "a": "Entre Salvador e Rio de Janeiro ha cerca de 1210 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Natal?", "distancia entre Salvador e Natal", "distancia de Salvador a Natal", "qual a distancia entre Natal e Salvador?"], "a": "Entre Salvador e Natal ha cerca de 876 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Porto Alegre?", "distancia entre Salvador e Porto Alegre", "distancia de Salvador a Porto Alegre", "qual a distancia entre Porto Alegre e Salvador?"], "a": "Entre Salvador e Porto Alegre ha cerca de 2305 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Porto Velho?", "distancia entre Salvador e Porto Velho", "distancia de Salvador a Porto Velho", "qual a distancia entre Porto Velho e Salvador?"], "a": "Entre Salvador e Porto Velho ha cerca de 2811 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Boa Vista?", "distancia entre Salvador e Boa Vista", "distancia de Salvador a Boa Vista", "qual a distancia entre Boa Vista e Salvador?"], "a": "Entre Salvador e Boa Vista ha cerca de 3013 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Florianopolis?", "distancia entre Salvador e Florianopolis", "distancia de Salvador a Florianopolis", "qual a distancia entre Florianopolis e Salvador?"], "a": "Entre Salvador e Florianopolis ha cerca de 1932 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Sao Paulo?", "distancia entre Salvador e Sao Paulo", "distancia de Salvador a Sao Paulo", "qual a distancia entre Sao Paulo e Salvador?"], "a": "Entre Salvador e Sao Paulo ha cerca de 1455 km em linha reta."}
+{"q": ["qual a distancia entre Salvador e Aracaju?", "distancia entre Salvador e Aracaju", "distancia de Salvador a Aracaju", "qual a distancia entre Aracaju e Salvador?"], "a": "Entre Salvador e Aracaju: ~273 km em linha reta (356 km de estrada)."}
+{"q": ["qual a distancia entre Salvador e Palmas?", "distancia entre Salvador e Palmas", "distancia de Salvador a Palmas", "qual a distancia entre Palmas e Salvador?"], "a": "Entre Salvador e Palmas ha cerca de 1112 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Brasilia?", "distancia entre Fortaleza e Brasilia", "distancia de Fortaleza a Brasilia", "qual a distancia entre Brasilia e Fortaleza?"], "a": "Entre Fortaleza e Brasilia ha cerca de 1689 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Vitoria?", "distancia entre Fortaleza e Vitoria", "distancia de Fortaleza a Vitoria", "qual a distancia entre Vitoria e Fortaleza?"], "a": "Entre Fortaleza e Vitoria ha cerca de 1856 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Goiania?", "distancia entre Fortaleza e Goiania", "distancia de Fortaleza a Goiania", "qual a distancia entre Goiania e Fortaleza?"], "a": "Entre Fortaleza e Goiania ha cerca de 1857 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Sao Luis?", "distancia entre Fortaleza e Sao Luis", "distancia de Fortaleza a Sao Luis", "qual a distancia entre Sao Luis e Fortaleza?"], "a": "Entre Fortaleza e Sao Luis ha cerca de 653 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Cuiaba?", "distancia entre Fortaleza e Cuiaba", "distancia de Fortaleza a Cuiaba", "qual a distancia entre Cuiaba e Fortaleza?"], "a": "Entre Fortaleza e Cuiaba ha cerca de 2331 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Campo Grande?", "distancia entre Fortaleza e Campo Grande", "distancia de Fortaleza a Campo Grande", "qual a distancia entre Campo Grande e Fortaleza?"], "a": "Entre Fortaleza e Campo Grande ha cerca de 2549 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Belo Horizonte?", "distancia entre Fortaleza e Belo Horizonte", "distancia de Fortaleza a Belo Horizonte", "qual a distancia entre Belo Horizonte e Fortaleza?"], "a": "Entre Fortaleza e Belo Horizonte ha cerca de 1894 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Belem?", "distancia entre Fortaleza e Belem", "distancia de Fortaleza a Belem", "qual a distancia entre Belem e Fortaleza?"], "a": "Entre Fortaleza e Belem ha cerca de 1135 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Joao Pessoa?", "distancia entre Fortaleza e Joao Pessoa", "distancia de Fortaleza a Joao Pessoa", "qual a distancia entre Joao Pessoa e Fortaleza?"], "a": "Entre Fortaleza e Joao Pessoa ha cerca de 556 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Curitiba?", "distancia entre Fortaleza e Curitiba", "distancia de Fortaleza a Curitiba", "qual a distancia entre Curitiba e Fortaleza?"], "a": "Entre Fortaleza e Curitiba ha cerca de 2672 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Recife?", "distancia entre Fortaleza e Recife", "distancia de Fortaleza a Recife", "qual a distancia entre Recife e Fortaleza?"], "a": "Entre Fortaleza e Recife: ~629 km em linha reta (800 km de estrada)."}
+{"q": ["qual a distancia entre Fortaleza e Teresina?", "distancia entre Fortaleza e Teresina", "distancia de Fortaleza a Teresina", "qual a distancia entre Teresina e Fortaleza?"], "a": "Entre Fortaleza e Teresina: ~496 km em linha reta (634 km de estrada)."}
+{"q": ["qual a distancia entre Fortaleza e Rio de Janeiro?", "distancia entre Fortaleza e Rio de Janeiro", "distancia de Fortaleza a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Fortaleza?"], "a": "Entre Fortaleza e Rio de Janeiro ha cerca de 2191 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Natal?", "distancia entre Fortaleza e Natal", "distancia de Fortaleza a Natal", "qual a distancia entre Natal e Fortaleza?"], "a": "Entre Fortaleza e Natal: ~436 km em linha reta (537 km de estrada)."}
+{"q": ["qual a distancia entre Fortaleza e Porto Alegre?", "distancia entre Fortaleza e Porto Alegre", "distancia de Fortaleza a Porto Alegre", "qual a distancia entre Porto Alegre e Fortaleza?"], "a": "Entre Fortaleza e Porto Alegre ha cerca de 3216 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Porto Velho?", "distancia entre Fortaleza e Porto Velho", "distancia de Fortaleza a Porto Velho", "qual a distancia entre Porto Velho e Fortaleza?"], "a": "Entre Fortaleza e Porto Velho ha cerca de 2857 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Boa Vista?", "distancia entre Fortaleza e Boa Vista", "distancia de Fortaleza a Boa Vista", "qual a distancia entre Boa Vista e Fortaleza?"], "a": "Entre Fortaleza e Boa Vista ha cerca de 2565 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Florianopolis?", "distancia entre Fortaleza e Florianopolis", "distancia de Fortaleza a Florianopolis", "qual a distancia entre Florianopolis e Fortaleza?"], "a": "Entre Fortaleza e Florianopolis ha cerca de 2859 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Sao Paulo?", "distancia entre Fortaleza e Sao Paulo", "distancia de Fortaleza a Sao Paulo", "qual a distancia entre Sao Paulo e Fortaleza?"], "a": "Entre Fortaleza e Sao Paulo ha cerca de 2370 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Aracaju?", "distancia entre Fortaleza e Aracaju", "distancia de Fortaleza a Aracaju", "qual a distancia entre Aracaju e Fortaleza?"], "a": "Entre Fortaleza e Aracaju ha cerca de 820 km em linha reta."}
+{"q": ["qual a distancia entre Fortaleza e Palmas?", "distancia entre Fortaleza e Palmas", "distancia de Fortaleza a Palmas", "qual a distancia entre Palmas e Fortaleza?"], "a": "Entre Fortaleza e Palmas ha cerca de 1301 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Vitoria?", "distancia entre Brasilia e Vitoria", "distancia de Brasilia a Vitoria", "qual a distancia entre Vitoria e Brasilia?"], "a": "Entre Brasilia e Vitoria ha cerca de 950 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Goiania?", "distancia entre Brasilia e Goiania", "distancia de Brasilia a Goiania", "qual a distancia entre Goiania e Brasilia?"], "a": "Entre Brasilia e Goiania: ~175 km em linha reta (209 km de estrada)."}
+{"q": ["qual a distancia entre Brasilia e Sao Luis?", "distancia entre Brasilia e Sao Luis", "distancia de Brasilia a Sao Luis", "qual a distancia entre Sao Luis e Brasilia?"], "a": "Entre Brasilia e Sao Luis ha cerca de 1526 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Cuiaba?", "distancia entre Brasilia e Cuiaba", "distancia de Brasilia a Cuiaba", "qual a distancia entre Cuiaba e Brasilia?"], "a": "Entre Brasilia e Cuiaba ha cerca de 875 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Campo Grande?", "distancia entre Brasilia e Campo Grande", "distancia de Brasilia a Campo Grande", "qual a distancia entre Campo Grande e Brasilia?"], "a": "Entre Brasilia e Campo Grande ha cerca de 878 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Belo Horizonte?", "distancia entre Brasilia e Belo Horizonte", "distancia de Brasilia a Belo Horizonte", "qual a distancia entre Belo Horizonte e Brasilia?"], "a": "Entre Brasilia e Belo Horizonte: ~625 km em linha reta (716 km de estrada)."}
+{"q": ["qual a distancia entre Brasilia e Belem?", "distancia entre Brasilia e Belem", "distancia de Brasilia a Belem", "qual a distancia entre Belem e Brasilia?"], "a": "Entre Brasilia e Belem: ~1594 km em linha reta (2120 km de estrada)."}
+{"q": ["qual a distancia entre Brasilia e Joao Pessoa?", "distancia entre Brasilia e Joao Pessoa", "distancia de Brasilia a Joao Pessoa", "qual a distancia entre Joao Pessoa e Brasilia?"], "a": "Entre Brasilia e Joao Pessoa ha cerca de 1718 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Curitiba?", "distancia entre Brasilia e Curitiba", "distancia de Brasilia a Curitiba", "qual a distancia entre Curitiba e Brasilia?"], "a": "Entre Brasilia e Curitiba: ~1082 km em linha reta (1366 km de estrada)."}
+{"q": ["qual a distancia entre Brasilia e Recife?", "distancia entre Brasilia e Recife", "distancia de Brasilia a Recife", "qual a distancia entre Recife e Brasilia?"], "a": "Entre Brasilia e Recife ha cerca de 1659 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Teresina?", "distancia entre Brasilia e Teresina", "distancia de Brasilia a Teresina", "qual a distancia entre Teresina e Brasilia?"], "a": "Entre Brasilia e Teresina ha cerca de 1314 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Rio de Janeiro?", "distancia entre Brasilia e Rio de Janeiro", "distancia de Brasilia a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Brasilia?"], "a": "Entre Brasilia e Rio de Janeiro: ~936 km em linha reta (1148 km de estrada)."}
+{"q": ["qual a distancia entre Brasilia e Natal?", "distancia entre Brasilia e Natal", "distancia de Brasilia a Natal", "qual a distancia entre Natal e Brasilia?"], "a": "Entre Brasilia e Natal ha cerca de 1777 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Porto Alegre?", "distancia entre Brasilia e Porto Alegre", "distancia de Brasilia a Porto Alegre", "qual a distancia entre Porto Alegre e Brasilia?"], "a": "Entre Brasilia e Porto Alegre ha cerca de 1620 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Porto Velho?", "distancia entre Brasilia e Porto Velho", "distancia de Brasilia a Porto Velho", "qual a distancia entre Porto Velho e Brasilia?"], "a": "Entre Brasilia e Porto Velho ha cerca de 1901 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Boa Vista?", "distancia entre Brasilia e Boa Vista", "distancia de Brasilia a Boa Vista", "qual a distancia entre Boa Vista e Brasilia?"], "a": "Entre Brasilia e Boa Vista ha cerca de 2499 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Florianopolis?", "distancia entre Brasilia e Florianopolis", "distancia de Brasilia a Florianopolis", "qual a distancia entre Florianopolis e Brasilia?"], "a": "Entre Brasilia e Florianopolis ha cerca de 1315 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Sao Paulo?", "distancia entre Brasilia e Sao Paulo", "distancia de Brasilia a Sao Paulo", "qual a distancia entre Sao Paulo e Brasilia?"], "a": "Entre Brasilia e Sao Paulo: ~875 km em linha reta (1015 km de estrada)."}
+{"q": ["qual a distancia entre Brasilia e Aracaju?", "distancia entre Brasilia e Aracaju", "distancia de Brasilia a Aracaju", "qual a distancia entre Aracaju e Brasilia?"], "a": "Entre Brasilia e Aracaju ha cerca de 1291 km em linha reta."}
+{"q": ["qual a distancia entre Brasilia e Palmas?", "distancia entre Brasilia e Palmas", "distancia de Brasilia a Palmas", "qual a distancia entre Palmas e Brasilia?"], "a": "Entre Brasilia e Palmas: ~617 km em linha reta (840 km de estrada)."}
+{"q": ["qual a distancia entre Vitoria e Belo Horizonte?", "distancia entre Vitoria e Belo Horizonte", "distancia de Vitoria a Belo Horizonte", "qual a distancia entre Belo Horizonte e Vitoria?"], "a": "Entre Vitoria e Belo Horizonte: ~381 km em linha reta (524 km de estrada)."}
+{"q": ["qual a distancia entre Vitoria e Belem?", "distancia entre Vitoria e Belem", "distancia de Vitoria a Belem", "qual a distancia entre Belem e Vitoria?"], "a": "Entre Vitoria e Belem ha cerca de 2278 km em linha reta."}
+{"q": ["qual a distancia entre Vitoria e Curitiba?", "distancia entre Vitoria e Curitiba", "distancia de Vitoria a Curitiba", "qual a distancia entre Curitiba e Vitoria?"], "a": "Entre Vitoria e Curitiba ha cerca de 1079 km em linha reta."}
+{"q": ["qual a distancia entre Vitoria e Recife?", "distancia entre Vitoria e Recife", "distancia de Vitoria a Recife", "qual a distancia entre Recife e Vitoria?"], "a": "Entre Vitoria e Recife ha cerca de 1484 km em linha reta."}
+{"q": ["qual a distancia entre Vitoria e Rio de Janeiro?", "distancia entre Vitoria e Rio de Janeiro", "distancia de Vitoria a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Vitoria?"], "a": "Entre Vitoria e Rio de Janeiro: ~413 km em linha reta (521 km de estrada)."}
+{"q": ["qual a distancia entre Vitoria e Porto Alegre?", "distancia entre Vitoria e Porto Alegre", "distancia de Vitoria a Porto Alegre", "qual a distancia entre Porto Alegre e Vitoria?"], "a": "Entre Vitoria e Porto Alegre ha cerca de 1538 km em linha reta."}
+{"q": ["qual a distancia entre Vitoria e Sao Paulo?", "distancia entre Vitoria e Sao Paulo", "distancia de Vitoria a Sao Paulo", "qual a distancia entre Sao Paulo e Vitoria?"], "a": "Entre Vitoria e Sao Paulo ha cerca de 744 km em linha reta."}
+{"q": ["qual a distancia entre Goiania e Cuiaba?", "distancia entre Goiania e Cuiaba", "distancia de Goiania a Cuiaba", "qual a distancia entre Cuiaba e Goiania?"], "a": "Entre Goiania e Cuiaba ha cerca de 740 km em linha reta."}
+{"q": ["qual a distancia entre Goiania e Campo Grande?", "distancia entre Goiania e Campo Grande", "distancia de Goiania a Campo Grande", "qual a distancia entre Campo Grande e Goiania?"], "a": "Entre Goiania e Campo Grande ha cerca de 704 km em linha reta."}
+{"q": ["qual a distancia entre Goiania e Belo Horizonte?", "distancia entre Goiania e Belo Horizonte", "distancia de Goiania a Belo Horizonte", "qual a distancia entre Belo Horizonte e Goiania?"], "a": "Entre Goiania e Belo Horizonte ha cerca de 667 km em linha reta."}
+{"q": ["qual a distancia entre Goiania e Belem?", "distancia entre Goiania e Belem", "distancia de Goiania a Belem", "qual a distancia entre Belem e Goiania?"], "a": "Entre Goiania e Belem ha cerca de 1696 km em linha reta."}
+{"q": ["qual a distancia entre Goiania e Curitiba?", "distancia entre Goiania e Curitiba", "distancia de Goiania a Curitiba", "qual a distancia entre Curitiba e Goiania?"], "a": "Entre Goiania e Curitiba ha cerca de 972 km em linha reta."}
+{"q": ["qual a distancia entre Goiania e Recife?", "distancia entre Goiania e Recife", "distancia de Goiania a Recife", "qual a distancia entre Recife e Goiania?"], "a": "Entre Goiania e Recife ha cerca de 1833 km em linha reta."}
+{"q": ["qual a distancia entre Goiania e Rio de Janeiro?", "distancia entre Goiania e Rio de Janeiro", "distancia de Goiania a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Goiania?"], "a": "Entre Goiania e Rio de Janeiro ha cerca de 940 km em linha reta."}
+{"q": ["qual a distancia entre Goiania e Porto Alegre?", "distancia entre Goiania e Porto Alegre", "distancia de Goiania a Porto Alegre", "qual a distancia entre Porto Alegre e Goiania?"], "a": "Entre Goiania e Porto Alegre ha cerca de 1497 km em linha reta."}
+{"q": ["qual a distancia entre Goiania e Sao Paulo?", "distancia entre Goiania e Sao Paulo", "distancia de Goiania a Sao Paulo", "qual a distancia entre Sao Paulo e Goiania?"], "a": "Entre Goiania e Sao Paulo ha cerca de 811 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Belo Horizonte?", "distancia entre Sao Luis e Belo Horizonte", "distancia de Sao Luis a Belo Horizonte", "qual a distancia entre Belo Horizonte e Sao Luis?"], "a": "Entre Sao Luis e Belo Horizonte ha cerca de 1934 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Belem?", "distancia entre Sao Luis e Belem", "distancia de Sao Luis a Belem", "qual a distancia entre Belem e Sao Luis?"], "a": "Entre Sao Luis e Belem: ~482 km em linha reta (806 km de estrada)."}
+{"q": ["qual a distancia entre Sao Luis e Joao Pessoa?", "distancia entre Sao Luis e Joao Pessoa", "distancia de Sao Luis a Joao Pessoa", "qual a distancia entre Joao Pessoa e Sao Luis?"], "a": "Entre Sao Luis e Joao Pessoa ha cerca de 1164 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Curitiba?", "distancia entre Sao Luis e Curitiba", "distancia de Sao Luis a Curitiba", "qual a distancia entre Curitiba e Sao Luis?"], "a": "Entre Sao Luis e Curitiba ha cerca de 2601 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Recife?", "distancia entre Sao Luis e Recife", "distancia de Sao Luis a Recife", "qual a distancia entre Recife e Sao Luis?"], "a": "Entre Sao Luis e Recife ha cerca de 1211 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Teresina?", "distancia entre Sao Luis e Teresina", "distancia de Sao Luis a Teresina", "qual a distancia entre Teresina e Sao Luis?"], "a": "Entre Sao Luis e Teresina ha cerca de 330 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Rio de Janeiro?", "distancia entre Sao Luis e Rio de Janeiro", "distancia de Sao Luis a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Sao Luis?"], "a": "Entre Sao Luis e Rio de Janeiro ha cerca de 2269 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Natal?", "distancia entre Sao Luis e Natal", "distancia de Sao Luis a Natal", "qual a distancia entre Natal e Sao Luis?"], "a": "Entre Sao Luis e Natal ha cerca de 1072 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Porto Alegre?", "distancia entre Sao Luis e Porto Alegre", "distancia de Sao Luis a Porto Alegre", "qual a distancia entre Porto Alegre e Sao Luis?"], "a": "Entre Sao Luis e Porto Alegre ha cerca de 3144 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Sao Paulo?", "distancia entre Sao Luis e Sao Paulo", "distancia de Sao Luis a Sao Paulo", "qual a distancia entre Sao Paulo e Sao Luis?"], "a": "Entre Sao Luis e Sao Paulo ha cerca de 2351 km em linha reta."}
+{"q": ["qual a distancia entre Sao Luis e Aracaju?", "distancia entre Sao Luis e Aracaju", "distancia de Sao Luis a Aracaju", "qual a distancia entre Aracaju e Sao Luis?"], "a": "Entre Sao Luis e Aracaju ha cerca de 1230 km em linha reta."}
+{"q": ["qual a distancia entre Cuiaba e Campo Grande?", "distancia entre Cuiaba e Campo Grande", "distancia de Cuiaba a Campo Grande", "qual a distancia entre Campo Grande e Cuiaba?"], "a": "Entre Cuiaba e Campo Grande: ~563 km em linha reta (694 km de estrada)."}
+{"q": ["qual a distancia entre Cuiaba e Belo Horizonte?", "distancia entre Cuiaba e Belo Horizonte", "distancia de Cuiaba a Belo Horizonte", "qual a distancia entre Belo Horizonte e Cuiaba?"], "a": "Entre Cuiaba e Belo Horizonte ha cerca de 1374 km em linha reta."}
+{"q": ["qual a distancia entre Cuiaba e Belem?", "distancia entre Cuiaba e Belem", "distancia de Cuiaba a Belem", "qual a distancia entre Belem e Cuiaba?"], "a": "Entre Cuiaba e Belem ha cerca de 1780 km em linha reta."}
+{"q": ["qual a distancia entre Cuiaba e Curitiba?", "distancia entre Cuiaba e Curitiba", "distancia de Cuiaba a Curitiba", "qual a distancia entre Curitiba e Cuiaba?"], "a": "Entre Cuiaba e Curitiba ha cerca de 1303 km em linha reta."}
+{"q": ["qual a distancia entre Cuiaba e Recife?", "distancia entre Cuiaba e Recife", "distancia de Cuiaba a Recife", "qual a distancia entre Recife e Cuiaba?"], "a": "Entre Cuiaba e Recife ha cerca de 2455 km em linha reta."}
+{"q": ["qual a distancia entre Cuiaba e Rio de Janeiro?", "distancia entre Cuiaba e Rio de Janeiro", "distancia de Cuiaba a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Cuiaba?"], "a": "Entre Cuiaba e Rio de Janeiro ha cerca de 1580 km em linha reta."}
+{"q": ["qual a distancia entre Cuiaba e Porto Alegre?", "distancia entre Cuiaba e Porto Alegre", "distancia de Cuiaba a Porto Alegre", "qual a distancia entre Porto Alegre e Cuiaba?"], "a": "Entre Cuiaba e Porto Alegre ha cerca de 1680 km em linha reta."}
+{"q": ["qual a distancia entre Cuiaba e Sao Paulo?", "distancia entre Cuiaba e Sao Paulo", "distancia de Cuiaba a Sao Paulo", "qual a distancia entre Sao Paulo e Cuiaba?"], "a": "Entre Cuiaba e Sao Paulo ha cerca de 1327 km em linha reta."}
+{"q": ["qual a distancia entre Campo Grande e Belo Horizonte?", "distancia entre Campo Grande e Belo Horizonte", "distancia de Campo Grande a Belo Horizonte", "qual a distancia entre Belo Horizonte e Campo Grande?"], "a": "Entre Campo Grande e Belo Horizonte ha cerca de 1117 km em linha reta."}
+{"q": ["qual a distancia entre Campo Grande e Belem?", "distancia entre Campo Grande e Belem", "distancia de Campo Grande a Belem", "qual a distancia entre Belem e Campo Grande?"], "a": "Entre Campo Grande e Belem ha cerca de 2216 km em linha reta."}
+{"q": ["qual a distancia entre Campo Grande e Curitiba?", "distancia entre Campo Grande e Curitiba", "distancia de Campo Grande a Curitiba", "qual a distancia entre Curitiba e Campo Grande?"], "a": "Entre Campo Grande e Curitiba ha cerca de 777 km em linha reta."}
+{"q": ["qual a distancia entre Campo Grande e Recife?", "distancia entre Campo Grande e Recife", "distancia de Campo Grande a Recife", "qual a distancia entre Recife e Campo Grande?"], "a": "Entre Campo Grande e Recife ha cerca de 2532 km em linha reta."}
+{"q": ["qual a distancia entre Campo Grande e Rio de Janeiro?", "distancia entre Campo Grande e Rio de Janeiro", "distancia de Campo Grande a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Campo Grande?"], "a": "Entre Campo Grande e Rio de Janeiro ha cerca de 1213 km em linha reta."}
+{"q": ["qual a distancia entre Campo Grande e Porto Alegre?", "distancia entre Campo Grande e Porto Alegre", "distancia de Campo Grande a Porto Alegre", "qual a distancia entre Porto Alegre e Campo Grande?"], "a": "Entre Campo Grande e Porto Alegre ha cerca de 1117 km em linha reta."}
+{"q": ["qual a distancia entre Campo Grande e Sao Paulo?", "distancia entre Campo Grande e Sao Paulo", "distancia de Campo Grande a Sao Paulo", "qual a distancia entre Sao Paulo e Campo Grande?"], "a": "Entre Campo Grande e Sao Paulo ha cerca de 892 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Belem?", "distancia entre Belo Horizonte e Belem", "distancia de Belo Horizonte a Belem", "qual a distancia entre Belem e Belo Horizonte?"], "a": "Entre Belo Horizonte e Belem ha cerca de 2112 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Joao Pessoa?", "distancia entre Belo Horizonte e Joao Pessoa", "distancia de Belo Horizonte a Joao Pessoa", "qual a distancia entre Joao Pessoa e Belo Horizonte?"], "a": "Entre Belo Horizonte e Joao Pessoa ha cerca de 1727 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Curitiba?", "distancia entre Belo Horizonte e Curitiba", "distancia de Belo Horizonte a Curitiba", "qual a distancia entre Curitiba e Belo Horizonte?"], "a": "Entre Belo Horizonte e Curitiba ha cerca de 822 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Recife?", "distancia entre Belo Horizonte e Recife", "distancia de Belo Horizonte a Recife", "qual a distancia entre Recife e Belo Horizonte?"], "a": "Entre Belo Horizonte e Recife ha cerca de 1641 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Teresina?", "distancia entre Belo Horizonte e Teresina", "distancia de Belo Horizonte a Teresina", "qual a distancia entre Teresina e Belo Horizonte?"], "a": "Entre Belo Horizonte e Teresina ha cerca de 1653 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Rio de Janeiro?", "distancia entre Belo Horizonte e Rio de Janeiro", "distancia de Belo Horizonte a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Belo Horizonte?"], "a": "Cerca de 342 km em linha reta (434 km de estrada)."}
+{"q": ["qual a distancia entre Belo Horizonte e Natal?", "distancia entre Belo Horizonte e Natal", "distancia de Belo Horizonte a Natal", "qual a distancia entre Natal e Belo Horizonte?"], "a": "Entre Belo Horizonte e Natal ha cerca de 1832 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Porto Alegre?", "distancia entre Belo Horizonte e Porto Alegre", "distancia de Belo Horizonte a Porto Alegre", "qual a distancia entre Porto Alegre e Belo Horizonte?"], "a": "Entre Belo Horizonte e Porto Alegre ha cerca de 1342 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Porto Velho?", "distancia entre Belo Horizonte e Porto Velho", "distancia de Belo Horizonte a Porto Velho", "qual a distancia entre Porto Velho e Belo Horizonte?"], "a": "Entre Belo Horizonte e Porto Velho ha cerca de 2479 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Boa Vista?", "distancia entre Belo Horizonte e Boa Vista", "distancia de Belo Horizonte a Boa Vista", "qual a distancia entre Boa Vista e Belo Horizonte?"], "a": "Entre Belo Horizonte e Boa Vista ha cerca de 3120 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Florianopolis?", "distancia entre Belo Horizonte e Florianopolis", "distancia de Belo Horizonte a Florianopolis", "qual a distancia entre Florianopolis e Belo Horizonte?"], "a": "Entre Belo Horizonte e Florianopolis ha cerca de 974 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Sao Paulo?", "distancia entre Belo Horizonte e Sao Paulo", "distancia de Belo Horizonte a Sao Paulo", "qual a distancia entre Sao Paulo e Belo Horizonte?"], "a": "Cerca de 491 km em linha reta (586 km de estrada)."}
+{"q": ["qual a distancia entre Belo Horizonte e Aracaju?", "distancia entre Belo Horizonte e Aracaju", "distancia de Belo Horizonte a Aracaju", "qual a distancia entre Aracaju e Belo Horizonte?"], "a": "Entre Belo Horizonte e Aracaju ha cerca de 1239 km em linha reta."}
+{"q": ["qual a distancia entre Belo Horizonte e Palmas?", "distancia entre Belo Horizonte e Palmas", "distancia de Belo Horizonte a Palmas", "qual a distancia entre Palmas e Belo Horizonte?"], "a": "Entre Belo Horizonte e Palmas ha cerca de 1173 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Joao Pessoa?", "distancia entre Belem e Joao Pessoa", "distancia de Belem a Joao Pessoa", "qual a distancia entre Joao Pessoa e Belem?"], "a": "Entre Belem e Joao Pessoa ha cerca de 1638 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Curitiba?", "distancia entre Belem e Curitiba", "distancia de Belem a Curitiba", "qual a distancia entre Curitiba e Belem?"], "a": "Entre Belem e Curitiba ha cerca de 2667 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Recife?", "distancia entre Belem e Recife", "distancia de Belem a Recife", "qual a distancia entre Recife e Belem?"], "a": "Entre Belem e Recife ha cerca de 1678 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Teresina?", "distancia entre Belem e Teresina", "distancia de Belem a Teresina", "qual a distancia entre Teresina e Belem?"], "a": "Entre Belem e Teresina ha cerca de 751 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Rio de Janeiro?", "distancia entre Belem e Rio de Janeiro", "distancia de Belem a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Belem?"], "a": "Entre Belem e Rio de Janeiro ha cerca de 2454 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Natal?", "distancia entre Belem e Natal", "distancia de Belem a Natal", "qual a distancia entre Natal e Belem?"], "a": "Entre Belem e Natal ha cerca de 1552 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Porto Alegre?", "distancia entre Belem e Porto Alegre", "distancia de Belem a Porto Alegre", "qual a distancia entre Porto Alegre e Belem?"], "a": "Entre Belem e Porto Alegre ha cerca de 3191 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Porto Velho?", "distancia entre Belem e Porto Velho", "distancia de Belem a Porto Velho", "qual a distancia entre Porto Velho e Belem?"], "a": "Entre Belem e Porto Velho ha cerca de 1888 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Boa Vista?", "distancia entre Belem e Boa Vista", "distancia de Belem a Boa Vista", "qual a distancia entre Boa Vista e Belem?"], "a": "Entre Belem e Boa Vista ha cerca de 1434 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Florianopolis?", "distancia entre Belem e Florianopolis", "distancia de Belem a Florianopolis", "qual a distancia entre Florianopolis e Belem?"], "a": "Entre Belem e Florianopolis ha cerca de 2907 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Sao Paulo?", "distancia entre Belem e Sao Paulo", "distancia de Belem a Sao Paulo", "qual a distancia entre Sao Paulo e Belem?"], "a": "Entre Belem e Sao Paulo ha cerca de 2465 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Aracaju?", "distancia entre Belem e Aracaju", "distancia de Belem a Aracaju", "qual a distancia entre Aracaju e Belem?"], "a": "Entre Belem e Aracaju ha cerca de 1645 km em linha reta."}
+{"q": ["qual a distancia entre Belem e Palmas?", "distancia entre Belem e Palmas", "distancia de Belem a Palmas", "qual a distancia entre Palmas e Belem?"], "a": "Entre Belem e Palmas: ~978 km em linha reta (1225 km de estrada)."}
+{"q": ["qual a distancia entre Joao Pessoa e Curitiba?", "distancia entre Joao Pessoa e Curitiba", "distancia de Joao Pessoa a Curitiba", "qual a distancia entre Curitiba e Joao Pessoa?"], "a": "Entre Joao Pessoa e Curitiba ha cerca de 2547 km em linha reta."}
+{"q": ["qual a distancia entre Joao Pessoa e Recife?", "distancia entre Joao Pessoa e Recife", "distancia de Joao Pessoa a Recife", "qual a distancia entre Recife e Joao Pessoa?"], "a": "Entre Joao Pessoa e Recife: ~104 km em linha reta (120 km de estrada)."}
+{"q": ["qual a distancia entre Joao Pessoa e Teresina?", "distancia entre Joao Pessoa e Teresina", "distancia de Joao Pessoa a Teresina", "qual a distancia entre Teresina e Joao Pessoa?"], "a": "Entre Joao Pessoa e Teresina ha cerca de 906 km em linha reta."}
+{"q": ["qual a distancia entre Joao Pessoa e Rio de Janeiro?", "distancia entre Joao Pessoa e Rio de Janeiro", "distancia de Joao Pessoa a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Joao Pessoa?"], "a": "Entre Joao Pessoa e Rio de Janeiro ha cerca de 1968 km em linha reta."}
+{"q": ["qual a distancia entre Joao Pessoa e Natal?", "distancia entre Joao Pessoa e Natal", "distancia de Joao Pessoa a Natal", "qual a distancia entre Natal e Joao Pessoa?"], "a": "Entre Joao Pessoa e Natal: ~152 km em linha reta (185 km de estrada)."}
+{"q": ["qual a distancia entre Joao Pessoa e Porto Alegre?", "distancia entre Joao Pessoa e Porto Alegre", "distancia de Joao Pessoa a Porto Alegre", "qual a distancia entre Porto Alegre e Joao Pessoa?"], "a": "Entre Joao Pessoa e Porto Alegre ha cerca de 3068 km em linha reta."}
+{"q": ["qual a distancia entre Joao Pessoa e Sao Paulo?", "distancia entre Joao Pessoa e Sao Paulo", "distancia de Joao Pessoa a Sao Paulo", "qual a distancia entre Sao Paulo e Joao Pessoa?"], "a": "Entre Joao Pessoa e Sao Paulo ha cerca de 2218 km em linha reta."}
+{"q": ["qual a distancia entre Joao Pessoa e Aracaju?", "distancia entre Joao Pessoa e Aracaju", "distancia de Joao Pessoa a Aracaju", "qual a distancia entre Aracaju e Joao Pessoa?"], "a": "Entre Joao Pessoa e Aracaju ha cerca de 490 km em linha reta."}
+{"q": ["qual a distancia entre Curitiba e Recife?", "distancia entre Curitiba e Recife", "distancia de Curitiba a Recife", "qual a distancia entre Recife e Curitiba?"], "a": "Entre Curitiba e Recife ha cerca de 2462 km em linha reta."}
+{"q": ["qual a distancia entre Curitiba e Teresina?", "distancia entre Curitiba e Teresina", "distancia de Curitiba a Teresina", "qual a distancia entre Teresina e Curitiba?"], "a": "Entre Curitiba e Teresina ha cerca de 2364 km em linha reta."}
+{"q": ["qual a distancia entre Curitiba e Rio de Janeiro?", "distancia entre Curitiba e Rio de Janeiro", "distancia de Curitiba a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Curitiba?"], "a": "Entre Curitiba e Rio de Janeiro ha cerca de 679 km em linha reta."}
+{"q": ["qual a distancia entre Curitiba e Natal?", "distancia entre Curitiba e Natal", "distancia de Curitiba a Natal", "qual a distancia entre Natal e Curitiba?"], "a": "Entre Curitiba e Natal ha cerca de 2647 km em linha reta."}
+{"q": ["qual a distancia entre Curitiba e Porto Alegre?", "distancia entre Curitiba e Porto Alegre", "distancia de Curitiba a Porto Alegre", "qual a distancia entre Porto Alegre e Curitiba?"], "a": "Entre Curitiba e Porto Alegre: ~547 km em linha reta (711 km de estrada)."}
+{"q": ["qual a distancia entre Curitiba e Porto Velho?", "distancia entre Curitiba e Porto Velho", "distancia de Curitiba a Porto Velho", "qual a distancia entre Porto Velho e Curitiba?"], "a": "Entre Curitiba e Porto Velho ha cerca de 2414 km em linha reta."}
+{"q": ["qual a distancia entre Curitiba e Boa Vista?", "distancia entre Curitiba e Boa Vista", "distancia de Curitiba a Boa Vista", "qual a distancia entre Boa Vista e Curitiba?"], "a": "Entre Curitiba e Boa Vista ha cerca de 3373 km em linha reta."}
+{"q": ["qual a distancia entre Curitiba e Florianopolis?", "distancia entre Curitiba e Florianopolis", "distancia de Curitiba a Florianopolis", "qual a distancia entre Florianopolis e Curitiba?"], "a": "Entre Curitiba e Florianopolis: ~252 km em linha reta (300 km de estrada)."}
+{"q": ["qual a distancia entre Curitiba e Sao Paulo?", "distancia entre Curitiba e Sao Paulo", "distancia de Curitiba a Sao Paulo", "qual a distancia entre Sao Paulo e Curitiba?"], "a": "Entre Curitiba e Sao Paulo: ~339 km em linha reta (408 km de estrada)."}
+{"q": ["qual a distancia entre Curitiba e Aracaju?", "distancia entre Curitiba e Aracaju", "distancia de Curitiba a Aracaju", "qual a distancia entre Aracaju e Curitiba?"], "a": "Entre Curitiba e Aracaju ha cerca de 2060 km em linha reta."}
+{"q": ["qual a distancia entre Curitiba e Palmas?", "distancia entre Curitiba e Palmas", "distancia de Curitiba a Palmas", "qual a distancia entre Palmas e Curitiba?"], "a": "Entre Curitiba e Palmas ha cerca de 1691 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Teresina?", "distancia entre Recife e Teresina", "distancia de Recife a Teresina", "qual a distancia entre Teresina e Recife?"], "a": "Entre Recife e Teresina ha cerca de 935 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Rio de Janeiro?", "distancia entre Recife e Rio de Janeiro", "distancia de Recife a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Recife?"], "a": "Entre Recife e Rio de Janeiro ha cerca de 1875 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Natal?", "distancia entre Recife e Natal", "distancia de Recife a Natal", "qual a distancia entre Natal e Recife?"], "a": "Entre Recife e Natal ha cerca de 253 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Porto Alegre?", "distancia entre Recife e Porto Alegre", "distancia de Recife a Porto Alegre", "qual a distancia entre Porto Alegre e Recife?"], "a": "Entre Recife e Porto Alegre ha cerca de 2979 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Porto Velho?", "distancia entre Recife e Porto Velho", "distancia de Recife a Porto Velho", "qual a distancia entre Porto Velho e Recife?"], "a": "Entre Recife e Porto Velho ha cerca de 3193 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Boa Vista?", "distancia entre Recife e Boa Vista", "distancia de Recife a Boa Vista", "qual a distancia entre Boa Vista e Recife?"], "a": "Entre Recife e Boa Vista ha cerca de 3106 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Florianopolis?", "distancia entre Recife e Florianopolis", "distancia de Recife a Florianopolis", "qual a distancia entre Florianopolis e Recife?"], "a": "Entre Recife e Florianopolis ha cerca de 2606 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Sao Paulo?", "distancia entre Recife e Sao Paulo", "distancia de Recife a Sao Paulo", "qual a distancia entre Sao Paulo e Recife?"], "a": "Entre Recife e Sao Paulo ha cerca de 2131 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Aracaju?", "distancia entre Recife e Aracaju", "distancia de Recife a Aracaju", "qual a distancia entre Aracaju e Recife?"], "a": "Entre Recife e Aracaju ha cerca de 402 km em linha reta."}
+{"q": ["qual a distancia entre Recife e Palmas?", "distancia entre Recife e Palmas", "distancia de Recife a Palmas", "qual a distancia entre Palmas e Recife?"], "a": "Entre Recife e Palmas ha cerca de 1496 km em linha reta."}
+{"q": ["qual a distancia entre Teresina e Rio de Janeiro?", "distancia entre Teresina e Rio de Janeiro", "distancia de Teresina a Rio de Janeiro", "qual a distancia entre Rio de Janeiro e Teresina?"], "a": "Entre Teresina e Rio de Janeiro ha cerca de 1982 km em linha reta."}
+{"q": ["qual a distancia entre Teresina e Natal?", "distancia entre Teresina e Natal", "distancia de Teresina a Natal", "qual a distancia entre Natal e Teresina?"], "a": "Entre Teresina e Natal ha cerca de 844 km em linha reta."}
+{"q": ["qual a distancia entre Teresina e Porto Alegre?", "distancia entre Teresina e Porto Alegre", "distancia de Teresina a Porto Alegre", "qual a distancia entre Porto Alegre e Teresina?"], "a": "Entre Teresina e Porto Alegre ha cerca de 2911 km em linha reta."}
+{"q": ["qual a distancia entre Teresina e Sao Paulo?", "distancia entre Teresina e Sao Paulo", "distancia de Teresina a Sao Paulo", "qual a distancia entre Sao Paulo e Teresina?"], "a": "Entre Teresina e Sao Paulo ha cerca de 2093 km em linha reta."}
+{"q": ["qual a distancia entre Teresina e Aracaju?", "distancia entre Teresina e Aracaju", "distancia de Teresina a Aracaju", "qual a distancia entre Aracaju e Teresina?"], "a": "Entre Teresina e Aracaju ha cerca de 907 km em linha reta."}
+{"q": ["qual a distancia entre Rio de Janeiro e Natal?", "distancia entre Rio de Janeiro e Natal", "distancia de Rio de Janeiro a Natal", "qual a distancia entre Natal e Rio de Janeiro?"], "a": "Entre Rio de Janeiro e Natal ha cerca de 2086 km em linha reta."}
+{"q": ["qual a distancia entre Rio de Janeiro e Porto Alegre?", "distancia entre Rio de Janeiro e Porto Alegre", "distancia de Rio de Janeiro a Porto Alegre", "qual a distancia entre Porto Alegre e Rio de Janeiro?"], "a": "Entre Rio de Janeiro e Porto Alegre ha cerca de 1126 km em linha reta."}
+{"q": ["qual a distancia entre Rio de Janeiro e Porto Velho?", "distancia entre Rio de Janeiro e Porto Velho", "distancia de Rio de Janeiro a Porto Velho", "qual a distancia entre Porto Velho e Rio de Janeiro?"], "a": "Entre Rio de Janeiro e Porto Velho ha cerca de 2712 km em linha reta."}
+{"q": ["qual a distancia entre Rio de Janeiro e Boa Vista?", "distancia entre Rio de Janeiro e Boa Vista", "distancia de Rio de Janeiro a Boa Vista", "qual a distancia entre Boa Vista e Rio de Janeiro?"], "a": "Entre Rio de Janeiro e Boa Vista ha cerca de 3434 km em linha reta."}
+{"q": ["qual a distancia entre Rio de Janeiro e Florianopolis?", "distancia entre Rio de Janeiro e Florianopolis", "distancia de Rio de Janeiro a Florianopolis", "qual a distancia entre Florianopolis e Rio de Janeiro?"], "a": "Entre Rio de Janeiro e Florianopolis ha cerca de 751 km em linha reta."}
+{"q": ["qual a distancia entre Rio de Janeiro e Sao Paulo?", "distancia entre Rio de Janeiro e Sao Paulo", "distancia de Rio de Janeiro a Sao Paulo", "qual a distancia entre Sao Paulo e Rio de Janeiro?"], "a": "Cerca de 361 km em linha reta (430 km de estrada)."}
+{"q": ["qual a distancia entre Rio de Janeiro e Aracaju?", "distancia entre Rio de Janeiro e Aracaju", "distancia de Rio de Janeiro a Aracaju", "qual a distancia entre Aracaju e Rio de Janeiro?"], "a": "Entre Rio de Janeiro e Aracaju ha cerca de 1479 km em linha reta."}
+{"q": ["qual a distancia entre Rio de Janeiro e Palmas?", "distancia entre Rio de Janeiro e Palmas", "distancia de Rio de Janeiro a Palmas", "qual a distancia entre Palmas e Rio de Janeiro?"], "a": "Entre Rio de Janeiro e Palmas ha cerca de 1510 km em linha reta."}
+{"q": ["qual a distancia entre Natal e Porto Alegre?", "distancia entre Natal e Porto Alegre", "distancia de Natal a Porto Alegre", "qual a distancia entre Porto Alegre e Natal?"], "a": "Entre Natal e Porto Alegre ha cerca de 3174 km em linha reta."}
+{"q": ["qual a distancia entre Natal e Sao Paulo?", "distancia entre Natal e Sao Paulo", "distancia de Natal a Sao Paulo", "qual a distancia entre Sao Paulo e Natal?"], "a": "Entre Natal e Sao Paulo ha cerca de 2322 km em linha reta."}
+{"q": ["qual a distancia entre Natal e Aracaju?", "distancia entre Natal e Aracaju", "distancia de Natal a Aracaju", "qual a distancia entre Aracaju e Natal?"], "a": "Entre Natal e Aracaju ha cerca de 608 km em linha reta."}
+{"q": ["qual a distancia entre Porto Alegre e Porto Velho?", "distancia entre Porto Alegre e Porto Velho", "distancia de Porto Alegre a Porto Velho", "qual a distancia entre Porto Velho e Porto Alegre?"], "a": "Entre Porto Alegre e Porto Velho ha cerca de 2709 km em linha reta."}
+{"q": ["qual a distancia entre Porto Alegre e Boa Vista?", "distancia entre Porto Alegre e Boa Vista", "distancia de Porto Alegre a Boa Vista", "qual a distancia entre Boa Vista e Porto Alegre?"], "a": "Entre Porto Alegre e Boa Vista ha cerca de 3789 km em linha reta."}
+{"q": ["qual a distancia entre Porto Alegre e Florianopolis?", "distancia entre Porto Alegre e Florianopolis", "distancia de Porto Alegre a Florianopolis", "qual a distancia entre Florianopolis e Porto Alegre?"], "a": "Cerca de 376 km em linha reta (476 km de estrada)."}
+{"q": ["qual a distancia entre Porto Alegre e Sao Paulo?", "distancia entre Porto Alegre e Sao Paulo", "distancia de Porto Alegre a Sao Paulo", "qual a distancia entre Sao Paulo e Porto Alegre?"], "a": "Entre Porto Alegre e Sao Paulo ha cerca de 852 km em linha reta."}
+{"q": ["qual a distancia entre Porto Alegre e Aracaju?", "distancia entre Porto Alegre e Aracaju", "distancia de Porto Alegre a Aracaju", "qual a distancia entre Aracaju e Porto Alegre?"], "a": "Entre Porto Alegre e Aracaju ha cerca de 2578 km em linha reta."}
+{"q": ["qual a distancia entre Porto Alegre e Palmas?", "distancia entre Porto Alegre e Palmas", "distancia de Porto Alegre a Palmas", "qual a distancia entre Palmas e Porto Alegre?"], "a": "Entre Porto Alegre e Palmas ha cerca de 2220 km em linha reta."}
+{"q": ["qual a distancia entre Porto Velho e Boa Vista?", "distancia entre Porto Velho e Boa Vista", "distancia de Porto Velho a Boa Vista", "qual a distancia entre Boa Vista e Porto Velho?"], "a": "Entre Porto Velho e Boa Vista ha cerca de 1337 km em linha reta."}
+{"q": ["qual a distancia entre Porto Velho e Sao Paulo?", "distancia entre Porto Velho e Sao Paulo", "distancia de Porto Velho a Sao Paulo", "qual a distancia entre Sao Paulo e Porto Velho?"], "a": "Entre Porto Velho e Sao Paulo ha cerca de 2466 km em linha reta."}
+{"q": ["qual a distancia entre Porto Velho e Palmas?", "distancia entre Porto Velho e Palmas", "distancia de Porto Velho a Palmas", "qual a distancia entre Palmas e Porto Velho?"], "a": "Entre Porto Velho e Palmas ha cerca de 1716 km em linha reta."}
+{"q": ["qual a distancia entre Boa Vista e Sao Paulo?", "distancia entre Boa Vista e Sao Paulo", "distancia de Boa Vista a Sao Paulo", "qual a distancia entre Sao Paulo e Boa Vista?"], "a": "Entre Boa Vista e Sao Paulo ha cerca de 3304 km em linha reta."}
+{"q": ["qual a distancia entre Boa Vista e Palmas?", "distancia entre Boa Vista e Palmas", "distancia de Boa Vista a Palmas", "qual a distancia entre Palmas e Boa Vista?"], "a": "Entre Boa Vista e Palmas ha cerca de 1996 km em linha reta."}
+{"q": ["qual a distancia entre Florianopolis e Sao Paulo?", "distancia entre Florianopolis e Sao Paulo", "distancia de Florianopolis a Sao Paulo", "qual a distancia entre Sao Paulo e Florianopolis?"], "a": "Entre Florianopolis e Sao Paulo ha cerca de 489 km em linha reta."}
+{"q": ["qual a distancia entre Sao Paulo e Aracaju?", "distancia entre Sao Paulo e Aracaju", "distancia de Sao Paulo a Aracaju", "qual a distancia entre Aracaju e Sao Paulo?"], "a": "Entre Sao Paulo e Aracaju ha cerca de 1729 km em linha reta."}
+{"q": ["qual a distancia entre Sao Paulo e Palmas?", "distancia entre Sao Paulo e Palmas", "distancia de Sao Paulo a Palmas", "qual a distancia entre Palmas e Sao Paulo?"], "a": "Entre Sao Paulo e Palmas ha cerca de 1490 km em linha reta."}
+{"q": ["quem foi o primeiro presidente do Brasil?", "primeiro presidente do Brasil"], "a": "Deodoro da Fonseca foi o 1o presidente do Brasil (1889-1891)."}
+{"q": "quem proclamou a Republica no Brasil?", "a": "Marechal Deodoro da Fonseca proclamou a Republica em 15/11/1889."}
+{"q": ["quem e o atual presidente do Brasil?", "quem e o presidente atual do Brasil"], "a": "Luiz Inacio Lula da Silva e o atual (39o) presidente, desde 2023."}
+{"q": "quantos presidentes o Brasil ja teve?", "a": "O Brasil teve 39 mandatos presidenciais com 35 pessoas diferentes."}
+{"q": "quem foi o primeiro presidente civil do Brasil?", "a": "Prudente de Morais, eleito em 1894, foi o 1o presidente civil."}
+{"q": "quem foi a primeira mulher presidente do Brasil?", "a": "Dilma Rousseff foi a 1a mulher presidente do Brasil (2011-2016)."}
+{"q": ["quem construiu Brasilia?", "qual presidente inaugurou Brasilia?"], "a": "Juscelino Kubitschek construiu e inaugurou Brasilia em 1960."}
+{"q": ["quem criou a CLT?", "quem criou a Petrobras?"], "a": "Getulio Vargas criou a CLT (1943) e a Petrobras (1953)."}
+{"q": "quem renunciou a presidencia em 1961?", "a": "Janio Quadros renunciou em agosto de 1961 apos 7 meses no cargo."}
+{"q": "quem foi o primeiro presidente do regime militar?", "a": "Humberto Castelo Branco foi o 1o presidente do regime militar (1964)."}
+{"q": "quem foi o ultimo presidente do regime militar?", "a": "Joao Figueiredo foi o ultimo presidente do regime militar (1979-1985)."}
+{"q": "quem assinou a Lei da Anistia em 1979?", "a": "Joao Figueiredo sancionou a Lei da Anistia em agosto de 1979."}
+{"q": "quem foi o presidente da Constituicao de 1988?", "a": "Jose Sarney era o presidente quando a Constituicao de 1988 foi promulgada."}
+{"q": "quem criou o Plano Real?", "a": "O Plano Real foi lancado no governo Itamar Franco, por FHC, em 1994."}
+{"q": "quais presidentes sofreram impeachment no Brasil?", "a": "Fernando Collor em 1992 e Dilma Rousseff em 2016 sofreram impeachment."}
+{"q": "o que foi a politica do cafe com leite?", "a": "Alternancia de poder entre elites de Sao Paulo e Minas Gerais (1898-1930)."}
+{"q": ["quem foi Deodoro da Fonseca?", "Deodoro da Fonseca foi qual presidente?"], "a": "1o presidente do Brasil (1889-1891); proclamou a Republica."}
+{"q": ["quem foi Floriano Peixoto?", "Floriano Peixoto foi qual presidente?"], "a": "2o presidente do Brasil (1891-1894), chamado Marechal de Ferro."}
+{"q": ["quem foi Prudente de Morais?", "Prudente de Morais foi qual presidente?"], "a": "3o presidente (1894-1898) e o 1o civil eleito por voto direto."}
+{"q": ["quem foi Campos Sales?", "Campos Sales foi qual presidente?"], "a": "4o presidente (1898-1902); criou a Politica dos Governadores."}
+{"q": ["quem foi Rodrigues Alves?", "Rodrigues Alves foi qual presidente?"], "a": "5o presidente (1902-1906); modernizou o Rio e enfrentou a Revolta da Vacina."}
+{"q": ["quem foi Afonso Pena?", "Afonso Pena foi qual presidente?"], "a": "6o presidente (1906-1909); morreu no cargo antes do fim do mandato."}
+{"q": ["quem foi Nilo Pecanha?", "Nilo Pecanha foi qual presidente?"], "a": "7o presidente (1909-1910); assumiu apos Afonso Pena e criou escolas tecnicas."}
+{"q": ["quem foi Hermes da Fonseca?", "Hermes da Fonseca foi qual presidente?"], "a": "8o presidente (1910-1914); militar que enfrentou a Guerra do Contestado."}
+{"q": ["quem foi Venceslau Bras?", "Venceslau Bras foi qual presidente?"], "a": "9o presidente (1914-1918); governou na 1a Guerra e criou o Codigo Civil."}
+{"q": ["quem foi Delfim Moreira?", "Delfim Moreira foi qual presidente?"], "a": "10o presidente (1918-1919); assumiu apos a morte de Rodrigues Alves."}
+{"q": ["quem foi Epitacio Pessoa?", "Epitacio Pessoa foi qual presidente?"], "a": "11o presidente (1919-1922); governou no centenario da Independencia."}
+{"q": ["quem foi Artur Bernardes?", "Artur Bernardes foi qual presidente?"], "a": "12o presidente (1922-1926); enfrentou revoltas tenentistas e a Coluna Prestes."}
+{"q": ["quem foi Washington Luis?", "Washington Luis foi qual presidente?"], "a": "13o presidente (1926-1930); ultimo da Republica Velha, deposto em 1930."}
+{"q": ["quem foi Julio Prestes?", "Julio Prestes tomou posse?"], "a": "Eleito presidente em 1930, mas nao assumiu por causa da Revolucao de 1930."}
+{"q": "o que foi a Junta Militar de 1930?", "a": "Junta provisoria (Tasso Fragoso, Noronha e Barreto) que passou o poder a Vargas."}
+{"q": ["quem foi Getulio Vargas?", "Getulio Vargas foi qual presidente?"], "a": "14o (1930-1945) e 17o presidente (1951-1954); liderou a Era Vargas e o Estado Novo."}
+{"q": ["quem foi Jose Linhares?", "Jose Linhares foi qual presidente?"], "a": "15o presidente (1945-1946); presidente do STF que assumiu apos queda de Vargas."}
+{"q": ["quem foi Eurico Gaspar Dutra?", "Dutra foi qual presidente?"], "a": "16o presidente (1946-1951); promulgou a Constituicao democratica de 1946."}
+{"q": ["quem foi Cafe Filho?", "Cafe Filho foi qual presidente?"], "a": "18o presidente (1954-1955); vice que assumiu apos o suicidio de Vargas."}
+{"q": ["quem foi Carlos Luz?", "Carlos Luz foi qual presidente?"], "a": "19o presidente (1955); governou por apenas 3 dias em novembro de 1955."}
+{"q": ["quem foi Nereu Ramos?", "Nereu Ramos foi qual presidente?"], "a": "20o presidente (1955-1956); garantiu a posse de Juscelino Kubitschek."}
+{"q": ["quem foi Juscelino Kubitschek?", "JK foi qual presidente?"], "a": "21o presidente (1956-1961); do Plano de Metas e construtor de Brasilia."}
+{"q": ["quem foi Janio Quadros?", "Janio Quadros foi qual presidente?"], "a": "22o presidente (1961); eleito com o simbolo da vassoura, renunciou em agosto."}
+{"q": ["quem foi Ranieri Mazzilli?", "Ranieri Mazzilli foi qual presidente?"], "a": "23o (1961) e 25o presidente (1964), assumindo interinamente pela Camara."}
+{"q": ["quem foi Joao Goulart?", "quem foi Jango?", "Joao Goulart foi qual presidente?"], "a": "24o presidente (1961-1964); defendeu as Reformas de Base e foi deposto em 1964."}
+{"q": ["quem foi Castelo Branco?", "Humberto Castelo Branco foi qual presidente?"], "a": "26o presidente (1964-1967) e 1o do Regime Militar."}
+{"q": ["quem foi Costa e Silva?", "Artur da Costa e Silva foi qual presidente?"], "a": "27o presidente (1967-1969); editou o AI-5 em dezembro de 1968."}
+{"q": "o que foi a Junta Militar de 1969?", "a": "Junta de tres ministros militares que governou entre agosto e outubro de 1969."}
+{"q": ["quem foi Medici?", "Emilio Garrastazu Medici foi qual presidente?"], "a": "28o presidente (1969-1974); periodo do Milagre Economico e repressao."}
+{"q": ["quem foi Ernesto Geisel?", "Ernesto Geisel foi qual presidente?"], "a": "29o presidente (1974-1979); iniciou a abertura politica gradual."}
+{"q": ["quem foi Joao Figueiredo?", "Joao Figueiredo foi qual presidente?"], "a": "30o presidente (1979-1985); ultimo do Regime Militar, assinou a Anistia."}
+{"q": ["quem foi Tancredo Neves?", "Tancredo Neves tomou posse?"], "a": "Eleito em 1985 para encerrar o regime militar, mas morreu antes da posse."}
+{"q": ["quem foi Jose Sarney?", "Jose Sarney foi qual presidente?"], "a": "31o presidente (1985-1990); 1o civil da Nova Republica, governou na Carta de 1988."}
+{"q": ["quem foi Fernando Collor?", "Fernando Collor foi qual presidente?"], "a": "32o presidente (1990-1992); confiscou a poupanca e sofreu impeachment em 1992."}
+{"q": ["quem foi Itamar Franco?", "Itamar Franco foi qual presidente?"], "a": "33o presidente (1992-1995); assumiu apos Collor e lancou o Plano Real."}
+{"q": ["quem foi Fernando Henrique Cardoso?", "quem foi FHC?", "FHC foi qual presidente?"], "a": "34o presidente (1995-2003); sociologo que consolidou o Plano Real."}
+{"q": ["quem e Lula?", "Luiz Inacio Lula da Silva foi qual presidente?"], "a": "35o (2003-2011) e 39o presidente (desde 2023); unico eleito 3 vezes."}
+{"q": ["quem e Dilma Rousseff?", "Dilma Rousseff foi qual presidente?"], "a": "36a presidente (2011-2016); 1a mulher presidente, sofreu impeachment."}
+{"q": ["quem e Michel Temer?", "Michel Temer foi qual presidente?"], "a": "37o presidente (2016-2019); assumiu apos o impeachment de Dilma."}
+{"q": ["quem e Jair Bolsonaro?", "Jair Bolsonaro foi qual presidente?"], "a": "38o presidente do Brasil (2019-2023), eleito em 2018."}

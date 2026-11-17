@@ -396,13 +396,13 @@ class QuantizedTny2Runner:
         return "".join(out)
 
 
-def detect_eos_token(model: TinyTransformer) -> int:
+def detect_eos_token(model: TinyTransformer, device: torch.device) -> int:
     probe = encode_text("what is 7 times 8") + [SEP_TOK] + encode_text("7 times 8 is 56.")
-    tokens = torch.tensor([probe], dtype=torch.long)
+    tokens = torch.tensor([probe], dtype=torch.long, device=device)
     with torch.no_grad():
         logits = model(tokens, qat=False)
-    l0 = float(logits[0, -1, 0])
-    l1 = float(logits[0, -1, 1])
+    l0 = float(logits[0, -1, 0].item())
+    l1 = float(logits[0, -1, 1].item())
     eos = 0 if l0 >= l1 else 1
     print(f"[INFO] Detected base model stop token: {eos} (logit[0]={l0:.3f}, logit[1]={l1:.3f})")
     return eos
@@ -456,7 +456,8 @@ def load_qa_file(path: pathlib.Path) -> list[tuple[str, str]]:
                 q_s, a_s = s.split("\t", 1)
             else:
                 continue
-            add_pair(q_s, a_s)
+            for q_part in q_s.split(";"):
+                add_pair(q_part, a_s)
 
     return pairs
 
@@ -492,16 +493,65 @@ def build_training_sample(q: str, a: str, eos_tok: int) -> tuple[list[int], list
     return inp, tgt
 
 
-def collate_batch(samples: list[tuple[list[int], list[int]]]) -> tuple[torch.Tensor, torch.Tensor]:
+def collate_batch(
+    samples: list[tuple[list[int], list[int]]],
+    device: torch.device,
+) -> tuple[torch.Tensor, torch.Tensor]:
     max_len = max(len(x) for x, _ in samples)
     bsz = len(samples)
-    x_t = torch.full((bsz, max_len), PAD_TOK, dtype=torch.long)
-    y_t = torch.full((bsz, max_len), -100, dtype=torch.long)
+    x_np = np.full((bsz, max_len), PAD_TOK, dtype=np.int64)
+    y_np = np.full((bsz, max_len), -100, dtype=np.int64)
     for i, (inp, tgt) in enumerate(samples):
         n = len(inp)
-        x_t[i, :n] = torch.tensor(inp, dtype=torch.long)
-        y_t[i, :n] = torch.tensor(tgt, dtype=torch.long)
-    return x_t, y_t
+        x_np[i, :n] = inp
+        y_np[i, :n] = tgt
+    non_block = device.type == "cuda"
+    return (
+        torch.from_numpy(x_np).to(device, non_blocking=non_block),
+        torch.from_numpy(y_np).to(device, non_blocking=non_block),
+    )
+
+
+def select_device(requested: str, seed: int) -> torch.device:
+    if requested == "auto":
+        if torch.cuda.is_available():
+            dev = torch.device("cuda")
+        elif hasattr(torch, "xpu") and torch.xpu.is_available():
+            dev = torch.device("xpu")
+        elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
+            dev = torch.device("mps")
+        else:
+            dev = torch.device("cpu")
+    else:
+        if requested == "cuda" and not torch.cuda.is_available():
+            raise RuntimeError(
+                f"CUDA solicitado, mas o PyTorch instalado ({torch.__version__}) nao tem suporte a GPU.\n"
+                "Para ativar GPUs NVIDIA (incluindo RTX 5060 Ti Blackwell / sm_120), execute:\n"
+                "  python -m pip install --upgrade --force-reinstall torch --index-url https://download.pytorch.org/whl/cu128"
+            )
+        if requested == "xpu" and not (hasattr(torch, "xpu") and torch.xpu.is_available()):
+            raise RuntimeError("Dispositivo XPU nao disponivel neste ambiente.")
+        if requested == "mps" and not (hasattr(torch.backends, "mps") and torch.backends.mps.is_available()):
+            raise RuntimeError("Dispositivo MPS nao disponivel neste ambiente.")
+        dev = torch.device(requested)
+
+    if dev.type == "cuda":
+        torch.cuda.manual_seed_all(seed)
+        torch.set_float32_matmul_precision("high")
+        print(f"[DEVICE] GPU ativa: {torch.cuda.get_device_name(0)} (CUDA {torch.version.cuda})")
+    elif dev.type == "xpu":
+        print(f"[DEVICE] GPU XPU ativa: {torch.xpu.get_device_name(0)}")
+    elif dev.type == "mps":
+        print("[DEVICE] GPU Apple MPS ativa")
+    else:
+        if torch.version.cuda is None:
+            print(
+                f"[DEVICE] CPU ({torch.__version__} sem CUDA). Para habilitar GPU NVIDIA, reinstale torch com CUDA:\n"
+                "         python -m pip install --upgrade --force-reinstall torch --index-url https://download.pytorch.org/whl/cu128"
+            )
+        else:
+            print(f"[DEVICE] CPU ({torch.__version__})")
+    return dev
 
 
 def build_replay_pairs(base_blob: bytes) -> list[tuple[str, str]]:
@@ -555,6 +605,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--no-augment", action="store_true", help="Disable question punctuation/case augmentation")
     p.add_argument("--no-qat", action="store_true", help="Disable int8 quantization-aware training")
     p.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
+    p.add_argument("--device", choices=["auto", "cuda", "mps", "xpu", "cpu"], default="auto", help="Compute device (default: auto)")
     p.add_argument("--update-esp32", action="store_true", help="Write TinyESP32/tiny_weights.h from output model")
     p.add_argument("--restore-esp32", action="store_true", help="Restore TinyESP32/tiny_weights.h from --base (TINY.BIN)")
     p.add_argument("--chat", action="store_true", help="Interactive quantized chat in terminal")
@@ -599,8 +650,10 @@ def main() -> int:
     custom_pairs = augment_pairs(raw_pairs, enable=not args.no_augment)
     print(f"[DATA] Loaded {len(raw_pairs)} base Q&A pairs -> {len(custom_pairs)} training pairs (augment={not args.no_augment})")
 
+    device = select_device(args.device, args.seed)
     model, base_blob = TinyTransformer.from_tny2(base_path)
-    eos_tok = detect_eos_token(model)
+    model = model.to(device)
+    eos_tok = detect_eos_token(model, device)
 
     if args.freeze_layers > 0:
         k = min(args.freeze_layers, model.layers)
@@ -646,13 +699,20 @@ def main() -> int:
             random.shuffle(replay_samples)
             epoch_samples.extend(chosen)
         random.shuffle(epoch_samples)
+        window = args.batch_size * 8
+        bucketed: list[tuple[list[int], list[int]]] = []
+        for w_start in range(0, len(epoch_samples), window):
+            chunk = epoch_samples[w_start : w_start + window]
+            chunk.sort(key=lambda item: len(item[0]))
+            bucketed.extend(chunk)
+        batches = [bucketed[i : i + args.batch_size] for i in range(0, len(bucketed), args.batch_size)]
+        random.shuffle(batches)
 
         model.train()
         total_loss = 0.0
         n_batches = 0
-        for i in range(0, len(epoch_samples), args.batch_size):
-            batch = epoch_samples[i : i + args.batch_size]
-            x_t, y_t = collate_batch(batch)
+        for batch in batches:
+            x_t, y_t = collate_batch(batch, device)
             logits = model(x_t, qat=qat)
             ce_loss = F.cross_entropy(logits.view(-1, VOCAB), y_t.view(-1), ignore_index=-100)
 
