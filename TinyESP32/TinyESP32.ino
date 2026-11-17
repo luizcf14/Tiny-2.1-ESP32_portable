@@ -28,6 +28,7 @@
 #include <string.h>
 
 #include "tiny_engine.h"
+#include "tiny_session.h"
 #include "tiny_weights.h"
 #include "web_ui.h"
 
@@ -322,10 +323,34 @@ static void handleCaptiveRedirect() {
 
 static void handleFavicon() { server.send(204, "text/plain", ""); }
 
+static void handleSessionClear() {
+  char sid[16];
+  tiny_sanitize_sid(server.arg("sid").c_str(),
+                    server.client().remoteIP().toString().c_str(), sid);
+  TinySession *sess = tiny_session_get(sid, millis());
+  tiny_session_reset(sess, millis());
+
+  String resp = "{\"ok\":true,\"sid\":\"";
+  appendJsonEscaped(resp, sid);
+  resp += "\"}";
+  server.sendHeader("Cache-Control", "no-cache");
+  server.send(200, "application/json", resp);
+  conPrintf("\n[WEB #%s] Memoria da sessao limpa.\n> ", sid);
+}
+
 static void handleStatus() {
   const TinyModelInfo *info = tiny_get_info();
+  TinySession *sess = NULL;
+  char sid[16];
+  sid[0] = '\0';
+  if (server.hasArg("sid")) {
+    tiny_sanitize_sid(server.arg("sid").c_str(),
+                      server.client().remoteIP().toString().c_str(), sid);
+    sess = tiny_session_get(sid, millis());
+  }
+
   String json;
-  json.reserve(320);
+  json.reserve(460);
 
   bool staOk = (WiFi.status() == WL_CONNECTED);
   json += "{";
@@ -337,6 +362,22 @@ static void handleStatus() {
   json += ",\"flash_bytes\":" + String(info ? info->flash_bytes : 0);
   json += ",\"heap\":" + String(ESP.getFreeHeap());
   json += ",\"creativity\":" + String(currentCreativity);
+  json += ",\"active_sessions\":" + String(tiny_sessions_active_count(millis()));
+  json += ",\"session_bytes\":" +
+          String((unsigned)(sizeof(TinySession) * (TINY_MAX_SESSIONS + 1u)));
+  json += ",\"sid\":\"";
+  appendJsonEscaped(json, sess ? sess->sid : "");
+  json += "\"";
+  json += ",\"user_name\":\"";
+  appendJsonEscaped(json, (sess && sess->user_name[0]) ? sess->user_name : "");
+  json += "\"";
+  json += ",\"user_hw\":\"";
+  appendJsonEscaped(json, (sess && sess->user_hw[0]) ? sess->user_hw : "");
+  json += "\"";
+  json += ",\"last_topic\":\"";
+  appendJsonEscaped(json, (sess && sess->last_topic[0]) ? sess->last_topic : "");
+  json += "\"";
+  json += ",\"turns\":" + String(sess ? (unsigned)sess->turns : 0u);
   json += ",\"ap_ssid\":\"";
   appendJsonEscaped(json, AP_SSID);
   json += "\"";
@@ -373,6 +414,17 @@ static void handleAsk() {
     return;
   }
 
+  char sid[16];
+  tiny_sanitize_sid(server.arg("sid").c_str(),
+                    server.client().remoteIP().toString().c_str(), sid);
+  TinySession *sess = tiny_session_get(sid, millis());
+
+  char effectiveQ[TINY_MAXQ + 1];
+  char ans[TINY_CTX + 1];
+  bool rewritten = false;
+  bool direct = tiny_session_prepare(sess, rawQ.c_str(), cleanQ, effectiveQ,
+                                     ans, &rewritten);
+
   isThinking = true;
   auto client = server.client();
   client.setNoDelay(true);
@@ -384,29 +436,65 @@ static void handleAsk() {
                "Connection: close\r\n"
                "Access-Control-Allow-Origin: *\r\n\r\n");
 
-  char ans[TINY_CTX + 1];
-  uint32_t elapsed = 0;
+  if (rewritten) {
+    String mPkt = "data: {\"t\":\"m\",\"rq\":\"";
+    appendJsonEscaped(mPkt, effectiveQ);
+    mPkt += "\"}\n\n";
+    client.write((const uint8_t *)mPkt.c_str(), mPkt.length());
+  }
 
-  int letters = tiny_think(cleanQ, ans, creat, &elapsed, sseOnStep, sseOnLetter,
-                           (void *)&client);
+  uint32_t elapsed = 0;
+  int letters = 0;
+  if (direct) {
+    const TinyModelInfo *info = tiny_get_info();
+    int nLayers = info ? info->layers : 4;
+    float dummyActs[TINY_MAXL];
+    for (int l = 0; l < nLayers && l < TINY_MAXL; l++) {
+      dummyActs[l] = 0.35f;
+    }
+    uint32_t t0 = millis();
+    letters = (int)strlen(ans);
+    for (int i = 0; i < letters; i++) {
+      sseOnLetter(ans[i], 0.99f, dummyActs, nLayers, (void *)&client);
+      delay(6);
+    }
+    elapsed = millis() - t0;
+  } else {
+    letters = tiny_think(effectiveQ, ans, creat, &elapsed, sseOnStep,
+                         sseOnLetter, (void *)&client);
+  }
+
+  tiny_session_commit(sess, cleanQ, effectiveQ, ans, millis());
 
   if (client.connected()) {
-    char donePkt[128];
-    int n =
-        snprintf(donePkt, sizeof(donePkt),
-                 "data: {\"t\":\"d\",\"ltr\":%d,\"ms\":%lu,\"heap\":%u}\n\n",
-                 letters, (unsigned long)elapsed, (unsigned)ESP.getFreeHeap());
-    if (n > 0) {
-      client.write((const uint8_t *)donePkt, (size_t)n);
-    }
+    String donePkt;
+    donePkt.reserve(240);
+    donePkt += "data: {\"t\":\"d\",\"ltr\":" + String(letters);
+    donePkt += ",\"ms\":" + String((unsigned long)elapsed);
+    donePkt += ",\"heap\":" + String((unsigned)ESP.getFreeHeap());
+    donePkt += ",\"sid\":\"";
+    appendJsonEscaped(donePkt, sess ? sess->sid : "");
+    donePkt += "\",\"user\":\"";
+    appendJsonEscaped(donePkt,
+                      (sess && sess->user_name[0]) ? sess->user_name : "");
+    donePkt += "\",\"hw\":\"";
+    appendJsonEscaped(donePkt,
+                      (sess && sess->user_hw[0]) ? sess->user_hw : "");
+    donePkt += "\",\"topic\":\"";
+    appendJsonEscaped(donePkt,
+                      (sess && sess->last_topic[0]) ? sess->last_topic : "");
+    donePkt += "\",\"turns\":" + String(sess ? (unsigned)sess->turns : 0u);
+    donePkt += "}\n\n";
+    client.write((const uint8_t *)donePkt.c_str(), donePkt.length());
     client.flush();
   }
   client.stop();
 
   float lps = elapsed > 0 ? ((float)letters * 1000.0f / (float)elapsed) : 0.0f;
-  conPrintf("\n[WEB] > %s\n  %s\n  [%d letters in %lu ms | %.1f ltr/s | heap "
-            "%u B]\n> ",
-            cleanQ, ans, letters, (unsigned long)elapsed, (double)lps,
+  conPrintf("\n[WEB #%s] > %s%s%s\n  %s\n  [%d letters in %lu ms | %.1f "
+            "ltr/s | heap %u B]\n> ",
+            sid, cleanQ, rewritten ? " -> " : "", rewritten ? effectiveQ : "",
+            ans, letters, (unsigned long)elapsed, (double)lps,
             (unsigned)ESP.getFreeHeap());
 
   isThinking = false;
@@ -453,6 +541,7 @@ static void serialOnLetter(char ch, float confidence, const float *layer_act,
 
 static void printStatusSerial() {
   const TinyModelInfo *info = tiny_get_info();
+  TinySession *ser = tiny_session_get("serial", millis());
   conPrintln("\n--- TINY 2.1 ESP32 Status ---");
   if (info) {
     conPrintf("Modelo:       %d layers, %d wide, %d heads, HID %d\n",
@@ -462,6 +551,14 @@ static void printStatusSerial() {
     conPrintf("RAM motor:    %lu bytes (KV Cache + buffers)\n",
               (unsigned long)info->ram_bytes);
   }
+  conPrintf("RAM sessoes:  %u bytes (%d sessao(oes) ativa(s) de %d web + USB)\n",
+            (unsigned)(sizeof(TinySession) * (TINY_MAX_SESSIONS + 1u)),
+            tiny_sessions_active_count(millis()), TINY_MAX_SESSIONS);
+  conPrintf("Sessao USB:   nome=%s | hw=%s | tema=%s | turnos=%u\n",
+            ser->user_name[0] ? ser->user_name : "?",
+            ser->user_hw[0] ? ser->user_hw : "?",
+            ser->last_topic[0] ? ser->last_topic : "nenhum",
+            (unsigned)ser->turns);
   conPrintf("Heap livre:   %u bytes\n", (unsigned)ESP.getFreeHeap());
   conPrintf("Creativity:   %d (0 = exato .. 9 = criativo)\n",
             currentCreativity);
@@ -478,20 +575,21 @@ static void printStatusSerial() {
 
 static void printHelpSerial() {
   conPrintln("\nComandos disponiveis no Serial:");
-  conPrintln("  <pergunta>          Pergunta ao TINY (ex: what is the capital "
-             "of peru)");
-  conPrintln("  /0 .. /9            Ajusta creativity (0 = deterministico, 5 = "
-             "padrao)");
+  conPrintln("  <pergunta>          Pergunta ao AMEBA/TINY (ex: convulsao o que fazer?)");
+  conPrintln("  /memoria            Mostra contexto salvo da sessao USB");
+  conPrintln("  /reset              Limpa memoria apenas desta sessao USB");
+  conPrintln("  /0 .. /9            Ajusta creativity (0 = deterministico, 5 = variado)");
   conPrintln("  /demo               Executa perguntas de demonstracao");
-  conPrintln("  /status             Mostra memoria RAM/Flash e IPs Wi-Fi");
+  conPrintln("  /status             Mostra memoria RAM/Flash, sessoes e IPs Wi-Fi");
   conPrintln("  /wifi <ssid> <pwd>  Salva e conecta no roteador Wi-Fi");
   conPrintln("  /wifi clear         Apaga credenciais do roteador");
   conPrintln("  cls                 Limpa a tela ANSI");
   conPrintln("  /help               Mostra esta ajuda");
 }
 
-static void askSerial(const char *cleanQ) {
-  char ans[TINY_CTX + 1];
+static void askSerialModel(const char *cleanQ, char *ansOut) {
+  char localAns[TINY_CTX + 1];
+  char *ans = ansOut ? ansOut : localAns;
   uint32_t elapsed = 0;
   isThinking = true;
   conPrint("  ");
@@ -506,6 +604,25 @@ static void askSerial(const char *cleanQ) {
             (unsigned long)elapsed, (double)lps);
 }
 
+static void handleSerialSession(const char *rawLine, const char *cleanQ) {
+  TinySession *sess = tiny_session_get("serial", millis());
+  char effectiveQ[TINY_MAXQ + 1];
+  char ans[TINY_CTX + 1];
+  bool rewritten = false;
+  bool direct = tiny_session_prepare(sess, rawLine, cleanQ, effectiveQ, ans,
+                                     &rewritten);
+  if (rewritten) {
+    conPrintf("  [ctx -> %s]\n", effectiveQ);
+  }
+  if (direct) {
+    conPrintf("  %s\n   [%d chars | sessao %s]\n", ans, (int)strlen(ans),
+              sess->sid);
+  } else {
+    askSerialModel(effectiveQ, ans);
+  }
+  tiny_session_commit(sess, cleanQ, effectiveQ, ans, millis());
+}
+
 static void runSerialDemo() {
   conPrintln("\n[DEMO] Pressione qualquer tecla no Serial para parar...");
   for (int i = 0; DEMO_QUESTIONS[i]; i++) {
@@ -515,7 +632,7 @@ static void runSerialDemo() {
       return;
     }
     conPrintf("\n> %s\n", DEMO_QUESTIONS[i]);
-    askSerial(DEMO_QUESTIONS[i]);
+    askSerialModel(DEMO_QUESTIONS[i], NULL);
     server.handleClient();
     uint32_t t0 = millis();
     while (millis() - t0 < 800u) {
@@ -588,7 +705,7 @@ static void handleSerialLine(const char *line) {
     currentCreativity = q[12] - '0';
     conPrintf("Creativity = %d\n", currentCreativity);
   } else {
-    askSerial(q);
+    handleSerialSession(line, q);
   }
 }
 
@@ -673,12 +790,14 @@ void setup() {
     while (true)
       delay(1000);
   }
+  tiny_sessions_init();
 
   startWifi();
 
   server.on("/", HTTP_GET, handleRoot);
   server.on("/api/status", HTTP_GET, handleStatus);
   server.on("/api/ask", HTTP_GET, handleAsk);
+  server.on("/api/session/clear", HTTP_POST, handleSessionClear);
   server.on("/api/wifi", HTTP_POST, handleWifiSave);
   server.on("/generate_204", HTTP_GET, handleCaptiveRedirect);
   server.on("/gen_204", HTTP_GET, handleCaptiveRedirect);

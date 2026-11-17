@@ -180,6 +180,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
 
       <div class="mon-lbl">MODE</div>
       <div class="mon-val" id="modeVal">creativity 0</div>
+
+      <div class="mon-lbl">SESSION</div>
+      <div class="mon-val" id="sessVal">anonimo · 0t</div>
+      <div class="mon-sub" id="ctxVal">tema: nenhum</div>
     </aside>
   </main>
 
@@ -201,6 +205,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
       <button class="sb-item" id="btnF4" type="button"><span class="sb-key">F4</span> Creativity <span class="sb-on" id="stCreat">0</span></button>
       <button class="sb-item" id="btnDemo" type="button"><span class="sb-key">DEMO</span></button>
       <button class="sb-item" id="btnCls" type="button"><span class="sb-key">CLS</span></button>
+      <button class="sb-item" id="btnReset" type="button"><span class="sb-key">RST</span> Memory</button>
       <button class="sb-item" id="btnWifi" type="button"><span class="sb-key">WIFI</span></button>
     </div>
     <div class="sb-right" id="sbRight">ready</div>
@@ -228,8 +233,29 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
   const chat = $("chat"), qInput = $("qInput"), layersBox = $("layersBox");
   const confBar = $("confBar"), confPct = $("confPct"), heatBar = $("heatBar");
   const speedVal = $("speedVal"), netVal = $("netVal"), espVal = $("espVal"), modeVal = $("modeVal");
+  const sessVal = $("sessVal"), ctxVal = $("ctxVal");
   const stSound = $("stSound"), stVoice = $("stVoice"), stCreat = $("stCreat"), sbRight = $("sbRight");
   const bootEl = $("boot"), rainCanvas = $("rainCanvas");
+
+  function makeSid() {
+    const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    let s = "";
+    for (let i = 0; i < 12; i++) s += chars[Math.floor(Math.random() * chars.length)];
+    return s;
+  }
+  function getSessionId() {
+    try {
+      let id = sessionStorage.getItem("tiny_sid");
+      if (!id || id.length < 6) {
+        id = makeSid();
+        sessionStorage.setItem("tiny_sid", id);
+      }
+      return id;
+    } catch (_) {
+      return makeSid();
+    }
+  }
+  const sid = getSessionId();
 
   let soundOn = true, voiceOn = true, creativity = 0, lastQ = "";
   let busy = false, demoRunning = false, demoStop = false;
@@ -411,6 +437,15 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
     heatBar.innerHTML = html;
   }
 
+  function updateSessionUI(user, topic, turns, sidStr) {
+    const u = user || "anonimo";
+    const t = typeof turns === "number" ? turns : 0;
+    sessVal.textContent = `${u} · ${t}t`;
+    const th = topic ? topic : "nenhum";
+    const shortId = (sidStr || sid).slice(0, 8);
+    ctxVal.textContent = `tema: ${th} · #${shortId}`;
+  }
+
   function updateStatusUI() {
     stSound.textContent = soundOn ? "ON" : "OFF";
     stVoice.textContent = voiceOn ? "ON" : "OFF";
@@ -430,8 +465,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
   }
 
   function showGreeting() {
-    addSystemLine("Hello! I am TINY, a neural network inside your ESP32.", "sys-dim");
-    addSystemLine("Ask about countries, animals, space, words or sums.", "sys-dim");
+    addSystemLine("Ola! Sou o AMEBA (TINY 2.1) rodando offline no ESP32.", "sys-dim");
+    addSystemLine("Pergunte sobre sobrevivencia, primeiros socorros, catastrofes ou Brasil.", "sys-dim");
+    addSystemLine("Sua sessao lembra nome e assunto atual (/memoria ou /reset para limpar).", "sys-dim");
   }
 
   function showHelp() {
@@ -439,13 +475,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
     wrap.className = "turn";
     wrap.innerHTML = `<div class="sys-help"> HELP </div>` +
       [
-        "Ask a question and press Enter.",
-        "Try: capital of peru · is a whale a fish",
-        "     what is 7 times 8 · spell elephant",
-        "     which countries border estonia",
-        "     how do you say thank you in spanish",
-        "F2 sound · F3 robot voice · F4 creativity (0..9)",
-        "↑ last question · Esc stop · CLS clears · WIFI setup"
+        "Digite uma pergunta em portugues (ou ingles) e aperte Enter.",
+        "Ex: convulsao o que fazer? · como purificar agua? · gerador para celular",
+        "    explosao nuclear o que fazer? · capital do para? · meu nome e Ana",
+        "Memoria por sessao: /memoria (ver) · /reset ou botao RST (limpar esta aba)",
+        "F2 sound · F3 robot voice · F4 creativity (0..9) · CLS limpa tela · WIFI config"
       ].map((l) => `<div class="sys-text"> ${l}</div>`).join("");
     chat.appendChild(wrap);
     scrollChat();
@@ -514,7 +548,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
     abortCtrl = new AbortController();
 
     try {
-      const url = `/api/ask?q=${encodeURIComponent(q)}&c=${creativity}`;
+      const url = `/api/ask?q=${encodeURIComponent(q)}&c=${creativity}&sid=${encodeURIComponent(sid)}`;
       const resp = await fetch(url, { signal: abortCtrl.signal });
       if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
       const reader = resp.body.getReader();
@@ -534,7 +568,13 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
             const jsonStr = line.slice(5).trim();
             if (!jsonStr) continue;
             const ev = JSON.parse(jsonStr);
-            if (ev.t === "s") {
+            if (ev.t === "m") {
+              const ctxLine = document.createElement("div");
+              ctxLine.className = "sys-dim";
+              ctxLine.textContent = `  [ctx → ${ev.rq}]`;
+              turn.insertBefore(ctxLine, aRow);
+              scrollChat();
+            } else if (ev.t === "s") {
               const pct = ev.n > 0 ? Math.round(100 * (ev.i + 1) / ev.n) : 100;
               renderScanner(scanSpan, pct);
               updateMonitor(ev.a, null);
@@ -568,6 +608,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
               const lps = ev.ms > 0 ? (ev.ltr * 1000 / ev.ms).toFixed(1) : "0.0";
               speedVal.textContent = `${lps} letters/s`;
               if (ev.heap) espVal.textContent = `ESP32 heap ${Math.round(ev.heap / 1024)} KB`;
+              if (typeof ev.turns === "number") updateSessionUI(ev.user, ev.topic, ev.turns, ev.sid);
               sbRight.textContent = `${ev.ltr} ltr ${secs}s`;
             }
           }
@@ -628,7 +669,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
   let statusLoadedOnce = false;
   async function loadStatus() {
     try {
-      const r = await fetch("/api/status");
+      const r = await fetch(`/api/status?sid=${encodeURIComponent(sid)}`);
       if (!r.ok) return;
       const d = await r.json();
       initLayersUI(d.layers || 4);
@@ -639,10 +680,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
       }
       netVal.textContent = `${d.layers} layers · ${d.d} wide`;
       espVal.textContent = `ESP32 heap ${Math.round(d.heap / 1024)} KB`;
+      if (typeof d.turns === "number") updateSessionUI(d.user_name, d.last_topic, d.turns, d.sid || sid);
       $("wifiInfo").innerHTML =
         `AP Mode: <b>${d.ap_ssid}</b> (${d.ap_ip})<br>` +
         `Router STA: <b>${d.sta_connected ? d.sta_ssid + " (" + d.sta_ip + ")" : "Not connected"}</b><br>` +
-        `Flash weights: ${(d.flash_bytes / 1024).toFixed(1)} KB · RAM KV: ${(d.ram_bytes / 1024).toFixed(1)} KB`;
+        `Flash weights: ${(d.flash_bytes / 1024).toFixed(1)} KB · RAM KV: ${(d.ram_bytes / 1024).toFixed(1)} KB<br>` +
+        `Sessoes ativas: <b>${d.active_sessions || 0}</b> · RAM sessoes: ${((d.session_bytes || 0) / 1024).toFixed(1)} KB`;
     } catch (_) {}
   }
 
@@ -652,6 +695,19 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
   $("btnF4").onclick = () => { creativity = (creativity + 1) % 10; sndClick(); updateStatusUI(); qInput.focus(); };
   $("btnDemo").onclick = runDemo;
   $("btnCls").onclick = () => { stopSpeech(); chat.innerHTML = ""; showGreeting(); qInput.focus(); };
+  $("btnReset").onclick = async () => {
+    stopSpeech();
+    if (busy) return;
+    try {
+      await fetch("/api/session/clear", { method: "POST", body: new URLSearchParams({ sid }) });
+      updateSessionUI("", "", 0, sid);
+      addSystemLine(`Memoria desta sessao (#${sid.slice(0, 8)}) limpa no servidor.`, "sys-dim");
+      sndClick();
+    } catch (e) {
+      addSystemLine("Erro ao limpar sessao: " + e.message, "sys-dim");
+    }
+    qInput.focus();
+  };
   $("btnWifi").onclick = () => { loadStatus(); $("wifiModal").classList.add("open"); $("wSsid").focus(); };
   $("wClose").onclick = () => { $("wifiModal").classList.remove("open"); qInput.focus(); };
   $("wSave").onclick = async () => {
@@ -752,6 +808,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
 
   initLayersUI(4);
   updateStatusUI();
+  updateSessionUI("", "", 0, sid);
   updateMonitor([0, 0, 0, 0], 0);
   showGreeting();
   loadStatus();

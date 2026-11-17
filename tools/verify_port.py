@@ -81,7 +81,7 @@ def verify_web_header(web_h: pathlib.Path, html_path: pathlib.Path) -> None:
         raise AssertionError("Decompressed INDEX_HTML_GZ != web/index.html")
 
     html = raw.decode("utf-8")
-    for endpoint in ("/api/ask", "/api/status", "/api/wifi"):
+    for endpoint in ("/api/ask", "/api/status", "/api/wifi", "/api/session/clear"):
         if endpoint not in html:
             raise AssertionError(f"Missing endpoint {endpoint} in web/index.html")
     if re.search(r"<script[^>]+src=|https?://", html, re.I):
@@ -127,6 +127,8 @@ def verify_partitions(part_csv: pathlib.Path) -> None:
 def verify_static_code(sketch_dir: pathlib.Path) -> None:
     engine_cpp = (sketch_dir / "tiny_engine.cpp").read_text(encoding="utf-8")
     engine_h = (sketch_dir / "tiny_engine.h").read_text(encoding="utf-8")
+    session_cpp = (sketch_dir / "tiny_session.cpp").read_text(encoding="utf-8")
+    session_h = (sketch_dir / "tiny_session.h").read_text(encoding="utf-8")
     ino = (sketch_dir / "TinyESP32.ino").read_text(encoding="utf-8")
 
     # No double-precision math functions in tiny_engine.cpp
@@ -148,13 +150,24 @@ def verify_static_code(sketch_dir: pathlib.Path) -> None:
     ):
         raise AssertionError("TinyESP32.ino must use 4-argument server.send_P for INDEX_HTML_GZ")
 
+    if "/api/session/clear" not in ino:
+        raise AssertionError("TinyESP32.ino must expose /api/session/clear")
+
     # Check only native Arduino-ESP32 headers are included
     allowed_includes = {
         "WiFi.h", "WebServer.h", "DNSServer.h", "Preferences.h", "ESPmDNS.h", "esp_system.h",
-        "stdarg.h", "stdlib.h", "string.h", "stddef.h", "stdint.h", "math.h", "time.h",
-        "Arduino.h", "tiny_engine.h", "tiny_weights.h", "web_ui.h", "pgmspace.h"
+        "stdarg.h", "stdbool.h", "stdio.h", "stdlib.h", "string.h", "stddef.h", "stdint.h",
+        "math.h", "time.h", "Arduino.h", "tiny_engine.h", "tiny_session.h", "tiny_weights.h",
+        "web_ui.h", "pgmspace.h"
     }
-    for fname, text in [("tiny_engine.h", engine_h), ("tiny_engine.cpp", engine_cpp), ("TinyESP32.ino", ino)]:
+    files_to_scan = [
+        ("tiny_engine.h", engine_h),
+        ("tiny_engine.cpp", engine_cpp),
+        ("tiny_session.h", session_h),
+        ("tiny_session.cpp", session_cpp),
+        ("TinyESP32.ino", ino),
+    ]
+    for fname, text in files_to_scan:
         for inc in re.findall(r'#include\s*[<"]([^>"]+)[>"]', text):
             if inc not in allowed_includes:
                 raise AssertionError(f"Unexpected include <{inc}> in {fname}")
