@@ -102,6 +102,16 @@ def to_ascii(text: str) -> str:
     return " ".join(cleaned.split())
 
 
+def normalize_q(text: str) -> str:
+    s = to_ascii(text).lower()
+    out: list[str] = []
+    for ch in s:
+        if "a" <= ch <= "z" and len(out) >= 2 and out[-1] == ch and out[-2] == ch:
+            continue
+        out.append(ch)
+    return "".join(out)
+
+
 def haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> int:
     r = 6371.0
     p1, p2 = math.radians(lat1), math.radians(lat2)
@@ -116,7 +126,7 @@ def validate_entry(questions: list[str], answer: str) -> None:
     if not a_ascii:
         raise ValueError(f"Empty answer for {questions}")
     for q in questions:
-        q_ascii = to_ascii(q)
+        q_ascii = normalize_q(q)
         if not q_ascii:
             raise ValueError(f"Empty question in {questions}")
         if len(q_ascii) > MAXQ:
@@ -131,42 +141,71 @@ def validate_entry(questions: list[str], answer: str) -> None:
 def build_sections(all_pairs: bool = False) -> list[tuple[str, list[tuple[list[str], str]]]]:
     sections: list[tuple[str, list[tuple[list[str], str]]]] = []
 
-    # 1. Identidade AMEBA, Hardware ESP32 e Customizações do Usuário
+    # 1. Conversação Cotidiana, Identidade AMEBA, Hardware ESP32 e Personalizados
     persona = [
-        (["quem é você?", "quem é você"], "Eu sou o AMEBA rodando em um ESP32."),
-        (["qual seu hardware?", "onde você está rodando?", "onde voce esta rodando"], "Estou rodando direto em um ESP32 sem PSRAM."),
-        (["qual é o seu nome?", "qual seu nome"], "Meu nome é AMEBA."),
-        (["AMEBA?"], "Sim e dai?"),
-        (["Como pode me ajudar?", "como você pode me ajudar?"], "Se nem você sabe, tá difícil."),
-        (["oi", "olá"], "Olá! Sou o AMEBA. Como posso ajudar?"),
-        (["obrigado", "valeu"], "De nada! Estou pronto para a próxima pergunta."),
+        (["oi", "oii", "oi!", "ola", "olaa", "ola!", "opa", "e ai", "e ai?", "eae", "fala", "salve", "alo", "hi", "hello"], "Olá! Sou o AMEBA. Como posso ajudar?"),
+        (["tudo bem?", "tudo bem", "oi tudo bem?", "ola tudo bem?", "tudo bom?", "tudo bom", "tudo certo?", "tudo joia?", "td bem?", "beleza?", "blz?"], "Tudo ótimo por aqui no ESP32! E com você?"),
+        (["como vai?", "como vai", "como você está?", "como você esta?", "como vc ta?", "como anda?"], "Tudo ótimo por aqui no ESP32! E com você?"),
+        (["tudo bem também", "estou bem", "tudo ótimo", "bem obrigado", "to bem", "tudo certo"], "Que bom! Pode mandar sua pergunta."),
+        (["bom dia", "bom dia!", "bom dia ameba"], "Bom dia! Sou o AMEBA no ESP32. Em que posso ajudar?"),
+        (["boa tarde", "boa tarde!", "boa tarde ameba"], "Boa tarde! Sou o AMEBA no ESP32. Pode perguntar!"),
+        (["boa noite", "boa noite!", "boa noite ameba"], "Boa noite! Estou ligado aqui no ESP32. O que deseja saber?"),
+        (["tchau", "até mais", "até logo", "falou", "adeus", "fui", "bye"], "Até mais! Quando precisar, estarei aqui no ESP32."),
+        (["obrigado", "obrigada", "valeu", "muito obrigado", "vlw"], "De nada! Estou pronto para a próxima pergunta."),
+        (["legal", "muito bom", "top", "show", "bacana", "maneiro"], "Valeu! Pode mandar a próxima pergunta."),
+        (["kkk", "haha", "hehe", "rs"], "Haha! Gostou? Pergunta mais alguma coisa."),
+        (["teste", "testando", "test", "123", "alou"], "Teste recebido! O AMEBA está online no ESP32."),
+        (["quem é você?", "quem é você", "quem é vc?", "fale sobre você"], "Eu sou o AMEBA rodando em um ESP32."),
+        (["qual seu hardware?", "onde você está rodando?", "onde você mora?"], "Estou rodando direto em um ESP32 sem PSRAM."),
+        (["qual é o seu nome?", "qual seu nome?", "qual seu nome"], "Meu nome é AMEBA."),
+        (["ameba?", "ameba"], "Sim e dai?"),
+        (["como pode me ajudar?", "como você pode me ajudar?"], "Se nem você sabe, tá difícil."),
+        (["o que você sabe fazer?", "sobre o que posso perguntar?", "o que você conhece?"], "Sei sobre estados, capitais, distâncias, biomas e presidentes do Brasil."),
+        (["quem criou você?", "quem te treinou?"], "Fui portado para ESP32 e ajustado localmente em PyTorch."),
+        (["você fala português?", "fala português?"], "Sim! Agora eu entendo e respondo em português no ESP32."),
+        (["você tem internet?", "você acessa a internet?"], "Não, rodo 100% offline dentro da memória Flash do ESP32."),
+        (["quantos parâmetros você tem?", "qual o seu tamanho?"], "Tenho 367 mil parâmetros em 8 bits (381 KB na Flash)."),
+        (["me conta uma piada", "conta uma piada"], "Por que o ESP32 foi ao médico? Porque estava sem memória livre!"),
         (
             [
-                "qual a cidade mais bonita do Brasil?",
-                "qual a cidade mais legal do Brasil?",
-                "qual a cidade mais charmosa do Brasil?",
-                "qual a cidade mais famosa do Brasil?",
+                "qual a cidade mais bonita do brasil?",
+                "qual a cidade mais legal do brasil?",
+                "qual a cidade mais charmosa do brasil?",
+                "qual a cidade mais famosa do brasil?",
             ],
             "É Belém do Pará.",
         ),
-        (["qual a cidade mais antiga do Brasil?"], "Pergunta pra o Dom Pedro."),
-        (["qual a cidade com mais tecnologia do Brasil?", "qual a cidade mais tecnológica do Brasil?"], "Talvez seja São Paulo."),
-        (["qual a segunda cidade mais bonita do Brasil?", "qual a segunda cidade a mais bonita do Brasil?"], "Talvez seja o Rio de Janeiro."),
+        (["qual a cidade mais antiga do brasil?"], "Pergunta pra o Dom Pedro."),
+        (["qual a cidade com mais tecnologia do brasil?", "qual a cidade mais tecnológica do brasil?"], "Talvez seja São Paulo."),
+        (["qual a segunda cidade mais bonita do brasil?", "qual a segunda cidade a mais bonita do brasil?"], "Talvez seja o Rio de Janeiro."),
         (["qual a segunda cidade com melhor pão de queijo?"], "Talvez seja em Minas Gerais."),
         (["o que é esp32?", "o que é esp32"], "O ESP32 é um microcontrolador com Wi-Fi e Bluetooth da Espressif."),
-        (["qual o endereço web do tiny?", "qual o endereço web do ameba?"], "Acesse http://192.168.4.1 na rede TINY-2.1-ESP32."),
+        (["qual o endereço web do tiny?", "qual o endereço web do ameba?", "qual o ip do esp32?"], "Acesse http://192.168.4.1 na rede TINY-2.1-ESP32."),
         (["qual a velocidade da serial?", "qual baud rate da serial?"], "A serial do TINY roda a 115200 baud."),
-        (["qual a capital do brasil", "qual é a capital do brasil?"], "A capital do Brasil é Brasília."),
-        (["qual a capital da franca", "qual a capital da frança?"], "A capital da França é Paris."),
-        (["qual a capital do japao", "qual a capital do japão?"], "A capital do Japão é Tóquio."),
-        (["quanto é 7 vezes 8?", "quanto e 7 vezes 8"], "7 vezes 8 é 56."),
-        (["quanto é 12 mais 15?", "quanto e 12 mais 15"], "12 mais 15 é 27."),
-        (["uma baleia é um peixe?", "uma baleia e um peixe"], "Não, uma baleia é um mamífero."),
+        (["qual a capital do brasil?", "qual a capital do brasil"], "A capital do Brasil é Brasília."),
+        (["qual a capital da franca?", "qual a capital da franca"], "A capital da França é Paris."),
+        (["qual a capital do japao?", "qual a capital do japao"], "A capital do Japão é Tóquio."),
+        (["quanto é 7 vezes 8?", "quanto é 7 vezes 8"], "7 vezes 8 é 56."),
+        (["quanto é 12 mais 15?", "quanto é 12 mais 15"], "12 mais 15 é 27."),
+        (["uma baleia é um peixe?", "uma baleia é um peixe"], "Não, uma baleia é um mamífero."),
         (["quantas patas tem uma aranha?"], "Uma aranha tem oito patas."),
         (["qual o símbolo do ouro?"], "O símbolo do ouro é Au."),
         (["quem inventou o telefone?"], "Alexander Graham Bell inventou o telefone."),
     ]
-    sections.append(("IDENTIDADE AMEBA E PERSONALIZADOS", persona))
+    sections.append(("CONVERSACAO COTIDIANA, IDENTIDADE AMEBA E PERSONALIZADOS", persona))
+
+    # 1B. Perguntas Fora do Escopo / Desconhecidas (evita alucinar texto aleatório)
+    unknown_msg = "Não sei responder isso; sou o AMEBA offline com 367 mil parâmetros."
+    unknown_qa = [
+        (["asdf", "qwerty", "blablabla", "??", "xyz", "abc", "nada"], unknown_msg),
+        (["qual a cotação do dólar hoje?", "quanto está o dólar?", "qual a cotação do bitcoin?", "quanto está o bitcoin?"], unknown_msg),
+        (["vai chover amanhã?", "qual a previsão do tempo?", "qual a temperatura hoje?", "que horas são agora?"], unknown_msg),
+        (["quem ganhou o jogo ontem?", "qual o resultado da mega sena?", "quem vai ganhar a copa?", "qual a senha do wifi?"], unknown_msg),
+        (["onde eu moro?", "qual o meu nome?", "quantos anos eu tenho?", "qual meu filme favorito?", "qual sua comida favorita?"], unknown_msg),
+        (["faz um café pra mim", "qual a melhor linguagem de programação?", "me dá o número do pix", "qual o sentido da vida?"], unknown_msg),
+        (["me ajuda com matemática avançada", "escreva um código em python", "traduza este texto grande", "o que você acha da política?"], unknown_msg),
+    ]
+    sections.append(("PERGUNTAS FORA DO ESCOPO (RECUSA SEGURA)", unknown_qa))
 
     # 2. Estados, Capitais, Siglas e Regiões do Brasil
     estados_qa: list[tuple[list[str], str]] = [
@@ -274,11 +313,9 @@ def build_sections(all_pairs: bool = False) -> list[tuple[str, list[tuple[list[s
 
             qs = [
                 f"qual a distância entre {cap1} e {cap2}?",
-                f"distância entre {cap1} e {cap2}",
-                f"distância de {cap1} a {cap2}",
-                f"qual a distância entre {cap2} e {cap1}?",
+                f"distância de {cap2} a {cap1}",
             ]
-            max_q_len = max(len(to_ascii(q)) for q in qs)
+            max_q_len = max(len(normalize_q(q)) for q in qs)
             ans = full_ans if (max_q_len + 1 + len(to_ascii(full_ans)) <= MAX_TOTAL) else short_ans
             dist_qa.append((qs, ans))
 
@@ -363,15 +400,25 @@ def build_sections(all_pairs: bool = False) -> list[tuple[str, list[tuple[list[s
     ]
     sections.append(("PRESIDENTES NA HISTORIA DO BRASIL (1889-PRESENTE)", pres_qa))
 
-    # Validate strict TINY 2.1 length rules on every generated pair
+    # Normalize all questions to lowercase ASCII form (preserving readability in answers) and deduplicate
+    seen_qa: set[tuple[str, str]] = set()
+    cleaned_sections: list[tuple[str, list[tuple[list[str], str]]]] = []
     for sec_name, entries in sections:
+        sec_out: list[tuple[list[str], str]] = []
         for qs, ans in entries:
-            try:
-                validate_entry(qs, ans)
-            except ValueError as exc:
-                raise ValueError(f"[{sec_name}] {exc}") from exc
+            ans_ascii = to_ascii(ans)
+            uniq_qs: list[str] = []
+            for q in qs:
+                qn = normalize_q(q)
+                if qn and (qn, ans_ascii) not in seen_qa:
+                    seen_qa.add((qn, ans_ascii))
+                    uniq_qs.append(qn)
+            if uniq_qs:
+                validate_entry(uniq_qs, ans)
+                sec_out.append((uniq_qs, ans))
+        cleaned_sections.append((sec_name, sec_out))
 
-    return sections
+    return cleaned_sections
 
 
 def write_dataset(txt_path: pathlib.Path, jsonl_path: pathlib.Path, all_pairs: bool) -> tuple[int, int]:

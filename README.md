@@ -161,7 +161,7 @@ A solução adotada foi o **mapeamento Zero-Copy em Flash (`DROM`)**:
   3. Na interface, você pode clicar em **DEMO**, alternar som (**F2**), voz robótica (**F3**), criatividade `0..9` (**F4**) e configurar o Wi-Fi da sua casa em **WIFI**.
 - **Serial Monitor (`115200` baud):**
   - Aceita perguntas diretamente e os comandos:
-    - `/0` .. `/9`: ajusta `creativity` (`0` = determinístico, `5` = padrão)
+    - `/0` .. `/9`: ajusta `creativity` (`0` = padrão determinístico, `1..9` = variação progressiva)
     - `/demo`: executa perguntas de demonstração em loop
     - `/status`: exibe dimensões, uso de RAM/Flash, heap livre e IPs Wi-Fi
     - `/wifi <ssid> <senha>` ou `/wifi clear`: salva/remove credenciais do roteador na NVS

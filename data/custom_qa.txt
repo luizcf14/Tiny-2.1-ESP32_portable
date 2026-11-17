@@ -2,480 +2,505 @@
 # Formato: pergunta1 ; pergunta2 | resposta
 # Gerado por tools/generate_brazil_dataset.py (100% dentro de MAXQ=72 e CTX=128)
 
-# === IDENTIDADE AMEBA E PERSONALIZADOS ===
-quem é você? ; quem é você | Eu sou o AMEBA rodando em um ESP32.
-qual seu hardware? ; onde você está rodando? ; onde voce esta rodando | Estou rodando direto em um ESP32 sem PSRAM.
-qual é o seu nome? ; qual seu nome | Meu nome é AMEBA.
-AMEBA? | Sim e dai?
-Como pode me ajudar? ; como você pode me ajudar? | Se nem você sabe, tá difícil.
-oi ; olá | Olá! Sou o AMEBA. Como posso ajudar?
-obrigado ; valeu | De nada! Estou pronto para a próxima pergunta.
-qual a cidade mais bonita do Brasil? ; qual a cidade mais legal do Brasil? ; qual a cidade mais charmosa do Brasil? ; qual a cidade mais famosa do Brasil? | É Belém do Pará.
-qual a cidade mais antiga do Brasil? | Pergunta pra o Dom Pedro.
-qual a cidade com mais tecnologia do Brasil? ; qual a cidade mais tecnológica do Brasil? | Talvez seja São Paulo.
-qual a segunda cidade mais bonita do Brasil? ; qual a segunda cidade a mais bonita do Brasil? | Talvez seja o Rio de Janeiro.
-qual a segunda cidade com melhor pão de queijo? | Talvez seja em Minas Gerais.
-o que é esp32? ; o que é esp32 | O ESP32 é um microcontrolador com Wi-Fi e Bluetooth da Espressif.
-qual o endereço web do tiny? ; qual o endereço web do ameba? | Acesse http://192.168.4.1 na rede TINY-2.1-ESP32.
+# === CONVERSACAO COTIDIANA, IDENTIDADE AMEBA E PERSONALIZADOS ===
+oi ; oii ; oi! ; ola ; olaa ; ola! ; opa ; e ai ; e ai? ; eae ; fala ; salve ; alo ; hi ; hello | Olá! Sou o AMEBA. Como posso ajudar?
+tudo bem? ; tudo bem ; oi tudo bem? ; ola tudo bem? ; tudo bom? ; tudo bom ; tudo certo? ; tudo joia? ; td bem? ; beleza? ; blz? | Tudo ótimo por aqui no ESP32! E com você?
+como vai? ; como vai ; como voce esta? ; como vc ta? ; como anda? | Tudo ótimo por aqui no ESP32! E com você?
+tudo bem tambem ; estou bem ; tudo otimo ; bem obrigado ; to bem ; tudo certo | Que bom! Pode mandar sua pergunta.
+bom dia ; bom dia! ; bom dia ameba | Bom dia! Sou o AMEBA no ESP32. Em que posso ajudar?
+boa tarde ; boa tarde! ; boa tarde ameba | Boa tarde! Sou o AMEBA no ESP32. Pode perguntar!
+boa noite ; boa noite! ; boa noite ameba | Boa noite! Estou ligado aqui no ESP32. O que deseja saber?
+tchau ; ate mais ; ate logo ; falou ; adeus ; fui ; bye | Até mais! Quando precisar, estarei aqui no ESP32.
+obrigado ; obrigada ; valeu ; muito obrigado ; vlw | De nada! Estou pronto para a próxima pergunta.
+legal ; muito bom ; top ; show ; bacana ; maneiro | Valeu! Pode mandar a próxima pergunta.
+kk ; haha ; hehe ; rs | Haha! Gostou? Pergunta mais alguma coisa.
+teste ; testando ; test ; 123 ; alou | Teste recebido! O AMEBA está online no ESP32.
+quem e voce? ; quem e voce ; quem e vc? ; fale sobre voce | Eu sou o AMEBA rodando em um ESP32.
+qual seu hardware? ; onde voce esta rodando? ; onde voce mora? | Estou rodando direto em um ESP32 sem PSRAM.
+qual e o seu nome? ; qual seu nome? ; qual seu nome | Meu nome é AMEBA.
+ameba? ; ameba | Sim e dai?
+como pode me ajudar? ; como voce pode me ajudar? | Se nem você sabe, tá difícil.
+o que voce sabe fazer? ; sobre o que posso perguntar? ; o que voce conhece? | Sei sobre estados, capitais, distâncias, biomas e presidentes do Brasil.
+quem criou voce? ; quem te treinou? | Fui portado para ESP32 e ajustado localmente em PyTorch.
+voce fala portugues? ; fala portugues? | Sim! Agora eu entendo e respondo em português no ESP32.
+voce tem internet? ; voce acessa a internet? | Não, rodo 100% offline dentro da memória Flash do ESP32.
+quantos parametros voce tem? ; qual o seu tamanho? | Tenho 367 mil parâmetros em 8 bits (381 KB na Flash).
+me conta uma piada ; conta uma piada | Por que o ESP32 foi ao médico? Porque estava sem memória livre!
+qual a cidade mais bonita do brasil? ; qual a cidade mais legal do brasil? ; qual a cidade mais charmosa do brasil? ; qual a cidade mais famosa do brasil? | É Belém do Pará.
+qual a cidade mais antiga do brasil? | Pergunta pra o Dom Pedro.
+qual a cidade com mais tecnologia do brasil? ; qual a cidade mais tecnologica do brasil? | Talvez seja São Paulo.
+qual a segunda cidade mais bonita do brasil? ; qual a segunda cidade a mais bonita do brasil? | Talvez seja o Rio de Janeiro.
+qual a segunda cidade com melhor pao de queijo? | Talvez seja em Minas Gerais.
+o que e esp32? ; o que e esp32 | O ESP32 é um microcontrolador com Wi-Fi e Bluetooth da Espressif.
+qual o endereco web do tiny? ; qual o endereco web do ameba? ; qual o ip do esp32? | Acesse http://192.168.4.1 na rede TINY-2.1-ESP32.
 qual a velocidade da serial? ; qual baud rate da serial? | A serial do TINY roda a 115200 baud.
-qual a capital do brasil ; qual é a capital do brasil? | A capital do Brasil é Brasília.
-qual a capital da franca ; qual a capital da frança? | A capital da França é Paris.
-qual a capital do japao ; qual a capital do japão? | A capital do Japão é Tóquio.
-quanto é 7 vezes 8? ; quanto e 7 vezes 8 | 7 vezes 8 é 56.
-quanto é 12 mais 15? ; quanto e 12 mais 15 | 12 mais 15 é 27.
-uma baleia é um peixe? ; uma baleia e um peixe | Não, uma baleia é um mamífero.
+qual a capital do brasil? ; qual a capital do brasil | A capital do Brasil é Brasília.
+qual a capital da franca? ; qual a capital da franca | A capital da França é Paris.
+qual a capital do japao? ; qual a capital do japao | A capital do Japão é Tóquio.
+quanto e 7 vezes 8? ; quanto e 7 vezes 8 | 7 vezes 8 é 56.
+quanto e 12 mais 15? ; quanto e 12 mais 15 | 12 mais 15 é 27.
+uma baleia e um peixe? ; uma baleia e um peixe | Não, uma baleia é um mamífero.
 quantas patas tem uma aranha? | Uma aranha tem oito patas.
-qual o símbolo do ouro? | O símbolo do ouro é Au.
+qual o simbolo do ouro? | O símbolo do ouro é Au.
 quem inventou o telefone? | Alexander Graham Bell inventou o telefone.
 
+# === PERGUNTAS FORA DO ESCOPO (RECUSA SEGURA) ===
+asdf ; qwerty ; blablabla ; ?? ; xyz ; abc ; nada | Não sei responder isso; sou o AMEBA offline com 367 mil parâmetros.
+qual a cotacao do dolar hoje? ; quanto esta o dolar? ; qual a cotacao do bitcoin? ; quanto esta o bitcoin? | Não sei responder isso; sou o AMEBA offline com 367 mil parâmetros.
+vai chover amanha? ; qual a previsao do tempo? ; qual a temperatura hoje? ; que horas sao agora? | Não sei responder isso; sou o AMEBA offline com 367 mil parâmetros.
+quem ganhou o jogo ontem? ; qual o resultado da mega sena? ; quem vai ganhar a copa? ; qual a senha do wifi? | Não sei responder isso; sou o AMEBA offline com 367 mil parâmetros.
+onde eu moro? ; qual o meu nome? ; quantos anos eu tenho? ; qual meu filme favorito? ; qual sua comida favorita? | Não sei responder isso; sou o AMEBA offline com 367 mil parâmetros.
+faz um cafe pra mim ; qual a melhor linguagem de programacao? ; me da o numero do pix ; qual o sentido da vida? | Não sei responder isso; sou o AMEBA offline com 367 mil parâmetros.
+me ajuda com matematica avancada ; escreva um codigo em python ; traduza este texto grande ; o que voce acha da politica? | Não sei responder isso; sou o AMEBA offline com 367 mil parâmetros.
+
 # === ESTADOS, CAPITAIS, SIGLAS E REGIOES DO BRASIL (27 UFs) ===
-quantos estados tem o Brasil? ; quantas unidades federativas tem o Brasil? | O Brasil tem 26 estados e o Distrito Federal, totalizando 27 UFs.
-quais são as regiões do Brasil? ; quantas regiões tem o Brasil? | O Brasil tem 5 regiões: Norte, Nordeste, Centro-Oeste, Sudeste e Sul.
-quais estados ficam na região Norte? | Norte: Acre, Amapá, Amazonas, Pará, Rondônia, Roraima e Tocantins.
-quais estados ficam na região Sul? | Sul: Paraná, Rio Grande do Sul e Santa Catarina.
-quais estados ficam na região Sudeste? | Sudeste: Espírito Santo, Minas Gerais, Rio de Janeiro e São Paulo.
-quais estados ficam na região Centro-Oeste? | Centro-Oeste: Distrito Federal, Goiás, Mato Grosso e Mato Grosso do Sul.
-quais estados ficam na região Nordeste? | Nordeste: AL, BA, CE, MA, PB, PE, PI, RN e SE.
-qual a capital do Acre? ; capital do Acre ; qual a capital de AC? | A capital do Acre (AC) é Rio Branco.
-Rio Branco é capital de qual estado? ; onde fica Rio Branco? | Rio Branco é a capital do Acre (AC), na região Norte.
-em qual região fica Acre? ; região do Acre ; região de AC | Acre (AC) fica na região Norte do Brasil.
-qual a capital de Alagoas? ; capital de Alagoas ; qual a capital de AL? | A capital de Alagoas (AL) é Maceió.
-Maceió é capital de qual estado? ; onde fica Maceió? | Maceió é a capital de Alagoas (AL), na região Nordeste.
-em qual região fica Alagoas? ; região de Alagoas ; região de AL | Alagoas (AL) fica na região Nordeste do Brasil.
-qual a capital do Amapá? ; capital do Amapá ; qual a capital de AP? | A capital do Amapá (AP) é Macapá.
-Macapá é capital de qual estado? ; onde fica Macapá? | Macapá é a capital do Amapá (AP), na região Norte.
-em qual região fica Amapá? ; região do Amapá ; região de AP | Amapá (AP) fica na região Norte do Brasil.
-qual a capital do Amazonas? ; capital do Amazonas ; qual a capital de AM? | A capital do Amazonas (AM) é Manaus.
-Manaus é capital de qual estado? ; onde fica Manaus? | Manaus é a capital do Amazonas (AM), na região Norte.
-em qual região fica Amazonas? ; região do Amazonas ; região de AM | Amazonas (AM) fica na região Norte do Brasil.
-qual a capital da Bahia? ; capital da Bahia ; qual a capital de BA? | A capital da Bahia (BA) é Salvador.
-Salvador é capital de qual estado? ; onde fica Salvador? | Salvador é a capital da Bahia (BA), na região Nordeste.
-em qual região fica Bahia? ; região da Bahia ; região de BA | Bahia (BA) fica na região Nordeste do Brasil.
-qual a capital do Ceará? ; capital do Ceará ; qual a capital de CE? | A capital do Ceará (CE) é Fortaleza.
-Fortaleza é capital de qual estado? ; onde fica Fortaleza? | Fortaleza é a capital do Ceará (CE), na região Nordeste.
-em qual região fica Ceará? ; região do Ceará ; região de CE | Ceará (CE) fica na região Nordeste do Brasil.
-qual a capital do Distrito Federal? ; capital do Distrito Federal ; qual a capital de DF? | A capital do Distrito Federal (DF) é Brasília.
-Brasília é capital de qual estado? ; onde fica Brasília? | Brasília é a capital do Distrito Federal (DF), na região Centro-Oeste.
-em qual região fica Distrito Federal? ; região do Distrito Federal ; região de DF | Distrito Federal (DF) fica na região Centro-Oeste do Brasil.
-qual a capital do Espírito Santo? ; capital do Espírito Santo ; qual a capital de ES? | A capital do Espírito Santo (ES) é Vitória.
-Vitória é capital de qual estado? ; onde fica Vitória? | Vitória é a capital do Espírito Santo (ES), na região Sudeste.
-em qual região fica Espírito Santo? ; região do Espírito Santo ; região de ES | Espírito Santo (ES) fica na região Sudeste do Brasil.
-qual a capital de Goiás? ; capital de Goiás ; qual a capital de GO? | A capital de Goiás (GO) é Goiânia.
-Goiânia é capital de qual estado? ; onde fica Goiânia? | Goiânia é a capital de Goiás (GO), na região Centro-Oeste.
-em qual região fica Goiás? ; região de Goiás ; região de GO | Goiás (GO) fica na região Centro-Oeste do Brasil.
-qual a capital do Maranhão? ; capital do Maranhão ; qual a capital de MA? | A capital do Maranhão (MA) é São Luís.
-São Luís é capital de qual estado? ; onde fica São Luís? | São Luís é a capital do Maranhão (MA), na região Nordeste.
-em qual região fica Maranhão? ; região do Maranhão ; região de MA | Maranhão (MA) fica na região Nordeste do Brasil.
-qual a capital de Mato Grosso? ; capital de Mato Grosso ; qual a capital de MT? | A capital de Mato Grosso (MT) é Cuiabá.
-Cuiabá é capital de qual estado? ; onde fica Cuiabá? | Cuiabá é a capital de Mato Grosso (MT), na região Centro-Oeste.
-em qual região fica Mato Grosso? ; região de Mato Grosso ; região de MT | Mato Grosso (MT) fica na região Centro-Oeste do Brasil.
-qual a capital de Mato Grosso do Sul? ; capital de Mato Grosso do Sul ; qual a capital de MS? | A capital de Mato Grosso do Sul (MS) é Campo Grande.
-Campo Grande é capital de qual estado? ; onde fica Campo Grande? | Campo Grande é a capital de Mato Grosso do Sul (MS), na região Centro-Oeste.
-em qual região fica Mato Grosso do Sul? ; região de Mato Grosso do Sul ; região de MS | Mato Grosso do Sul (MS) fica na região Centro-Oeste do Brasil.
-qual a capital de Minas Gerais? ; capital de Minas Gerais ; qual a capital de MG? | A capital de Minas Gerais (MG) é Belo Horizonte.
-Belo Horizonte é capital de qual estado? ; onde fica Belo Horizonte? | Belo Horizonte é a capital de Minas Gerais (MG), na região Sudeste.
-em qual região fica Minas Gerais? ; região de Minas Gerais ; região de MG | Minas Gerais (MG) fica na região Sudeste do Brasil.
-qual a capital do Pará? ; capital do Pará ; qual a capital de PA? | A capital do Pará (PA) é Belém.
-Belém é capital de qual estado? ; onde fica Belém? | Belém é a capital do Pará (PA), na região Norte.
-em qual região fica Pará? ; região do Pará ; região de PA | Pará (PA) fica na região Norte do Brasil.
-qual a capital da Paraíba? ; capital da Paraíba ; qual a capital de PB? | A capital da Paraíba (PB) é João Pessoa.
-João Pessoa é capital de qual estado? ; onde fica João Pessoa? | João Pessoa é a capital da Paraíba (PB), na região Nordeste.
-em qual região fica Paraíba? ; região da Paraíba ; região de PB | Paraíba (PB) fica na região Nordeste do Brasil.
-qual a capital do Paraná? ; capital do Paraná ; qual a capital de PR? | A capital do Paraná (PR) é Curitiba.
-Curitiba é capital de qual estado? ; onde fica Curitiba? | Curitiba é a capital do Paraná (PR), na região Sul.
-em qual região fica Paraná? ; região do Paraná ; região de PR | Paraná (PR) fica na região Sul do Brasil.
-qual a capital de Pernambuco? ; capital de Pernambuco ; qual a capital de PE? | A capital de Pernambuco (PE) é Recife.
-Recife é capital de qual estado? ; onde fica Recife? | Recife é a capital de Pernambuco (PE), na região Nordeste.
-em qual região fica Pernambuco? ; região de Pernambuco ; região de PE | Pernambuco (PE) fica na região Nordeste do Brasil.
-qual a capital do Piauí? ; capital do Piauí ; qual a capital de PI? | A capital do Piauí (PI) é Teresina.
-Teresina é capital de qual estado? ; onde fica Teresina? | Teresina é a capital do Piauí (PI), na região Nordeste.
-em qual região fica Piauí? ; região do Piauí ; região de PI | Piauí (PI) fica na região Nordeste do Brasil.
-qual a capital do Rio de Janeiro? ; capital do Rio de Janeiro ; qual a capital de RJ? | A capital do Rio de Janeiro (RJ) é Rio de Janeiro.
-Rio de Janeiro é capital de qual estado? ; onde fica Rio de Janeiro? | Rio de Janeiro é a capital do Rio de Janeiro (RJ), na região Sudeste.
-em qual região fica Rio de Janeiro? ; região do Rio de Janeiro ; região de RJ | Rio de Janeiro (RJ) fica na região Sudeste do Brasil.
-qual a capital do Rio Grande do Norte? ; capital do Rio Grande do Norte ; qual a capital de RN? | A capital do Rio Grande do Norte (RN) é Natal.
-Natal é capital de qual estado? ; onde fica Natal? | Natal é a capital do Rio Grande do Norte (RN), na região Nordeste.
-em qual região fica Rio Grande do Norte? ; região do Rio Grande do Norte ; região de RN | Rio Grande do Norte (RN) fica na região Nordeste do Brasil.
-qual a capital do Rio Grande do Sul? ; capital do Rio Grande do Sul ; qual a capital de RS? | A capital do Rio Grande do Sul (RS) é Porto Alegre.
-Porto Alegre é capital de qual estado? ; onde fica Porto Alegre? | Porto Alegre é a capital do Rio Grande do Sul (RS), na região Sul.
-em qual região fica Rio Grande do Sul? ; região do Rio Grande do Sul ; região de RS | Rio Grande do Sul (RS) fica na região Sul do Brasil.
-qual a capital de Rondônia? ; capital de Rondônia ; qual a capital de RO? | A capital de Rondônia (RO) é Porto Velho.
-Porto Velho é capital de qual estado? ; onde fica Porto Velho? | Porto Velho é a capital de Rondônia (RO), na região Norte.
-em qual região fica Rondônia? ; região de Rondônia ; região de RO | Rondônia (RO) fica na região Norte do Brasil.
-qual a capital de Roraima? ; capital de Roraima ; qual a capital de RR? | A capital de Roraima (RR) é Boa Vista.
-Boa Vista é capital de qual estado? ; onde fica Boa Vista? | Boa Vista é a capital de Roraima (RR), na região Norte.
-em qual região fica Roraima? ; região de Roraima ; região de RR | Roraima (RR) fica na região Norte do Brasil.
-qual a capital de Santa Catarina? ; capital de Santa Catarina ; qual a capital de SC? | A capital de Santa Catarina (SC) é Florianópolis.
-Florianópolis é capital de qual estado? ; onde fica Florianópolis? | Florianópolis é a capital de Santa Catarina (SC), na região Sul.
-em qual região fica Santa Catarina? ; região de Santa Catarina ; região de SC | Santa Catarina (SC) fica na região Sul do Brasil.
-qual a capital de São Paulo? ; capital de São Paulo ; qual a capital de SP? | A capital de São Paulo (SP) é São Paulo.
-São Paulo é capital de qual estado? ; onde fica São Paulo? | São Paulo é a capital de São Paulo (SP), na região Sudeste.
-em qual região fica São Paulo? ; região de São Paulo ; região de SP | São Paulo (SP) fica na região Sudeste do Brasil.
-qual a capital de Sergipe? ; capital de Sergipe ; qual a capital de SE? | A capital de Sergipe (SE) é Aracaju.
-Aracaju é capital de qual estado? ; onde fica Aracaju? | Aracaju é a capital de Sergipe (SE), na região Nordeste.
-em qual região fica Sergipe? ; região de Sergipe ; região de SE | Sergipe (SE) fica na região Nordeste do Brasil.
-qual a capital do Tocantins? ; capital do Tocantins ; qual a capital de TO? | A capital do Tocantins (TO) é Palmas.
-Palmas é capital de qual estado? ; onde fica Palmas? | Palmas é a capital do Tocantins (TO), na região Norte.
-em qual região fica Tocantins? ; região do Tocantins ; região de TO | Tocantins (TO) fica na região Norte do Brasil.
+quantos estados tem o brasil? ; quantas unidades federativas tem o brasil? | O Brasil tem 26 estados e o Distrito Federal, totalizando 27 UFs.
+quais sao as regioes do brasil? ; quantas regioes tem o brasil? | O Brasil tem 5 regiões: Norte, Nordeste, Centro-Oeste, Sudeste e Sul.
+quais estados ficam na regiao norte? | Norte: Acre, Amapá, Amazonas, Pará, Rondônia, Roraima e Tocantins.
+quais estados ficam na regiao sul? | Sul: Paraná, Rio Grande do Sul e Santa Catarina.
+quais estados ficam na regiao sudeste? | Sudeste: Espírito Santo, Minas Gerais, Rio de Janeiro e São Paulo.
+quais estados ficam na regiao centro-oeste? | Centro-Oeste: Distrito Federal, Goiás, Mato Grosso e Mato Grosso do Sul.
+quais estados ficam na regiao nordeste? | Nordeste: AL, BA, CE, MA, PB, PE, PI, RN e SE.
+qual a capital do acre? ; capital do acre ; qual a capital de ac? | A capital do Acre (AC) é Rio Branco.
+rio branco e capital de qual estado? ; onde fica rio branco? | Rio Branco é a capital do Acre (AC), na região Norte.
+em qual regiao fica acre? ; regiao do acre ; regiao de ac | Acre (AC) fica na região Norte do Brasil.
+qual a capital de alagoas? ; capital de alagoas ; qual a capital de al? | A capital de Alagoas (AL) é Maceió.
+maceio e capital de qual estado? ; onde fica maceio? | Maceió é a capital de Alagoas (AL), na região Nordeste.
+em qual regiao fica alagoas? ; regiao de alagoas ; regiao de al | Alagoas (AL) fica na região Nordeste do Brasil.
+qual a capital do amapa? ; capital do amapa ; qual a capital de ap? | A capital do Amapá (AP) é Macapá.
+macapa e capital de qual estado? ; onde fica macapa? | Macapá é a capital do Amapá (AP), na região Norte.
+em qual regiao fica amapa? ; regiao do amapa ; regiao de ap | Amapá (AP) fica na região Norte do Brasil.
+qual a capital do amazonas? ; capital do amazonas ; qual a capital de am? | A capital do Amazonas (AM) é Manaus.
+manaus e capital de qual estado? ; onde fica manaus? | Manaus é a capital do Amazonas (AM), na região Norte.
+em qual regiao fica amazonas? ; regiao do amazonas ; regiao de am | Amazonas (AM) fica na região Norte do Brasil.
+qual a capital da bahia? ; capital da bahia ; qual a capital de ba? | A capital da Bahia (BA) é Salvador.
+salvador e capital de qual estado? ; onde fica salvador? | Salvador é a capital da Bahia (BA), na região Nordeste.
+em qual regiao fica bahia? ; regiao da bahia ; regiao de ba | Bahia (BA) fica na região Nordeste do Brasil.
+qual a capital do ceara? ; capital do ceara ; qual a capital de ce? | A capital do Ceará (CE) é Fortaleza.
+fortaleza e capital de qual estado? ; onde fica fortaleza? | Fortaleza é a capital do Ceará (CE), na região Nordeste.
+em qual regiao fica ceara? ; regiao do ceara ; regiao de ce | Ceará (CE) fica na região Nordeste do Brasil.
+qual a capital do distrito federal? ; capital do distrito federal ; qual a capital de df? | A capital do Distrito Federal (DF) é Brasília.
+brasilia e capital de qual estado? ; onde fica brasilia? | Brasília é a capital do Distrito Federal (DF), na região Centro-Oeste.
+em qual regiao fica distrito federal? ; regiao do distrito federal ; regiao de df | Distrito Federal (DF) fica na região Centro-Oeste do Brasil.
+qual a capital do espirito santo? ; capital do espirito santo ; qual a capital de es? | A capital do Espírito Santo (ES) é Vitória.
+vitoria e capital de qual estado? ; onde fica vitoria? | Vitória é a capital do Espírito Santo (ES), na região Sudeste.
+em qual regiao fica espirito santo? ; regiao do espirito santo ; regiao de es | Espírito Santo (ES) fica na região Sudeste do Brasil.
+qual a capital de goias? ; capital de goias ; qual a capital de go? | A capital de Goiás (GO) é Goiânia.
+goiania e capital de qual estado? ; onde fica goiania? | Goiânia é a capital de Goiás (GO), na região Centro-Oeste.
+em qual regiao fica goias? ; regiao de goias ; regiao de go | Goiás (GO) fica na região Centro-Oeste do Brasil.
+qual a capital do maranhao? ; capital do maranhao ; qual a capital de ma? | A capital do Maranhão (MA) é São Luís.
+sao luis e capital de qual estado? ; onde fica sao luis? | São Luís é a capital do Maranhão (MA), na região Nordeste.
+em qual regiao fica maranhao? ; regiao do maranhao ; regiao de ma | Maranhão (MA) fica na região Nordeste do Brasil.
+qual a capital de mato grosso? ; capital de mato grosso ; qual a capital de mt? | A capital de Mato Grosso (MT) é Cuiabá.
+cuiaba e capital de qual estado? ; onde fica cuiaba? | Cuiabá é a capital de Mato Grosso (MT), na região Centro-Oeste.
+em qual regiao fica mato grosso? ; regiao de mato grosso ; regiao de mt | Mato Grosso (MT) fica na região Centro-Oeste do Brasil.
+qual a capital de mato grosso do sul? ; capital de mato grosso do sul ; qual a capital de ms? | A capital de Mato Grosso do Sul (MS) é Campo Grande.
+campo grande e capital de qual estado? ; onde fica campo grande? | Campo Grande é a capital de Mato Grosso do Sul (MS), na região Centro-Oeste.
+em qual regiao fica mato grosso do sul? ; regiao de mato grosso do sul ; regiao de ms | Mato Grosso do Sul (MS) fica na região Centro-Oeste do Brasil.
+qual a capital de minas gerais? ; capital de minas gerais ; qual a capital de mg? | A capital de Minas Gerais (MG) é Belo Horizonte.
+belo horizonte e capital de qual estado? ; onde fica belo horizonte? | Belo Horizonte é a capital de Minas Gerais (MG), na região Sudeste.
+em qual regiao fica minas gerais? ; regiao de minas gerais ; regiao de mg | Minas Gerais (MG) fica na região Sudeste do Brasil.
+qual a capital do para? ; capital do para ; qual a capital de pa? | A capital do Pará (PA) é Belém.
+belem e capital de qual estado? ; onde fica belem? | Belém é a capital do Pará (PA), na região Norte.
+em qual regiao fica para? ; regiao do para ; regiao de pa | Pará (PA) fica na região Norte do Brasil.
+qual a capital da paraiba? ; capital da paraiba ; qual a capital de pb? | A capital da Paraíba (PB) é João Pessoa.
+joao pessoa e capital de qual estado? ; onde fica joao pessoa? | João Pessoa é a capital da Paraíba (PB), na região Nordeste.
+em qual regiao fica paraiba? ; regiao da paraiba ; regiao de pb | Paraíba (PB) fica na região Nordeste do Brasil.
+qual a capital do parana? ; capital do parana ; qual a capital de pr? | A capital do Paraná (PR) é Curitiba.
+curitiba e capital de qual estado? ; onde fica curitiba? | Curitiba é a capital do Paraná (PR), na região Sul.
+em qual regiao fica parana? ; regiao do parana ; regiao de pr | Paraná (PR) fica na região Sul do Brasil.
+qual a capital de pernambuco? ; capital de pernambuco ; qual a capital de pe? | A capital de Pernambuco (PE) é Recife.
+recife e capital de qual estado? ; onde fica recife? | Recife é a capital de Pernambuco (PE), na região Nordeste.
+em qual regiao fica pernambuco? ; regiao de pernambuco ; regiao de pe | Pernambuco (PE) fica na região Nordeste do Brasil.
+qual a capital do piaui? ; capital do piaui ; qual a capital de pi? | A capital do Piauí (PI) é Teresina.
+teresina e capital de qual estado? ; onde fica teresina? | Teresina é a capital do Piauí (PI), na região Nordeste.
+em qual regiao fica piaui? ; regiao do piaui ; regiao de pi | Piauí (PI) fica na região Nordeste do Brasil.
+qual a capital do rio de janeiro? ; capital do rio de janeiro ; qual a capital de rj? | A capital do Rio de Janeiro (RJ) é Rio de Janeiro.
+rio de janeiro e capital de qual estado? ; onde fica rio de janeiro? | Rio de Janeiro é a capital do Rio de Janeiro (RJ), na região Sudeste.
+em qual regiao fica rio de janeiro? ; regiao do rio de janeiro ; regiao de rj | Rio de Janeiro (RJ) fica na região Sudeste do Brasil.
+qual a capital do rio grande do norte? ; capital do rio grande do norte ; qual a capital de rn? | A capital do Rio Grande do Norte (RN) é Natal.
+natal e capital de qual estado? ; onde fica natal? | Natal é a capital do Rio Grande do Norte (RN), na região Nordeste.
+em qual regiao fica rio grande do norte? ; regiao do rio grande do norte ; regiao de rn | Rio Grande do Norte (RN) fica na região Nordeste do Brasil.
+qual a capital do rio grande do sul? ; capital do rio grande do sul ; qual a capital de rs? | A capital do Rio Grande do Sul (RS) é Porto Alegre.
+porto alegre e capital de qual estado? ; onde fica porto alegre? | Porto Alegre é a capital do Rio Grande do Sul (RS), na região Sul.
+em qual regiao fica rio grande do sul? ; regiao do rio grande do sul ; regiao de rs | Rio Grande do Sul (RS) fica na região Sul do Brasil.
+qual a capital de rondonia? ; capital de rondonia ; qual a capital de ro? | A capital de Rondônia (RO) é Porto Velho.
+porto velho e capital de qual estado? ; onde fica porto velho? | Porto Velho é a capital de Rondônia (RO), na região Norte.
+em qual regiao fica rondonia? ; regiao de rondonia ; regiao de ro | Rondônia (RO) fica na região Norte do Brasil.
+qual a capital de roraima? ; capital de roraima ; qual a capital de rr? | A capital de Roraima (RR) é Boa Vista.
+boa vista e capital de qual estado? ; onde fica boa vista? | Boa Vista é a capital de Roraima (RR), na região Norte.
+em qual regiao fica roraima? ; regiao de roraima ; regiao de rr | Roraima (RR) fica na região Norte do Brasil.
+qual a capital de santa catarina? ; capital de santa catarina ; qual a capital de sc? | A capital de Santa Catarina (SC) é Florianópolis.
+florianopolis e capital de qual estado? ; onde fica florianopolis? | Florianópolis é a capital de Santa Catarina (SC), na região Sul.
+em qual regiao fica santa catarina? ; regiao de santa catarina ; regiao de sc | Santa Catarina (SC) fica na região Sul do Brasil.
+qual a capital de sao paulo? ; capital de sao paulo ; qual a capital de sp? | A capital de São Paulo (SP) é São Paulo.
+sao paulo e capital de qual estado? ; onde fica sao paulo? | São Paulo é a capital de São Paulo (SP), na região Sudeste.
+em qual regiao fica sao paulo? ; regiao de sao paulo ; regiao de sp | São Paulo (SP) fica na região Sudeste do Brasil.
+qual a capital de sergipe? ; capital de sergipe ; qual a capital de se? | A capital de Sergipe (SE) é Aracaju.
+aracaju e capital de qual estado? ; onde fica aracaju? | Aracaju é a capital de Sergipe (SE), na região Nordeste.
+em qual regiao fica sergipe? ; regiao de sergipe ; regiao de se | Sergipe (SE) fica na região Nordeste do Brasil.
+qual a capital do tocantins? ; capital do tocantins ; qual a capital de to? | A capital do Tocantins (TO) é Palmas.
+palmas e capital de qual estado? ; onde fica palmas? | Palmas é a capital do Tocantins (TO), na região Norte.
+em qual regiao fica tocantins? ; regiao do tocantins ; regiao de to | Tocantins (TO) fica na região Norte do Brasil.
 
 # === BIOMAS BRASILEIROS ===
-o que é um bioma? ; definição de bioma | Bioma é um grande conjunto de ecossistemas com clima, solo e vida típicos.
-quais são os biomas brasileiros? ; quais os biomas do Brasil? | Amazônia, Cerrado, Mata Atlântica, Caatinga, Pampa e Pantanal.
-quantos biomas existem no Brasil? | O Brasil possui 6 biomas terrestres principais reconhecidos pelo IBGE.
-qual o maior bioma do Brasil? ; maior bioma brasileiro | A Amazônia é o maior bioma do Brasil, ocupando cerca de 49% do país.
-qual o segundo maior bioma do Brasil? | O Cerrado é o segundo maior bioma brasileiro, com cerca de 24% do país.
-qual o menor bioma do Brasil? ; menor bioma brasileiro | O Pantanal é o menor bioma do Brasil em área, com cerca de 1,8% do país.
-qual bioma existe apenas no Brasil? ; qual o único bioma exclusivo do Brasil? | A Caatinga é o único bioma exclusivamente brasileiro.
-qual a maior planície alagável do mundo? | O Pantanal é a maior planície inundável contínua do planeta.
-qual o bioma de Belém? ; qual bioma fica no Pará? | Belém e o Pará ficam no bioma Amazônia.
-qual o bioma de Brasília? ; qual bioma fica em Goiás? | Brasília e Goiás ficam no bioma Cerrado.
-qual o bioma do Rio Grande do Sul? ; bioma exclusivo do Sul | O Pampa ocorre no Brasil na metade sul do Rio Grande do Sul.
-o que é a Amazônia? ; características da Amazônia | É a maior floresta tropical do mundo, de clima equatorial quente e úmido.
-qual o clima da Amazônia? ; vegetação da Amazônia | Clima equatorial muito chuvoso, com floresta densa e árvores altas.
-animais da Amazônia ; fauna da Amazônia | Onça-pintada, arara, boto-cor-de-rosa, pirarucu, sucuri e preguiça.
-plantas da Amazônia ; flora da Amazônia | Seringueira, castanheira-do-pará, açaizeiro, samaúma e vitória-régia.
-onde fica a Amazônia no Brasil? | Na região Norte e partes do Mato Grosso e Maranhão.
-o que é o Cerrado? ; características do Cerrado | É a savana brasileira, segundo maior bioma e chamado berço das águas.
-qual a vegetação do Cerrado? ; clima do Cerrado | Clima tropical com seca e chuva; árvores de tronco torto e casca grossa.
-animais do Cerrado ; fauna do Cerrado | Lobo-guará, tamanduá-bandeira, ema, seriema e tatu-canastra.
-plantas do Cerrado ; flora do Cerrado | Ipê, pequi, buriti, baru, cagaita e capim-dourado.
-onde fica o Cerrado? | No Centro-Oeste e partes de MG, BA, TO, MA, PI e SP.
-o que é a Mata Atlântica? ; características da Mata Atlântica | Floresta tropical úmida do litoral brasileiro com altíssima biodiversidade.
-qual o estado atual da Mata Atlântica? | É um dos biomas mais ameaçados, restando cerca de 12% da mata original.
-animais da Mata Atlântica ; fauna da Mata Atlântica | Mico-leão-dourado, muriqui, onça-pintada, tucano e jaguatirica.
-plantas da Mata Atlântica ; flora da Mata Atlântica | Pau-brasil, palmito-juçara, ipê, bromélias e orquídeas.
-onde fica a Mata Atlântica? | Ao longo da costa do RN ao RS e no interior de SP, MG e PR.
-o que é a Caatinga? ; características da Caatinga | Bioma semiárido exclusivo do Brasil, com plantas adaptadas à seca.
-qual a vegetação da Caatinga? ; clima da Caatinga | Clima semiárido quente; cactos e árvores que perdem folhas na seca.
-animais da Caatinga ; fauna da Caatinga | Tatu-bola, ararinha-azul, asa-branca, mocó e veado-catingueiro.
-plantas da Caatinga ; flora da Caatinga | Mandacaru, xique-xique, juazeiro, umbuzeiro e facheiro.
-onde fica a Caatinga? | No interior do Nordeste e no norte de Minas Gerais.
-o que é o Pampa? ; características do Pampa | Bioma de campos sulinos com relevo de coxilhas e clima subtropical.
-qual a vegetação do Pampa? ; clima do Pampa | Predomínio de gramíneas, arbustos baixos e quatro estações definidas.
-animais do Pampa ; fauna do Pampa | Quero-quero, veado-campeiro, graxaim, joão-de-barro e tuco-tuco.
-onde fica o Pampa no Brasil? | Fica restrito à metade sul do Rio Grande do Sul.
-o que é o Pantanal? ; características do Pantanal | Maior planície alagável do mundo, com cheias e secas sazonais.
-qual o clima do Pantanal? ; vegetação do Pantanal | Clima tropical com cheia no verão; mistura campos, cerrado e matas.
-animais do Pantanal ; fauna do Pantanal | Tuiuiú, jacaré-do-pantanal, arara-azul, capivara e onça-pintada.
-onde fica o Pantanal? | Fica no oeste de Mato Grosso e Mato Grosso do Sul, na bacia do Paraguai.
+o que e um bioma? ; definicao de bioma | Bioma é um grande conjunto de ecossistemas com clima, solo e vida típicos.
+quais sao os biomas brasileiros? ; quais os biomas do brasil? | Amazônia, Cerrado, Mata Atlântica, Caatinga, Pampa e Pantanal.
+quantos biomas existem no brasil? | O Brasil possui 6 biomas terrestres principais reconhecidos pelo IBGE.
+qual o maior bioma do brasil? ; maior bioma brasileiro | A Amazônia é o maior bioma do Brasil, ocupando cerca de 49% do país.
+qual o segundo maior bioma do brasil? | O Cerrado é o segundo maior bioma brasileiro, com cerca de 24% do país.
+qual o menor bioma do brasil? ; menor bioma brasileiro | O Pantanal é o menor bioma do Brasil em área, com cerca de 1,8% do país.
+qual bioma existe apenas no brasil? ; qual o unico bioma exclusivo do brasil? | A Caatinga é o único bioma exclusivamente brasileiro.
+qual a maior planicie alagavel do mundo? | O Pantanal é a maior planície inundável contínua do planeta.
+qual o bioma de belem? ; qual bioma fica no para? | Belém e o Pará ficam no bioma Amazônia.
+qual o bioma de brasilia? ; qual bioma fica em goias? | Brasília e Goiás ficam no bioma Cerrado.
+qual o bioma do rio grande do sul? ; bioma exclusivo do sul | O Pampa ocorre no Brasil na metade sul do Rio Grande do Sul.
+o que e a amazonia? ; caracteristicas da amazonia | É a maior floresta tropical do mundo, de clima equatorial quente e úmido.
+qual o clima da amazonia? ; vegetacao da amazonia | Clima equatorial muito chuvoso, com floresta densa e árvores altas.
+animais da amazonia ; fauna da amazonia | Onça-pintada, arara, boto-cor-de-rosa, pirarucu, sucuri e preguiça.
+plantas da amazonia ; flora da amazonia | Seringueira, castanheira-do-pará, açaizeiro, samaúma e vitória-régia.
+onde fica a amazonia no brasil? | Na região Norte e partes do Mato Grosso e Maranhão.
+o que e o cerrado? ; caracteristicas do cerrado | É a savana brasileira, segundo maior bioma e chamado berço das águas.
+qual a vegetacao do cerrado? ; clima do cerrado | Clima tropical com seca e chuva; árvores de tronco torto e casca grossa.
+animais do cerrado ; fauna do cerrado | Lobo-guará, tamanduá-bandeira, ema, seriema e tatu-canastra.
+plantas do cerrado ; flora do cerrado | Ipê, pequi, buriti, baru, cagaita e capim-dourado.
+onde fica o cerrado? | No Centro-Oeste e partes de MG, BA, TO, MA, PI e SP.
+o que e a mata atlantica? ; caracteristicas da mata atlantica | Floresta tropical úmida do litoral brasileiro com altíssima biodiversidade.
+qual o estado atual da mata atlantica? | É um dos biomas mais ameaçados, restando cerca de 12% da mata original.
+animais da mata atlantica ; fauna da mata atlantica | Mico-leão-dourado, muriqui, onça-pintada, tucano e jaguatirica.
+plantas da mata atlantica ; flora da mata atlantica | Pau-brasil, palmito-juçara, ipê, bromélias e orquídeas.
+onde fica a mata atlantica? | Ao longo da costa do RN ao RS e no interior de SP, MG e PR.
+o que e a caatinga? ; caracteristicas da caatinga | Bioma semiárido exclusivo do Brasil, com plantas adaptadas à seca.
+qual a vegetacao da caatinga? ; clima da caatinga | Clima semiárido quente; cactos e árvores que perdem folhas na seca.
+animais da caatinga ; fauna da caatinga | Tatu-bola, ararinha-azul, asa-branca, mocó e veado-catingueiro.
+plantas da caatinga ; flora da caatinga | Mandacaru, xique-xique, juazeiro, umbuzeiro e facheiro.
+onde fica a caatinga? | No interior do Nordeste e no norte de Minas Gerais.
+o que e o pampa? ; caracteristicas do pampa | Bioma de campos sulinos com relevo de coxilhas e clima subtropical.
+qual a vegetacao do pampa? ; clima do pampa | Predomínio de gramíneas, arbustos baixos e quatro estações definidas.
+animais do pampa ; fauna do pampa | Quero-quero, veado-campeiro, graxaim, joão-de-barro e tuco-tuco.
+onde fica o pampa no brasil? | Fica restrito à metade sul do Rio Grande do Sul.
+o que e o pantanal? ; caracteristicas do pantanal | Maior planície alagável do mundo, com cheias e secas sazonais.
+qual o clima do pantanal? ; vegetacao do pantanal | Clima tropical com cheia no verão; mistura campos, cerrado e matas.
+animais do pantanal ; fauna do pantanal | Tuiuiú, jacaré-do-pantanal, arara-azul, capivara e onça-pintada.
+onde fica o pantanal? | Fica no oeste de Mato Grosso e Mato Grosso do Sul, na bacia do Paraguai.
 
 # === DISTANCIAS ENTRE AS CAPITAIS DO BRASIL ===
-quais são as capitais mais próximas do Brasil? | João Pessoa e Recife, a cerca de 104 km em linha reta (120 km por rodovia).
-quais são as capitais mais distantes do Brasil? | Porto Alegre e Boa Vista, separadas por cerca de 3789 km em linha reta.
-qual a distância entre Rio Branco e Macapá? ; distância entre Rio Branco e Macapá ; distância de Rio Branco a Macapá ; qual a distância entre Macapá e Rio Branco? | Entre Rio Branco e Macapá há cerca de 2162 km em linha reta.
-qual a distância entre Rio Branco e Manaus? ; distância entre Rio Branco e Manaus ; distância de Rio Branco a Manaus ; qual a distância entre Manaus e Rio Branco? | Entre Rio Branco e Manaus há cerca de 1150 km em linha reta.
-qual a distância entre Rio Branco e Salvador? ; distância entre Rio Branco e Salvador ; distância de Rio Branco a Salvador ; qual a distância entre Salvador e Rio Branco? | Entre Rio Branco e Salvador há cerca de 3211 km em linha reta.
-qual a distância entre Rio Branco e Fortaleza? ; distância entre Rio Branco e Fortaleza ; distância de Rio Branco a Fortaleza ; qual a distância entre Fortaleza e Rio Branco? | Entre Rio Branco e Fortaleza há cerca de 3305 km em linha reta.
-qual a distância entre Rio Branco e Brasília? ; distância entre Rio Branco e Brasília ; distância de Rio Branco a Brasília ; qual a distância entre Brasília e Rio Branco? | Entre Rio Branco e Brasília há cerca de 2250 km em linha reta.
-qual a distância entre Rio Branco e Belo Horizonte? ; distância entre Rio Branco e Belo Horizonte ; distância de Rio Branco a Belo Horizonte ; qual a distância entre Belo Horizonte e Rio Branco? | Entre Rio Branco e Belo Horizonte há cerca de 2790 km em linha reta.
-qual a distância entre Rio Branco e Belém? ; distância entre Rio Branco e Belém ; distância de Rio Branco a Belém ; qual a distância entre Belém e Rio Branco? | Entre Rio Branco e Belém há cerca de 2336 km em linha reta.
-qual a distância entre Rio Branco e Curitiba? ; distância entre Rio Branco e Curitiba ; distância de Rio Branco a Curitiba ; qual a distância entre Curitiba e Rio Branco? | Entre Rio Branco e Curitiba há cerca de 2604 km em linha reta.
-qual a distância entre Rio Branco e Recife? ; distância entre Rio Branco e Recife ; distância de Rio Branco a Recife ; qual a distância entre Recife e Rio Branco? | Entre Rio Branco e Recife há cerca de 3623 km em linha reta.
-qual a distância entre Rio Branco e Rio de Janeiro? ; distância entre Rio Branco e Rio de Janeiro ; distância de Rio Branco a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Rio Branco? | Entre Rio Branco e Rio de Janeiro há cerca de 2989 km em linha reta.
-qual a distância entre Rio Branco e Porto Alegre? ; distância entre Rio Branco e Porto Alegre ; distância de Rio Branco a Porto Alegre ; qual a distância entre Porto Alegre e Rio Branco? | Entre Rio Branco e Porto Alegre há cerca de 2818 km em linha reta.
-qual a distância entre Rio Branco e Porto Velho? ; distância entre Rio Branco e Porto Velho ; distância de Rio Branco a Porto Velho ; qual a distância entre Porto Velho e Rio Branco? | Entre Rio Branco e Porto Velho há cerca de 451 km em linha reta.
-qual a distância entre Rio Branco e Boa Vista? ; distância entre Rio Branco e Boa Vista ; distância de Rio Branco a Boa Vista ; qual a distância entre Boa Vista e Rio Branco? | Entre Rio Branco e Boa Vista há cerca de 1628 km em linha reta.
-qual a distância entre Rio Branco e São Paulo? ; distância entre Rio Branco e São Paulo ; distância de Rio Branco a São Paulo ; qual a distância entre São Paulo e Rio Branco? | Entre Rio Branco e São Paulo há cerca de 2708 km em linha reta.
-qual a distância entre Rio Branco e Palmas? ; distância entre Rio Branco e Palmas ; distância de Rio Branco a Palmas ; qual a distância entre Palmas e Rio Branco? | Entre Rio Branco e Palmas há cerca de 2135 km em linha reta.
-qual a distância entre Maceió e Manaus? ; distância entre Maceió e Manaus ; distância de Maceió a Manaus ; qual a distância entre Manaus e Maceió? | Entre Maceió e Manaus há cerca de 2779 km em linha reta.
-qual a distância entre Maceió e Salvador? ; distância entre Maceió e Salvador ; distância de Maceió a Salvador ; qual a distância entre Salvador e Maceió? | Entre Maceió e Salvador há cerca de 475 km em linha reta.
-qual a distância entre Maceió e Fortaleza? ; distância entre Maceió e Fortaleza ; distância de Maceió a Fortaleza ; qual a distância entre Fortaleza e Maceió? | Entre Maceió e Fortaleza há cerca de 731 km em linha reta.
-qual a distância entre Maceió e Brasília? ; distância entre Maceió e Brasília ; distância de Maceió a Brasília ; qual a distância entre Brasília e Maceió? | Entre Maceió e Brasília há cerca de 1486 km em linha reta.
-qual a distância entre Maceió e São Luís? ; distância entre Maceió e São Luís ; distância de Maceió a São Luís ; qual a distância entre São Luís e Maceió? | Entre Maceió e São Luís há cerca de 1236 km em linha reta.
-qual a distância entre Maceió e Belo Horizonte? ; distância entre Maceió e Belo Horizonte ; distância de Maceió a Belo Horizonte ; qual a distância entre Belo Horizonte e Maceió? | Entre Maceió e Belo Horizonte há cerca de 1440 km em linha reta.
-qual a distância entre Maceió e Belém? ; distância entre Maceió e Belém ; distância de Maceió a Belém ; qual a distância entre Belém e Maceió? | Entre Maceió e Belém há cerca de 1681 km em linha reta.
-qual a distância entre Maceió e João Pessoa? ; distância entre Maceió e João Pessoa ; distância de Maceió a João Pessoa ; qual a distância entre João Pessoa e Maceió? | Entre Maceió e João Pessoa há cerca de 299 km em linha reta.
-qual a distância entre Maceió e Curitiba? ; distância entre Maceió e Curitiba ; distância de Maceió a Curitiba ; qual a distância entre Curitiba e Maceió? | Entre Maceió e Curitiba há cerca de 2261 km em linha reta.
-qual a distância entre Maceió e Recife? ; distância entre Maceió e Recife ; distância de Maceió a Recife ; qual a distância entre Recife e Maceió? | Entre Maceió e Recife: ~203 km em linha reta (285 km de estrada).
-qual a distância entre Maceió e Teresina? ; distância entre Maceió e Teresina ; distância de Maceió a Teresina ; qual a distância entre Teresina e Maceió? | Entre Maceió e Teresina há cerca de 931 km em linha reta.
-qual a distância entre Maceió e Rio de Janeiro? ; distância entre Maceió e Rio de Janeiro ; distância de Maceió a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Maceió? | Entre Maceió e Rio de Janeiro há cerca de 1672 km em linha reta.
-qual a distância entre Maceió e Natal? ; distância entre Maceió e Natal ; distância de Maceió a Natal ; qual a distância entre Natal e Maceió? | Entre Maceió e Natal há cerca de 434 km em linha reta.
-qual a distância entre Maceió e Porto Alegre? ; distância entre Maceió e Porto Alegre ; distância de Maceió a Porto Alegre ; qual a distância entre Porto Alegre e Maceió? | Entre Maceió e Porto Alegre há cerca de 2777 km em linha reta.
-qual a distância entre Maceió e São Paulo? ; distância entre Maceió e São Paulo ; distância de Maceió a São Paulo ; qual a distância entre São Paulo e Maceió? | Entre Maceió e São Paulo há cerca de 1930 km em linha reta.
-qual a distância entre Maceió e Aracaju? ; distância entre Maceió e Aracaju ; distância de Maceió a Aracaju ; qual a distância entre Aracaju e Maceió? | Entre Maceió e Aracaju: ~204 km em linha reta (294 km de estrada).
-qual a distância entre Macapá e Manaus? ; distância entre Macapá e Manaus ; distância de Macapá a Manaus ; qual a distância entre Manaus e Macapá? | Entre Macapá e Manaus há cerca de 1055 km em linha reta.
-qual a distância entre Macapá e Salvador? ; distância entre Macapá e Salvador ; distância de Macapá a Salvador ; qual a distância entre Salvador e Macapá? | Entre Macapá e Salvador há cerca de 2003 km em linha reta.
-qual a distância entre Macapá e Fortaleza? ; distância entre Macapá e Fortaleza ; distância de Macapá a Fortaleza ; qual a distância entre Fortaleza e Macapá? | Entre Macapá e Fortaleza há cerca de 1453 km em linha reta.
-qual a distância entre Macapá e Brasília? ; distância entre Macapá e Brasília ; distância de Macapá a Brasília ; qual a distância entre Brasília e Macapá? | Entre Macapá e Brasília há cerca de 1792 km em linha reta.
-qual a distância entre Macapá e Belo Horizonte? ; distância entre Macapá e Belo Horizonte ; distância de Macapá a Belo Horizonte ; qual a distância entre Belo Horizonte e Macapá? | Entre Macapá e Belo Horizonte há cerca de 2351 km em linha reta.
-qual a distância entre Macapá e Belém? ; distância entre Macapá e Belém ; distância de Macapá a Belém ; qual a distância entre Belém e Macapá? | Entre Macapá e Belém há cerca de 330 km em linha reta.
-qual a distância entre Macapá e Curitiba? ; distância entre Macapá e Curitiba ; distância de Macapá a Curitiba ; qual a distância entre Curitiba e Macapá? | Entre Macapá e Curitiba há cerca de 2838 km em linha reta.
-qual a distância entre Macapá e Recife? ; distância entre Macapá e Recife ; distância de Macapá a Recife ; qual a distância entre Recife e Macapá? | Entre Macapá e Recife há cerca de 2007 km em linha reta.
-qual a distância entre Macapá e Rio de Janeiro? ; distância entre Macapá e Rio de Janeiro ; distância de Macapá a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Macapá? | Entre Macapá e Rio de Janeiro há cerca de 2690 km em linha reta.
-qual a distância entre Macapá e Porto Alegre? ; distância entre Macapá e Porto Alegre ; distância de Macapá a Porto Alegre ; qual a distância entre Porto Alegre e Macapá? | Entre Macapá e Porto Alegre há cerca de 3344 km em linha reta.
-qual a distância entre Macapá e Porto Velho? ; distância entre Macapá e Porto Velho ; distância de Macapá a Porto Velho ; qual a distância entre Porto Velho e Macapá? | Entre Macapá e Porto Velho há cerca de 1725 km em linha reta.
-qual a distância entre Macapá e Boa Vista? ; distância entre Macapá e Boa Vista ; distância de Macapá a Boa Vista ; qual a distância entre Boa Vista e Macapá? | Entre Macapá e Boa Vista há cerca de 1112 km em linha reta.
-qual a distância entre Macapá e São Paulo? ; distância entre Macapá e São Paulo ; distância de Macapá a São Paulo ; qual a distância entre São Paulo e Macapá? | Entre Macapá e São Paulo há cerca de 2666 km em linha reta.
-qual a distância entre Macapá e Palmas? ; distância entre Macapá e Palmas ; distância de Macapá a Palmas ; qual a distância entre Palmas e Macapá? | Entre Macapá e Palmas há cerca de 1183 km em linha reta.
-qual a distância entre Manaus e Salvador? ; distância entre Manaus e Salvador ; distância de Manaus a Salvador ; qual a distância entre Salvador e Manaus? | Entre Manaus e Salvador há cerca de 2607 km em linha reta.
-qual a distância entre Manaus e Fortaleza? ; distância entre Manaus e Fortaleza ; distância de Manaus a Fortaleza ; qual a distância entre Fortaleza e Manaus? | Entre Manaus e Fortaleza há cerca de 2385 km em linha reta.
-qual a distância entre Manaus e Brasília? ; distância entre Manaus e Brasília ; distância de Manaus a Brasília ; qual a distância entre Brasília e Manaus? | Entre Manaus e Brasília há cerca de 1932 km em linha reta.
-qual a distância entre Manaus e Vitória? ; distância entre Manaus e Vitória ; distância de Manaus a Vitória ; qual a distância entre Vitória e Manaus? | Entre Manaus e Vitória há cerca de 2867 km em linha reta.
-qual a distância entre Manaus e Goiânia? ; distância entre Manaus e Goiânia ; distância de Manaus a Goiânia ; qual a distância entre Goiânia e Manaus? | Entre Manaus e Goiânia há cerca de 1912 km em linha reta.
-qual a distância entre Manaus e São Luís? ; distância entre Manaus e São Luís ; distância de Manaus a São Luís ; qual a distância entre São Luís e Manaus? | Entre Manaus e São Luís há cerca de 1746 km em linha reta.
-qual a distância entre Manaus e Cuiabá? ; distância entre Manaus e Cuiabá ; distância de Manaus a Cuiabá ; qual a distância entre Cuiabá e Manaus? | Entre Manaus e Cuiabá há cerca de 1453 km em linha reta.
-qual a distância entre Manaus e Campo Grande? ; distância entre Manaus e Campo Grande ; distância de Manaus a Campo Grande ; qual a distância entre Campo Grande e Manaus? | Entre Manaus e Campo Grande há cerca de 2016 km em linha reta.
-qual a distância entre Manaus e Belo Horizonte? ; distância entre Manaus e Belo Horizonte ; distância de Manaus a Belo Horizonte ; qual a distância entre Belo Horizonte e Manaus? | Entre Manaus e Belo Horizonte há cerca de 2556 km em linha reta.
-qual a distância entre Manaus e Belém? ; distância entre Manaus e Belém ; distância de Manaus a Belém ; qual a distância entre Belém e Manaus? | Entre Manaus e Belém há cerca de 1293 km em linha reta.
-qual a distância entre Manaus e João Pessoa? ; distância entre Manaus e João Pessoa ; distância de Manaus a João Pessoa ; qual a distância entre João Pessoa e Manaus? | Entre Manaus e João Pessoa há cerca de 2821 km em linha reta.
-qual a distância entre Manaus e Curitiba? ; distância entre Manaus e Curitiba ; distância de Manaus a Curitiba ; qual a distância entre Curitiba e Manaus? | Entre Manaus e Curitiba há cerca de 2734 km em linha reta.
-qual a distância entre Manaus e Recife? ; distância entre Manaus e Recife ; distância de Manaus a Recife ; qual a distância entre Recife e Manaus? | Entre Manaus e Recife há cerca de 2835 km em linha reta.
-qual a distância entre Manaus e Teresina? ; distância entre Manaus e Teresina ; distância de Manaus a Teresina ; qual a distância entre Teresina e Manaus? | Entre Manaus e Teresina há cerca de 1922 km em linha reta.
-qual a distância entre Manaus e Rio de Janeiro? ; distância entre Manaus e Rio de Janeiro ; distância de Manaus a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Manaus? | Entre Manaus e Rio de Janeiro há cerca de 2852 km em linha reta.
-qual a distância entre Manaus e Natal? ; distância entre Manaus e Natal ; distância de Manaus a Natal ; qual a distância entre Natal e Manaus? | Entre Manaus e Natal há cerca de 2766 km em linha reta.
-qual a distância entre Manaus e Porto Alegre? ; distância entre Manaus e Porto Alegre ; distância de Manaus a Porto Alegre ; qual a distância entre Porto Alegre e Manaus? | Entre Manaus e Porto Alegre há cerca de 3133 km em linha reta.
-qual a distância entre Manaus e Porto Velho? ; distância entre Manaus e Porto Velho ; distância de Manaus a Porto Velho ; qual a distância entre Porto Velho e Manaus? | Entre Manaus e Porto Velho há cerca de 760 km em linha reta.
-qual a distância entre Manaus e Boa Vista? ; distância entre Manaus e Boa Vista ; distância de Manaus a Boa Vista ; qual a distância entre Boa Vista e Manaus? | Entre Manaus e Boa Vista há cerca de 665 km em linha reta.
-qual a distância entre Manaus e Florianópolis? ; distância entre Manaus e Florianópolis ; distância de Manaus a Florianópolis ; qual a distância entre Florianópolis e Manaus? | Entre Manaus e Florianópolis há cerca de 2982 km em linha reta.
-qual a distância entre Manaus e São Paulo? ; distância entre Manaus e São Paulo ; distância de Manaus a São Paulo ; qual a distância entre São Paulo e Manaus? | Entre Manaus e São Paulo há cerca de 2689 km em linha reta.
-qual a distância entre Manaus e Aracaju? ; distância entre Manaus e Aracaju ; distância de Manaus a Aracaju ; qual a distância entre Aracaju e Manaus? | Entre Manaus e Aracaju há cerca de 2676 km em linha reta.
-qual a distância entre Manaus e Palmas? ; distância entre Manaus e Palmas ; distância de Manaus a Palmas ; qual a distância entre Palmas e Manaus? | Entre Manaus e Palmas há cerca de 1515 km em linha reta.
-qual a distância entre Salvador e Fortaleza? ; distância entre Salvador e Fortaleza ; distância de Salvador a Fortaleza ; qual a distância entre Fortaleza e Salvador? | Entre Salvador e Fortaleza há cerca de 1029 km em linha reta.
-qual a distância entre Salvador e Brasília? ; distância entre Salvador e Brasília ; distância de Salvador a Brasília ; qual a distância entre Brasília e Salvador? | Entre Salvador e Brasília: ~1062 km em linha reta (1446 km de estrada).
-qual a distância entre Salvador e Vitória? ; distância entre Salvador e Vitória ; distância de Salvador a Vitória ; qual a distância entre Vitória e Salvador? | Entre Salvador e Vitória há cerca de 839 km em linha reta.
-qual a distância entre Salvador e Goiânia? ; distância entre Salvador e Goiânia ; distância de Salvador a Goiânia ; qual a distância entre Goiânia e Salvador? | Entre Salvador e Goiânia há cerca de 1228 km em linha reta.
-qual a distância entre Salvador e São Luís? ; distância entre Salvador e São Luís ; distância de Salvador a São Luís ; qual a distância entre São Luís e Salvador? | Entre Salvador e São Luís há cerca de 1325 km em linha reta.
-qual a distância entre Salvador e Cuiabá? ; distância entre Salvador e Cuiabá ; distância de Salvador a Cuiabá ; qual a distância entre Cuiabá e Salvador? | Entre Salvador e Cuiabá há cerca de 1918 km em linha reta.
-qual a distância entre Salvador e Campo Grande? ; distância entre Salvador e Campo Grande ; distância de Salvador a Campo Grande ; qual a distância entre Campo Grande e Salvador? | Entre Salvador e Campo Grande há cerca de 1906 km em linha reta.
-qual a distância entre Salvador e Belo Horizonte? ; distância entre Salvador e Belo Horizonte ; distância de Salvador a Belo Horizonte ; qual a distância entre Belo Horizonte e Salvador? | Entre Salvador e Belo Horizonte há cerca de 965 km em linha reta.
-qual a distância entre Salvador e Belém? ; distância entre Salvador e Belém ; distância de Salvador a Belém ; qual a distância entre Belém e Salvador? | Entre Salvador e Belém há cerca de 1689 km em linha reta.
-qual a distância entre Salvador e João Pessoa? ; distância entre Salvador e João Pessoa ; distância de Salvador a João Pessoa ; qual a distância entre João Pessoa e Salvador? | Entre Salvador e João Pessoa há cerca de 763 km em linha reta.
-qual a distância entre Salvador e Curitiba? ; distância entre Salvador e Curitiba ; distância de Salvador a Curitiba ; qual a distância entre Curitiba e Salvador? | Entre Salvador e Curitiba há cerca de 1786 km em linha reta.
-qual a distância entre Salvador e Recife? ; distância entre Salvador e Recife ; distância de Salvador a Recife ; qual a distância entre Recife e Salvador? | Entre Salvador e Recife há cerca de 676 km em linha reta.
-qual a distância entre Salvador e Teresina? ; distância entre Salvador e Teresina ; distância de Salvador a Teresina ; qual a distância entre Teresina e Salvador? | Entre Salvador e Teresina há cerca de 995 km em linha reta.
-qual a distância entre Salvador e Rio de Janeiro? ; distância entre Salvador e Rio de Janeiro ; distância de Salvador a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Salvador? | Entre Salvador e Rio de Janeiro há cerca de 1210 km em linha reta.
-qual a distância entre Salvador e Natal? ; distância entre Salvador e Natal ; distância de Salvador a Natal ; qual a distância entre Natal e Salvador? | Entre Salvador e Natal há cerca de 876 km em linha reta.
-qual a distância entre Salvador e Porto Alegre? ; distância entre Salvador e Porto Alegre ; distância de Salvador a Porto Alegre ; qual a distância entre Porto Alegre e Salvador? | Entre Salvador e Porto Alegre há cerca de 2305 km em linha reta.
-qual a distância entre Salvador e Porto Velho? ; distância entre Salvador e Porto Velho ; distância de Salvador a Porto Velho ; qual a distância entre Porto Velho e Salvador? | Entre Salvador e Porto Velho há cerca de 2811 km em linha reta.
-qual a distância entre Salvador e Boa Vista? ; distância entre Salvador e Boa Vista ; distância de Salvador a Boa Vista ; qual a distância entre Boa Vista e Salvador? | Entre Salvador e Boa Vista há cerca de 3013 km em linha reta.
-qual a distância entre Salvador e Florianópolis? ; distância entre Salvador e Florianópolis ; distância de Salvador a Florianópolis ; qual a distância entre Florianópolis e Salvador? | Entre Salvador e Florianópolis há cerca de 1932 km em linha reta.
-qual a distância entre Salvador e São Paulo? ; distância entre Salvador e São Paulo ; distância de Salvador a São Paulo ; qual a distância entre São Paulo e Salvador? | Entre Salvador e São Paulo há cerca de 1455 km em linha reta.
-qual a distância entre Salvador e Aracaju? ; distância entre Salvador e Aracaju ; distância de Salvador a Aracaju ; qual a distância entre Aracaju e Salvador? | Entre Salvador e Aracaju: ~273 km em linha reta (356 km de estrada).
-qual a distância entre Salvador e Palmas? ; distância entre Salvador e Palmas ; distância de Salvador a Palmas ; qual a distância entre Palmas e Salvador? | Entre Salvador e Palmas há cerca de 1112 km em linha reta.
-qual a distância entre Fortaleza e Brasília? ; distância entre Fortaleza e Brasília ; distância de Fortaleza a Brasília ; qual a distância entre Brasília e Fortaleza? | Entre Fortaleza e Brasília há cerca de 1689 km em linha reta.
-qual a distância entre Fortaleza e Vitória? ; distância entre Fortaleza e Vitória ; distância de Fortaleza a Vitória ; qual a distância entre Vitória e Fortaleza? | Entre Fortaleza e Vitória há cerca de 1856 km em linha reta.
-qual a distância entre Fortaleza e Goiânia? ; distância entre Fortaleza e Goiânia ; distância de Fortaleza a Goiânia ; qual a distância entre Goiânia e Fortaleza? | Entre Fortaleza e Goiânia há cerca de 1857 km em linha reta.
-qual a distância entre Fortaleza e São Luís? ; distância entre Fortaleza e São Luís ; distância de Fortaleza a São Luís ; qual a distância entre São Luís e Fortaleza? | Entre Fortaleza e São Luís há cerca de 653 km em linha reta.
-qual a distância entre Fortaleza e Cuiabá? ; distância entre Fortaleza e Cuiabá ; distância de Fortaleza a Cuiabá ; qual a distância entre Cuiabá e Fortaleza? | Entre Fortaleza e Cuiabá há cerca de 2331 km em linha reta.
-qual a distância entre Fortaleza e Campo Grande? ; distância entre Fortaleza e Campo Grande ; distância de Fortaleza a Campo Grande ; qual a distância entre Campo Grande e Fortaleza? | Entre Fortaleza e Campo Grande há cerca de 2549 km em linha reta.
-qual a distância entre Fortaleza e Belo Horizonte? ; distância entre Fortaleza e Belo Horizonte ; distância de Fortaleza a Belo Horizonte ; qual a distância entre Belo Horizonte e Fortaleza? | Entre Fortaleza e Belo Horizonte há cerca de 1894 km em linha reta.
-qual a distância entre Fortaleza e Belém? ; distância entre Fortaleza e Belém ; distância de Fortaleza a Belém ; qual a distância entre Belém e Fortaleza? | Entre Fortaleza e Belém há cerca de 1135 km em linha reta.
-qual a distância entre Fortaleza e João Pessoa? ; distância entre Fortaleza e João Pessoa ; distância de Fortaleza a João Pessoa ; qual a distância entre João Pessoa e Fortaleza? | Entre Fortaleza e João Pessoa há cerca de 556 km em linha reta.
-qual a distância entre Fortaleza e Curitiba? ; distância entre Fortaleza e Curitiba ; distância de Fortaleza a Curitiba ; qual a distância entre Curitiba e Fortaleza? | Entre Fortaleza e Curitiba há cerca de 2672 km em linha reta.
-qual a distância entre Fortaleza e Recife? ; distância entre Fortaleza e Recife ; distância de Fortaleza a Recife ; qual a distância entre Recife e Fortaleza? | Entre Fortaleza e Recife: ~629 km em linha reta (800 km de estrada).
-qual a distância entre Fortaleza e Teresina? ; distância entre Fortaleza e Teresina ; distância de Fortaleza a Teresina ; qual a distância entre Teresina e Fortaleza? | Entre Fortaleza e Teresina: ~496 km em linha reta (634 km de estrada).
-qual a distância entre Fortaleza e Rio de Janeiro? ; distância entre Fortaleza e Rio de Janeiro ; distância de Fortaleza a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Fortaleza? | Entre Fortaleza e Rio de Janeiro há cerca de 2191 km em linha reta.
-qual a distância entre Fortaleza e Natal? ; distância entre Fortaleza e Natal ; distância de Fortaleza a Natal ; qual a distância entre Natal e Fortaleza? | Entre Fortaleza e Natal: ~436 km em linha reta (537 km de estrada).
-qual a distância entre Fortaleza e Porto Alegre? ; distância entre Fortaleza e Porto Alegre ; distância de Fortaleza a Porto Alegre ; qual a distância entre Porto Alegre e Fortaleza? | Entre Fortaleza e Porto Alegre há cerca de 3216 km em linha reta.
-qual a distância entre Fortaleza e Porto Velho? ; distância entre Fortaleza e Porto Velho ; distância de Fortaleza a Porto Velho ; qual a distância entre Porto Velho e Fortaleza? | Entre Fortaleza e Porto Velho há cerca de 2857 km em linha reta.
-qual a distância entre Fortaleza e Boa Vista? ; distância entre Fortaleza e Boa Vista ; distância de Fortaleza a Boa Vista ; qual a distância entre Boa Vista e Fortaleza? | Entre Fortaleza e Boa Vista há cerca de 2565 km em linha reta.
-qual a distância entre Fortaleza e Florianópolis? ; distância entre Fortaleza e Florianópolis ; distância de Fortaleza a Florianópolis ; qual a distância entre Florianópolis e Fortaleza? | Entre Fortaleza e Florianópolis há cerca de 2859 km em linha reta.
-qual a distância entre Fortaleza e São Paulo? ; distância entre Fortaleza e São Paulo ; distância de Fortaleza a São Paulo ; qual a distância entre São Paulo e Fortaleza? | Entre Fortaleza e São Paulo há cerca de 2370 km em linha reta.
-qual a distância entre Fortaleza e Aracaju? ; distância entre Fortaleza e Aracaju ; distância de Fortaleza a Aracaju ; qual a distância entre Aracaju e Fortaleza? | Entre Fortaleza e Aracaju há cerca de 820 km em linha reta.
-qual a distância entre Fortaleza e Palmas? ; distância entre Fortaleza e Palmas ; distância de Fortaleza a Palmas ; qual a distância entre Palmas e Fortaleza? | Entre Fortaleza e Palmas há cerca de 1301 km em linha reta.
-qual a distância entre Brasília e Vitória? ; distância entre Brasília e Vitória ; distância de Brasília a Vitória ; qual a distância entre Vitória e Brasília? | Entre Brasília e Vitória há cerca de 950 km em linha reta.
-qual a distância entre Brasília e Goiânia? ; distância entre Brasília e Goiânia ; distância de Brasília a Goiânia ; qual a distância entre Goiânia e Brasília? | Entre Brasília e Goiânia: ~175 km em linha reta (209 km de estrada).
-qual a distância entre Brasília e São Luís? ; distância entre Brasília e São Luís ; distância de Brasília a São Luís ; qual a distância entre São Luís e Brasília? | Entre Brasília e São Luís há cerca de 1526 km em linha reta.
-qual a distância entre Brasília e Cuiabá? ; distância entre Brasília e Cuiabá ; distância de Brasília a Cuiabá ; qual a distância entre Cuiabá e Brasília? | Entre Brasília e Cuiabá há cerca de 875 km em linha reta.
-qual a distância entre Brasília e Campo Grande? ; distância entre Brasília e Campo Grande ; distância de Brasília a Campo Grande ; qual a distância entre Campo Grande e Brasília? | Entre Brasília e Campo Grande há cerca de 878 km em linha reta.
-qual a distância entre Brasília e Belo Horizonte? ; distância entre Brasília e Belo Horizonte ; distância de Brasília a Belo Horizonte ; qual a distância entre Belo Horizonte e Brasília? | Entre Brasília e Belo Horizonte: ~625 km em linha reta (716 km de estrada).
-qual a distância entre Brasília e Belém? ; distância entre Brasília e Belém ; distância de Brasília a Belém ; qual a distância entre Belém e Brasília? | Entre Brasília e Belém: ~1594 km em linha reta (2120 km de estrada).
-qual a distância entre Brasília e João Pessoa? ; distância entre Brasília e João Pessoa ; distância de Brasília a João Pessoa ; qual a distância entre João Pessoa e Brasília? | Entre Brasília e João Pessoa há cerca de 1718 km em linha reta.
-qual a distância entre Brasília e Curitiba? ; distância entre Brasília e Curitiba ; distância de Brasília a Curitiba ; qual a distância entre Curitiba e Brasília? | Entre Brasília e Curitiba: ~1082 km em linha reta (1366 km de estrada).
-qual a distância entre Brasília e Recife? ; distância entre Brasília e Recife ; distância de Brasília a Recife ; qual a distância entre Recife e Brasília? | Entre Brasília e Recife há cerca de 1659 km em linha reta.
-qual a distância entre Brasília e Teresina? ; distância entre Brasília e Teresina ; distância de Brasília a Teresina ; qual a distância entre Teresina e Brasília? | Entre Brasília e Teresina há cerca de 1314 km em linha reta.
-qual a distância entre Brasília e Rio de Janeiro? ; distância entre Brasília e Rio de Janeiro ; distância de Brasília a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Brasília? | Entre Brasília e Rio de Janeiro: ~936 km em linha reta (1148 km de estrada).
-qual a distância entre Brasília e Natal? ; distância entre Brasília e Natal ; distância de Brasília a Natal ; qual a distância entre Natal e Brasília? | Entre Brasília e Natal há cerca de 1777 km em linha reta.
-qual a distância entre Brasília e Porto Alegre? ; distância entre Brasília e Porto Alegre ; distância de Brasília a Porto Alegre ; qual a distância entre Porto Alegre e Brasília? | Entre Brasília e Porto Alegre há cerca de 1620 km em linha reta.
-qual a distância entre Brasília e Porto Velho? ; distância entre Brasília e Porto Velho ; distância de Brasília a Porto Velho ; qual a distância entre Porto Velho e Brasília? | Entre Brasília e Porto Velho há cerca de 1901 km em linha reta.
-qual a distância entre Brasília e Boa Vista? ; distância entre Brasília e Boa Vista ; distância de Brasília a Boa Vista ; qual a distância entre Boa Vista e Brasília? | Entre Brasília e Boa Vista há cerca de 2499 km em linha reta.
-qual a distância entre Brasília e Florianópolis? ; distância entre Brasília e Florianópolis ; distância de Brasília a Florianópolis ; qual a distância entre Florianópolis e Brasília? | Entre Brasília e Florianópolis há cerca de 1315 km em linha reta.
-qual a distância entre Brasília e São Paulo? ; distância entre Brasília e São Paulo ; distância de Brasília a São Paulo ; qual a distância entre São Paulo e Brasília? | Entre Brasília e São Paulo: ~875 km em linha reta (1015 km de estrada).
-qual a distância entre Brasília e Aracaju? ; distância entre Brasília e Aracaju ; distância de Brasília a Aracaju ; qual a distância entre Aracaju e Brasília? | Entre Brasília e Aracaju há cerca de 1291 km em linha reta.
-qual a distância entre Brasília e Palmas? ; distância entre Brasília e Palmas ; distância de Brasília a Palmas ; qual a distância entre Palmas e Brasília? | Entre Brasília e Palmas: ~617 km em linha reta (840 km de estrada).
-qual a distância entre Vitória e Belo Horizonte? ; distância entre Vitória e Belo Horizonte ; distância de Vitória a Belo Horizonte ; qual a distância entre Belo Horizonte e Vitória? | Entre Vitória e Belo Horizonte: ~381 km em linha reta (524 km de estrada).
-qual a distância entre Vitória e Belém? ; distância entre Vitória e Belém ; distância de Vitória a Belém ; qual a distância entre Belém e Vitória? | Entre Vitória e Belém há cerca de 2278 km em linha reta.
-qual a distância entre Vitória e Curitiba? ; distância entre Vitória e Curitiba ; distância de Vitória a Curitiba ; qual a distância entre Curitiba e Vitória? | Entre Vitória e Curitiba há cerca de 1079 km em linha reta.
-qual a distância entre Vitória e Recife? ; distância entre Vitória e Recife ; distância de Vitória a Recife ; qual a distância entre Recife e Vitória? | Entre Vitória e Recife há cerca de 1484 km em linha reta.
-qual a distância entre Vitória e Rio de Janeiro? ; distância entre Vitória e Rio de Janeiro ; distância de Vitória a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Vitória? | Entre Vitória e Rio de Janeiro: ~413 km em linha reta (521 km de estrada).
-qual a distância entre Vitória e Porto Alegre? ; distância entre Vitória e Porto Alegre ; distância de Vitória a Porto Alegre ; qual a distância entre Porto Alegre e Vitória? | Entre Vitória e Porto Alegre há cerca de 1538 km em linha reta.
-qual a distância entre Vitória e São Paulo? ; distância entre Vitória e São Paulo ; distância de Vitória a São Paulo ; qual a distância entre São Paulo e Vitória? | Entre Vitória e São Paulo há cerca de 744 km em linha reta.
-qual a distância entre Goiânia e Cuiabá? ; distância entre Goiânia e Cuiabá ; distância de Goiânia a Cuiabá ; qual a distância entre Cuiabá e Goiânia? | Entre Goiânia e Cuiabá há cerca de 740 km em linha reta.
-qual a distância entre Goiânia e Campo Grande? ; distância entre Goiânia e Campo Grande ; distância de Goiânia a Campo Grande ; qual a distância entre Campo Grande e Goiânia? | Entre Goiânia e Campo Grande há cerca de 704 km em linha reta.
-qual a distância entre Goiânia e Belo Horizonte? ; distância entre Goiânia e Belo Horizonte ; distância de Goiânia a Belo Horizonte ; qual a distância entre Belo Horizonte e Goiânia? | Entre Goiânia e Belo Horizonte há cerca de 667 km em linha reta.
-qual a distância entre Goiânia e Belém? ; distância entre Goiânia e Belém ; distância de Goiânia a Belém ; qual a distância entre Belém e Goiânia? | Entre Goiânia e Belém há cerca de 1696 km em linha reta.
-qual a distância entre Goiânia e Curitiba? ; distância entre Goiânia e Curitiba ; distância de Goiânia a Curitiba ; qual a distância entre Curitiba e Goiânia? | Entre Goiânia e Curitiba há cerca de 972 km em linha reta.
-qual a distância entre Goiânia e Recife? ; distância entre Goiânia e Recife ; distância de Goiânia a Recife ; qual a distância entre Recife e Goiânia? | Entre Goiânia e Recife há cerca de 1833 km em linha reta.
-qual a distância entre Goiânia e Rio de Janeiro? ; distância entre Goiânia e Rio de Janeiro ; distância de Goiânia a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Goiânia? | Entre Goiânia e Rio de Janeiro há cerca de 940 km em linha reta.
-qual a distância entre Goiânia e Porto Alegre? ; distância entre Goiânia e Porto Alegre ; distância de Goiânia a Porto Alegre ; qual a distância entre Porto Alegre e Goiânia? | Entre Goiânia e Porto Alegre há cerca de 1497 km em linha reta.
-qual a distância entre Goiânia e São Paulo? ; distância entre Goiânia e São Paulo ; distância de Goiânia a São Paulo ; qual a distância entre São Paulo e Goiânia? | Entre Goiânia e São Paulo há cerca de 811 km em linha reta.
-qual a distância entre São Luís e Belo Horizonte? ; distância entre São Luís e Belo Horizonte ; distância de São Luís a Belo Horizonte ; qual a distância entre Belo Horizonte e São Luís? | Entre São Luís e Belo Horizonte há cerca de 1934 km em linha reta.
-qual a distância entre São Luís e Belém? ; distância entre São Luís e Belém ; distância de São Luís a Belém ; qual a distância entre Belém e São Luís? | Entre São Luís e Belém: ~482 km em linha reta (806 km de estrada).
-qual a distância entre São Luís e João Pessoa? ; distância entre São Luís e João Pessoa ; distância de São Luís a João Pessoa ; qual a distância entre João Pessoa e São Luís? | Entre São Luís e João Pessoa há cerca de 1164 km em linha reta.
-qual a distância entre São Luís e Curitiba? ; distância entre São Luís e Curitiba ; distância de São Luís a Curitiba ; qual a distância entre Curitiba e São Luís? | Entre São Luís e Curitiba há cerca de 2601 km em linha reta.
-qual a distância entre São Luís e Recife? ; distância entre São Luís e Recife ; distância de São Luís a Recife ; qual a distância entre Recife e São Luís? | Entre São Luís e Recife há cerca de 1211 km em linha reta.
-qual a distância entre São Luís e Teresina? ; distância entre São Luís e Teresina ; distância de São Luís a Teresina ; qual a distância entre Teresina e São Luís? | Entre São Luís e Teresina há cerca de 330 km em linha reta.
-qual a distância entre São Luís e Rio de Janeiro? ; distância entre São Luís e Rio de Janeiro ; distância de São Luís a Rio de Janeiro ; qual a distância entre Rio de Janeiro e São Luís? | Entre São Luís e Rio de Janeiro há cerca de 2269 km em linha reta.
-qual a distância entre São Luís e Natal? ; distância entre São Luís e Natal ; distância de São Luís a Natal ; qual a distância entre Natal e São Luís? | Entre São Luís e Natal há cerca de 1072 km em linha reta.
-qual a distância entre São Luís e Porto Alegre? ; distância entre São Luís e Porto Alegre ; distância de São Luís a Porto Alegre ; qual a distância entre Porto Alegre e São Luís? | Entre São Luís e Porto Alegre há cerca de 3144 km em linha reta.
-qual a distância entre São Luís e São Paulo? ; distância entre São Luís e São Paulo ; distância de São Luís a São Paulo ; qual a distância entre São Paulo e São Luís? | Entre São Luís e São Paulo há cerca de 2351 km em linha reta.
-qual a distância entre São Luís e Aracaju? ; distância entre São Luís e Aracaju ; distância de São Luís a Aracaju ; qual a distância entre Aracaju e São Luís? | Entre São Luís e Aracaju há cerca de 1230 km em linha reta.
-qual a distância entre Cuiabá e Campo Grande? ; distância entre Cuiabá e Campo Grande ; distância de Cuiabá a Campo Grande ; qual a distância entre Campo Grande e Cuiabá? | Entre Cuiabá e Campo Grande: ~563 km em linha reta (694 km de estrada).
-qual a distância entre Cuiabá e Belo Horizonte? ; distância entre Cuiabá e Belo Horizonte ; distância de Cuiabá a Belo Horizonte ; qual a distância entre Belo Horizonte e Cuiabá? | Entre Cuiabá e Belo Horizonte há cerca de 1374 km em linha reta.
-qual a distância entre Cuiabá e Belém? ; distância entre Cuiabá e Belém ; distância de Cuiabá a Belém ; qual a distância entre Belém e Cuiabá? | Entre Cuiabá e Belém há cerca de 1780 km em linha reta.
-qual a distância entre Cuiabá e Curitiba? ; distância entre Cuiabá e Curitiba ; distância de Cuiabá a Curitiba ; qual a distância entre Curitiba e Cuiabá? | Entre Cuiabá e Curitiba há cerca de 1303 km em linha reta.
-qual a distância entre Cuiabá e Recife? ; distância entre Cuiabá e Recife ; distância de Cuiabá a Recife ; qual a distância entre Recife e Cuiabá? | Entre Cuiabá e Recife há cerca de 2455 km em linha reta.
-qual a distância entre Cuiabá e Rio de Janeiro? ; distância entre Cuiabá e Rio de Janeiro ; distância de Cuiabá a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Cuiabá? | Entre Cuiabá e Rio de Janeiro há cerca de 1580 km em linha reta.
-qual a distância entre Cuiabá e Porto Alegre? ; distância entre Cuiabá e Porto Alegre ; distância de Cuiabá a Porto Alegre ; qual a distância entre Porto Alegre e Cuiabá? | Entre Cuiabá e Porto Alegre há cerca de 1680 km em linha reta.
-qual a distância entre Cuiabá e São Paulo? ; distância entre Cuiabá e São Paulo ; distância de Cuiabá a São Paulo ; qual a distância entre São Paulo e Cuiabá? | Entre Cuiabá e São Paulo há cerca de 1327 km em linha reta.
-qual a distância entre Campo Grande e Belo Horizonte? ; distância entre Campo Grande e Belo Horizonte ; distância de Campo Grande a Belo Horizonte ; qual a distância entre Belo Horizonte e Campo Grande? | Entre Campo Grande e Belo Horizonte há cerca de 1117 km em linha reta.
-qual a distância entre Campo Grande e Belém? ; distância entre Campo Grande e Belém ; distância de Campo Grande a Belém ; qual a distância entre Belém e Campo Grande? | Entre Campo Grande e Belém há cerca de 2216 km em linha reta.
-qual a distância entre Campo Grande e Curitiba? ; distância entre Campo Grande e Curitiba ; distância de Campo Grande a Curitiba ; qual a distância entre Curitiba e Campo Grande? | Entre Campo Grande e Curitiba há cerca de 777 km em linha reta.
-qual a distância entre Campo Grande e Recife? ; distância entre Campo Grande e Recife ; distância de Campo Grande a Recife ; qual a distância entre Recife e Campo Grande? | Entre Campo Grande e Recife há cerca de 2532 km em linha reta.
-qual a distância entre Campo Grande e Rio de Janeiro? ; distância entre Campo Grande e Rio de Janeiro ; distância de Campo Grande a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Campo Grande? | Entre Campo Grande e Rio de Janeiro há cerca de 1213 km em linha reta.
-qual a distância entre Campo Grande e Porto Alegre? ; distância entre Campo Grande e Porto Alegre ; distância de Campo Grande a Porto Alegre ; qual a distância entre Porto Alegre e Campo Grande? | Entre Campo Grande e Porto Alegre há cerca de 1117 km em linha reta.
-qual a distância entre Campo Grande e São Paulo? ; distância entre Campo Grande e São Paulo ; distância de Campo Grande a São Paulo ; qual a distância entre São Paulo e Campo Grande? | Entre Campo Grande e São Paulo há cerca de 892 km em linha reta.
-qual a distância entre Belo Horizonte e Belém? ; distância entre Belo Horizonte e Belém ; distância de Belo Horizonte a Belém ; qual a distância entre Belém e Belo Horizonte? | Entre Belo Horizonte e Belém há cerca de 2112 km em linha reta.
-qual a distância entre Belo Horizonte e João Pessoa? ; distância entre Belo Horizonte e João Pessoa ; distância de Belo Horizonte a João Pessoa ; qual a distância entre João Pessoa e Belo Horizonte? | Entre Belo Horizonte e João Pessoa há cerca de 1727 km em linha reta.
-qual a distância entre Belo Horizonte e Curitiba? ; distância entre Belo Horizonte e Curitiba ; distância de Belo Horizonte a Curitiba ; qual a distância entre Curitiba e Belo Horizonte? | Entre Belo Horizonte e Curitiba há cerca de 822 km em linha reta.
-qual a distância entre Belo Horizonte e Recife? ; distância entre Belo Horizonte e Recife ; distância de Belo Horizonte a Recife ; qual a distância entre Recife e Belo Horizonte? | Entre Belo Horizonte e Recife há cerca de 1641 km em linha reta.
-qual a distância entre Belo Horizonte e Teresina? ; distância entre Belo Horizonte e Teresina ; distância de Belo Horizonte a Teresina ; qual a distância entre Teresina e Belo Horizonte? | Entre Belo Horizonte e Teresina há cerca de 1653 km em linha reta.
-qual a distância entre Belo Horizonte e Rio de Janeiro? ; distância entre Belo Horizonte e Rio de Janeiro ; distância de Belo Horizonte a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Belo Horizonte? | Cerca de 342 km em linha reta (434 km de estrada).
-qual a distância entre Belo Horizonte e Natal? ; distância entre Belo Horizonte e Natal ; distância de Belo Horizonte a Natal ; qual a distância entre Natal e Belo Horizonte? | Entre Belo Horizonte e Natal há cerca de 1832 km em linha reta.
-qual a distância entre Belo Horizonte e Porto Alegre? ; distância entre Belo Horizonte e Porto Alegre ; distância de Belo Horizonte a Porto Alegre ; qual a distância entre Porto Alegre e Belo Horizonte? | Entre Belo Horizonte e Porto Alegre há cerca de 1342 km em linha reta.
-qual a distância entre Belo Horizonte e Porto Velho? ; distância entre Belo Horizonte e Porto Velho ; distância de Belo Horizonte a Porto Velho ; qual a distância entre Porto Velho e Belo Horizonte? | Entre Belo Horizonte e Porto Velho há cerca de 2479 km em linha reta.
-qual a distância entre Belo Horizonte e Boa Vista? ; distância entre Belo Horizonte e Boa Vista ; distância de Belo Horizonte a Boa Vista ; qual a distância entre Boa Vista e Belo Horizonte? | Entre Belo Horizonte e Boa Vista há cerca de 3120 km em linha reta.
-qual a distância entre Belo Horizonte e Florianópolis? ; distância entre Belo Horizonte e Florianópolis ; distância de Belo Horizonte a Florianópolis ; qual a distância entre Florianópolis e Belo Horizonte? | Entre Belo Horizonte e Florianópolis há cerca de 974 km em linha reta.
-qual a distância entre Belo Horizonte e São Paulo? ; distância entre Belo Horizonte e São Paulo ; distância de Belo Horizonte a São Paulo ; qual a distância entre São Paulo e Belo Horizonte? | Cerca de 491 km em linha reta (586 km de estrada).
-qual a distância entre Belo Horizonte e Aracaju? ; distância entre Belo Horizonte e Aracaju ; distância de Belo Horizonte a Aracaju ; qual a distância entre Aracaju e Belo Horizonte? | Entre Belo Horizonte e Aracaju há cerca de 1239 km em linha reta.
-qual a distância entre Belo Horizonte e Palmas? ; distância entre Belo Horizonte e Palmas ; distância de Belo Horizonte a Palmas ; qual a distância entre Palmas e Belo Horizonte? | Entre Belo Horizonte e Palmas há cerca de 1173 km em linha reta.
-qual a distância entre Belém e João Pessoa? ; distância entre Belém e João Pessoa ; distância de Belém a João Pessoa ; qual a distância entre João Pessoa e Belém? | Entre Belém e João Pessoa há cerca de 1638 km em linha reta.
-qual a distância entre Belém e Curitiba? ; distância entre Belém e Curitiba ; distância de Belém a Curitiba ; qual a distância entre Curitiba e Belém? | Entre Belém e Curitiba há cerca de 2667 km em linha reta.
-qual a distância entre Belém e Recife? ; distância entre Belém e Recife ; distância de Belém a Recife ; qual a distância entre Recife e Belém? | Entre Belém e Recife há cerca de 1678 km em linha reta.
-qual a distância entre Belém e Teresina? ; distância entre Belém e Teresina ; distância de Belém a Teresina ; qual a distância entre Teresina e Belém? | Entre Belém e Teresina há cerca de 751 km em linha reta.
-qual a distância entre Belém e Rio de Janeiro? ; distância entre Belém e Rio de Janeiro ; distância de Belém a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Belém? | Entre Belém e Rio de Janeiro há cerca de 2454 km em linha reta.
-qual a distância entre Belém e Natal? ; distância entre Belém e Natal ; distância de Belém a Natal ; qual a distância entre Natal e Belém? | Entre Belém e Natal há cerca de 1552 km em linha reta.
-qual a distância entre Belém e Porto Alegre? ; distância entre Belém e Porto Alegre ; distância de Belém a Porto Alegre ; qual a distância entre Porto Alegre e Belém? | Entre Belém e Porto Alegre há cerca de 3191 km em linha reta.
-qual a distância entre Belém e Porto Velho? ; distância entre Belém e Porto Velho ; distância de Belém a Porto Velho ; qual a distância entre Porto Velho e Belém? | Entre Belém e Porto Velho há cerca de 1888 km em linha reta.
-qual a distância entre Belém e Boa Vista? ; distância entre Belém e Boa Vista ; distância de Belém a Boa Vista ; qual a distância entre Boa Vista e Belém? | Entre Belém e Boa Vista há cerca de 1434 km em linha reta.
-qual a distância entre Belém e Florianópolis? ; distância entre Belém e Florianópolis ; distância de Belém a Florianópolis ; qual a distância entre Florianópolis e Belém? | Entre Belém e Florianópolis há cerca de 2907 km em linha reta.
-qual a distância entre Belém e São Paulo? ; distância entre Belém e São Paulo ; distância de Belém a São Paulo ; qual a distância entre São Paulo e Belém? | Entre Belém e São Paulo há cerca de 2465 km em linha reta.
-qual a distância entre Belém e Aracaju? ; distância entre Belém e Aracaju ; distância de Belém a Aracaju ; qual a distância entre Aracaju e Belém? | Entre Belém e Aracaju há cerca de 1645 km em linha reta.
-qual a distância entre Belém e Palmas? ; distância entre Belém e Palmas ; distância de Belém a Palmas ; qual a distância entre Palmas e Belém? | Entre Belém e Palmas: ~978 km em linha reta (1225 km de estrada).
-qual a distância entre João Pessoa e Curitiba? ; distância entre João Pessoa e Curitiba ; distância de João Pessoa a Curitiba ; qual a distância entre Curitiba e João Pessoa? | Entre João Pessoa e Curitiba há cerca de 2547 km em linha reta.
-qual a distância entre João Pessoa e Recife? ; distância entre João Pessoa e Recife ; distância de João Pessoa a Recife ; qual a distância entre Recife e João Pessoa? | Entre João Pessoa e Recife: ~104 km em linha reta (120 km de estrada).
-qual a distância entre João Pessoa e Teresina? ; distância entre João Pessoa e Teresina ; distância de João Pessoa a Teresina ; qual a distância entre Teresina e João Pessoa? | Entre João Pessoa e Teresina há cerca de 906 km em linha reta.
-qual a distância entre João Pessoa e Rio de Janeiro? ; distância entre João Pessoa e Rio de Janeiro ; distância de João Pessoa a Rio de Janeiro ; qual a distância entre Rio de Janeiro e João Pessoa? | Entre João Pessoa e Rio de Janeiro há cerca de 1968 km em linha reta.
-qual a distância entre João Pessoa e Natal? ; distância entre João Pessoa e Natal ; distância de João Pessoa a Natal ; qual a distância entre Natal e João Pessoa? | Entre João Pessoa e Natal: ~152 km em linha reta (185 km de estrada).
-qual a distância entre João Pessoa e Porto Alegre? ; distância entre João Pessoa e Porto Alegre ; distância de João Pessoa a Porto Alegre ; qual a distância entre Porto Alegre e João Pessoa? | Entre João Pessoa e Porto Alegre há cerca de 3068 km em linha reta.
-qual a distância entre João Pessoa e São Paulo? ; distância entre João Pessoa e São Paulo ; distância de João Pessoa a São Paulo ; qual a distância entre São Paulo e João Pessoa? | Entre João Pessoa e São Paulo há cerca de 2218 km em linha reta.
-qual a distância entre João Pessoa e Aracaju? ; distância entre João Pessoa e Aracaju ; distância de João Pessoa a Aracaju ; qual a distância entre Aracaju e João Pessoa? | Entre João Pessoa e Aracaju há cerca de 490 km em linha reta.
-qual a distância entre Curitiba e Recife? ; distância entre Curitiba e Recife ; distância de Curitiba a Recife ; qual a distância entre Recife e Curitiba? | Entre Curitiba e Recife há cerca de 2462 km em linha reta.
-qual a distância entre Curitiba e Teresina? ; distância entre Curitiba e Teresina ; distância de Curitiba a Teresina ; qual a distância entre Teresina e Curitiba? | Entre Curitiba e Teresina há cerca de 2364 km em linha reta.
-qual a distância entre Curitiba e Rio de Janeiro? ; distância entre Curitiba e Rio de Janeiro ; distância de Curitiba a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Curitiba? | Entre Curitiba e Rio de Janeiro há cerca de 679 km em linha reta.
-qual a distância entre Curitiba e Natal? ; distância entre Curitiba e Natal ; distância de Curitiba a Natal ; qual a distância entre Natal e Curitiba? | Entre Curitiba e Natal há cerca de 2647 km em linha reta.
-qual a distância entre Curitiba e Porto Alegre? ; distância entre Curitiba e Porto Alegre ; distância de Curitiba a Porto Alegre ; qual a distância entre Porto Alegre e Curitiba? | Entre Curitiba e Porto Alegre: ~547 km em linha reta (711 km de estrada).
-qual a distância entre Curitiba e Porto Velho? ; distância entre Curitiba e Porto Velho ; distância de Curitiba a Porto Velho ; qual a distância entre Porto Velho e Curitiba? | Entre Curitiba e Porto Velho há cerca de 2414 km em linha reta.
-qual a distância entre Curitiba e Boa Vista? ; distância entre Curitiba e Boa Vista ; distância de Curitiba a Boa Vista ; qual a distância entre Boa Vista e Curitiba? | Entre Curitiba e Boa Vista há cerca de 3373 km em linha reta.
-qual a distância entre Curitiba e Florianópolis? ; distância entre Curitiba e Florianópolis ; distância de Curitiba a Florianópolis ; qual a distância entre Florianópolis e Curitiba? | Entre Curitiba e Florianópolis: ~252 km em linha reta (300 km de estrada).
-qual a distância entre Curitiba e São Paulo? ; distância entre Curitiba e São Paulo ; distância de Curitiba a São Paulo ; qual a distância entre São Paulo e Curitiba? | Entre Curitiba e São Paulo: ~339 km em linha reta (408 km de estrada).
-qual a distância entre Curitiba e Aracaju? ; distância entre Curitiba e Aracaju ; distância de Curitiba a Aracaju ; qual a distância entre Aracaju e Curitiba? | Entre Curitiba e Aracaju há cerca de 2060 km em linha reta.
-qual a distância entre Curitiba e Palmas? ; distância entre Curitiba e Palmas ; distância de Curitiba a Palmas ; qual a distância entre Palmas e Curitiba? | Entre Curitiba e Palmas há cerca de 1691 km em linha reta.
-qual a distância entre Recife e Teresina? ; distância entre Recife e Teresina ; distância de Recife a Teresina ; qual a distância entre Teresina e Recife? | Entre Recife e Teresina há cerca de 935 km em linha reta.
-qual a distância entre Recife e Rio de Janeiro? ; distância entre Recife e Rio de Janeiro ; distância de Recife a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Recife? | Entre Recife e Rio de Janeiro há cerca de 1875 km em linha reta.
-qual a distância entre Recife e Natal? ; distância entre Recife e Natal ; distância de Recife a Natal ; qual a distância entre Natal e Recife? | Entre Recife e Natal há cerca de 253 km em linha reta.
-qual a distância entre Recife e Porto Alegre? ; distância entre Recife e Porto Alegre ; distância de Recife a Porto Alegre ; qual a distância entre Porto Alegre e Recife? | Entre Recife e Porto Alegre há cerca de 2979 km em linha reta.
-qual a distância entre Recife e Porto Velho? ; distância entre Recife e Porto Velho ; distância de Recife a Porto Velho ; qual a distância entre Porto Velho e Recife? | Entre Recife e Porto Velho há cerca de 3193 km em linha reta.
-qual a distância entre Recife e Boa Vista? ; distância entre Recife e Boa Vista ; distância de Recife a Boa Vista ; qual a distância entre Boa Vista e Recife? | Entre Recife e Boa Vista há cerca de 3106 km em linha reta.
-qual a distância entre Recife e Florianópolis? ; distância entre Recife e Florianópolis ; distância de Recife a Florianópolis ; qual a distância entre Florianópolis e Recife? | Entre Recife e Florianópolis há cerca de 2606 km em linha reta.
-qual a distância entre Recife e São Paulo? ; distância entre Recife e São Paulo ; distância de Recife a São Paulo ; qual a distância entre São Paulo e Recife? | Entre Recife e São Paulo há cerca de 2131 km em linha reta.
-qual a distância entre Recife e Aracaju? ; distância entre Recife e Aracaju ; distância de Recife a Aracaju ; qual a distância entre Aracaju e Recife? | Entre Recife e Aracaju há cerca de 402 km em linha reta.
-qual a distância entre Recife e Palmas? ; distância entre Recife e Palmas ; distância de Recife a Palmas ; qual a distância entre Palmas e Recife? | Entre Recife e Palmas há cerca de 1496 km em linha reta.
-qual a distância entre Teresina e Rio de Janeiro? ; distância entre Teresina e Rio de Janeiro ; distância de Teresina a Rio de Janeiro ; qual a distância entre Rio de Janeiro e Teresina? | Entre Teresina e Rio de Janeiro há cerca de 1982 km em linha reta.
-qual a distância entre Teresina e Natal? ; distância entre Teresina e Natal ; distância de Teresina a Natal ; qual a distância entre Natal e Teresina? | Entre Teresina e Natal há cerca de 844 km em linha reta.
-qual a distância entre Teresina e Porto Alegre? ; distância entre Teresina e Porto Alegre ; distância de Teresina a Porto Alegre ; qual a distância entre Porto Alegre e Teresina? | Entre Teresina e Porto Alegre há cerca de 2911 km em linha reta.
-qual a distância entre Teresina e São Paulo? ; distância entre Teresina e São Paulo ; distância de Teresina a São Paulo ; qual a distância entre São Paulo e Teresina? | Entre Teresina e São Paulo há cerca de 2093 km em linha reta.
-qual a distância entre Teresina e Aracaju? ; distância entre Teresina e Aracaju ; distância de Teresina a Aracaju ; qual a distância entre Aracaju e Teresina? | Entre Teresina e Aracaju há cerca de 907 km em linha reta.
-qual a distância entre Rio de Janeiro e Natal? ; distância entre Rio de Janeiro e Natal ; distância de Rio de Janeiro a Natal ; qual a distância entre Natal e Rio de Janeiro? | Entre Rio de Janeiro e Natal há cerca de 2086 km em linha reta.
-qual a distância entre Rio de Janeiro e Porto Alegre? ; distância entre Rio de Janeiro e Porto Alegre ; distância de Rio de Janeiro a Porto Alegre ; qual a distância entre Porto Alegre e Rio de Janeiro? | Entre Rio de Janeiro e Porto Alegre há cerca de 1126 km em linha reta.
-qual a distância entre Rio de Janeiro e Porto Velho? ; distância entre Rio de Janeiro e Porto Velho ; distância de Rio de Janeiro a Porto Velho ; qual a distância entre Porto Velho e Rio de Janeiro? | Entre Rio de Janeiro e Porto Velho há cerca de 2712 km em linha reta.
-qual a distância entre Rio de Janeiro e Boa Vista? ; distância entre Rio de Janeiro e Boa Vista ; distância de Rio de Janeiro a Boa Vista ; qual a distância entre Boa Vista e Rio de Janeiro? | Entre Rio de Janeiro e Boa Vista há cerca de 3434 km em linha reta.
-qual a distância entre Rio de Janeiro e Florianópolis? ; distância entre Rio de Janeiro e Florianópolis ; distância de Rio de Janeiro a Florianópolis ; qual a distância entre Florianópolis e Rio de Janeiro? | Entre Rio de Janeiro e Florianópolis há cerca de 751 km em linha reta.
-qual a distância entre Rio de Janeiro e São Paulo? ; distância entre Rio de Janeiro e São Paulo ; distância de Rio de Janeiro a São Paulo ; qual a distância entre São Paulo e Rio de Janeiro? | Cerca de 361 km em linha reta (430 km de estrada).
-qual a distância entre Rio de Janeiro e Aracaju? ; distância entre Rio de Janeiro e Aracaju ; distância de Rio de Janeiro a Aracaju ; qual a distância entre Aracaju e Rio de Janeiro? | Entre Rio de Janeiro e Aracaju há cerca de 1479 km em linha reta.
-qual a distância entre Rio de Janeiro e Palmas? ; distância entre Rio de Janeiro e Palmas ; distância de Rio de Janeiro a Palmas ; qual a distância entre Palmas e Rio de Janeiro? | Entre Rio de Janeiro e Palmas há cerca de 1510 km em linha reta.
-qual a distância entre Natal e Porto Alegre? ; distância entre Natal e Porto Alegre ; distância de Natal a Porto Alegre ; qual a distância entre Porto Alegre e Natal? | Entre Natal e Porto Alegre há cerca de 3174 km em linha reta.
-qual a distância entre Natal e São Paulo? ; distância entre Natal e São Paulo ; distância de Natal a São Paulo ; qual a distância entre São Paulo e Natal? | Entre Natal e São Paulo há cerca de 2322 km em linha reta.
-qual a distância entre Natal e Aracaju? ; distância entre Natal e Aracaju ; distância de Natal a Aracaju ; qual a distância entre Aracaju e Natal? | Entre Natal e Aracaju há cerca de 608 km em linha reta.
-qual a distância entre Porto Alegre e Porto Velho? ; distância entre Porto Alegre e Porto Velho ; distância de Porto Alegre a Porto Velho ; qual a distância entre Porto Velho e Porto Alegre? | Entre Porto Alegre e Porto Velho há cerca de 2709 km em linha reta.
-qual a distância entre Porto Alegre e Boa Vista? ; distância entre Porto Alegre e Boa Vista ; distância de Porto Alegre a Boa Vista ; qual a distância entre Boa Vista e Porto Alegre? | Entre Porto Alegre e Boa Vista há cerca de 3789 km em linha reta.
-qual a distância entre Porto Alegre e Florianópolis? ; distância entre Porto Alegre e Florianópolis ; distância de Porto Alegre a Florianópolis ; qual a distância entre Florianópolis e Porto Alegre? | Cerca de 376 km em linha reta (476 km de estrada).
-qual a distância entre Porto Alegre e São Paulo? ; distância entre Porto Alegre e São Paulo ; distância de Porto Alegre a São Paulo ; qual a distância entre São Paulo e Porto Alegre? | Entre Porto Alegre e São Paulo há cerca de 852 km em linha reta.
-qual a distância entre Porto Alegre e Aracaju? ; distância entre Porto Alegre e Aracaju ; distância de Porto Alegre a Aracaju ; qual a distância entre Aracaju e Porto Alegre? | Entre Porto Alegre e Aracaju há cerca de 2578 km em linha reta.
-qual a distância entre Porto Alegre e Palmas? ; distância entre Porto Alegre e Palmas ; distância de Porto Alegre a Palmas ; qual a distância entre Palmas e Porto Alegre? | Entre Porto Alegre e Palmas há cerca de 2220 km em linha reta.
-qual a distância entre Porto Velho e Boa Vista? ; distância entre Porto Velho e Boa Vista ; distância de Porto Velho a Boa Vista ; qual a distância entre Boa Vista e Porto Velho? | Entre Porto Velho e Boa Vista há cerca de 1337 km em linha reta.
-qual a distância entre Porto Velho e São Paulo? ; distância entre Porto Velho e São Paulo ; distância de Porto Velho a São Paulo ; qual a distância entre São Paulo e Porto Velho? | Entre Porto Velho e São Paulo há cerca de 2466 km em linha reta.
-qual a distância entre Porto Velho e Palmas? ; distância entre Porto Velho e Palmas ; distância de Porto Velho a Palmas ; qual a distância entre Palmas e Porto Velho? | Entre Porto Velho e Palmas há cerca de 1716 km em linha reta.
-qual a distância entre Boa Vista e São Paulo? ; distância entre Boa Vista e São Paulo ; distância de Boa Vista a São Paulo ; qual a distância entre São Paulo e Boa Vista? | Entre Boa Vista e São Paulo há cerca de 3304 km em linha reta.
-qual a distância entre Boa Vista e Palmas? ; distância entre Boa Vista e Palmas ; distância de Boa Vista a Palmas ; qual a distância entre Palmas e Boa Vista? | Entre Boa Vista e Palmas há cerca de 1996 km em linha reta.
-qual a distância entre Florianópolis e São Paulo? ; distância entre Florianópolis e São Paulo ; distância de Florianópolis a São Paulo ; qual a distância entre São Paulo e Florianópolis? | Entre Florianópolis e São Paulo há cerca de 489 km em linha reta.
-qual a distância entre São Paulo e Aracaju? ; distância entre São Paulo e Aracaju ; distância de São Paulo a Aracaju ; qual a distância entre Aracaju e São Paulo? | Entre São Paulo e Aracaju há cerca de 1729 km em linha reta.
-qual a distância entre São Paulo e Palmas? ; distância entre São Paulo e Palmas ; distância de São Paulo a Palmas ; qual a distância entre Palmas e São Paulo? | Entre São Paulo e Palmas há cerca de 1490 km em linha reta.
+quais sao as capitais mais proximas do brasil? | João Pessoa e Recife, a cerca de 104 km em linha reta (120 km por rodovia).
+quais sao as capitais mais distantes do brasil? | Porto Alegre e Boa Vista, separadas por cerca de 3789 km em linha reta.
+qual a distancia entre rio branco e macapa? ; distancia de macapa a rio branco | Entre Rio Branco e Macapá há cerca de 2162 km em linha reta.
+qual a distancia entre rio branco e manaus? ; distancia de manaus a rio branco | Entre Rio Branco e Manaus há cerca de 1150 km em linha reta.
+qual a distancia entre rio branco e salvador? ; distancia de salvador a rio branco | Entre Rio Branco e Salvador há cerca de 3211 km em linha reta.
+qual a distancia entre rio branco e fortaleza? ; distancia de fortaleza a rio branco | Entre Rio Branco e Fortaleza há cerca de 3305 km em linha reta.
+qual a distancia entre rio branco e brasilia? ; distancia de brasilia a rio branco | Entre Rio Branco e Brasília há cerca de 2250 km em linha reta.
+qual a distancia entre rio branco e belo horizonte? ; distancia de belo horizonte a rio branco | Entre Rio Branco e Belo Horizonte há cerca de 2790 km em linha reta.
+qual a distancia entre rio branco e belem? ; distancia de belem a rio branco | Entre Rio Branco e Belém há cerca de 2336 km em linha reta.
+qual a distancia entre rio branco e curitiba? ; distancia de curitiba a rio branco | Entre Rio Branco e Curitiba há cerca de 2604 km em linha reta.
+qual a distancia entre rio branco e recife? ; distancia de recife a rio branco | Entre Rio Branco e Recife há cerca de 3623 km em linha reta.
+qual a distancia entre rio branco e rio de janeiro? ; distancia de rio de janeiro a rio branco | Entre Rio Branco e Rio de Janeiro há cerca de 2989 km em linha reta.
+qual a distancia entre rio branco e porto alegre? ; distancia de porto alegre a rio branco | Entre Rio Branco e Porto Alegre há cerca de 2818 km em linha reta.
+qual a distancia entre rio branco e porto velho? ; distancia de porto velho a rio branco | Entre Rio Branco e Porto Velho há cerca de 451 km em linha reta.
+qual a distancia entre rio branco e boa vista? ; distancia de boa vista a rio branco | Entre Rio Branco e Boa Vista há cerca de 1628 km em linha reta.
+qual a distancia entre rio branco e sao paulo? ; distancia de sao paulo a rio branco | Entre Rio Branco e São Paulo há cerca de 2708 km em linha reta.
+qual a distancia entre rio branco e palmas? ; distancia de palmas a rio branco | Entre Rio Branco e Palmas há cerca de 2135 km em linha reta.
+qual a distancia entre maceio e manaus? ; distancia de manaus a maceio | Entre Maceió e Manaus há cerca de 2779 km em linha reta.
+qual a distancia entre maceio e salvador? ; distancia de salvador a maceio | Entre Maceió e Salvador há cerca de 475 km em linha reta.
+qual a distancia entre maceio e fortaleza? ; distancia de fortaleza a maceio | Entre Maceió e Fortaleza há cerca de 731 km em linha reta.
+qual a distancia entre maceio e brasilia? ; distancia de brasilia a maceio | Entre Maceió e Brasília há cerca de 1486 km em linha reta.
+qual a distancia entre maceio e sao luis? ; distancia de sao luis a maceio | Entre Maceió e São Luís há cerca de 1236 km em linha reta.
+qual a distancia entre maceio e belo horizonte? ; distancia de belo horizonte a maceio | Entre Maceió e Belo Horizonte há cerca de 1440 km em linha reta.
+qual a distancia entre maceio e belem? ; distancia de belem a maceio | Entre Maceió e Belém há cerca de 1681 km em linha reta.
+qual a distancia entre maceio e joao pessoa? ; distancia de joao pessoa a maceio | Entre Maceió e João Pessoa há cerca de 299 km em linha reta.
+qual a distancia entre maceio e curitiba? ; distancia de curitiba a maceio | Entre Maceió e Curitiba há cerca de 2261 km em linha reta.
+qual a distancia entre maceio e recife? ; distancia de recife a maceio | Entre Maceió e Recife: ~203 km em linha reta (285 km de estrada).
+qual a distancia entre maceio e teresina? ; distancia de teresina a maceio | Entre Maceió e Teresina há cerca de 931 km em linha reta.
+qual a distancia entre maceio e rio de janeiro? ; distancia de rio de janeiro a maceio | Entre Maceió e Rio de Janeiro há cerca de 1672 km em linha reta.
+qual a distancia entre maceio e natal? ; distancia de natal a maceio | Entre Maceió e Natal há cerca de 434 km em linha reta.
+qual a distancia entre maceio e porto alegre? ; distancia de porto alegre a maceio | Entre Maceió e Porto Alegre há cerca de 2777 km em linha reta.
+qual a distancia entre maceio e sao paulo? ; distancia de sao paulo a maceio | Entre Maceió e São Paulo há cerca de 1930 km em linha reta.
+qual a distancia entre maceio e aracaju? ; distancia de aracaju a maceio | Entre Maceió e Aracaju: ~204 km em linha reta (294 km de estrada).
+qual a distancia entre macapa e manaus? ; distancia de manaus a macapa | Entre Macapá e Manaus há cerca de 1055 km em linha reta.
+qual a distancia entre macapa e salvador? ; distancia de salvador a macapa | Entre Macapá e Salvador há cerca de 2003 km em linha reta.
+qual a distancia entre macapa e fortaleza? ; distancia de fortaleza a macapa | Entre Macapá e Fortaleza há cerca de 1453 km em linha reta.
+qual a distancia entre macapa e brasilia? ; distancia de brasilia a macapa | Entre Macapá e Brasília há cerca de 1792 km em linha reta.
+qual a distancia entre macapa e belo horizonte? ; distancia de belo horizonte a macapa | Entre Macapá e Belo Horizonte há cerca de 2351 km em linha reta.
+qual a distancia entre macapa e belem? ; distancia de belem a macapa | Entre Macapá e Belém há cerca de 330 km em linha reta.
+qual a distancia entre macapa e curitiba? ; distancia de curitiba a macapa | Entre Macapá e Curitiba há cerca de 2838 km em linha reta.
+qual a distancia entre macapa e recife? ; distancia de recife a macapa | Entre Macapá e Recife há cerca de 2007 km em linha reta.
+qual a distancia entre macapa e rio de janeiro? ; distancia de rio de janeiro a macapa | Entre Macapá e Rio de Janeiro há cerca de 2690 km em linha reta.
+qual a distancia entre macapa e porto alegre? ; distancia de porto alegre a macapa | Entre Macapá e Porto Alegre há cerca de 3344 km em linha reta.
+qual a distancia entre macapa e porto velho? ; distancia de porto velho a macapa | Entre Macapá e Porto Velho há cerca de 1725 km em linha reta.
+qual a distancia entre macapa e boa vista? ; distancia de boa vista a macapa | Entre Macapá e Boa Vista há cerca de 1112 km em linha reta.
+qual a distancia entre macapa e sao paulo? ; distancia de sao paulo a macapa | Entre Macapá e São Paulo há cerca de 2666 km em linha reta.
+qual a distancia entre macapa e palmas? ; distancia de palmas a macapa | Entre Macapá e Palmas há cerca de 1183 km em linha reta.
+qual a distancia entre manaus e salvador? ; distancia de salvador a manaus | Entre Manaus e Salvador há cerca de 2607 km em linha reta.
+qual a distancia entre manaus e fortaleza? ; distancia de fortaleza a manaus | Entre Manaus e Fortaleza há cerca de 2385 km em linha reta.
+qual a distancia entre manaus e brasilia? ; distancia de brasilia a manaus | Entre Manaus e Brasília há cerca de 1932 km em linha reta.
+qual a distancia entre manaus e vitoria? ; distancia de vitoria a manaus | Entre Manaus e Vitória há cerca de 2867 km em linha reta.
+qual a distancia entre manaus e goiania? ; distancia de goiania a manaus | Entre Manaus e Goiânia há cerca de 1912 km em linha reta.
+qual a distancia entre manaus e sao luis? ; distancia de sao luis a manaus | Entre Manaus e São Luís há cerca de 1746 km em linha reta.
+qual a distancia entre manaus e cuiaba? ; distancia de cuiaba a manaus | Entre Manaus e Cuiabá há cerca de 1453 km em linha reta.
+qual a distancia entre manaus e campo grande? ; distancia de campo grande a manaus | Entre Manaus e Campo Grande há cerca de 2016 km em linha reta.
+qual a distancia entre manaus e belo horizonte? ; distancia de belo horizonte a manaus | Entre Manaus e Belo Horizonte há cerca de 2556 km em linha reta.
+qual a distancia entre manaus e belem? ; distancia de belem a manaus | Entre Manaus e Belém há cerca de 1293 km em linha reta.
+qual a distancia entre manaus e joao pessoa? ; distancia de joao pessoa a manaus | Entre Manaus e João Pessoa há cerca de 2821 km em linha reta.
+qual a distancia entre manaus e curitiba? ; distancia de curitiba a manaus | Entre Manaus e Curitiba há cerca de 2734 km em linha reta.
+qual a distancia entre manaus e recife? ; distancia de recife a manaus | Entre Manaus e Recife há cerca de 2835 km em linha reta.
+qual a distancia entre manaus e teresina? ; distancia de teresina a manaus | Entre Manaus e Teresina há cerca de 1922 km em linha reta.
+qual a distancia entre manaus e rio de janeiro? ; distancia de rio de janeiro a manaus | Entre Manaus e Rio de Janeiro há cerca de 2852 km em linha reta.
+qual a distancia entre manaus e natal? ; distancia de natal a manaus | Entre Manaus e Natal há cerca de 2766 km em linha reta.
+qual a distancia entre manaus e porto alegre? ; distancia de porto alegre a manaus | Entre Manaus e Porto Alegre há cerca de 3133 km em linha reta.
+qual a distancia entre manaus e porto velho? ; distancia de porto velho a manaus | Entre Manaus e Porto Velho há cerca de 760 km em linha reta.
+qual a distancia entre manaus e boa vista? ; distancia de boa vista a manaus | Entre Manaus e Boa Vista há cerca de 665 km em linha reta.
+qual a distancia entre manaus e florianopolis? ; distancia de florianopolis a manaus | Entre Manaus e Florianópolis há cerca de 2982 km em linha reta.
+qual a distancia entre manaus e sao paulo? ; distancia de sao paulo a manaus | Entre Manaus e São Paulo há cerca de 2689 km em linha reta.
+qual a distancia entre manaus e aracaju? ; distancia de aracaju a manaus | Entre Manaus e Aracaju há cerca de 2676 km em linha reta.
+qual a distancia entre manaus e palmas? ; distancia de palmas a manaus | Entre Manaus e Palmas há cerca de 1515 km em linha reta.
+qual a distancia entre salvador e fortaleza? ; distancia de fortaleza a salvador | Entre Salvador e Fortaleza há cerca de 1029 km em linha reta.
+qual a distancia entre salvador e brasilia? ; distancia de brasilia a salvador | Entre Salvador e Brasília: ~1062 km em linha reta (1446 km de estrada).
+qual a distancia entre salvador e vitoria? ; distancia de vitoria a salvador | Entre Salvador e Vitória há cerca de 839 km em linha reta.
+qual a distancia entre salvador e goiania? ; distancia de goiania a salvador | Entre Salvador e Goiânia há cerca de 1228 km em linha reta.
+qual a distancia entre salvador e sao luis? ; distancia de sao luis a salvador | Entre Salvador e São Luís há cerca de 1325 km em linha reta.
+qual a distancia entre salvador e cuiaba? ; distancia de cuiaba a salvador | Entre Salvador e Cuiabá há cerca de 1918 km em linha reta.
+qual a distancia entre salvador e campo grande? ; distancia de campo grande a salvador | Entre Salvador e Campo Grande há cerca de 1906 km em linha reta.
+qual a distancia entre salvador e belo horizonte? ; distancia de belo horizonte a salvador | Entre Salvador e Belo Horizonte há cerca de 965 km em linha reta.
+qual a distancia entre salvador e belem? ; distancia de belem a salvador | Entre Salvador e Belém há cerca de 1689 km em linha reta.
+qual a distancia entre salvador e joao pessoa? ; distancia de joao pessoa a salvador | Entre Salvador e João Pessoa há cerca de 763 km em linha reta.
+qual a distancia entre salvador e curitiba? ; distancia de curitiba a salvador | Entre Salvador e Curitiba há cerca de 1786 km em linha reta.
+qual a distancia entre salvador e recife? ; distancia de recife a salvador | Entre Salvador e Recife há cerca de 676 km em linha reta.
+qual a distancia entre salvador e teresina? ; distancia de teresina a salvador | Entre Salvador e Teresina há cerca de 995 km em linha reta.
+qual a distancia entre salvador e rio de janeiro? ; distancia de rio de janeiro a salvador | Entre Salvador e Rio de Janeiro há cerca de 1210 km em linha reta.
+qual a distancia entre salvador e natal? ; distancia de natal a salvador | Entre Salvador e Natal há cerca de 876 km em linha reta.
+qual a distancia entre salvador e porto alegre? ; distancia de porto alegre a salvador | Entre Salvador e Porto Alegre há cerca de 2305 km em linha reta.
+qual a distancia entre salvador e porto velho? ; distancia de porto velho a salvador | Entre Salvador e Porto Velho há cerca de 2811 km em linha reta.
+qual a distancia entre salvador e boa vista? ; distancia de boa vista a salvador | Entre Salvador e Boa Vista há cerca de 3013 km em linha reta.
+qual a distancia entre salvador e florianopolis? ; distancia de florianopolis a salvador | Entre Salvador e Florianópolis há cerca de 1932 km em linha reta.
+qual a distancia entre salvador e sao paulo? ; distancia de sao paulo a salvador | Entre Salvador e São Paulo há cerca de 1455 km em linha reta.
+qual a distancia entre salvador e aracaju? ; distancia de aracaju a salvador | Entre Salvador e Aracaju: ~273 km em linha reta (356 km de estrada).
+qual a distancia entre salvador e palmas? ; distancia de palmas a salvador | Entre Salvador e Palmas há cerca de 1112 km em linha reta.
+qual a distancia entre fortaleza e brasilia? ; distancia de brasilia a fortaleza | Entre Fortaleza e Brasília há cerca de 1689 km em linha reta.
+qual a distancia entre fortaleza e vitoria? ; distancia de vitoria a fortaleza | Entre Fortaleza e Vitória há cerca de 1856 km em linha reta.
+qual a distancia entre fortaleza e goiania? ; distancia de goiania a fortaleza | Entre Fortaleza e Goiânia há cerca de 1857 km em linha reta.
+qual a distancia entre fortaleza e sao luis? ; distancia de sao luis a fortaleza | Entre Fortaleza e São Luís há cerca de 653 km em linha reta.
+qual a distancia entre fortaleza e cuiaba? ; distancia de cuiaba a fortaleza | Entre Fortaleza e Cuiabá há cerca de 2331 km em linha reta.
+qual a distancia entre fortaleza e campo grande? ; distancia de campo grande a fortaleza | Entre Fortaleza e Campo Grande há cerca de 2549 km em linha reta.
+qual a distancia entre fortaleza e belo horizonte? ; distancia de belo horizonte a fortaleza | Entre Fortaleza e Belo Horizonte há cerca de 1894 km em linha reta.
+qual a distancia entre fortaleza e belem? ; distancia de belem a fortaleza | Entre Fortaleza e Belém há cerca de 1135 km em linha reta.
+qual a distancia entre fortaleza e joao pessoa? ; distancia de joao pessoa a fortaleza | Entre Fortaleza e João Pessoa há cerca de 556 km em linha reta.
+qual a distancia entre fortaleza e curitiba? ; distancia de curitiba a fortaleza | Entre Fortaleza e Curitiba há cerca de 2672 km em linha reta.
+qual a distancia entre fortaleza e recife? ; distancia de recife a fortaleza | Entre Fortaleza e Recife: ~629 km em linha reta (800 km de estrada).
+qual a distancia entre fortaleza e teresina? ; distancia de teresina a fortaleza | Entre Fortaleza e Teresina: ~496 km em linha reta (634 km de estrada).
+qual a distancia entre fortaleza e rio de janeiro? ; distancia de rio de janeiro a fortaleza | Entre Fortaleza e Rio de Janeiro há cerca de 2191 km em linha reta.
+qual a distancia entre fortaleza e natal? ; distancia de natal a fortaleza | Entre Fortaleza e Natal: ~436 km em linha reta (537 km de estrada).
+qual a distancia entre fortaleza e porto alegre? ; distancia de porto alegre a fortaleza | Entre Fortaleza e Porto Alegre há cerca de 3216 km em linha reta.
+qual a distancia entre fortaleza e porto velho? ; distancia de porto velho a fortaleza | Entre Fortaleza e Porto Velho há cerca de 2857 km em linha reta.
+qual a distancia entre fortaleza e boa vista? ; distancia de boa vista a fortaleza | Entre Fortaleza e Boa Vista há cerca de 2565 km em linha reta.
+qual a distancia entre fortaleza e florianopolis? ; distancia de florianopolis a fortaleza | Entre Fortaleza e Florianópolis há cerca de 2859 km em linha reta.
+qual a distancia entre fortaleza e sao paulo? ; distancia de sao paulo a fortaleza | Entre Fortaleza e São Paulo há cerca de 2370 km em linha reta.
+qual a distancia entre fortaleza e aracaju? ; distancia de aracaju a fortaleza | Entre Fortaleza e Aracaju há cerca de 820 km em linha reta.
+qual a distancia entre fortaleza e palmas? ; distancia de palmas a fortaleza | Entre Fortaleza e Palmas há cerca de 1301 km em linha reta.
+qual a distancia entre brasilia e vitoria? ; distancia de vitoria a brasilia | Entre Brasília e Vitória há cerca de 950 km em linha reta.
+qual a distancia entre brasilia e goiania? ; distancia de goiania a brasilia | Entre Brasília e Goiânia: ~175 km em linha reta (209 km de estrada).
+qual a distancia entre brasilia e sao luis? ; distancia de sao luis a brasilia | Entre Brasília e São Luís há cerca de 1526 km em linha reta.
+qual a distancia entre brasilia e cuiaba? ; distancia de cuiaba a brasilia | Entre Brasília e Cuiabá há cerca de 875 km em linha reta.
+qual a distancia entre brasilia e campo grande? ; distancia de campo grande a brasilia | Entre Brasília e Campo Grande há cerca de 878 km em linha reta.
+qual a distancia entre brasilia e belo horizonte? ; distancia de belo horizonte a brasilia | Entre Brasília e Belo Horizonte: ~625 km em linha reta (716 km de estrada).
+qual a distancia entre brasilia e belem? ; distancia de belem a brasilia | Entre Brasília e Belém: ~1594 km em linha reta (2120 km de estrada).
+qual a distancia entre brasilia e joao pessoa? ; distancia de joao pessoa a brasilia | Entre Brasília e João Pessoa há cerca de 1718 km em linha reta.
+qual a distancia entre brasilia e curitiba? ; distancia de curitiba a brasilia | Entre Brasília e Curitiba: ~1082 km em linha reta (1366 km de estrada).
+qual a distancia entre brasilia e recife? ; distancia de recife a brasilia | Entre Brasília e Recife há cerca de 1659 km em linha reta.
+qual a distancia entre brasilia e teresina? ; distancia de teresina a brasilia | Entre Brasília e Teresina há cerca de 1314 km em linha reta.
+qual a distancia entre brasilia e rio de janeiro? ; distancia de rio de janeiro a brasilia | Entre Brasília e Rio de Janeiro: ~936 km em linha reta (1148 km de estrada).
+qual a distancia entre brasilia e natal? ; distancia de natal a brasilia | Entre Brasília e Natal há cerca de 1777 km em linha reta.
+qual a distancia entre brasilia e porto alegre? ; distancia de porto alegre a brasilia | Entre Brasília e Porto Alegre há cerca de 1620 km em linha reta.
+qual a distancia entre brasilia e porto velho? ; distancia de porto velho a brasilia | Entre Brasília e Porto Velho há cerca de 1901 km em linha reta.
+qual a distancia entre brasilia e boa vista? ; distancia de boa vista a brasilia | Entre Brasília e Boa Vista há cerca de 2499 km em linha reta.
+qual a distancia entre brasilia e florianopolis? ; distancia de florianopolis a brasilia | Entre Brasília e Florianópolis há cerca de 1315 km em linha reta.
+qual a distancia entre brasilia e sao paulo? ; distancia de sao paulo a brasilia | Entre Brasília e São Paulo: ~875 km em linha reta (1015 km de estrada).
+qual a distancia entre brasilia e aracaju? ; distancia de aracaju a brasilia | Entre Brasília e Aracaju há cerca de 1291 km em linha reta.
+qual a distancia entre brasilia e palmas? ; distancia de palmas a brasilia | Entre Brasília e Palmas: ~617 km em linha reta (840 km de estrada).
+qual a distancia entre vitoria e belo horizonte? ; distancia de belo horizonte a vitoria | Entre Vitória e Belo Horizonte: ~381 km em linha reta (524 km de estrada).
+qual a distancia entre vitoria e belem? ; distancia de belem a vitoria | Entre Vitória e Belém há cerca de 2278 km em linha reta.
+qual a distancia entre vitoria e curitiba? ; distancia de curitiba a vitoria | Entre Vitória e Curitiba há cerca de 1079 km em linha reta.
+qual a distancia entre vitoria e recife? ; distancia de recife a vitoria | Entre Vitória e Recife há cerca de 1484 km em linha reta.
+qual a distancia entre vitoria e rio de janeiro? ; distancia de rio de janeiro a vitoria | Entre Vitória e Rio de Janeiro: ~413 km em linha reta (521 km de estrada).
+qual a distancia entre vitoria e porto alegre? ; distancia de porto alegre a vitoria | Entre Vitória e Porto Alegre há cerca de 1538 km em linha reta.
+qual a distancia entre vitoria e sao paulo? ; distancia de sao paulo a vitoria | Entre Vitória e São Paulo há cerca de 744 km em linha reta.
+qual a distancia entre goiania e cuiaba? ; distancia de cuiaba a goiania | Entre Goiânia e Cuiabá há cerca de 740 km em linha reta.
+qual a distancia entre goiania e campo grande? ; distancia de campo grande a goiania | Entre Goiânia e Campo Grande há cerca de 704 km em linha reta.
+qual a distancia entre goiania e belo horizonte? ; distancia de belo horizonte a goiania | Entre Goiânia e Belo Horizonte há cerca de 667 km em linha reta.
+qual a distancia entre goiania e belem? ; distancia de belem a goiania | Entre Goiânia e Belém há cerca de 1696 km em linha reta.
+qual a distancia entre goiania e curitiba? ; distancia de curitiba a goiania | Entre Goiânia e Curitiba há cerca de 972 km em linha reta.
+qual a distancia entre goiania e recife? ; distancia de recife a goiania | Entre Goiânia e Recife há cerca de 1833 km em linha reta.
+qual a distancia entre goiania e rio de janeiro? ; distancia de rio de janeiro a goiania | Entre Goiânia e Rio de Janeiro há cerca de 940 km em linha reta.
+qual a distancia entre goiania e porto alegre? ; distancia de porto alegre a goiania | Entre Goiânia e Porto Alegre há cerca de 1497 km em linha reta.
+qual a distancia entre goiania e sao paulo? ; distancia de sao paulo a goiania | Entre Goiânia e São Paulo há cerca de 811 km em linha reta.
+qual a distancia entre sao luis e belo horizonte? ; distancia de belo horizonte a sao luis | Entre São Luís e Belo Horizonte há cerca de 1934 km em linha reta.
+qual a distancia entre sao luis e belem? ; distancia de belem a sao luis | Entre São Luís e Belém: ~482 km em linha reta (806 km de estrada).
+qual a distancia entre sao luis e joao pessoa? ; distancia de joao pessoa a sao luis | Entre São Luís e João Pessoa há cerca de 1164 km em linha reta.
+qual a distancia entre sao luis e curitiba? ; distancia de curitiba a sao luis | Entre São Luís e Curitiba há cerca de 2601 km em linha reta.
+qual a distancia entre sao luis e recife? ; distancia de recife a sao luis | Entre São Luís e Recife há cerca de 1211 km em linha reta.
+qual a distancia entre sao luis e teresina? ; distancia de teresina a sao luis | Entre São Luís e Teresina há cerca de 330 km em linha reta.
+qual a distancia entre sao luis e rio de janeiro? ; distancia de rio de janeiro a sao luis | Entre São Luís e Rio de Janeiro há cerca de 2269 km em linha reta.
+qual a distancia entre sao luis e natal? ; distancia de natal a sao luis | Entre São Luís e Natal há cerca de 1072 km em linha reta.
+qual a distancia entre sao luis e porto alegre? ; distancia de porto alegre a sao luis | Entre São Luís e Porto Alegre há cerca de 3144 km em linha reta.
+qual a distancia entre sao luis e sao paulo? ; distancia de sao paulo a sao luis | Entre São Luís e São Paulo há cerca de 2351 km em linha reta.
+qual a distancia entre sao luis e aracaju? ; distancia de aracaju a sao luis | Entre São Luís e Aracaju há cerca de 1230 km em linha reta.
+qual a distancia entre cuiaba e campo grande? ; distancia de campo grande a cuiaba | Entre Cuiabá e Campo Grande: ~563 km em linha reta (694 km de estrada).
+qual a distancia entre cuiaba e belo horizonte? ; distancia de belo horizonte a cuiaba | Entre Cuiabá e Belo Horizonte há cerca de 1374 km em linha reta.
+qual a distancia entre cuiaba e belem? ; distancia de belem a cuiaba | Entre Cuiabá e Belém há cerca de 1780 km em linha reta.
+qual a distancia entre cuiaba e curitiba? ; distancia de curitiba a cuiaba | Entre Cuiabá e Curitiba há cerca de 1303 km em linha reta.
+qual a distancia entre cuiaba e recife? ; distancia de recife a cuiaba | Entre Cuiabá e Recife há cerca de 2455 km em linha reta.
+qual a distancia entre cuiaba e rio de janeiro? ; distancia de rio de janeiro a cuiaba | Entre Cuiabá e Rio de Janeiro há cerca de 1580 km em linha reta.
+qual a distancia entre cuiaba e porto alegre? ; distancia de porto alegre a cuiaba | Entre Cuiabá e Porto Alegre há cerca de 1680 km em linha reta.
+qual a distancia entre cuiaba e sao paulo? ; distancia de sao paulo a cuiaba | Entre Cuiabá e São Paulo há cerca de 1327 km em linha reta.
+qual a distancia entre campo grande e belo horizonte? ; distancia de belo horizonte a campo grande | Entre Campo Grande e Belo Horizonte há cerca de 1117 km em linha reta.
+qual a distancia entre campo grande e belem? ; distancia de belem a campo grande | Entre Campo Grande e Belém há cerca de 2216 km em linha reta.
+qual a distancia entre campo grande e curitiba? ; distancia de curitiba a campo grande | Entre Campo Grande e Curitiba há cerca de 777 km em linha reta.
+qual a distancia entre campo grande e recife? ; distancia de recife a campo grande | Entre Campo Grande e Recife há cerca de 2532 km em linha reta.
+qual a distancia entre campo grande e rio de janeiro? ; distancia de rio de janeiro a campo grande | Entre Campo Grande e Rio de Janeiro há cerca de 1213 km em linha reta.
+qual a distancia entre campo grande e porto alegre? ; distancia de porto alegre a campo grande | Entre Campo Grande e Porto Alegre há cerca de 1117 km em linha reta.
+qual a distancia entre campo grande e sao paulo? ; distancia de sao paulo a campo grande | Entre Campo Grande e São Paulo há cerca de 892 km em linha reta.
+qual a distancia entre belo horizonte e belem? ; distancia de belem a belo horizonte | Entre Belo Horizonte e Belém há cerca de 2112 km em linha reta.
+qual a distancia entre belo horizonte e joao pessoa? ; distancia de joao pessoa a belo horizonte | Entre Belo Horizonte e João Pessoa há cerca de 1727 km em linha reta.
+qual a distancia entre belo horizonte e curitiba? ; distancia de curitiba a belo horizonte | Entre Belo Horizonte e Curitiba há cerca de 822 km em linha reta.
+qual a distancia entre belo horizonte e recife? ; distancia de recife a belo horizonte | Entre Belo Horizonte e Recife há cerca de 1641 km em linha reta.
+qual a distancia entre belo horizonte e teresina? ; distancia de teresina a belo horizonte | Entre Belo Horizonte e Teresina há cerca de 1653 km em linha reta.
+qual a distancia entre belo horizonte e rio de janeiro? ; distancia de rio de janeiro a belo horizonte | Cerca de 342 km em linha reta (434 km de estrada).
+qual a distancia entre belo horizonte e natal? ; distancia de natal a belo horizonte | Entre Belo Horizonte e Natal há cerca de 1832 km em linha reta.
+qual a distancia entre belo horizonte e porto alegre? ; distancia de porto alegre a belo horizonte | Entre Belo Horizonte e Porto Alegre há cerca de 1342 km em linha reta.
+qual a distancia entre belo horizonte e porto velho? ; distancia de porto velho a belo horizonte | Entre Belo Horizonte e Porto Velho há cerca de 2479 km em linha reta.
+qual a distancia entre belo horizonte e boa vista? ; distancia de boa vista a belo horizonte | Entre Belo Horizonte e Boa Vista há cerca de 3120 km em linha reta.
+qual a distancia entre belo horizonte e florianopolis? ; distancia de florianopolis a belo horizonte | Entre Belo Horizonte e Florianópolis há cerca de 974 km em linha reta.
+qual a distancia entre belo horizonte e sao paulo? ; distancia de sao paulo a belo horizonte | Cerca de 491 km em linha reta (586 km de estrada).
+qual a distancia entre belo horizonte e aracaju? ; distancia de aracaju a belo horizonte | Entre Belo Horizonte e Aracaju há cerca de 1239 km em linha reta.
+qual a distancia entre belo horizonte e palmas? ; distancia de palmas a belo horizonte | Entre Belo Horizonte e Palmas há cerca de 1173 km em linha reta.
+qual a distancia entre belem e joao pessoa? ; distancia de joao pessoa a belem | Entre Belém e João Pessoa há cerca de 1638 km em linha reta.
+qual a distancia entre belem e curitiba? ; distancia de curitiba a belem | Entre Belém e Curitiba há cerca de 2667 km em linha reta.
+qual a distancia entre belem e recife? ; distancia de recife a belem | Entre Belém e Recife há cerca de 1678 km em linha reta.
+qual a distancia entre belem e teresina? ; distancia de teresina a belem | Entre Belém e Teresina há cerca de 751 km em linha reta.
+qual a distancia entre belem e rio de janeiro? ; distancia de rio de janeiro a belem | Entre Belém e Rio de Janeiro há cerca de 2454 km em linha reta.
+qual a distancia entre belem e natal? ; distancia de natal a belem | Entre Belém e Natal há cerca de 1552 km em linha reta.
+qual a distancia entre belem e porto alegre? ; distancia de porto alegre a belem | Entre Belém e Porto Alegre há cerca de 3191 km em linha reta.
+qual a distancia entre belem e porto velho? ; distancia de porto velho a belem | Entre Belém e Porto Velho há cerca de 1888 km em linha reta.
+qual a distancia entre belem e boa vista? ; distancia de boa vista a belem | Entre Belém e Boa Vista há cerca de 1434 km em linha reta.
+qual a distancia entre belem e florianopolis? ; distancia de florianopolis a belem | Entre Belém e Florianópolis há cerca de 2907 km em linha reta.
+qual a distancia entre belem e sao paulo? ; distancia de sao paulo a belem | Entre Belém e São Paulo há cerca de 2465 km em linha reta.
+qual a distancia entre belem e aracaju? ; distancia de aracaju a belem | Entre Belém e Aracaju há cerca de 1645 km em linha reta.
+qual a distancia entre belem e palmas? ; distancia de palmas a belem | Entre Belém e Palmas: ~978 km em linha reta (1225 km de estrada).
+qual a distancia entre joao pessoa e curitiba? ; distancia de curitiba a joao pessoa | Entre João Pessoa e Curitiba há cerca de 2547 km em linha reta.
+qual a distancia entre joao pessoa e recife? ; distancia de recife a joao pessoa | Entre João Pessoa e Recife: ~104 km em linha reta (120 km de estrada).
+qual a distancia entre joao pessoa e teresina? ; distancia de teresina a joao pessoa | Entre João Pessoa e Teresina há cerca de 906 km em linha reta.
+qual a distancia entre joao pessoa e rio de janeiro? ; distancia de rio de janeiro a joao pessoa | Entre João Pessoa e Rio de Janeiro há cerca de 1968 km em linha reta.
+qual a distancia entre joao pessoa e natal? ; distancia de natal a joao pessoa | Entre João Pessoa e Natal: ~152 km em linha reta (185 km de estrada).
+qual a distancia entre joao pessoa e porto alegre? ; distancia de porto alegre a joao pessoa | Entre João Pessoa e Porto Alegre há cerca de 3068 km em linha reta.
+qual a distancia entre joao pessoa e sao paulo? ; distancia de sao paulo a joao pessoa | Entre João Pessoa e São Paulo há cerca de 2218 km em linha reta.
+qual a distancia entre joao pessoa e aracaju? ; distancia de aracaju a joao pessoa | Entre João Pessoa e Aracaju há cerca de 490 km em linha reta.
+qual a distancia entre curitiba e recife? ; distancia de recife a curitiba | Entre Curitiba e Recife há cerca de 2462 km em linha reta.
+qual a distancia entre curitiba e teresina? ; distancia de teresina a curitiba | Entre Curitiba e Teresina há cerca de 2364 km em linha reta.
+qual a distancia entre curitiba e rio de janeiro? ; distancia de rio de janeiro a curitiba | Entre Curitiba e Rio de Janeiro há cerca de 679 km em linha reta.
+qual a distancia entre curitiba e natal? ; distancia de natal a curitiba | Entre Curitiba e Natal há cerca de 2647 km em linha reta.
+qual a distancia entre curitiba e porto alegre? ; distancia de porto alegre a curitiba | Entre Curitiba e Porto Alegre: ~547 km em linha reta (711 km de estrada).
+qual a distancia entre curitiba e porto velho? ; distancia de porto velho a curitiba | Entre Curitiba e Porto Velho há cerca de 2414 km em linha reta.
+qual a distancia entre curitiba e boa vista? ; distancia de boa vista a curitiba | Entre Curitiba e Boa Vista há cerca de 3373 km em linha reta.
+qual a distancia entre curitiba e florianopolis? ; distancia de florianopolis a curitiba | Entre Curitiba e Florianópolis: ~252 km em linha reta (300 km de estrada).
+qual a distancia entre curitiba e sao paulo? ; distancia de sao paulo a curitiba | Entre Curitiba e São Paulo: ~339 km em linha reta (408 km de estrada).
+qual a distancia entre curitiba e aracaju? ; distancia de aracaju a curitiba | Entre Curitiba e Aracaju há cerca de 2060 km em linha reta.
+qual a distancia entre curitiba e palmas? ; distancia de palmas a curitiba | Entre Curitiba e Palmas há cerca de 1691 km em linha reta.
+qual a distancia entre recife e teresina? ; distancia de teresina a recife | Entre Recife e Teresina há cerca de 935 km em linha reta.
+qual a distancia entre recife e rio de janeiro? ; distancia de rio de janeiro a recife | Entre Recife e Rio de Janeiro há cerca de 1875 km em linha reta.
+qual a distancia entre recife e natal? ; distancia de natal a recife | Entre Recife e Natal há cerca de 253 km em linha reta.
+qual a distancia entre recife e porto alegre? ; distancia de porto alegre a recife | Entre Recife e Porto Alegre há cerca de 2979 km em linha reta.
+qual a distancia entre recife e porto velho? ; distancia de porto velho a recife | Entre Recife e Porto Velho há cerca de 3193 km em linha reta.
+qual a distancia entre recife e boa vista? ; distancia de boa vista a recife | Entre Recife e Boa Vista há cerca de 3106 km em linha reta.
+qual a distancia entre recife e florianopolis? ; distancia de florianopolis a recife | Entre Recife e Florianópolis há cerca de 2606 km em linha reta.
+qual a distancia entre recife e sao paulo? ; distancia de sao paulo a recife | Entre Recife e São Paulo há cerca de 2131 km em linha reta.
+qual a distancia entre recife e aracaju? ; distancia de aracaju a recife | Entre Recife e Aracaju há cerca de 402 km em linha reta.
+qual a distancia entre recife e palmas? ; distancia de palmas a recife | Entre Recife e Palmas há cerca de 1496 km em linha reta.
+qual a distancia entre teresina e rio de janeiro? ; distancia de rio de janeiro a teresina | Entre Teresina e Rio de Janeiro há cerca de 1982 km em linha reta.
+qual a distancia entre teresina e natal? ; distancia de natal a teresina | Entre Teresina e Natal há cerca de 844 km em linha reta.
+qual a distancia entre teresina e porto alegre? ; distancia de porto alegre a teresina | Entre Teresina e Porto Alegre há cerca de 2911 km em linha reta.
+qual a distancia entre teresina e sao paulo? ; distancia de sao paulo a teresina | Entre Teresina e São Paulo há cerca de 2093 km em linha reta.
+qual a distancia entre teresina e aracaju? ; distancia de aracaju a teresina | Entre Teresina e Aracaju há cerca de 907 km em linha reta.
+qual a distancia entre rio de janeiro e natal? ; distancia de natal a rio de janeiro | Entre Rio de Janeiro e Natal há cerca de 2086 km em linha reta.
+qual a distancia entre rio de janeiro e porto alegre? ; distancia de porto alegre a rio de janeiro | Entre Rio de Janeiro e Porto Alegre há cerca de 1126 km em linha reta.
+qual a distancia entre rio de janeiro e porto velho? ; distancia de porto velho a rio de janeiro | Entre Rio de Janeiro e Porto Velho há cerca de 2712 km em linha reta.
+qual a distancia entre rio de janeiro e boa vista? ; distancia de boa vista a rio de janeiro | Entre Rio de Janeiro e Boa Vista há cerca de 3434 km em linha reta.
+qual a distancia entre rio de janeiro e florianopolis? ; distancia de florianopolis a rio de janeiro | Entre Rio de Janeiro e Florianópolis há cerca de 751 km em linha reta.
+qual a distancia entre rio de janeiro e sao paulo? ; distancia de sao paulo a rio de janeiro | Cerca de 361 km em linha reta (430 km de estrada).
+qual a distancia entre rio de janeiro e aracaju? ; distancia de aracaju a rio de janeiro | Entre Rio de Janeiro e Aracaju há cerca de 1479 km em linha reta.
+qual a distancia entre rio de janeiro e palmas? ; distancia de palmas a rio de janeiro | Entre Rio de Janeiro e Palmas há cerca de 1510 km em linha reta.
+qual a distancia entre natal e porto alegre? ; distancia de porto alegre a natal | Entre Natal e Porto Alegre há cerca de 3174 km em linha reta.
+qual a distancia entre natal e sao paulo? ; distancia de sao paulo a natal | Entre Natal e São Paulo há cerca de 2322 km em linha reta.
+qual a distancia entre natal e aracaju? ; distancia de aracaju a natal | Entre Natal e Aracaju há cerca de 608 km em linha reta.
+qual a distancia entre porto alegre e porto velho? ; distancia de porto velho a porto alegre | Entre Porto Alegre e Porto Velho há cerca de 2709 km em linha reta.
+qual a distancia entre porto alegre e boa vista? ; distancia de boa vista a porto alegre | Entre Porto Alegre e Boa Vista há cerca de 3789 km em linha reta.
+qual a distancia entre porto alegre e florianopolis? ; distancia de florianopolis a porto alegre | Cerca de 376 km em linha reta (476 km de estrada).
+qual a distancia entre porto alegre e sao paulo? ; distancia de sao paulo a porto alegre | Entre Porto Alegre e São Paulo há cerca de 852 km em linha reta.
+qual a distancia entre porto alegre e aracaju? ; distancia de aracaju a porto alegre | Entre Porto Alegre e Aracaju há cerca de 2578 km em linha reta.
+qual a distancia entre porto alegre e palmas? ; distancia de palmas a porto alegre | Entre Porto Alegre e Palmas há cerca de 2220 km em linha reta.
+qual a distancia entre porto velho e boa vista? ; distancia de boa vista a porto velho | Entre Porto Velho e Boa Vista há cerca de 1337 km em linha reta.
+qual a distancia entre porto velho e sao paulo? ; distancia de sao paulo a porto velho | Entre Porto Velho e São Paulo há cerca de 2466 km em linha reta.
+qual a distancia entre porto velho e palmas? ; distancia de palmas a porto velho | Entre Porto Velho e Palmas há cerca de 1716 km em linha reta.
+qual a distancia entre boa vista e sao paulo? ; distancia de sao paulo a boa vista | Entre Boa Vista e São Paulo há cerca de 3304 km em linha reta.
+qual a distancia entre boa vista e palmas? ; distancia de palmas a boa vista | Entre Boa Vista e Palmas há cerca de 1996 km em linha reta.
+qual a distancia entre florianopolis e sao paulo? ; distancia de sao paulo a florianopolis | Entre Florianópolis e São Paulo há cerca de 489 km em linha reta.
+qual a distancia entre sao paulo e aracaju? ; distancia de aracaju a sao paulo | Entre São Paulo e Aracaju há cerca de 1729 km em linha reta.
+qual a distancia entre sao paulo e palmas? ; distancia de palmas a sao paulo | Entre São Paulo e Palmas há cerca de 1490 km em linha reta.
 
 # === PRESIDENTES NA HISTORIA DO BRASIL (1889-PRESENTE) ===
-quem foi o primeiro presidente do Brasil? ; primeiro presidente do Brasil | Deodoro da Fonseca foi o 1o presidente do Brasil (1889-1891).
-quem proclamou a República no Brasil? | Marechal Deodoro da Fonseca proclamou a República em 15/11/1889.
-quem é o atual presidente do Brasil? ; quem e o presidente atual do Brasil | Luiz Inácio Lula da Silva é o atual (39o) presidente, desde 2023.
-quantos presidentes o Brasil já teve? | O Brasil teve 39 mandatos presidenciais com 35 pessoas diferentes.
-quem foi o primeiro presidente civil do Brasil? | Prudente de Morais, eleito em 1894, foi o 1o presidente civil.
-quem foi a primeira mulher presidente do Brasil? | Dilma Rousseff foi a 1a mulher presidente do Brasil (2011-2016).
-quem construiu Brasília? ; qual presidente inaugurou Brasília? | Juscelino Kubitschek construiu e inaugurou Brasília em 1960.
-quem criou a CLT? ; quem criou a Petrobras? | Getúlio Vargas criou a CLT (1943) e a Petrobras (1953).
-quem renunciou à presidência em 1961? | Jânio Quadros renunciou em agosto de 1961 após 7 meses no cargo.
+quem foi o primeiro presidente do brasil? ; primeiro presidente do brasil | Deodoro da Fonseca foi o 1o presidente do Brasil (1889-1891).
+quem proclamou a republica no brasil? | Marechal Deodoro da Fonseca proclamou a República em 15/11/1889.
+quem e o atual presidente do brasil? ; quem e o presidente atual do brasil | Luiz Inácio Lula da Silva é o atual (39o) presidente, desde 2023.
+quantos presidentes o brasil ja teve? | O Brasil teve 39 mandatos presidenciais com 35 pessoas diferentes.
+quem foi o primeiro presidente civil do brasil? | Prudente de Morais, eleito em 1894, foi o 1o presidente civil.
+quem foi a primeira mulher presidente do brasil? | Dilma Rousseff foi a 1a mulher presidente do Brasil (2011-2016).
+quem construiu brasilia? ; qual presidente inaugurou brasilia? | Juscelino Kubitschek construiu e inaugurou Brasília em 1960.
+quem criou a clt? ; quem criou a petrobras? | Getúlio Vargas criou a CLT (1943) e a Petrobras (1953).
+quem renunciou a presidencia em 1961? | Jânio Quadros renunciou em agosto de 1961 após 7 meses no cargo.
 quem foi o primeiro presidente do regime militar? | Humberto Castelo Branco foi o 1o presidente do regime militar (1964).
-quem foi o último presidente do regime militar? | João Figueiredo foi o último presidente do regime militar (1979-1985).
-quem assinou a Lei da Anistia em 1979? | João Figueiredo sancionou a Lei da Anistia em agosto de 1979.
-quem foi o presidente da Constituição de 1988? | José Sarney era o presidente quando a Constituição de 1988 foi promulgada.
-quem criou o Plano Real? | O Plano Real foi lançado no governo Itamar Franco, por FHC, em 1994.
-quais presidentes sofreram impeachment no Brasil? | Fernando Collor em 1992 e Dilma Rousseff em 2016 sofreram impeachment.
-o que foi a política do café com leite? | Alternância de poder entre elites de São Paulo e Minas Gerais (1898-1930).
-quem foi Deodoro da Fonseca? ; Deodoro da Fonseca foi qual presidente? | 1o presidente do Brasil (1889-1891); proclamou a República.
-quem foi Floriano Peixoto? ; Floriano Peixoto foi qual presidente? | 2o presidente do Brasil (1891-1894), chamado Marechal de Ferro.
-quem foi Prudente de Morais? ; Prudente de Morais foi qual presidente? | 3o presidente (1894-1898) e o 1o civil eleito por voto direto.
-quem foi Campos Sales? ; Campos Sales foi qual presidente? | 4o presidente (1898-1902); criou a Política dos Governadores.
-quem foi Rodrigues Alves? ; Rodrigues Alves foi qual presidente? | 5o presidente (1902-1906); modernizou o Rio e enfrentou a Revolta da Vacina.
-quem foi Afonso Pena? ; Afonso Pena foi qual presidente? | 6o presidente (1906-1909); morreu no cargo antes do fim do mandato.
-quem foi Nilo Peçanha? ; Nilo Peçanha foi qual presidente? | 7o presidente (1909-1910); assumiu após Afonso Pena e criou escolas técnicas.
-quem foi Hermes da Fonseca? ; Hermes da Fonseca foi qual presidente? | 8o presidente (1910-1914); militar que enfrentou a Guerra do Contestado.
-quem foi Venceslau Brás? ; Venceslau Brás foi qual presidente? | 9o presidente (1914-1918); governou na 1a Guerra e criou o Código Civil.
-quem foi Delfim Moreira? ; Delfim Moreira foi qual presidente? | 10o presidente (1918-1919); assumiu após a morte de Rodrigues Alves.
-quem foi Epitácio Pessoa? ; Epitácio Pessoa foi qual presidente? | 11o presidente (1919-1922); governou no centenário da Independência.
-quem foi Artur Bernardes? ; Artur Bernardes foi qual presidente? | 12o presidente (1922-1926); enfrentou revoltas tenentistas e a Coluna Prestes.
-quem foi Washington Luís? ; Washington Luís foi qual presidente? | 13o presidente (1926-1930); último da República Velha, deposto em 1930.
-quem foi Júlio Prestes? ; Júlio Prestes tomou posse? | Eleito presidente em 1930, mas não assumiu por causa da Revolução de 1930.
-o que foi a Junta Militar de 1930? | Junta provisória (Tasso Fragoso, Noronha e Barreto) que passou o poder a Vargas.
-quem foi Getúlio Vargas? ; Getúlio Vargas foi qual presidente? | 14o (1930-1945) e 17o presidente (1951-1954); liderou a Era Vargas e o Estado Novo.
-quem foi José Linhares? ; José Linhares foi qual presidente? | 15o presidente (1945-1946); presidente do STF que assumiu após queda de Vargas.
-quem foi Eurico Gaspar Dutra? ; Dutra foi qual presidente? | 16o presidente (1946-1951); promulgou a Constituição democrática de 1946.
-quem foi Café Filho? ; Café Filho foi qual presidente? | 18o presidente (1954-1955); vice que assumiu após o suicídio de Vargas.
-quem foi Carlos Luz? ; Carlos Luz foi qual presidente? | 19o presidente (1955); governou por apenas 3 dias em novembro de 1955.
-quem foi Nereu Ramos? ; Nereu Ramos foi qual presidente? | 20o presidente (1955-1956); garantiu a posse de Juscelino Kubitschek.
-quem foi Juscelino Kubitschek? ; JK foi qual presidente? | 21o presidente (1956-1961); do Plano de Metas e construtor de Brasília.
-quem foi Jânio Quadros? ; Jânio Quadros foi qual presidente? | 22o presidente (1961); eleito com o símbolo da vassoura, renunciou em agosto.
-quem foi Ranieri Mazzilli? ; Ranieri Mazzilli foi qual presidente? | 23o (1961) e 25o presidente (1964), assumindo interinamente pela Câmara.
-quem foi João Goulart? ; quem foi Jango? ; João Goulart foi qual presidente? | 24o presidente (1961-1964); defendeu as Reformas de Base e foi deposto em 1964.
-quem foi Castelo Branco? ; Humberto Castelo Branco foi qual presidente? | 26o presidente (1964-1967) e 1o do Regime Militar.
-quem foi Costa e Silva? ; Artur da Costa e Silva foi qual presidente? | 27o presidente (1967-1969); editou o AI-5 em dezembro de 1968.
-o que foi a Junta Militar de 1969? | Junta de três ministros militares que governou entre agosto e outubro de 1969.
-quem foi Médici? ; Emílio Garrastazu Médici foi qual presidente? | 28o presidente (1969-1974); período do Milagre Econômico e repressão.
-quem foi Ernesto Geisel? ; Ernesto Geisel foi qual presidente? | 29o presidente (1974-1979); iniciou a abertura política gradual.
-quem foi João Figueiredo? ; João Figueiredo foi qual presidente? | 30o presidente (1979-1985); último do Regime Militar, assinou a Anistia.
-quem foi Tancredo Neves? ; Tancredo Neves tomou posse? | Eleito em 1985 para encerrar o regime militar, mas morreu antes da posse.
-quem foi José Sarney? ; José Sarney foi qual presidente? | 31o presidente (1985-1990); 1o civil da Nova República, governou na Carta de 1988.
-quem foi Fernando Collor? ; Fernando Collor foi qual presidente? | 32o presidente (1990-1992); confiscou a poupança e sofreu impeachment em 1992.
-quem foi Itamar Franco? ; Itamar Franco foi qual presidente? | 33o presidente (1992-1995); assumiu após Collor e lançou o Plano Real.
-quem foi Fernando Henrique Cardoso? ; quem foi FHC? ; FHC foi qual presidente? | 34o presidente (1995-2003); sociólogo que consolidou o Plano Real.
-quem é Lula? ; Luiz Inácio Lula da Silva foi qual presidente? | 35o (2003-2011) e 39o presidente (desde 2023); único eleito 3 vezes.
-quem é Dilma Rousseff? ; Dilma Rousseff foi qual presidente? | 36a presidente (2011-2016); 1a mulher presidente, sofreu impeachment.
-quem é Michel Temer? ; Michel Temer foi qual presidente? | 37o presidente (2016-2019); assumiu após o impeachment de Dilma.
-quem é Jair Bolsonaro? ; Jair Bolsonaro foi qual presidente? | 38o presidente do Brasil (2019-2023), eleito em 2018.
+quem foi o ultimo presidente do regime militar? | João Figueiredo foi o último presidente do regime militar (1979-1985).
+quem assinou a lei da anistia em 1979? | João Figueiredo sancionou a Lei da Anistia em agosto de 1979.
+quem foi o presidente da constituicao de 1988? | José Sarney era o presidente quando a Constituição de 1988 foi promulgada.
+quem criou o plano real? | O Plano Real foi lançado no governo Itamar Franco, por FHC, em 1994.
+quais presidentes sofreram impeachment no brasil? | Fernando Collor em 1992 e Dilma Rousseff em 2016 sofreram impeachment.
+o que foi a politica do cafe com leite? | Alternância de poder entre elites de São Paulo e Minas Gerais (1898-1930).
+quem foi deodoro da fonseca? ; deodoro da fonseca foi qual presidente? | 1o presidente do Brasil (1889-1891); proclamou a República.
+quem foi floriano peixoto? ; floriano peixoto foi qual presidente? | 2o presidente do Brasil (1891-1894), chamado Marechal de Ferro.
+quem foi prudente de morais? ; prudente de morais foi qual presidente? | 3o presidente (1894-1898) e o 1o civil eleito por voto direto.
+quem foi campos sales? ; campos sales foi qual presidente? | 4o presidente (1898-1902); criou a Política dos Governadores.
+quem foi rodrigues alves? ; rodrigues alves foi qual presidente? | 5o presidente (1902-1906); modernizou o Rio e enfrentou a Revolta da Vacina.
+quem foi afonso pena? ; afonso pena foi qual presidente? | 6o presidente (1906-1909); morreu no cargo antes do fim do mandato.
+quem foi nilo pecanha? ; nilo pecanha foi qual presidente? | 7o presidente (1909-1910); assumiu após Afonso Pena e criou escolas técnicas.
+quem foi hermes da fonseca? ; hermes da fonseca foi qual presidente? | 8o presidente (1910-1914); militar que enfrentou a Guerra do Contestado.
+quem foi venceslau bras? ; venceslau bras foi qual presidente? | 9o presidente (1914-1918); governou na 1a Guerra e criou o Código Civil.
+quem foi delfim moreira? ; delfim moreira foi qual presidente? | 10o presidente (1918-1919); assumiu após a morte de Rodrigues Alves.
+quem foi epitacio pessoa? ; epitacio pessoa foi qual presidente? | 11o presidente (1919-1922); governou no centenário da Independência.
+quem foi artur bernardes? ; artur bernardes foi qual presidente? | 12o presidente (1922-1926); enfrentou revoltas tenentistas e a Coluna Prestes.
+quem foi washington luis? ; washington luis foi qual presidente? | 13o presidente (1926-1930); último da República Velha, deposto em 1930.
+quem foi julio prestes? ; julio prestes tomou posse? | Eleito presidente em 1930, mas não assumiu por causa da Revolução de 1930.
+o que foi a junta militar de 1930? | Junta provisória (Tasso Fragoso, Noronha e Barreto) que passou o poder a Vargas.
+quem foi getulio vargas? ; getulio vargas foi qual presidente? | 14o (1930-1945) e 17o presidente (1951-1954); liderou a Era Vargas e o Estado Novo.
+quem foi jose linhares? ; jose linhares foi qual presidente? | 15o presidente (1945-1946); presidente do STF que assumiu após queda de Vargas.
+quem foi eurico gaspar dutra? ; dutra foi qual presidente? | 16o presidente (1946-1951); promulgou a Constituição democrática de 1946.
+quem foi cafe filho? ; cafe filho foi qual presidente? | 18o presidente (1954-1955); vice que assumiu após o suicídio de Vargas.
+quem foi carlos luz? ; carlos luz foi qual presidente? | 19o presidente (1955); governou por apenas 3 dias em novembro de 1955.
+quem foi nereu ramos? ; nereu ramos foi qual presidente? | 20o presidente (1955-1956); garantiu a posse de Juscelino Kubitschek.
+quem foi juscelino kubitschek? ; jk foi qual presidente? | 21o presidente (1956-1961); do Plano de Metas e construtor de Brasília.
+quem foi janio quadros? ; janio quadros foi qual presidente? | 22o presidente (1961); eleito com o símbolo da vassoura, renunciou em agosto.
+quem foi ranieri mazzilli? ; ranieri mazzilli foi qual presidente? | 23o (1961) e 25o presidente (1964), assumindo interinamente pela Câmara.
+quem foi joao goulart? ; quem foi jango? ; joao goulart foi qual presidente? | 24o presidente (1961-1964); defendeu as Reformas de Base e foi deposto em 1964.
+quem foi castelo branco? ; humberto castelo branco foi qual presidente? | 26o presidente (1964-1967) e 1o do Regime Militar.
+quem foi costa e silva? ; artur da costa e silva foi qual presidente? | 27o presidente (1967-1969); editou o AI-5 em dezembro de 1968.
+o que foi a junta militar de 1969? | Junta de três ministros militares que governou entre agosto e outubro de 1969.
+quem foi medici? ; emilio garrastazu medici foi qual presidente? | 28o presidente (1969-1974); período do Milagre Econômico e repressão.
+quem foi ernesto geisel? ; ernesto geisel foi qual presidente? | 29o presidente (1974-1979); iniciou a abertura política gradual.
+quem foi joao figueiredo? ; joao figueiredo foi qual presidente? | 30o presidente (1979-1985); último do Regime Militar, assinou a Anistia.
+quem foi tancredo neves? ; tancredo neves tomou posse? | Eleito em 1985 para encerrar o regime militar, mas morreu antes da posse.
+quem foi jose sarney? ; jose sarney foi qual presidente? | 31o presidente (1985-1990); 1o civil da Nova República, governou na Carta de 1988.
+quem foi fernando collor? ; fernando collor foi qual presidente? | 32o presidente (1990-1992); confiscou a poupança e sofreu impeachment em 1992.
+quem foi itamar franco? ; itamar franco foi qual presidente? | 33o presidente (1992-1995); assumiu após Collor e lançou o Plano Real.
+quem foi fernando henrique cardoso? ; quem foi fhc? ; fhc foi qual presidente? | 34o presidente (1995-2003); sociólogo que consolidou o Plano Real.
+quem e lula? ; luiz inacio lula da silva foi qual presidente? | 35o (2003-2011) e 39o presidente (desde 2023); único eleito 3 vezes.
+quem e dilma rousseff? ; dilma rousseff foi qual presidente? | 36a presidente (2011-2016); 1a mulher presidente, sofreu impeachment.
+quem e michel temer? ; michel temer foi qual presidente? | 37o presidente (2016-2019); assumiu após o impeachment de Dilma.
+quem e jair bolsonaro? ; jair bolsonaro foi qual presidente? | 38o presidente do Brasil (2019-2023), eleito em 2018.

@@ -179,7 +179,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
       <div class="mon-sub" id="espVal">ESP32 heap -- KB</div>
 
       <div class="mon-lbl">MODE</div>
-      <div class="mon-val" id="modeVal">creativity 5</div>
+      <div class="mon-val" id="modeVal">creativity 0</div>
     </aside>
   </main>
 
@@ -198,7 +198,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
       <button class="sb-item" id="btnF1" type="button"><span class="sb-key">F1</span> Help</button>
       <button class="sb-item" id="btnF2" type="button"><span class="sb-key">F2</span> Sound <span class="sb-on" id="stSound">ON</span></button>
       <button class="sb-item" id="btnF3" type="button"><span class="sb-key">F3</span> Voice <span class="sb-on" id="stVoice">ON</span></button>
-      <button class="sb-item" id="btnF4" type="button"><span class="sb-key">F4</span> Creativity <span class="sb-on" id="stCreat">5</span></button>
+      <button class="sb-item" id="btnF4" type="button"><span class="sb-key">F4</span> Creativity <span class="sb-on" id="stCreat">0</span></button>
       <button class="sb-item" id="btnDemo" type="button"><span class="sb-key">DEMO</span></button>
       <button class="sb-item" id="btnCls" type="button"><span class="sb-key">CLS</span></button>
       <button class="sb-item" id="btnWifi" type="button"><span class="sb-key">WIFI</span></button>
@@ -231,7 +231,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:Consola
   const stSound = $("stSound"), stVoice = $("stVoice"), stCreat = $("stCreat"), sbRight = $("sbRight");
   const bootEl = $("boot"), rainCanvas = $("rainCanvas");
 
-  let soundOn = true, voiceOn = true, creativity = 5, lastQ = "";
+  let soundOn = true, voiceOn = true, creativity = 0, lastQ = "";
   let busy = false, demoRunning = false, demoStop = false;
   let abortCtrl = null, speechToken = 0, actMax = [0,0,0,0,0,0,0,0], layersCount = 4;
   let heat = [], spin = 0;

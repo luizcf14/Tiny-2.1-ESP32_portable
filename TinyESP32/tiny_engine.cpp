@@ -382,7 +382,7 @@ static int pick(int creativity)
     float sum = 0.0f;
     for (int i = 0; i < TINY_VOCAB; i++) {
         float w = safe_exp((score[i] - score[best]) / t);
-        if (w < 0.15f) w = 0.0f;
+        if (w < 0.22f) w = 0.0f;
         bs[i] = w;
         sum += w;
     }
@@ -405,36 +405,29 @@ int tiny_clean_question(const char *line, char *q_out)
         'd','n','o','o','o','o','o','/','o','u','u','u','u','y', 0 ,'y'
     };
     if (!line || !q_out) return 0;
-    int n = 0, lower = 0, upper = 0;
+    int n = 0;
     for (int i = 0; line[i] && n < TINY_MAXQ; i++) {
         unsigned char c = (unsigned char)line[i];
+        char ch = 0;
         if (c == 0xC3u && (unsigned char)line[i + 1] >= 0x80u && (unsigned char)line[i + 1] <= 0xBFu) {
-            char mapped = latin1_ascii[(unsigned char)line[i + 1] - 0x80u];
+            ch = latin1_ascii[(unsigned char)line[i + 1] - 0x80u];
             i++;
-            if (mapped) {
-                q_out[n++] = mapped;
-            }
+        } else if (c >= 32u && c <= 126u) {
+            ch = (char)c;
+        }
+        if (!ch) continue;
+        if (ch >= 'A' && ch <= 'Z') {
+            ch = (char)(ch + ('a' - 'A'));
+        }
+        if (ch >= 'a' && ch <= 'z' && n >= 2 && q_out[n - 1] == ch && q_out[n - 2] == ch) {
             continue;
         }
-        if (c >= 32u && c <= 126u) {
-            q_out[n++] = (char)c;
-        }
+        q_out[n++] = ch;
     }
     while (n > 0 && q_out[n - 1] == ' ') {
         n--;
     }
     q_out[n] = '\0';
-    for (int i = 0; i < n; i++) {
-        if (q_out[i] >= 'a' && q_out[i] <= 'z') lower++;
-        if (q_out[i] >= 'A' && q_out[i] <= 'Z') upper++;
-    }
-    if (upper > 0 && lower == 0) {
-        for (int i = 0; i < n; i++) {
-            if (q_out[i] >= 'A' && q_out[i] <= 'Z') {
-                q_out[i] = (char)(q_out[i] + ('a' - 'A'));
-            }
-        }
-    }
     return n;
 }
 

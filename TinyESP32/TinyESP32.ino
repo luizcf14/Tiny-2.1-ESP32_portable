@@ -47,7 +47,7 @@ static const char *AP_SSID = "TINY-2.1-ESP32";
 static const char *AP_PASS =
     ""; /* vazio = rede aberta; ou defina >= 8 caracteres */
 
-static const int DEFAULT_CREATIVITY = 5;
+static const int DEFAULT_CREATIVITY = 0;
 
 WebServer server(80);
 DNSServer dnsServer;

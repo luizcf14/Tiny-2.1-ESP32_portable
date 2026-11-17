@@ -81,6 +81,33 @@ def to_ascii(text: str) -> str:
     return " ".join(cleaned.split())
 
 
+def normalize_question(text: str) -> str:
+    s = to_ascii(text).lower()
+    out: list[str] = []
+    for ch in s:
+        if "a" <= ch <= "z" and len(out) >= 2 and out[-1] == ch and out[-2] == ch:
+            continue
+        out.append(ch)
+    return "".join(out)
+
+
+def perturb_question(q: str) -> str:
+    if len(q) < 5:
+        return q
+    inner = [i for i in range(1, len(q) - 1) if "a" <= q[i] <= "z"]
+    if not inner:
+        return q
+    idx = random.choice(inner)
+    op = random.randrange(3)
+    if op == 0:
+        return q[: idx + 1] + q[idx] + q[idx + 1 :]
+    if op == 1 and len(q) >= 6:
+        return q[:idx] + q[idx + 1 :]
+    if idx + 1 < len(q) - 1 and "a" <= q[idx + 1] <= "z":
+        return q[:idx] + q[idx + 1] + q[idx] + q[idx + 2 :]
+    return q[: idx + 1] + q[idx] + q[idx + 1 :]
+
+
 def encode_text(text: str) -> list[int]:
     return [ord(ch) - 30 for ch in text if 32 <= ord(ch) <= 126]
 
@@ -313,10 +340,7 @@ class QuantizedTny2Runner:
         return q_i8, big / 127.0
 
     def ask(self, question: str, creativity: int = 0) -> str:
-        clean_q = to_ascii(question)
-        if clean_q.isupper():
-            clean_q = clean_q.lower()
-        clean_q = clean_q[:MAXQ]
+        clean_q = normalize_question(question)[:MAXQ]
 
         kc = [np.zeros((CTX, self.d), dtype=np.int8) for _ in range(self.layers)]
         vc = [np.zeros((CTX, self.d), dtype=np.int8) for _ in range(self.layers)]
@@ -375,7 +399,7 @@ class QuantizedTny2Runner:
                 t = max(1, min(9, creativity)) / 5.0
                 diff = (score - score[best]) / t
                 probs = np.where(diff < -60.0, 0.0, np.exp(diff))
-                probs = np.where(probs < 0.15, 0.0, probs)
+                probs = np.where(probs < 0.22, 0.0, probs)
                 total = float(np.sum(probs))
                 if total <= 0.0:
                     tok = best
@@ -424,7 +448,7 @@ def load_qa_file(path: pathlib.Path) -> list[tuple[str, str]]:
         q_list = q_val if isinstance(q_val, list) else [q_val]
         for q_item in q_list:
             if isinstance(q_item, str):
-                q_clean = to_ascii(q_item).strip()
+                q_clean = normalize_question(q_item).strip()
                 if q_clean:
                     pairs.append((q_clean, a_clean))
 
@@ -604,6 +628,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--freeze-layers", type=int, default=0, help="Freeze bottom K transformer layers (default: 0)")
     p.add_argument("--no-augment", action="store_true", help="Disable question punctuation/case augmentation")
     p.add_argument("--no-qat", action="store_true", help="Disable int8 quantization-aware training")
+    p.add_argument("--char-noise", type=float, default=0.10, help="Fraction of samples per epoch with light typo noise (default: 0.10)")
     p.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
     p.add_argument("--device", choices=["auto", "cuda", "mps", "xpu", "cpu"], default="auto", help="Compute device (default: auto)")
     p.add_argument("--update-esp32", action="store_true", help="Write TinyESP32/tiny_weights.h from output model")
@@ -693,7 +718,15 @@ def main() -> int:
     print(f"[TRAIN] Starting {args.epochs} epochs (QAT={qat}, L2-SP={args.l2_sp}, lr={args.lr})...")
 
     for epoch in range(1, args.epochs + 1):
-        epoch_samples = list(custom_samples)
+        if args.char_noise > 0.0:
+            epoch_samples = [
+                build_training_sample(perturb_question(q), a, eos_tok)
+                if (len(q) >= 5 and random.random() < args.char_noise)
+                else custom_samples[idx]
+                for idx, (q, a) in enumerate(custom_pairs)
+            ]
+        else:
+            epoch_samples = list(custom_samples)
         if n_replay_per_epoch > 0:
             chosen = [replay_samples[i % len(replay_samples)] for i in range(n_replay_per_epoch)]
             random.shuffle(replay_samples)
@@ -714,7 +747,12 @@ def main() -> int:
         for batch in batches:
             x_t, y_t = collate_batch(batch, device)
             logits = model(x_t, qat=qat)
-            ce_loss = F.cross_entropy(logits.view(-1, VOCAB), y_t.view(-1), ignore_index=-100)
+            ce_loss = F.cross_entropy(
+                logits.view(-1, VOCAB),
+                y_t.view(-1),
+                ignore_index=-100,
+                label_smoothing=0.005,
+            )
 
             loss = ce_loss
             if args.l2_sp > 0.0:
