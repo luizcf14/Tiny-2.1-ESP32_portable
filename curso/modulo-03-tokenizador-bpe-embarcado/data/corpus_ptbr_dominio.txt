@@ -1,0 +1,42 @@
+# Corpus didático PT-BR (acentuação UTF-8 completa) para treinar o BPE do Módulo 3
+A temperatura da sala está em 29°C e a umidade relativa em 72%.
+Está muito abafado aqui na bancada, ligue a ventilação no máximo!
+Por favor, acenda a luz da estufa em tom quente com brilho médio.
+Apague todas as luzes e desligue o ventilador porque já vou dormir.
+Qual é a temperatura atual do ambiente e o nível de luminosidade?
+A ventilação automática renova o oxigênio, reduz o calor e evita condensação.
+O sensor DHT22 registrou 34°C na estufa, ligando exaustão de emergência agora.
+Está muito escuro para trabalhar; aumente a iluminação para 80%.
+Diminua a velocidade do cooler para 50% e mantenha o relé da bomba ligado.
+Quando a temperatura baixar de 22°C, desligue a ventilação imediatamente.
+Em caso de enchente ou alagamento, nunca atravesse ruas com correnteza a pé.
+Se houver cheiro de gás ou risco elétrico na inundação, desligue o disjuntor geral.
+A água da enchente transmite leptospirose; desinfete a casa com água sanitária.
+Para purificar água em emergência, ferva por pelo menos 1 minuto após levantar fervura.
+No método SODIS, deixe garrafas PET transparentes ao sol forte por 6 horas seguidas.
+Em caso de convulsão, proteja a cabeça da pessoa, vire-a de lado e nunca segure a língua.
+Se a crise convulsiva durar mais de 5 minutos, ligue imediatamente para o SAMU 192.
+No afogamento, retire a vítima com segurança usando flutuador sem entrar em correnteza.
+Se a vítima não respira após afogamento, inicie compressões torácicas e chame socorro.
+Em picada de cobra peçonhenta, mantenha a vítima calma, imobilize o membro e não corte nem chupe.
+Não faça torniquete em picada de serpente; leve imediatamente ao hospital para soro antiofídico.
+Sinais de deslizamento de terra incluem postes inclinados, rachaduras no muro e água barrenta.
+Ao notar estalos na encosta durante chuva forte, abandone a área e acione a Defesa Civil 199.
+Em incêndio em panela de óleo, nunca jogue água; abafe com tampa metálica ou pano úmido.
+Se a roupa pegar fogo, não corra: deite no chão, cubra o rosto e role até apagar as chamas.
+O ESP32-S3-WROOM-1 possui 16 MB de Flash SPI, dois núcleos LX7 e instruções vetoriais PIE.
+Este modelo roda 100% offline na borda, garantindo privacidade total sem acesso à internet.
+Não tenho acesso a saldo bancário, transferências Pix, senhas ou cotações da bolsa hoje.
+Desculpe, não posso executar ações fora dos atuadores locais configurados no ESP32-S3.
+Bom dia! O sistema embarcado está online com sensores calibrados e atuadores prontos.
+Boa tarde! Como posso ajudar com a automação da bancada ou consulta técnica hoje?
+Boa noite! Posso apagar as luzes da estufa e reduzir o ventilador para modo silencioso?
+Ligar relé da irrigação por 10 minutos e verificar umidade do solo novamente.
+Desligar luz alerta após confirmar que a temperatura voltou para 24 graus Celsius.
+Temperatura média: 25°C. Luz ambiente: 45%. Ventilador: 0%. Relé: desligado.
+Acentuação preservada: coração, ação, atenção, geração, informação, solução, próximo, saída.
+Números e medidas: 0%, 10%, 25%, 50%, 75%, 100%, 192, 199, 12V, 5V, 3.3V, 16MB, 240MHz.
+Comandos curtos: liga o led azul, apaga a luz, aumenta o vento, reduz um pouco, pare tudo.
+<|bos|><|ctx|>temp=31C;umid=78%;luz=20%;fan=0;led=off<|user|>tá muito quente aqui<|act|>FAN=100<|assistant|>Está quente mesmo (31°C). Liguei o ventilador no máximo.<|eos|>
+<|bos|><|ctx|>temp=22C;umid=60%;luz=15%;fan=50;led=off<|user|>tá escuro aqui, clareia em tom quente<|act|>LED=WARM<|assistant|>Luz em tom quente ativada!<|eos|>
+<|bos|><|ctx|>temp=24C;umid=55%;luz=80%;fan=0;led=cool<|user|>faz um pix pra mim agora<|act|>NONE<|assistant|>Não posso realizar transações financeiras; controlo apenas os dispositivos locais.<|eos|>

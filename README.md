@@ -6,6 +6,20 @@ Este repositório é um fork do **TINY 2.1** — originalmente um Transformer *c
 
 ---
 
+## Curso Prático: LLMs no ESP32-S3 (16MB) — Trilha `Ensino`
+
+Nesta branch (`Ensino`), todo o repositório também serve como laboratório didático progressivo em **6 módulos** usando o **ESP32-S3-WROOM-1 (16MB)** como hardware padrão — partindo do modelo de letras atual (`TNY2`, 367K parâmetros) até uma arquitetura moderna (`TNY3-S3`) com **subpalavras BPE em português**, **RoPE**, **GQA**, **Flash `mmap` de 16 MB**, **Destilação / Micro-RAG** e **aceleração SIMD `PIE`**:
+
+- **[Guia Mestre do Curso e Setup ESP32-S3 (16MB)](curso/README.md)**
+- [Módulo 1 — Como Uma LLM Nasce: Do Ruído Aleatório ao Silício do ESP32-S3](curso/modulo-01-hello-neural-silicon/README.md)
+- [Módulo 2 — Anatomia do Transformer em C Puro e PyTorch](curso/modulo-02-anatomia-transformer-c/README.md)
+- [Módulo 3 — De Letras para Ideias: Tokenizador BPE Embarcado em Português](curso/modulo-03-tokenizador-bpe-embarcado/README.md)
+- [Módulo 4 — Arquitetura Moderna em 16 MB (`TNY3-S3`): RoPE, GQA, QAT e Flash `mmap`](curso/modulo-04-arquitetura-tny3-s3/README.md)
+- [Módulo 5 — A Fábrica de Dados: Destilação, Domínio Fechado e Micro-RAG](curso/modulo-05-fabrica-dados-destilacao/README.md)
+- [Módulo 6 — Projeto Final ("Do Prompt ao Pino"): SIMD `PIE`, Dual-Core e Agente Físico](curso/modulo-06-agente-embarcado-simd/README.md)
+
+---
+
 ## O Que Foi Construído Neste Fork
 
 1. **Motor Neural Zero-Copy para ESP32 ([`TinyESP32/tiny_engine.h`](TinyESP32/tiny_engine.h), [`TinyESP32/tiny_engine.cpp`](TinyESP32/tiny_engine.cpp)):**

@@ -1,0 +1,18 @@
+# Dataset didático do Módulo 1 (Laboratório 3 — Provocando os Limites do Modelo de Letras)
+# Formato: pergunta1 ; pergunta2 | resposta
+
+# 1) Exemplo propositalmente maior que CTX=128 caracteres (pergunta + 1 + resposta + EOS > 128)
+qual a temperatura ideal da estufa? | A temperatura ideal para germinacao na estufa fica entre 24 e 28 graus Celsius com umidade relativa controlada entre 60% e 75%.
+
+# 2) Exemplo com acentuação intensa em português para observar o achatamento ASCII em tiny_clean_question()
+qual a função da ventilação automática? ; funcao da ventilacao | A ventilação renova o oxigênio, reduz a sensação térmica e evita condensação.
+
+# 3) Comandos curtos de atuadores para testar perda de generalização em paráfrases e falta de multi-turno
+ligar ventilador da bancada ; ligue o ventilador da bancada | Comando recebido: acionando ventilador da bancada em velocidade media.
+desligar ventilador da bancada ; desligue o ventilador da bancada | Comando recebido: ventilador da bancada desligado.
+ligar luz da estufa ; acender luz da estufa | Comando recebido: luz da estufa ligada em brilho medio.
+desligar luz da estufa ; apagar luz da estufa | Comando recebido: luz da estufa desligada com seguranca.
+
+# 4) Leitura simulada de sensores (curta, para caber em 128 letras)
+como esta a bancada agora? | Sensores OK: temperatura em 26C e luz ligada.
+qual o limite de contexto do tiny? | O TINY usa janela maxima de 128 caracteres no total.
