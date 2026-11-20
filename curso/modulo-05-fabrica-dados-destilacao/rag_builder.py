@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Módulo 5 (Lab 5B): Compilador da partição rag_kb.bin (RAG1) + busca léxica rápida."""
+"""Módulo 5 (Lab 5B): Compilador da partição rag_kb.bin (RAG1) + busca léxica rápida com IDF."""
 
 from __future__ import annotations
 
+import math
 import pathlib
 import struct
 import sys
@@ -16,6 +17,14 @@ MODULE_DIR = pathlib.Path(__file__).resolve().parent
 RAG_MAGIC = b"RAG1"
 RAG_HEADER_FMT = "<4sHH"  # 8 bytes
 RAG_ENTRY_FMT = "<IHIHIHH"  # 20 bytes por ficha
+
+STOPWORDS_PT: set[str] = {
+    "a", "o", "os", "as", "um", "uma", "de", "do", "da", "dos", "das",
+    "em", "no", "na", "nos", "nas", "e", "ou", "que", "qual", "quais",
+    "como", "onde", "quando", "por", "para", "pra", "com", "sem", "se",
+    "ele", "ela", "isso", "esta", "estao", "foi", "ser", "fazer", "devo",
+    "posso", "nao", "muito", "muita", "hoje", "agora",
+}
 
 
 def normalize_search_text(text: str) -> str:
@@ -45,7 +54,7 @@ def build_rag_bin(txt_path: pathlib.Path, out_path: pathlib.Path) -> bytes:
         return off, len(b)
 
     for doc_id, title, keywords, body in entries_raw:
-        kw_norm = normalize_search_text(doc_id + " " + title + " " + keywords)
+        kw_norm = normalize_search_text(doc_id.replace("_", " ") + " " + title + " " + keywords)
         t_off, t_len = push_str(title)
         k_off, k_len = push_str(kw_norm)
         b_off, b_len = push_str(body)
@@ -69,13 +78,19 @@ def search_rag(blob: bytes, query: str, last_topic: str | None = None) -> tuple[
     entry_sz = struct.calcsize(RAG_ENTRY_FMT)
     pool_off = table_off + num_docs * entry_sz
 
-    q_words = set(w for w in normalize_search_text(query).split() if len(w) >= 2)
-    t_words = set(w for w in normalize_search_text(last_topic or "").split() if len(w) >= 2)
+    q_words = [
+        w for w in normalize_search_text(query).split()
+        if len(w) >= 3 and w not in STOPWORDS_PT
+    ]
+    t_words = [
+        w for w in normalize_search_text(last_topic or "").split()
+        if len(w) >= 3 and w not in STOPWORDS_PT
+    ]
+    terms = set(q_words) if q_words else set(t_words)
+    if not terms:
+        return "", "", 0.0
 
-    best_title = ""
-    best_body = ""
-    best_score = 0.0
-
+    docs: list[tuple[str, set[str], str, set[str]]] = []
     for i in range(num_docs):
         t_off, t_len, k_off, k_len, b_off, b_len, _ = struct.unpack_from(
             RAG_ENTRY_FMT, blob, table_off + i * entry_sz
@@ -83,26 +98,35 @@ def search_rag(blob: bytes, query: str, last_topic: str | None = None) -> tuple[
         title = blob[pool_off + t_off : pool_off + t_off + t_len].decode("utf-8")
         kws = set(blob[pool_off + k_off : pool_off + k_off + k_len].decode("utf-8").split())
         body = blob[pool_off + b_off : pool_off + b_off + b_len].decode("utf-8")
-        body_words = set(normalize_search_text(body).split())
+        body_words = set(w for w in normalize_search_text(body).split() if len(w) >= 3 and w not in STOPWORDS_PT)
+        docs.append((title, kws, body, body_words))
 
+    best_title = ""
+    best_body = ""
+    best_score = 0.0
+
+    for title, kws, body, body_words in docs:
         score = 0.0
-        for qw in q_words:
+        for qw in terms:
+            doc_freq = sum(
+                1 for _, d_kws, _, d_body in docs
+                if qw in d_kws or qw in d_body or (len(qw) >= 5 and any(kw[:5] == qw[:5] for kw in d_kws))
+            )
+            idf = math.log((num_docs + 1.0) / (doc_freq + 0.5)) + 0.5
             if qw in kws:
-                score += 3.0
-            elif any(len(qw) >= 4 and (qw in kw or kw in qw) for kw in kws):
-                score += 2.0
+                score += 4.0 * idf
+            elif len(qw) >= 5 and any(len(kw) >= 5 and qw[:5] == kw[:5] for kw in kws):
+                score += 2.5 * idf
             elif qw in body_words:
-                score += 1.0
-        if score == 0.0 and t_words:
-            for tw in t_words:
-                if tw in kws:
-                    score += 1.0
+                score += 1.0 * idf
 
         if score > best_score:
             best_score = score
             best_title = title
             best_body = body
 
+    if best_score < 2.5:
+        return "", "", 0.0
     return best_title, best_body, best_score
 
 
@@ -119,11 +143,20 @@ def main() -> int:
         ("como fazer agua segura para beber na enchente", None),
         ("qual a cotacao do dolar hoje?", None),
     ]
+    results = []
     for q, prev in queries:
         t0 = time.perf_counter()
         title, body, sc = search_rag(blob, q, prev)
         us = (time.perf_counter() - t0) * 1e6
-        print(f"  Q: {q!r} (prev={prev!r}) -> [{sc:.1f} | {us:.0f} us] {title}: {body[:72]}...")
+        results.append((title, body, sc))
+        print(f"  Q: {q!r} (prev={prev!r}) -> [{sc:.1f} | {us:.0f} us] {title or 'SEM MATCH'}: {body[:72]}")
+
+    assert "Afogamento" in results[0][0], f"Esperado Afogamento, obtido {results[0][0]}"
+    assert "Afogamento" in results[1][0], f"Esperado Afogamento no follow-up, obtido {results[1][0]}"
+    assert "panela de oleo" in results[2][0].lower(), f"Esperado panela de oleo, obtido {results[2][0]}"
+    assert "Purificacao de agua" in results[3][0], f"Esperado Purificacao de agua, obtido {results[3][0]}"
+    assert results[4][2] == 0.0, f"Pergunta fora de domínio deveria retornar 0.0, obtido {results[4]}"
+    print("[OK] Todas as 5 buscas Micro-RAG passaram com IDF e filtro de stopwords!")
     return 0
 
 

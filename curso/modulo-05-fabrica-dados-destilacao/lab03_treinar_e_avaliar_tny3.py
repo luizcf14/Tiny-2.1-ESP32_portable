@@ -81,9 +81,9 @@ def extract_act_and_reply(gen_ids: list[int], tok: TinyBPETokenizer) -> tuple[st
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Treina modelo TNY3 especialista e avalia métricas.")
     p.add_argument("--preset", choices=["micro", "full_s3"], default="micro")
-    p.add_argument("--epochs", type=int, default=45, help="Épocas SFT + QAT (padrão: 45)")
-    p.add_argument("--batch-size", type=int, default=32)
-    p.add_argument("--lr", type=float, default=2e-3)
+    p.add_argument("--epochs", type=int, default=35, help="Épocas SFT + QAT (padrão: 35)")
+    p.add_argument("--batch-size", type=int, default=64)
+    p.add_argument("--lr", type=float, default=2.5e-3)
     p.add_argument("--q4", action="store_true", help="Treina e exporta em Q4_0 híbrido (4 bits)")
     p.add_argument("--seed", type=int, default=42)
     return p.parse_args()

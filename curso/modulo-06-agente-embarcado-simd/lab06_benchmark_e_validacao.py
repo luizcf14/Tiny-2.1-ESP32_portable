@@ -185,7 +185,7 @@ def run_simd_and_capstone_validation() -> None:
     # Caso Bônus Trilha B (Micro-RAG + TNY3 SIMD)
     rag_q = "oleo pegou fogo na panela"
     _, rag_body, _ = search_rag(rag_blob, rag_q)
-    rag_ctx = "[RAG] Nunca jogue agua no oleo quente. Desligue o fogo e abafe com tampa metalica."
+    rag_ctx = "[RAG] Nunca jogue agua no oleo. Desligue fogo e abafe com tampa metalica."
     assert "tampa" in rag_body.lower()
     p_rag = tok.encode(f"<|bos|><|ctx|>{rag_ctx}<|user|>{rag_q}")
     gen_rag = runner_simd.generate(p_rag, eos_id=EOS_ID, max_new=64)

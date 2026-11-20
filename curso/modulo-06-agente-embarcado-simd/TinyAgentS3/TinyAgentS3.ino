@@ -112,7 +112,7 @@ static void neuralWorkerTask(void *pv) {
         snprintf(rep.act, sizeof(rep.act), "NONE");
         snprintf(rep.reply, sizeof(rep.reply),
                  "Motor TNY3 pronto (%u layers, D=%u). Contexto: %s",
-                 (unsigned)tny3_get_info()->layers, (unsigned)tny3_get_info()->d, ctx_buf);
+                 (unsigned)tny3_get_info()->hdr.layers, (unsigned)tny3_get_info()->hdr.d, ctx_buf);
         TinyActResult parsed_act;
         rep.act_valid = tiny_act_parse(rep.act, &parsed_act);
       }
@@ -215,7 +215,7 @@ static void runSerialCommand(const char *line) {
     printStatus();
   } else if (strcmp(line, "/bench") == 0) {
     if (!g_modelLoaded) {
-      conPrintln("[BENCH] Grave um modelo TNY3 na particao model_bin para medir matvec real.");
+      conPrintf("[BENCH] Grave um modelo TNY3 na particao model_bin para medir matvec real.\n");
       return;
     }
     uint32_t u0 = 0, u1 = 0, u2 = 0;

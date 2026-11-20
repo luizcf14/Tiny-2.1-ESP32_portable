@@ -61,7 +61,7 @@ class Tny3Config:
 
 PRESETS: dict[str, Tny3Config] = {
     "micro": Tny3Config(
-        vocab_size=1024, ctx_len=128, d=128, layers=4, q_heads=4, kv_heads=2, hid=256
+        vocab_size=512, ctx_len=128, d=128, layers=4, q_heads=4, kv_heads=2, hid=256
     ),
     "full_s3": Tny3Config(
         vocab_size=4096, ctx_len=256, d=256, layers=8, q_heads=8, kv_heads=2, hid=688
