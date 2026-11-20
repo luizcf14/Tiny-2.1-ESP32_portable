@@ -9,90 +9,89 @@
 ## Objetivos de Aprendizagem
 
 Ao concluir este módulo, o aluno será capaz de:
-1. Explicar por que **SLMs (*Small Language Models*) de 5M–10M parâmetros** falham em "conhecimento enciclopédico aberto", mas atingem altíssima confiabilidade como **modelos especialistas e interfaces de linguagem para ações/RAG**.
-2. Construir um pipeline de **Destilação Sintética (Teacher → Student)** gerando milhares de exemplos limpos em PT-BR usando um LLM grande como professor.
-3. Aplicar treinamento em **3 estágios** (Pré-treino de domínio → Answer-Only SFT → QAT `int8`/`Q4_0`) evitando alucinação e esquecimento catastrófico.
-4. Aposentar as regras manuais em [`TinyESP32/tiny_session.cpp`](../../TinyESP32/tiny_session.cpp) combinando o **histórico multi-turno no KV Cache** com um **Micro-RAG armazenado na partição `rag_kb` (4 MB)** do ESP32-S3.
+1. Explicar por que **SLMs (*Small Language Models*)** alcançam alta confiabilidade como **modelos especialistas para ações (`<|act|>`) e Micro-RAG**.
+2. Construir uma fábrica de **dados sintéticos variados com validação de schema e recusa segura**.
+3. Executar **Answer-Only SFT + QAT** integrando o tokenizador BPE (Módulo 3) com o Transformer moderno `TNY3` (Módulo 4).
+4. Substituir as regras manuais em [`TinyESP32/tiny_session.cpp`](../../TinyESP32/tiny_session.cpp) compilando uma partição binária de Micro-RAG (`rag_kb.bin`) para os 4 MB reservados no ESP32-S3.
 
 ---
 
-## 1. A Virada de Chave: O Que Cabe em 7 Milhões de Parâmetros?
+## Arquivos Práticos Deste Módulo
 
-Tentativas de colocar fatos históricos aleatórios ou geografia universal em um modelo de poucos megabytes sempre levam à memorização frágil (como vimos no Módulo 1). Pesquisas como *TinyStories* e *Phi* provaram duas verdades fundamentais para modelos minúsculos:
+| Arquivo na Pasta do Módulo | Tipo | Para Que Serve |
+| :--- | :---: | :--- |
+| [`lab01_gerar_dataset_sintetico.py`](./lab01_gerar_dataset_sintetico.py) | Python | Gera `out/dataset_sft.jsonl` e `out/dataset_eval.jsonl` (Trilha A `<|act|>` + Trilha B Micro-RAG + recusas seguras), valida schema e orçamento BPE + inclui template Teacher |
+| [`data/fichas_emergencia_rag.txt`](./data/fichas_emergencia_rag.txt) | Base RAG | Fichas técnicas curtas de primeiros socorros, defesa civil e água potável em português |
+| [`rag_builder.py`](./rag_builder.py) | Python | Compila as fichas no formato binário alinhado `RAG1` (`out/rag_kb.bin`) para a partição `rag_kb` e testa busca léxica em microssegundos |
+| [`lab03_treinar_e_avaliar_tny3.py`](./lab03_treinar_e_avaliar_tny3.py) | Python | Treina BPE + `Tny3Transformer` com Answer-Only SFT + QAT, exporta `out/tny3_agent.bin` e mede `Action Exact Match` e `Safe Refusal Rate` em frases inéditas |
+| [`.gitignore`](./.gitignore) | Config | Ignora `out/` e `__pycache__/` |
 
-1. **Qualidade > Volume Bruto:** 10 MB de dados sintéticos limpos, gramaticalmente consistentes e focados em um domínio geram um modelo muito mais inteligente do que 500 MB de texto ruidoso da web.
+---
+
+## 1. A Virada de Chave: O Que Cabe em Poucos Milhões de Parâmetros?
+
+Pesquisas como *TinyStories* e *Phi* provaram duas verdades fundamentais para modelos compactos:
+
+1. **Qualidade > Volume Bruto:** Dados sintéticos limpos, variados e focados em um domínio geram muito mais confiabilidade do que texto ruidoso da web.
 2. **Separe "Raciocínio Linguístico" de "Memória Factual":**
-   * **O que o mini-LLM aprende nos pesos:** entender intenções em português coloquial, ler blocos `<|ctx|>`, emitir chamadas estruturadas `<|act|>` e redigir respostas naturais ou recusar o que não sabe.
-   * **Onde vivem os fatos mutáveis ou extensos:** no contexto em tempo real (**sensores** + **Micro-RAG** na partição de 4 MB da Flash!).
+   * **O que o mini-LLM aprende nos pesos:** entender intenções coloquiais, ler blocos `<|ctx|>`, emitir comandos estruturados `<|act|>` e redigir respostas ou recusas seguras (`NONE`).
+   * **Onde vivem os fatos mutáveis ou extensos:** no contexto em tempo real (**sensores** + **Micro-RAG** na partição `rag_kb` de 4 MB da Flash!).
 
 ---
 
 ## 2. Os Dois Casos de Uso Úteis do Curso
 
-Para que o modelo que cabe no ESP32-S3 tenha utilidade real (e não seja apenas um brinquedo de perguntas fixas), o curso trabalha duas trilhas sobre a mesma arquitetura `TNY3-S3`:
-
 ### Trilha A — Agente IoT ("Do Prompt ao Pino")
-Traduz fala humana ambígua + estado dos sensores em **ações determinísticas** e feedback cordial:
-
 ```text
-<|bos|><|ctx|>temp=31C;umid=78%;luz=20%;fan=0;led=off<|user|>tá muito abafado aqui e escuro, dá um jeito<|act|>FAN=100;LED=WARM<|assistant|>Está bem quente mesmo (31°C). Liguei a ventilação no máximo e acendi a luz em tom quente.<|eos|>
+<|bos|><|ctx|>temp=31C;luz=20%;fan=0;led=off;relay=0<|user|>tá muito abafado aqui, liga o vento forte<|act|>FAN=100<|assistant|>Ventilador ligado em 100% (temperatura em 31°C).<|eos|>
 ```
 
-* **Por que um modelo de 7M params é útil aqui?** Expressões como *"tá um forno"*, *"baixa esse vento"*, *"apaga tudo que vou dormir"* têm infinitas variações que quebram `if/else` simples — mas um Transformer BPE destilado com 15.000 variações coloquiais generaliza com precisão >95% offline!
-
-### Trilha B — Copiloto Offline de Emergência e Campo (Evolução do AMEBA)
-Conecta diretamente com o propósito humanitário já presente em [`TinyESP32/tiny_session.cpp`](../../TinyESP32/tiny_session.cpp) e [`data/custom_qa.txt`](../../data/custom_qa.txt) (primeiros socorros, defesa civil, sobrevivência e conectividade isolada):
-
-* Em vez de tentar comprimir todos os manuais dentro dos pesos neurais — ou manter `FOLLOWUP_RULES[]` com quase mil linhas manuais — gravamos centenas de **fichas técnicas curtas** na partição `rag_kb` (4 MB na Flash).
-* Quando o usuário pergunta: *"Ele engoliu muita água da piscina e agora tá tossindo, o que faço?"*, uma busca BM25/léxica ultrarrápida em C (< 5 ms) recupera a ficha certa e injeta em `<|ctx|>`.
-* O `TNY3-S3` lê `<|ctx|>` + a pergunta + o turno anterior (que agora cabe na janela `CTX = 256/512`!) e responde de forma coesa e segura.
+### Trilha B — Copiloto Offline de Emergência (Evolução do AMEBA)
+Conecta diretamente com [`TinyESP32/tiny_session.cpp`](../../TinyESP32/tiny_session.cpp) e [`data/custom_qa.txt`](../../data/custom_qa.txt): em vez de manter `FOLLOWUP_RULES[]` com ~900 linhas manuais, o [`rag_builder.py`](./rag_builder.py) empacota as fichas técnicas em `RAG1` (`rag_kb.bin`), recupera a ficha certa em `< 1 ms` e a injeta em `<|ctx|>`.
 
 ---
 
-## 3. Pipeline de Dados e Treino em 3 Estágios
+## 3. Pipeline de Dados e Treino
 
 ```mermaid
 flowchart TD
-    T["LLM Professor - ex. Gemini API / Modelo Grande"] -->|"Gera 15k a 40k diálogos PT-BR + variações + recusa segura"| VAL["Validador Automático - checa tags, tamanho max CTX e consistência de ação"]
-    VAL --> PT["Fase 1: Pré-Treino de Domínio - aprende português fluido e gramática"]
-    PT --> SFT["Fase 2: Answer-Only SFT - cross_entropy com -100 no prompt"]
-    SFT --> QAT["Fase 3: QAT int8 ou Q4_0 + Replay - preserva robustez na Flash"]
-    QAT --> EXP["Exporta TNY3.BIN e valida Exact Action Match offline"]
+    T["Gerador Sintético / Teacher LLM"] -->|"Gera dataset PT-BR + variações + recusa segura"| VAL["Validador Automático - checa schema act e limite BPE"]
+    VAL --> SFT["Answer-Only SFT - cross_entropy com -100 até user"]
+    SFT --> QAT["QAT int8 ou Q4_0 integrado no forward"]
+    QAT --> EXP["Exporta tny3_agent.bin e valida Action Exact Match offline"]
 ```
-
-### Regras de Ouro da Fábrica de Dados (Aprendidas com o Repo)
-
-1. **Variação Real de Fala + Erros de Digitação:**
-   Assim como `perturb_question()` em [`tools/finetune_tiny.py`](../../tools/finetune_tiny.py#L94-L108) injeta pequenos erros tipográficos durante o treino, o gerador sintético deve incluir gírias, frases sem pontuação, abreviações (`"vc"`, `"pq"`, `"tá"`) e perguntas indiretas.
-2. **Exemplos Negativos e Recusa Segura (Anti-Alucinação):**
-   Como já praticado nas linhas `54–62` de [`data/custom_qa.txt`](../../data/custom_qa.txt#L54-L62), **10% a 15% do dataset** deve conter perguntas impossíveis, fora de domínio ou leituras contraditórias de sensores onde o modelo aprende a emitir `<|act|>NONE` e dizer claramente que não tem aquela informação ou função.
-3. **Answer-Only SFT + Replay + L2-SP:**
-   Mantemos a técnica comprovada de [`tools/finetune_tiny.py`](../../tools/finetune_tiny.py#L511-L517):
-   * Mascarar os tokens do prompt (`<|bos|>...<|user|>...`) com `-100` na `cross_entropy` para que o modelo concentre **100% do gradiente** em acertar `<|act|>` e `<|assistant|>`.
-   * Usar **Replay Buffer** com perguntas-âncora e regularização leve para não destruir a fluência básica do português durante o ajuste fino.
 
 ---
 
-## 4. Laboratório Prático — Gerando Dados e Medindo Utilidade Real
+## 4. Laboratório Prático — Da Fábrica de Dados ao Modelo Avaliado
 
-1. **Desenho do Esquema de Ferramentas (`Schema`):**
-   Defina de 4 a 6 ações físicas suportadas pelo hardware do Módulo 6 (ex.: `FAN=0..100`, `LED=OFF|WARM|COOL|ALERT`, `RELAY=0|1`, `READ=TEMP|LIGHT`, `NONE`).
-2. **Geração via Script Professor (`tools/distill_dataset.py`):**
-   * Escreva um prompt estruturado que instrua o modelo professor a gerar lotes JSONL com `{"ctx": ..., "history": ..., "user": ..., "act": ..., "assistant": ...}` cobrindo todos os comandos, combinações múltiplas (*"liga a luz e desliga o cooler"*), follow-ups (*"aumenta mais um pouco"*) e recusas seguras.
-   * Valide programaticamente que 100% das amostras respeitam a sintaxe `<|act|>` e cabem em `CTX = 256` tokens usando o tokenizador BPE do Módulo 3!
-3. **Treinamento & Matriz de Avaliação Automatizada:**
-   Antes de gravar na placa, rode uma suíte de validação quantizada (evolução do bloco `[EVAL]` de [`finetune_tiny.py`](../../tools/finetune_tiny.py#L780-L795)) medindo:
-   * **Acurácia exata de ação (`Action Exact Match`):** meta ≥ 93% em prompts inéditos de teste.
-   * **Taxa de recusa segura (`Safe Refusal`):** meta ≥ 95% em perguntas fora de escopo (zero acionamento acidental de relé!).
-   * **Taxa de formatação válida:** 100% das gerações encerrando com `<|eos|>` e parseáveis pelo parser em C.
+Execute os 3 scripts do módulo em sequência a partir da raiz do repositório:
+
+```bash
+# 1) Gerar e validar dataset sintético (treino + avaliação inédita)
+python curso/modulo-05-fabrica-dados-destilacao/lab01_gerar_dataset_sintetico.py
+
+# 2) Compilar a partição binária de Micro-RAG (RAG1) e testar busca léxica
+python curso/modulo-05-fabrica-dados-destilacao/rag_builder.py
+
+# 3) Treinar o modelo TNY3 especialista (QAT int8) e rodar matriz de avaliação
+python curso/modulo-05-fabrica-dados-destilacao/lab03_treinar_e_avaliar_tny3.py
+```
+
+*(Dica: adicione `--q4` no passo 3 para treinar e validar a versão quantizada em 4 bits `Q4_0`, ou `--preset full_s3` se quiser treinar a escala completa.)*
+
+Critérios esperados na matriz de avaliação sobre frases inéditas:
+* **Action Exact Match:** >= 90%
+* **Safe Refusal Rate (`NONE`):** >= 95% (zero acionamento acidental de relé/LED!)
+* **Formatação Válida (`<|act|>...<|assistant|>`):** 100%
 
 ---
 
 ## 5. Exercícios do Módulo
 
-1. **Auditoria de [`tiny_session.cpp`](../../TinyESP32/tiny_session.cpp):** Leia `try_rewrite_followup` e explique dois casos em que o sistema de regras manuais falha (ex.: troca rápida de tópico ou pergunta ambígua) e mostre como o formato multi-turno com `<|ctx|>` no BPE resolve isso naturalmente.
-2. **Custo de Alucinação em Atuadores:** Em um agente IoT com relés reais, qual erro é mais grave: *falso negativo* (não entender o pedido e responder `<|act|>NONE`) ou *falso positivo* (inventar um comando `RELAY=1` em uma pergunta aleatória)? Como ajustar o dataset de treinamento para punir falsos positivos?
-3. **Micro-RAG na Flash:** Projete um índice simples (lista de palavras-chave + offset na partição `rag_kb` de 4 MB) capaz de localizar a melhor ficha de 120 tokens dentre 1.000 fichas em menos de 10 ms no ESP32-S3 sem usar JSON pesado em RAM.
+1. **Auditoria de [`tiny_session.cpp`](../../TinyESP32/tiny_session.cpp):** Leia `try_rewrite_followup` e compare com a busca de [`rag_builder.py`](./rag_builder.py) usando `last_topic`. Quais manutenções deixam de existir?
+2. **Custo de Alucinação em Atuadores:** Edite [`lab01_gerar_dataset_sintetico.py`](./lab01_gerar_dataset_sintetico.py) adicionando 5 novos pedidos perigosos ou fora de escopo em `eval_rows` e confirme que a taxa de falsos acionamentos continua `0`.
+3. **Expansão com Teacher:** Use a constante `TEACHER_PROMPT_TEMPLATE` de [`lab01_gerar_dataset_sintetico.py`](./lab01_gerar_dataset_sintetico.py) com um LLM grande para ampliar o vocabulário mantendo o formato JSONL validado.
 
 ---
 

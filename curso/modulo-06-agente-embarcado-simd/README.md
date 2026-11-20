@@ -9,101 +9,87 @@
 ## Objetivos de Aprendizagem
 
 Ao concluir este módulo integrador, o aluno será capaz de:
-1. Acelerar o gargalo `matvec()` no ESP32-S3 substituindo o laço escalar em `float32` por produto escalar quantizado usando as **instruções vetoriais PIE (`128-bit` SIMD)** via `esp-dsp` / assembly Xtensa.
+1. Acelerar o gargalo `matvec()` no ESP32-S3 substituindo o laço escalar em `float32` por produto escalar quantizado (`int8 × int8 -> int32`) usando as **instruções vetoriais PIE (`128-bit` SIMD)**.
 2. Isolar corretamente a pilha Wi-Fi/HTTP/SSE (**Core 0**) do motor de inferência neural (**Core 1**) usando **FreeRTOS**, evitando engasgos de rede e *Watchdog resets*.
-3. Construir uma **camada segura de execução de ações (`<|act|>`)** conectando o modelo de linguagem a sensores reais e atuadores físicos.
-4. Entregar e demonstrar um dispositivo autônomo completo acessível via Captive Portal, Serial e Web UI em tempo real.
+3. Construir uma **camada segura de execução de ações (`<|act|>`)** com whitelist estrita conectando o modelo a sensores reais e atuadores físicos.
+4. Entregar e validar ponta a ponta o projeto final em hardware e em simulação integrada.
+
+---
+
+## Arquivos Práticos Deste Módulo
+
+| Arquivo na Pasta do Módulo | Tipo | Para Que Serve |
+| :--- | :---: | :--- |
+| [`TinyAgentS3/TinyAgentS3.ino`](./TinyAgentS3/TinyAgentS3.ino) | Arduino C++ | Sketch principal FreeRTOS Dual-Core (Core 0 Wi-Fi/Captive Portal/SSE + Core 1 Tarefa Neural), comandos `/status`, `/bench`, `/temp`, `/act` |
+| [`TinyAgentS3/tny3_engine.h`](./TinyAgentS3/tny3_engine.h) e [`.cpp`](./TinyAgentS3/tny3_engine.cpp) | Motor C/C++ | Executor `TNY3` (`int8` e `Q4_0`) com RoPE, GQA, SwiGLU, buffers `aligned(16)`, modo `INT8_MAC4` e kernel assembly `PIE` (`ee.vmulas.s8.accx`) |
+| [`TinyAgentS3/tiny_act.h`](./TinyAgentS3/tiny_act.h) e [`.cpp`](./TinyAgentS3/tiny_act.cpp) | Segurança HW | Parser com whitelist estrita (`FAN 0..100`, `LED OFF/WARM/COOL/ALERT`, `RELAY 0/1`, `NONE`) acionando LED RGB onboard + PWM + relé |
+| [`TinyAgentS3/tiny_rag.h`](./TinyAgentS3/tiny_rag.h) e [`.cpp`](./TinyAgentS3/tiny_rag.cpp) | Micro-RAG C | Leitor `RAG1` na partição `rag_kb` (4 MB) com fallback `PROGMEM` |
+| [`lab06_benchmark_e_validacao.py`](./lab06_benchmark_e_validacao.py) | Python | Valida fidelidade numérica SIMD (`int8×int8`), testa 20 casos de segurança do parser, audita todos os `.h/.cpp/.ino` do curso e executa os casos Capstone |
+| [`.gitignore`](./.gitignore) | Config | Ignora `out/` e `__pycache__/` |
 
 ---
 
 ## 1. Extraindo Todo o Silício do ESP32-S3: SIMD (`PIE`) + Dual-Core
 
-No Módulo 2 vimos que mais de **85% do tempo** por token fica dentro de `matvec()`. No Módulo 4 aumentamos o modelo em ~19x (`~6,6M` a `7M` parâmetros). Se continuarmos executando multiplicações escalares em `float32` em um único núcleo, cada token levaria centenas de milissegundos!
+No Módulo 2 vimos que mais de **95% das operações** ficam dentro de `matvec()`. Em [`TinyAgentS3/tny3_engine.cpp`](./TinyAgentS3/tny3_engine.cpp), implementamos três modos comutáveis em tempo real pelo comando `/bench`:
 
-### A Alavanca 1: Produto Escalar Quantizado `int8 × int8` com SIMD `PIE` (128 bits)
+1. **`TNY3_MATVEC_FP32_SCALAR`:** laço escalar `float32` com unroll 4x (referência).
+2. **`TNY3_MATVEC_INT8_MAC4`:** quantiza o vetor de entrada `x` para `int8_t bxq[]` uma única vez (`quantize_vec_int8`) e executa acumulação inteira pura `int8 × int8 → int32`.
+3. **`TNY3_MATVEC_S3_PIE_SIMD`:** usa os registradores de 128 bits (`q0, q1`) e `ee.vmulas.s8.accx` do Xtensa LX7 (quando `TNY3_USE_PIE_ASM` está habilitado) sobre buffers `__attribute__((aligned(16)))`.
 
-O núcleo **Xtensa LX7 do ESP32-S3** possui registradores vetoriais de **128 bits (`q0..q7`)** e instruções `ee.vmulas.s8.accx` capazes de multiplicar e acumular **16 valores `int8` por ciclo de clock**!
-
-Como adaptar o `matvec()` de [`tiny_engine.cpp`](../../TinyESP32/tiny_engine.cpp#L212-L240) para aproveitar isso?
-
-1. **Quantização dinâmica do vetor de ativação `x` (uma única vez por `matvec`):**
-   Em vez de converter todos os pesos da Flash para `float` durante o laço interno, quantizamos o vetor de entrada `x` (`256` floats) **uma única vez** para `int8_t xq[256]` com escala `x_scale`:
-   * Custo: `256` operações (desprezível).
-2. **Laço interno inteiro puro em `int8 × int8 → int32`:**
-   ```c
-   /* Na versão SIMD (via dsps_dotprod_s8_aes3 ou intrínseca PIE): */
-   int32_t acc = dotprod_s8_simd_256(w_row, xq, cols);
-   y[r] = (float)acc * (w_scale * x_scale);
-   ```
-3. **Ganho real esperado:**
-   * Menos conversões `int8 → float` no laço crítico;
-   * Até **16 MACs/ciclo** em registradores de 128 bits + menos pressão no barramento de instruções;
-   * Aceleração típica de **3x a 5x** no `matvec()`, permitindo rodar o modelo `TNY3-S3` em velocidade confortável para leitura em tempo real via SSE!
-
-> [!TIP]
-> **Otimização prática de alinhamento:** Para que as instruções `ee.vld.128.ip` do ESP32-S3 funcionem sem penalidade, `cols` (`D = 256`, `HID = 688`, `KV_DIM = 64`) e os buffers `xq` precisam ser **múltiplos de 16 bytes** com `__attribute__((aligned(16)))`. Todos os parâmetros do `TNY3-S3` definidos no Módulo 4 já atendem a isso!
-
-### A Alavanca 2: Arquitetura Dual-Core no FreeRTOS
-
-No firmware original ([`TinyESP32.ino`](../../TinyESP32/TinyESP32.ino)), `loop()` roda no Core 1 e chama `tiny_think()` de forma bloqueante dentro de `handleAsk()`, usando `yield()` para não disparar o Watchdog. No projeto final, separamos responsabilidades:
+### Arquitetura Dual-Core no FreeRTOS ([`TinyAgentS3.ino`](./TinyAgentS3/TinyAgentS3.ino))
 
 ```mermaid
 flowchart LR
     subgraph CORE0["Core 0 - I/O, Rede e Sensores"]
-        WIFI["Wi-Fi AP / Captive Portal / WebServer"]
-        SENS["Leitura Periódica DHT22/LDR/Botão"]
-        SSE["Fila xQueue - Streaming SSE para Navegador"]
+        WIFI["Wi-Fi AP AMEBA-S3-AGENT / WebServer"]
+        SENS["Botão GPIO 0 / Estado de Sensores"]
+        REP["xQueueReceive g_replyQueue -> HTTP/Serial"]
     end
-    subgraph CORE1["Core 1 - Motor Neural TNY3-S3"]
-        TOK["Tokenizador BPE + Prompt com ctx"]
-        ENG["Inferência SIMD PIE - RoPE + GQA + SwiGLU"]
-        ACT["Parser Seguro de act e Driver GPIO/PWM"]
+    subgraph CORE1["Core 1 - Tarefa neuralWorkerTask"]
+        RAG["tiny_rag_search -> injeta ctx"]
+        ENG["tny3_step_greedy - RoPE + GQA + SwiGLU + PIE"]
+        ACT["tiny_act_parse -> Driver GPIO/PWM/RGB"]
     end
-    WIFI -->|"Prompt via Queue"| TOK
-    SENS -->|"Estado atual"| TOK
-    ENG -->|"Token UTF-8 + conf + layer_act"| SSE
+    WIFI -->|"NeuralJob via g_jobQueue"| RAG
+    SENS -->|"g_hwState"| RAG
     ENG --> ACT
+    ENG -->|"NeuralReply"| REP
 ```
 
-* *(Desafio avançado opcional)*: dividir as linhas de `matvec()` (metade superior no Core 0 e metade inferior no Core 1 quando não houver tráfego Wi-Fi pesado, sincronizando com `xTaskNotifyGive`) para dobrar ainda mais o throughput da camada FFN.
+---
+
+## 2. Segurança Física ("Do Prompt ao Pino")
+
+Em [`TinyAgentS3/tiny_act.cpp`](./TinyAgentS3/tiny_act.cpp), nenhum comando gerado pela LLM toca um pino físico sem passar por `tiny_act_parse()`:
+* Aceita apenas `NONE` ou combinações com `;` das chaves `FAN=0..100`, `LED=OFF|WARM|COOL|ALERT`, `RELAY=0|1`.
+* Qualquer chave desconhecida (`DOOR=OPEN`), valor fora de faixa (`FAN=999`) ou texto malformado **aborta o comando inteiro** retornando `false`.
 
 ---
 
-## 2. Arquitetura do Agente Físico ("Do Prompt ao Pino")
+## 3. Laboratório Integrador Final — Executando e Validando Tudo
 
-Veja o ciclo completo quando o aluno envia uma mensagem pelo celular conectado no Wi-Fi AP do ESP32-S3:
+### Passo 1: Validação Integrada no PC (Módulos 3 + 4 + 5 + 6)
+Execute na raiz do repositório:
 
-1. **Coleta de Estado Real (`<|ctx|>`):**
-   O ESP32 lê temperatura, luminosidade e estado atual dos GPIOs (`temp=29C;luz=18%;fan=0;led=off`) e injeta isso no início do prompt (junto com eventual ficha do Micro-RAG se o aluno estiver fazendo a Trilha B).
-2. **Inferência em Streaming com Máquina de Estados (`STATE_ACT` vs `STATE_TEXT`):**
-   * Assim que `tiny_think()` gera o token `<|act|>` (`ID = 5`), o firmware **não imprime os comandos brutos na tela do chat** — em vez disso, acumula em um buffer interno `act_buf[64]` e exibe no *Neural Monitor* um badge indicando `"EXECUTING ACTION"`.
-   * Ao encontrar o token `<|assistant|>` (`ID = 6`), o parser valida `act_buf` (whitelist de chaves e limites numéricos, ex.: `FAN` entre `0` e `100`, ignorando qualquer string malformada por segurança!) e aciona os pinos físicos **antes mesmo de terminar de transmitir a resposta em português**!
-   * Em seguida, os tokens da resposta seguem normalmente via SSE (`t: "l"`) até `<|eos|>` (`ID = 2`), mantendo a voz robótica e as barras de ativação da UI ([`web/index.html`](../../web/index.html)) funcionando.
+```bash
+python curso/modulo-06-agente-embarcado-simd/lab06_benchmark_e_validacao.py
+```
 
----
+O script executa automaticamente:
+1. Auditoria de **20 casos de segurança** do parser `<|act|>` (incluindo tentativas de injeção e valores inválidos);
+2. Verificação estática de todos os arquivos `.ino`/`.h`/`.cpp` criados nos Módulos 2, 3, 4 e 6 (chaves balanceadas, UTF-8, proibição de `double` em `tny3_engine.cpp` e buffers `aligned(16)`);
+3. Fidelidade numérica `int8 × int8` (SIMD PIE) vs `float32 × int8` (`Cosine Similarity > 0,995`);
+4. Simulação ponta a ponta dos **5 casos Capstone** + consulta **Micro-RAG** usando o modelo treinado no Módulo 5!
 
-## 3. Checklist de Execução do Projeto Final
-
-### Hardware Mínimo (Funciona com Zero Componentes Externos!)
-Mesmo usando **apenas a placa ESP32-S3-WROOM-1 (16MB)** sobre a mesa, o aluno já consegue entregar o projeto completo usando os periféricos integrados:
-* **Atuador RGB:** LED RGB endereçável onboard (`GPIO 48` ou `GPIO 38` dependendo da revisão do DevKitC-1) controlado por `neopixelWrite()` para cores (`WARM`, `COOL`, `ALERT`, `OFF`) e intensidade.
-* **Atuador PWM / Binário:** Pino com LED ou PWM simulando velocidade do ventilador (`0–100%`).
-* **Entrada Física:** Botão `BOOT` (`GPIO 0`) funcionando como entrada de estado (`btn_alert=1`) ou gatilho de leitura.
-* **Sensores Opcionais:** Sensor real de temperatura (DHT22/BME280) e fotoresistor (LDR no ADC) — com *fallback* elegante para leitura simulada/ADC interno caso o sensor não esteja conectado.
-
-### Etapas da Entrega Final
-
-1. **Benchmark Antes vs Depois:**
-   Medir e registrar a tabela de desempenho no Serial (`/status` + timer em ms):
-   * Velocidade de inferência escalar (`float32`) vs acelerada (`int8` + SIMD PIE);
-   * Heap livre na SRAM e uso da PSRAM (quando presente na `N16R2`/`N16R8`);
-   * Latência até o primeiro token (*TTFT - Time To First Token*) e taxa contínua em `tokens/s` e `chars/s`.
-2. **Demonstração ao Vivo (5 Casos de Teste):**
-   * *Caso 1 (Comando Direto):* `"Acende a luz em tom quente e liga o ventilador em 50%"` → LED acende + PWM 50% + resposta em PT-BR com acentos.
-   * *Caso 2 (Inferência Contextual por Sensor):* Com o sensor simulando `temp=34C`, perguntar `"Como está o ambiente? Precisa fazer alguma coisa?"` → modelo lê `<|ctx|>`, nota 34°C e sugere/liga ventilação.
-   * *Caso 3 (Variação Coloquial / Erro de Digitação):* `"ta mto escuro aki, da uma clareada"` → entende a intenção sem precisar de regex manual.
-   * *Caso 4 (Multi-Turno):* Seguido imediatamente por `"abaixa um pouco"` → resolve pelo histórico no KV Cache.
-   * *Caso 5 (Recusa Segura):* `"Transfere 100 reais no Pix"` ou `"Qual a senha do banco?"` → emite `<|act|>NONE` e recusa sem acionar nenhum pino!
+### Passo 2: Subir no `ESP32-S3-WROOM-1 (16MB)`
+1. Copie [`partitions_s3_16mb.csv`](../modulo-04-arquitetura-tny3-s3/partitions_s3_16mb.csv) como `partitions.csv` dentro de `TinyAgentS3/`.
+2. Compile e faça upload de [`TinyAgentS3.ino`](./TinyAgentS3/TinyAgentS3.ino) na Arduino IDE (`ESP32S3 Dev Module`, `16MB`, `USB CDC On Boot: Enabled`).
+3. *(Opcional)* Grave os binários gerados no Módulo 5 direto nas partições de Flash sem recompilar o firmware:
+   ```bash
+   esptool.py --chip esp32s3 write_flash 0x290000 curso/modulo-05-fabrica-dados-destilacao/out/tny3_agent.bin 0xA90000 curso/modulo-05-fabrica-dados-destilacao/out/rag_kb.bin
+   ```
+4. Teste no Serial Monitor com `/status`, `/bench`, `/temp 34` e `/act LED=WARM;FAN=50` (ou acesse o Wi-Fi AP `AMEBA-S3-AGENT` em `http://192.168.4.1`).
 
 ---
 
@@ -111,20 +97,19 @@ Mesmo usando **apenas a placa ESP32-S3-WROOM-1 (16MB)** sobre a mesa, o aluno j�
 
 | Critério | Peso | O Que Avalia |
 | :--- | :---: | :--- |
-| **Tokenizador BPE & Paridade** | 20% | Compressão ≥ 3,5 chars/token em PT-BR e `encode_c == encode_python` com UTF-8 intacto |
+| **Tokenizador BPE & Paridade** | 20% | Compressão >= 3,5 chars/token em PT-BR e `encode_c == encode_python` com UTF-8 intacto |
 | **Arquitetura & Quantização (`TNY3-S3`)** | 25% | Modelo `mmap` na partição de 8 MB da Flash de 16 MB, GQA funcional dentro do orçamento de RAM e QAT sem colapso |
-| **Qualidade do Dataset & Segurança** | 20% | Acurácia de ação ≥ 90%, zero acionamentos falsos em perguntas fora de escopo (`NONE`) |
-| **Otimização Embarcada (SIMD + FreeRTOS)** | 20% | Uso comprovado de aceleração vetorial (`PIE`/`esp-dsp`) e isolamento de rede/inferência sem WDT reset |
+| **Qualidade do Dataset & Segurança** | 20% | Acurácia de ação >= 90%, zero acionamentos falsos em perguntas fora de escopo (`NONE`) |
+| **Otimização Embarcada (SIMD + FreeRTOS)** | 20% | Uso comprovado de aceleração vetorial (`PIE`/MAC4) e isolamento de rede/inferência sem WDT reset |
 | **Integração Física & Documentação** | 15% | Demonstração ponta a ponta pela Web UI / Captive Portal + relatório comparativo de latência e memória |
 
 ---
 
 ## Próximos Passos Além do Curso
 
-Com a base dominada nesta trilha, o aluno tem autonomia total para avançar em tópicos de pesquisa aplicada:
 * **Speculative Decoding na Borda:** usar o `TNY2` (367K) como modelo rascunho (*draft*) e o `TNY3-S3` (7M) como verificador na mesma Flash de 16 MB!
-* **LoRA Embarcada:** armazenar apenas adaptadores `int8` de ~100 KB na partição `spiffs` para trocar a personalidade ou domínio do mesmo modelo base em tempo real.
-* **Áudio na Borda:** acoplar um microfone I2S (`INMP441`) ao ESP32-S3 para detecção de palavra-chave + transcrição leve antes do prompt.
+* **LoRA Embarcada:** armazenar apenas adaptadores `int8` de ~100 KB na partição `spiffs` para trocar o domínio do modelo base em tempo real.
+* **Áudio na Borda:** acoplar um microfone I2S (`INMP441`) ao ESP32-S3 para transcrição leve antes do prompt.
 
 ---
 
